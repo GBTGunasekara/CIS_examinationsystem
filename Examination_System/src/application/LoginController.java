@@ -2,6 +2,7 @@ package application;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -17,8 +18,11 @@ public class LoginController  {
 	
 	@FXML
 	private Button Closebttn; 
+	@FXML
 	private Button Minimizebttn; 
+	@FXML
 	private Button TeacherRegbtn; 
+	
 	
 	@FXML
 	private void handleClose(MouseEvent event)

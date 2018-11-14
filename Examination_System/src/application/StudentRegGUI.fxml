@@ -41,7 +41,7 @@
             </JFXButton>
          </children>
       </HBox>
-      <JFXButton layoutX="83.0" layoutY="459.0" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #494949;" text="Save" textFill="#e5e5e5">
+      <JFXButton fx:id="Save" layoutX="83.0" layoutY="459.0" onMouseClicked="#showt" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #494949;" text="Save" textFill="#e5e5e5">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></JFXButton>
@@ -57,12 +57,12 @@
             <Insets />
          </opaqueInsets>
       </Label>
-      <JFXTextField layoutX="35.0" layoutY="100.0" prefHeight="35.0" prefWidth="225.0">
+      <JFXTextField fx:id="Stid" layoutX="35.0" layoutY="100.0" prefHeight="35.0" prefWidth="225.0">
          <font>
             <Font size="15.0" />
          </font>
       </JFXTextField>
-      <JFXTextField layoutX="35.0" layoutY="180.0" prefHeight="35.0" prefWidth="225.0">
+      <JFXTextField fx:id="Stid2" layoutX="35.0" layoutY="180.0" prefHeight="35.0" prefWidth="225.0">
          <font>
             <Font size="15.0" />
          </font>

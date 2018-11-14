@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.ImagePattern;
@@ -29,6 +30,23 @@ public class StudentRegController implements Initializable{
 	private Circle ppcirlce;
 	@FXML
 	private Button Stppbtn;
+	
+	//eaxmple
+	@FXML
+	private TextField Stid; 
+	@FXML
+	private TextField Stid2; 
+	@FXML
+	private Button Save; 
+	
+	@FXML
+	private void showt(MouseEvent event)
+	{
+		String st = Stid.getText();
+		Stid2.setText(st);	
+	}
+	
+	//exover
 	
 	@FXML
 	private void handleClose(MouseEvent event)
