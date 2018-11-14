@@ -21,7 +21,7 @@ public class LoginController  {
 	@FXML
 	private Button Minimizebttn; 
 	@FXML
-	private Button TeacherRegbtn; 
+	private Button TeacherRegbtn, loginbtn; 
 	
 	
 	@FXML
@@ -56,6 +56,18 @@ public class LoginController  {
 	{
 		Stage stage = new Stage();
 		Parent root = FXMLLoader.load(getClass().getResource("/application/StudentRegGUI.fxml"));
+		stage.initStyle(StageStyle.UNDECORATED);
+		Scene scene = new Scene(root);
+		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		stage.setScene(scene);
+		stage.show();
+	}
+	
+	@FXML
+	private void MovetoMenue(MouseEvent event) throws Exception
+	{
+		Stage stage = new Stage();
+		Parent root = FXMLLoader.load(getClass().getResource("/application/TeacherHomeGUI.fxml"));
 		stage.initStyle(StageStyle.UNDECORATED);
 		Scene scene = new Scene(root);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());

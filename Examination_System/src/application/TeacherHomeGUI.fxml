@@ -8,42 +8,42 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.TeacherHomeController">
    <children>
       <ImageView fitHeight="417.0" fitWidth="900.0" layoutY="35.0" opacity="0.4" pickOnBounds="true">
          <image>
             <Image url="@../image/jess-watters-483666-unsplash.jpg" />
          </image>
       </ImageView>
-      <HBox prefHeight="40.0" prefWidth="900.0" style="-fx-background-color: #494949;">
+      <HBox prefHeight="35.0" prefWidth="900.0" style="-fx-background-color: #494949;">
          <children>
-            <Label prefHeight="40.0" prefWidth="300.0" text="  Teachers Menue" textFill="#e5e5e5">
+            <Label prefHeight="35.0" prefWidth="300.0" text="  Teachers Menue" textFill="#e5e5e5">
                <font>
-                  <Font name="System Bold" size="25.0" />
+                  <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Label prefHeight="40.0" prefWidth="168.0" text="User ID" textFill="#e5e5e5">
+            <Label prefHeight="35.0" prefWidth="168.0" text="User ID" textFill="#e5e5e5">
                <font>
-                  <Font name="System Bold" size="25.0" />
+                  <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Label prefHeight="40.0" prefWidth="369.0" text="Date and Time" textFill="#e5e5e5">
+            <Label prefHeight="35.0" prefWidth="369.0" text="Date and Time" textFill="#e5e5e5">
                <font>
-                  <Font name="System Bold" size="25.0" />
+                  <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <JFXButton contentDisplay="CENTER" prefHeight="40.0" prefWidth="35.0" textFill="#0000000b">
+            <JFXButton fx:id="Minimizebttn2" contentDisplay="CENTER" onMouseClicked="#handleMinimize" prefHeight="35.0" prefWidth="35.0" textFill="#0000000b">
                <graphic>
-                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../image/icons8_Minimize_Window_100px.png" />
                      </image>
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton contentDisplay="CENTER" prefHeight="40.0" prefWidth="35.0" textFill="#0000000b">
+            <JFXButton fx:id="Closebttn2" contentDisplay="CENTER" onMouseClicked="#handleClose" prefHeight="35.0" prefWidth="35.0" textFill="#0000000b">
                <graphic>
-                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../image/icons8_Multiply_100px_1.png" />
                      </image>
@@ -51,35 +51,77 @@
                </graphic>
             </JFXButton>
          </children></HBox>
-      <JFXButton layoutX="44.0" layoutY="100.0" prefHeight="60.0" prefWidth="380.0" style="-fx-background-color: #7C7A7A;" text="Add Paper" AnchorPane.bottomAnchor="290.0">
+      <JFXButton graphicTextGap="20.0" layoutX="44.0" layoutY="100.0" prefHeight="60.0" prefWidth="380.0" style="-fx-background-color: #7C7A7A;" text="Add Paper" textFill="#e5e5e5" AnchorPane.bottomAnchor="290.0">
          <font>
-            <Font size="25.0" />
+            <Font name="System Bold" size="25.0" />
          </font>
+         <graphic>
+            <ImageView fitHeight="34.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/icons8_Add_File_100px.png" />
+               </image>
+            </ImageView>
+         </graphic>
       </JFXButton>
-      <JFXButton layoutX="44.0" layoutY="213.0" prefHeight="60.0" prefWidth="380.0" style="-fx-background-color: #7C7A7A;" text="View Paper">
+      <JFXButton graphicTextGap="20.0" layoutX="44.0" layoutY="220.0" prefHeight="60.0" prefWidth="380.0" style="-fx-background-color: #7C7A7A;" text="View Paper" textFill="#e5e5e5">
          <font>
-            <Font size="25.0" />
+            <Font name="System Bold" size="25.0" />
          </font>
+         <graphic>
+            <ImageView fitHeight="34.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/icons8_View_100px.png" />
+               </image>
+            </ImageView>
+         </graphic>
       </JFXButton>
-      <JFXButton layoutX="44.0" layoutY="336.0" prefHeight="60.0" prefWidth="380.0" style="-fx-background-color: #7C7A7A;" text="View Results">
+      <JFXButton graphicTextGap="20.0" layoutX="44.0" layoutY="340.0" prefHeight="60.0" prefWidth="380.0" style="-fx-background-color: #7C7A7A;" text="View Results" textFill="#e5e5e5">
          <font>
-            <Font size="25.0" />
+            <Font name="System Bold" size="25.0" />
          </font>
+         <graphic>
+            <ImageView fitHeight="31.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/icons8_Test_Results_100px.png" />
+               </image>
+            </ImageView>
+         </graphic>
       </JFXButton>
-      <JFXButton layoutX="479.0" layoutY="100.0" prefHeight="60.0" prefWidth="380.0" style="-fx-background-color: #7C7A7A;" text="Create Class">
+      <JFXButton graphicTextGap="20.0" layoutX="480.0" layoutY="100.0" prefHeight="60.0" prefWidth="380.0" style="-fx-background-color: #7C7A7A;" text="Create Class" textFill="#e5e5e5">
          <font>
-            <Font size="25.0" />
+            <Font name="System Bold" size="25.0" />
          </font>
+         <graphic>
+            <ImageView fitHeight="39.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/icons8_Class_100px.png" />
+               </image>
+            </ImageView>
+         </graphic>
       </JFXButton>
-      <JFXButton layoutX="479.0" layoutY="213.0" prefHeight="60.0" prefWidth="380.0" style="-fx-background-color: #7C7A7A;" text="View Class">
+      <JFXButton graphicTextGap="20.0" layoutX="480.0" layoutY="220.0" prefHeight="60.0" prefWidth="380.0" style="-fx-background-color: #7C7A7A;" text="View Class" textFill="#e5e5e5">
          <font>
-            <Font size="25.0" />
+            <Font name="System Bold" size="25.0" />
          </font>
+         <graphic>
+            <ImageView fitHeight="42.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/icons8_Classroom_100px.png" />
+               </image>
+            </ImageView>
+         </graphic>
       </JFXButton>
-      <JFXButton layoutX="479.0" layoutY="336.0" prefHeight="60.0" prefWidth="380.0" style="-fx-background-color: #7C7A7A;" text="Teacher Profile">
+      <JFXButton alignment="CENTER" graphicTextGap="10.0" layoutX="480.0" layoutY="340.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="60.0" prefWidth="380.0" style="-fx-background-color: #7C7A7A;" text="Teacher Profile" textFill="#e5e5e5">
          <font>
-            <Font size="25.0" />
+            <Font name="System Bold" size="25.0" />
          </font>
+         <graphic>
+            <ImageView fitHeight="36.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/icons8_Female_Profile_100px_1.png" />
+               </image>
+            </ImageView>
+         </graphic>
       </JFXButton>
    </children>
 </AnchorPane>
