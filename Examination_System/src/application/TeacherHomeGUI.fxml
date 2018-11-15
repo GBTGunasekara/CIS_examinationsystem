@@ -10,9 +10,9 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.TeacherHomeController">
    <children>
-      <ImageView fitHeight="417.0" fitWidth="900.0" layoutY="35.0" opacity="0.4" pickOnBounds="true">
+      <ImageView fitHeight="415.0" fitWidth="900.0" layoutY="35.0" opacity="0.4" pickOnBounds="true">
          <image>
-            <Image url="@../image/jess-watters-483666-unsplash.jpg" />
+            <Image url="@../image/book-book-pages-bookcase-415071.jpg" />
          </image>
       </ImageView>
       <HBox prefHeight="35.0" prefWidth="900.0" style="-fx-background-color: #494949;">
