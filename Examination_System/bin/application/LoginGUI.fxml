@@ -24,14 +24,20 @@
 						<Font size="28.0" />
 					</font>
 				</Label>
-				<JFXTextField focusColor="#e5e5e5" layoutX="50.0" layoutY="117.0" prefHeight="35.0" prefWidth="250.0" promptText="Email" unFocusColor="#e5e5e5" AnchorPane.bottomAnchor="247.8" AnchorPane.topAnchor="117.0" />
-				<JFXPasswordField focusColor="#e5e5e5" layoutX="50.0" layoutY="190.0" prefHeight="35.0" prefWidth="250.0" promptText="password" unFocusColor="#e5e5e5" AnchorPane.bottomAnchor="174.8" AnchorPane.topAnchor="190.0" />
 				<Hyperlink alignment="CENTER" layoutX="88.0" layoutY="334.0" prefHeight="23.0" prefWidth="173.0" text="Forget Your Password?" textFill="#fdfafa" wrapText="true" />
 				<JFXButton fx:id="loginbtn" buttonType="RAISED" layoutX="50.0" layoutY="276.0" onMouseClicked="#MovetoMenue" prefHeight="35.0" prefWidth="250.0" ripplerFill="#494949" style="-fx-background-color: #E5E5E5;" text="Login" textFill="#494949">
 					<font>
 						<Font size="16.0" />
 					</font>
 				</JFXButton>
+				<JFXPasswordField focusColor="#e5e5e5" layoutX="50.0" layoutY="190.0" prefHeight="35.0" prefWidth="250.0" promptText="password" style="-fx-text-inner-color: #e5e5e5;" unFocusColor="#e5e5e5">
+               <font>
+                  <Font size="15.0" />
+               </font></JFXPasswordField>
+				<JFXTextField fx:id="email" focusColor="#e5e5e5" layoutX="50.0" layoutY="117.0" prefHeight="35.0" prefWidth="250.0" promptText="Email" style="-fx-text-inner-color: #e5e5e5;" unFocusColor="#e5e5e5">
+               <font>
+                  <Font size="15.0" />
+               </font></JFXTextField>
 			</children>
 		</AnchorPane>
 		<Label layoutX="106.0" layoutY="129.0" prefHeight="87.0" prefWidth="330.0" text="MCQ App...">
