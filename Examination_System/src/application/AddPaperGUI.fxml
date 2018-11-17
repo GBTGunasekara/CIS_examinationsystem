@@ -9,11 +9,11 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="580.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="580.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AddPaperController">
    <children>
       <HBox prefHeight="35.0" prefWidth="960.0" style="-fx-background-color: #494949;">
          <children>
-            <Label prefHeight="35.0" prefWidth="386.0" text="  Teachers Menue" textFill="#e5e5e5">
+            <Label prefHeight="35.0" prefWidth="386.0" text="  Create Paper" textFill="#e5e5e5">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
@@ -122,7 +122,7 @@
             </JFXTextField>
          </children>
       </AnchorPane>
-      <JFXButton buttonType="RAISED" layoutX="242.0" layoutY="514.0" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #494949;" text="Create" textFill="#e5e5e5">
+      <JFXButton fx:id="Createbtn" buttonType="RAISED" layoutX="242.0" layoutY="514.0" onMouseClicked="#MovetoAddQuestions" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #494949;" text="Create" textFill="#e5e5e5">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>

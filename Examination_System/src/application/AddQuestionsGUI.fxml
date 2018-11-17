@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import org.controlsfx.control.PrefixSelectionChoiceBox?>
 
-<AnchorPane prefHeight="580.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="580.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AddQuestionController">
    <children>
       <HBox prefHeight="35.0" prefWidth="960.0" style="-fx-background-color: #494949;">
          <children>
@@ -97,7 +97,7 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <JFXButton buttonType="RAISED" layoutX="28.0" layoutY="405.0" prefHeight="30.0" prefWidth="120.0" style="-fx-background-color: #494949;" text="Save" textFill="#e5e5e5">
+            <JFXButton fx:id="Savebtn" buttonType="RAISED" layoutX="28.0" layoutY="405.0" onMouseClicked="#MovetoSubmitPaper" prefHeight="30.0" prefWidth="120.0" style="-fx-background-color: #494949;" text="Save" textFill="#e5e5e5">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>

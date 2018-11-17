@@ -2,7 +2,6 @@ package application;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -10,24 +9,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-public class StudentHomeController {
-
-	@FXML
-	private Button Closebttn3, Minimizebttn3, AnswerPaperbtn, ViewPaperbtn, ViewResultsbtn, JoinClassbtn, ViewClassbtn, StudentProbtn; 
+public class AddQuestionController {
 	
-	
-	@FXML
-	private void handleClose(MouseEvent event)
-	{
-		System.exit(0);
-	}
-	
-	@FXML
-	private void handleMinimize(MouseEvent event)
-	{
-		Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-		stage.setIconified(true);
-	}
+	@FXML 
+	private Button Closebttn2, Minimizebttn2, Savebtn;
 	
 	public void fxmlLoader(String link) throws Exception
 	{
@@ -40,4 +25,11 @@ public class StudentHomeController {
 		stage.show();
 	}
 	
+	@FXML
+	private void MovetoSubmitPaper(MouseEvent event) throws Exception
+	{
+		String link = "/application/SubmitPaperGUI.fxml";
+		fxmlLoader(link);
+		
+	}
 }
