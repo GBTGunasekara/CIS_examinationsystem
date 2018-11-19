@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="580.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SubmitPaperController">
+<AnchorPane prefHeight="580.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SubmitPaperController">
    <children>
       <HBox prefHeight="35.0" prefWidth="960.0" style="-fx-background-color: #494949;">
          <children>
@@ -131,8 +131,10 @@
                </font>
             </Label>
             <JFXButton buttonType="RAISED" layoutX="440.0" layoutY="121.0" style="-fx-background-color: #e5e5e5;" text="Copy" />
-            <JFXDatePicker defaultColor="#494949" layoutX="275.0" layoutY="345.0" prefHeight="28.0" prefWidth="135.0" />
-            <JFXDatePicker defaultColor="#494949" layoutX="275.0" layoutY="390.0" prefHeight="28.0" prefWidth="135.0" />
+            <JFXDatePicker defaultColor="#494949" layoutX="275.0" layoutY="345.0" prefHeight="28.0" prefWidth="120.0" />
+            <JFXDatePicker defaultColor="#494949" layoutX="275.0" layoutY="390.0" prefHeight="28.0" prefWidth="120.0" />
+            <JFXDatePicker defaultColor="#494949" layoutX="414.0" layoutY="342.0" prefHeight="37.0" prefWidth="120.0" showTime="true" />
+            <JFXDatePicker defaultColor="#494949" layoutX="414.0" layoutY="387.0" prefHeight="37.0" prefWidth="120.0" showTime="true" />
          </children>
       </AnchorPane>
       <JFXButton buttonType="RAISED" layoutX="259.0" layoutY="524.0" prefHeight="35.0" prefWidth="180.0" style="-fx-background-color: #494949;" text="Save" textFill="#e5e5e5">
