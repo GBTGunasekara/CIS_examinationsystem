@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="580.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.TeacherViewClassController">
+   <children>
+      <HBox prefHeight="35.0" prefWidth="960.0" style="-fx-background-color: #494949;">
+         <children>
+            <Label prefHeight="35.0" prefWidth="386.0" text="  Class List" textFill="#e5e5e5">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label prefHeight="35.0" prefWidth="258.0" text="User ID" textFill="#e5e5e5">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label prefHeight="35.0" prefWidth="230.0" text="Date &amp; Time" textFill="#e5e5e5">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <JFXButton contentDisplay="CENTER" prefHeight="35.0" prefWidth="35.0" textFill="#0000000b">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/icons8_Minimize_Window_100px.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton contentDisplay="CENTER" prefHeight="35.0" prefWidth="35.0" textFill="#0000000b">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/icons8_Multiply_100px_1.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+         </children>
+      </HBox>
+      <ImageView fitHeight="545.0" fitWidth="960.0" layoutY="38.0" opacity="0.24" pickOnBounds="true">
+         <image>
+            <Image url="@../image/background-black-blank-733857.jpg" />
+         </image>
+      </ImageView>
+      <JFXButton buttonType="RAISED" layoutX="510.0" layoutY="530.0" prefHeight="35.0" prefWidth="180.0" style="-fx-background-color: #494949;" text="View Class" textFill="#e5e5e5">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="740.0" layoutY="530.0" prefHeight="35.0" prefWidth="180.0" style="-fx-background-color: #494949;" text="Edit" textFill="#e5e5e5">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </JFXButton>
+      <Label layoutX="74.0" layoutY="64.0" text="Search Class Details">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <JFXTextField layoutX="345.0" layoutY="67.0" prefHeight="26.0" prefWidth="394.0" />
+      <JFXButton contentDisplay="CENTER" layoutX="772.0" layoutY="60.0" prefHeight="30.0" prefWidth="30.0" textFill="#0000000b">
+         <graphic>
+            <ImageView fitHeight="23.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/icons8_Search_52px.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <TableView layoutX="27.0" layoutY="113.0" prefHeight="401.0" prefWidth="906.0">
+         <columns>
+            <TableColumn prefWidth="127.0" text="Class ID" />
+            <TableColumn prefWidth="101.0" text="Teacher ID" />
+            <TableColumn prefWidth="150.0" text="Class Name" />
+            <TableColumn prefWidth="125.0" text="Subject Name" />
+            <TableColumn prefWidth="97.0" text="Grade" />
+            <TableColumn minWidth="0.0" prefWidth="185.0" text="Location" />
+            <TableColumn minWidth="0.0" prefWidth="120.0" text="No. Students" />
+         </columns>
+      </TableView>
+   </children>
+</AnchorPane>
