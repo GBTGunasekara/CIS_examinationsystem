@@ -56,17 +56,17 @@
       </ImageView>
       <AnchorPane layoutY="38.0" opacity="0.9" prefHeight="545.0" prefWidth="160.0" style="-fx-background-color: #e5e5e5; -fx-border-color: #494949; -fx-border-width: 0;">
          <children>
-            <Label layoutX="10.0" layoutY="80.0" text="Paper ID">
+            <Label layoutX="10.0" layoutY="102.0" text="Paper ID">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="10.0" layoutY="365.0" text="Question No.">
+            <Label layoutX="11.0" layoutY="321.0" text="Question No.">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="15.0" layoutY="105.0" text="PID12345678">
+            <Label layoutX="15.0" layoutY="127.0" text="PID12345678">
                <font>
                   <Font size="16.0" />
                </font>
@@ -76,8 +76,8 @@
                   <Font name="Consolas" size="24.0" />
                </font>
             </Label>
-            <PrefixSelectionChoiceBox layoutX="15.0" layoutY="390.0" prefHeight="30.0" prefWidth="46.0" />
-            <Label layoutX="10.0" layoutY="245.0" text="Completed Questions ">
+            <PrefixSelectionChoiceBox layoutX="16.0" layoutY="346.0" prefHeight="30.0" prefWidth="46.0" />
+            <Label layoutX="10.0" layoutY="245.0" text="Answered Questions ">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
@@ -87,12 +87,12 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label layoutX="10.0" layoutY="135.0" text="Question ID">
+            <Label layoutX="15.0" layoutY="177.0" text="Question ID">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="15.0" layoutY="160.0" text="QID1234">
+            <Label layoutX="20.0" layoutY="202.0" text="QID1234">
                <font>
                   <Font size="16.0" />
                </font>
@@ -107,22 +107,6 @@
                   <Font name="System Bold" size="16.0" />
                </font>
             </JFXButton>
-            <Label layoutX="10.0" layoutY="190.0" text="Answer ID">
-               <font>
-                  <Font name="System Bold" size="16.0" />
-               </font>
-            </Label>
-            <Label layoutX="15.0" layoutY="215.0" text="AID123401">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-            <Label layoutX="10.0" layoutY="300.0" text="Answer No.">
-               <font>
-                  <Font name="System Bold" size="16.0" />
-               </font>
-            </Label>
-            <PrefixSelectionChoiceBox layoutX="15.0" layoutY="325.0" prefHeight="30.0" prefWidth="46.0" />
          </children>
       </AnchorPane>
       <Label layoutX="225.0" layoutY="248.0" prefWidth="91.0" text="Answers">
