@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="580.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.TeacherSubmitPaperController">
+   <children>
+      <HBox prefHeight="35.0" prefWidth="960.0" style="-fx-background-color: #494949;">
+         <children>
+            <Label prefHeight="35.0" prefWidth="386.0" text="  Submit Paper" textFill="#e5e5e5">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label prefHeight="35.0" prefWidth="258.0" text="User ID" textFill="#e5e5e5">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label prefHeight="35.0" prefWidth="230.0" text="Date &amp; Time" textFill="#e5e5e5">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <JFXButton contentDisplay="CENTER" prefHeight="35.0" prefWidth="35.0" textFill="#0000000b">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/icons8_Minimize_Window_100px.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton contentDisplay="CENTER" prefHeight="35.0" prefWidth="35.0" textFill="#0000000b">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/icons8_Multiply_100px_1.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+         </children>
+      </HBox>
+      <ImageView fitHeight="545.0" fitWidth="960.0" layoutY="38.0" opacity="0.24" pickOnBounds="true">
+         <image>
+            <Image url="@../image/background-black-blank-733857.jpg" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="214.0" layoutY="62.0" opacity="0.9" prefHeight="446.0" prefWidth="554.0" style="-fx-background-color: #e5e5e5; -fx-border-color: #494949; -fx-border-width: 4;">
+         <children>
+            <Label layoutX="45.0" layoutY="75.0" prefWidth="91.0" text="Paper ID">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="123.0" layoutY="15.0" text="Exam Paper Propertises">
+               <font>
+                  <Font name="Arial Bold" size="28.0" />
+               </font>
+            </Label>
+            <Label layoutX="45.0" layoutY="120.0" text="Paper Password">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="45.0" layoutY="165.0" text="Class ID">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="45.0" layoutY="255.0" text="No. Questions">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="45.0" layoutY="300.0" text="No. Answers">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="45.0" layoutY="210.0" text="Teacher ID">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="45.0" layoutY="345.0" text="Release Date &amp; Time">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="45.0" layoutY="390.0" text="Terminate Date &amp; Time">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="285.0" layoutY="75.0" prefHeight="27.0" prefWidth="150.0" text="PID475863219">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="285.0" layoutY="120.0" prefWidth="150.0" text="dfdgd4545445">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="285.0" layoutY="165.0" prefWidth="150.0" text="CID963125478">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="285.0" layoutY="209.0" prefWidth="150.0" text="TID924563187">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="285.0" layoutY="255.0" text="10">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="285.0" layoutY="300.0" prefWidth="20.0" text="40">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <JFXButton buttonType="RAISED" layoutX="440.0" layoutY="121.0" style="-fx-background-color: #e5e5e5;" text="Copy" />
+            <JFXDatePicker defaultColor="#494949" layoutX="275.0" layoutY="345.0" prefHeight="28.0" prefWidth="120.0" />
+            <JFXDatePicker defaultColor="#494949" layoutX="275.0" layoutY="390.0" prefHeight="28.0" prefWidth="120.0" />
+            <JFXDatePicker defaultColor="#494949" layoutX="414.0" layoutY="342.0" prefHeight="37.0" prefWidth="120.0" showTime="true" />
+            <JFXDatePicker defaultColor="#494949" layoutX="414.0" layoutY="387.0" prefHeight="37.0" prefWidth="120.0" showTime="true" />
+         </children>
+      </AnchorPane>
+      <JFXButton buttonType="RAISED" layoutX="259.0" layoutY="524.0" prefHeight="35.0" prefWidth="180.0" style="-fx-background-color: #494949;" text="Save" textFill="#e5e5e5">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="549.0" layoutY="524.0" prefHeight="35.0" prefWidth="180.0" style="-fx-background-color: #494949;" text="Back" textFill="#e5e5e5">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>

@@ -9,7 +9,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-public class ViewClassController {
+public class TeacherViewClassController {
 	@FXML
 	private Button Closebttn, Minimizebttn, ClassListbtn;
 	
@@ -27,7 +27,7 @@ public class ViewClassController {
 	@FXML
 	private void MovetoClassList(MouseEvent event) throws Exception
 	{
-		String link = "/application/ViewClassListGUI.fxml";
+		String link = "/application/TeacherViewClassListGUI.fxml";
 		fxmlLoader(link);
 		
 	}

@@ -9,7 +9,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-public class AddPaperController {
+public class TeacherAddPaperController {
 	
 	@FXML 
 	private Button Closebttn2, Minimizebttn2, Createbtn;
@@ -28,7 +28,7 @@ public class AddPaperController {
 	@FXML
 	private void MovetoAddQuestions(MouseEvent event) throws Exception
 	{
-		String link = "/application/AddQuestionsGUI.fxml";
+		String link = "/application/TeacherAddQuestionsGUI.fxml";
 		fxmlLoader(link);
 		
 	}

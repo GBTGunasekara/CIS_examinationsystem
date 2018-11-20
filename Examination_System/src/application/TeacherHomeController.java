@@ -44,7 +44,7 @@ public class TeacherHomeController {
 	@FXML
 	private void MovetoAddPaper(MouseEvent event) throws Exception
 	{
-		String link = "/application/AddPaperGUI.fxml";
+		String link = "/application/TeacherAddPaperGUI.fxml";
 		fxmlLoader(link);
 		
 	}
@@ -52,7 +52,7 @@ public class TeacherHomeController {
 	@FXML
 	private void MovetoViewPaper(MouseEvent event) throws Exception
 	{
-		String link = "/application/PapersListGUI.fxml";
+		String link = "/application/TeacherPapersListGUI.fxml";
 		fxmlLoader(link);
 		
 	}
@@ -60,7 +60,7 @@ public class TeacherHomeController {
 	@FXML
 	private void MovetoViewResults(MouseEvent event) throws Exception
 	{
-		String link = "/application/ViewResultsGUI.fxml";
+		String link = "/application/TeacherViewResultsGUI.fxml";
 		fxmlLoader(link);
 		
 	}
@@ -68,7 +68,7 @@ public class TeacherHomeController {
 	@FXML
 	private void MovetoAddClass(MouseEvent event) throws Exception
 	{
-		String link = "/application/AddClassGUI.fxml";
+		String link = "/application/TeacherAddClassGUI.fxml";
 		fxmlLoader(link);
 		
 	}
@@ -76,7 +76,7 @@ public class TeacherHomeController {
 	@FXML
 	private void MovetoViewClass(MouseEvent event) throws Exception
 	{
-		String link = "/application/ViewClassGUI.fxml";
+		String link = "/application/TeacherViewClassGUI.fxml";
 		fxmlLoader(link);
 		
 	}

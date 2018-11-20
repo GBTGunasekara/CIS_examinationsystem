@@ -28,7 +28,7 @@ public class TeacherProfileController {
 	@FXML
 	private void MovetoClassList(MouseEvent event) throws Exception
 	{
-		String link = "/application/ViewClassListGUI.fxml";
+		String link = "/application/TeacherViewClassGUI.fxml";
 		fxmlLoader(link);
 		
 	}
@@ -36,7 +36,7 @@ public class TeacherProfileController {
 	@FXML
 	private void MovetoPaperList(MouseEvent event) throws Exception
 	{
-		String link = "/application/PapersListGUI.fxml";
+		String link = "/application/TeacherPapersListGUI.fxml";
 		fxmlLoader(link);
 		
 	}
