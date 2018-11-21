@@ -7,6 +7,6 @@ public class LoginFunctions {
 	//comment
 	//commit by tg
 	public void method() {
-		
+		//test comment
 	}
 }
