@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import org.controlsfx.control.PrefixSelectionChoiceBox?>
+
+<AnchorPane prefHeight="580.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.TeacherAddQuestionController">
+   <children>
+      <HBox prefHeight="35.0" prefWidth="960.0" style="-fx-background-color: #494949;">
+         <children>
+            <Label prefHeight="35.0" prefWidth="386.0" text="  Add Questions" textFill="#e5e5e5">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label prefHeight="35.0" prefWidth="258.0" text="User ID" textFill="#e5e5e5">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label prefHeight="35.0" prefWidth="230.0" text="Date &amp; Time" textFill="#e5e5e5">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <JFXButton contentDisplay="CENTER" prefHeight="35.0" prefWidth="35.0" textFill="#0000000b">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/icons8_Minimize_Window_100px.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton contentDisplay="CENTER" prefHeight="35.0" prefWidth="35.0" textFill="#0000000b">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/icons8_Multiply_100px_1.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+         </children>
+      </HBox>
+      <ImageView fitHeight="545.0" fitWidth="960.0" layoutY="38.0" opacity="0.24" pickOnBounds="true">
+         <image>
+            <Image url="@../image/background-black-blank-733857.jpg" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutY="38.0" opacity="0.9" prefHeight="545.0" prefWidth="160.0" style="-fx-background-color: #e5e5e5; -fx-border-color: #494949; -fx-border-width: 0;">
+         <children>
+            <Label layoutX="10.0" layoutY="102.0" text="Paper ID">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="12.0" layoutY="386.0" text="Question No.">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="15.0" layoutY="127.0" text="PID12345678">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="20.0" layoutY="14.0" text="Paper&#10;Propertise">
+               <font>
+                  <Font name="Consolas" size="24.0" />
+               </font>
+            </Label>
+            <PrefixSelectionChoiceBox layoutX="17.0" layoutY="411.0" prefHeight="30.0" prefWidth="46.0" />
+            <Label layoutX="11.0" layoutY="310.0" text="Answered Questions ">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label contentDisplay="CENTER" layoutX="16.0" layoutY="335.0" prefHeight="30.0" prefWidth="30.0" text="00">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="10.0" layoutY="177.0" text="Question ID">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="20.0" layoutY="202.0" text="QID1234">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <JFXButton buttonType="RAISED" layoutX="30.0" layoutY="494.0" prefHeight="30.0" prefWidth="120.0" style="-fx-background-color: #494949;" text="Cancel" textFill="#e5e5e5">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </JFXButton>
+            <Label layoutX="11.0" layoutY="245.0" text="Correct answer">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label contentDisplay="CENTER" layoutX="16.0" layoutY="270.0" prefHeight="30.0" prefWidth="30.0" text="00">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Label layoutX="225.0" layoutY="248.0" prefHeight="27.0" prefWidth="81.0" text="Answers">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextArea layoutX="225.0" layoutY="82.0" prefHeight="160.0" prefWidth="700.0" />
+      <Label layoutX="225.0" layoutY="47.0" prefWidth="91.0" text="Question">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="194.0" layoutY="292.0" prefHeight="30.0" prefWidth="30.0" text="A">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextArea layoutX="225.0" layoutY="288.0" prefHeight="40.0" prefWidth="700.0" />
+      <TextArea layoutX="225.0" layoutY="348.0" prefHeight="40.0" prefWidth="700.0" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="194.0" layoutY="353.0" prefHeight="30.0" prefWidth="30.0" text="B">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextArea layoutX="225.0" layoutY="408.0" prefHeight="40.0" prefWidth="700.0" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="194.0" layoutY="413.0" prefHeight="30.0" prefWidth="30.0" text="C">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextArea layoutX="225.0" layoutY="468.0" prefHeight="40.0" prefWidth="700.0" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="194.0" layoutY="473.0" prefHeight="30.0" prefWidth="30.0" text="D">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <JFXButton buttonType="RAISED" layoutX="522.0" layoutY="527.0" prefHeight="30.0" prefWidth="160.0" style="-fx-background-color: #494949;" text="Next" textFill="#e5e5e5">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="765.0" layoutY="527.0" prefHeight="30.0" prefWidth="160.0" style="-fx-background-color: #494949;" text="Back" textFill="#e5e5e5">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </JFXButton>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="316.0" layoutY="247.0" prefHeight="30.0" prefWidth="30.0" text="A">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
