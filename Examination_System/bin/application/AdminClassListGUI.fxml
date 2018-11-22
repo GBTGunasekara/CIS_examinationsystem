@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="580.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.TeacherViewClassController">
+<AnchorPane prefHeight="580.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AdminClassListController">
    <children>
       <HBox prefHeight="35.0" prefWidth="960.0" style="-fx-background-color: #494949;">
          <children>
@@ -55,7 +55,7 @@
             <Image url="@../image/background-black-blank-733857.jpg" />
          </image>
       </ImageView>
-      <JFXButton buttonType="RAISED" layoutX="510.0" layoutY="530.0" prefHeight="35.0" prefWidth="180.0" style="-fx-background-color: #494949;" text="View Class" textFill="#e5e5e5">
+      <JFXButton fx:id="ViewClassbtn" buttonType="RAISED" layoutX="510.0" layoutY="530.0" onMouseClicked="#MovetoAdminViewClass" prefHeight="35.0" prefWidth="180.0" style="-fx-background-color: #494949;" text="View Class" textFill="#e5e5e5">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>

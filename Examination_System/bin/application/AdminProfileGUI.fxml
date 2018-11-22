@@ -13,7 +13,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="580.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.TeacherProfileController">
+<AnchorPane prefHeight="580.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox prefHeight="35.0" prefWidth="960.0" style="-fx-background-color: #494949;">
          <children>
@@ -158,12 +158,12 @@
          </font>
       </JFXTextField>
       <JFXDatePicker defaultColor="#494949" layoutX="280.0" layoutY="255.0" prefHeight="30.0" prefWidth="250.0" />
-      <JFXButton fx:id="ClassListbtn" buttonType="RAISED" layoutX="40.0" layoutY="530.0" onMouseClicked="#MovetoClassList" prefHeight="35.0" prefWidth="180.0" style="-fx-background-color: #494949;" text="Admin List" textFill="#e5e5e5">
+      <JFXButton buttonType="RAISED" layoutX="40.0" layoutY="530.0" prefHeight="35.0" prefWidth="180.0" style="-fx-background-color: #494949;" text="Admin List" textFill="#e5e5e5">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="PaperListbtn" buttonType="RAISED" layoutX="270.0" layoutY="530.0" onMouseClicked="#MovetoPaperList" prefHeight="35.0" prefWidth="180.0" style="-fx-background-color: #494949;" text="Add Admin" textFill="#e5e5e5">
+      <JFXButton buttonType="RAISED" layoutX="270.0" layoutY="530.0" prefHeight="35.0" prefWidth="180.0" style="-fx-background-color: #494949;" text="Add Admin" textFill="#e5e5e5">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
