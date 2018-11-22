@@ -39,5 +39,53 @@ public class StudentHomeController {
 		stage.setScene(scene);
 		stage.show();
 	}
+	@FXML
+	private void MovetoSelectPaper(MouseEvent event) throws Exception
+	{
+		String link = "/application/StudentSelectPaperGUI.fxml";
+		fxmlLoader(link);
+		
+	}
+	
+	@FXML
+	private void MovetoViewPaper(MouseEvent event) throws Exception
+	{
+		String link = "/application/StudentPaperListGUI.fxml";
+		fxmlLoader(link);
+		
+	}
+	
+	@FXML
+	private void MovetoViewResults(MouseEvent event) throws Exception
+	{
+		String link = "/application/StudentViewResultsGUI.fxml";
+		fxmlLoader(link);
+		
+	}
+	
+	@FXML
+	private void MovetoJoinClass(MouseEvent event) throws Exception
+	{
+		String link = "/application/StudentJoinClassGUI.fxml";
+		fxmlLoader(link);
+		
+	}
+	
+	@FXML
+	private void MovetoViewClass(MouseEvent event) throws Exception
+	{
+		String link = "/application/StudentViewClassGUI.fxml";
+		fxmlLoader(link);
+		
+	}
+	
+	@FXML
+	private void MovetoStudentProfile(MouseEvent event) throws Exception
+	{
+		String link = "/application/StudentProfileGUI.fxml";
+		fxmlLoader(link);
+		
+	}
+
 	
 }
