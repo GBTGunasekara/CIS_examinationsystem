@@ -30,7 +30,7 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <JFXButton contentDisplay="CENTER" prefHeight="35.0" prefWidth="35.0" textFill="#0000000b">
+            <JFXButton contentDisplay="CENTER" onMouseClicked="#handleMinimize" prefHeight="35.0" prefWidth="35.0" textFill="#0000000b">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -39,7 +39,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton contentDisplay="CENTER" prefHeight="35.0" prefWidth="35.0" textFill="#0000000b">
+            <JFXButton contentDisplay="CENTER" onMouseClicked="#handleClose" prefHeight="35.0" prefWidth="35.0" textFill="#0000000b">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -50,9 +50,9 @@
             </JFXButton>
          </children>
       </HBox>
-      <ImageView fitHeight="545.0" fitWidth="960.0" layoutY="38.0" opacity="0.24" pickOnBounds="true">
+      <ImageView fitHeight="545.0" fitWidth="960.0" layoutY="38.0" opacity="0.3" pickOnBounds="true">
          <image>
-            <Image url="@../image/background-black-blank-733857.jpg" />
+            <Image url="@../image/jess-watters-483666-unsplash.jpg" />
          </image>
       </ImageView>
       <AnchorPane layoutX="214.0" layoutY="62.0" opacity="0.9" prefHeight="446.0" prefWidth="554.0" style="-fx-background-color: #e5e5e5; -fx-border-color: #494949; -fx-border-width: 4;">

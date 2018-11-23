@@ -55,7 +55,7 @@
       </HBox>
       <ImageView fitHeight="545.0" fitWidth="960.0" layoutY="38.0" opacity="0.24" pickOnBounds="true">
          <image>
-            <Image url="@../image/background-black-blank-733857.jpg" />
+            <Image url="@../image/rawpixel-645294-unsplash.jpg" />
          </image>
       </ImageView>
       <JFXButton buttonType="RAISED" layoutX="510.0" layoutY="530.0" prefHeight="35.0" prefWidth="180.0" style="-fx-background-color: #494949;" text="Approve" textFill="#e5e5e5">
@@ -103,6 +103,6 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </JFXButton>
-      <JFXDrawer fx:id="Drawer" defaultDrawerSize="200.0" layoutX="10.0" layoutY="48.0" prefHeight="545.0" prefWidth="200.0" />
+      <JFXDrawer fx:id="Drawer" defaultDrawerSize="200.0" layoutY="38.0" prefHeight="545.0" prefWidth="200.0" />
    </children>
 </AnchorPane>

@@ -52,9 +52,9 @@
             </JFXButton>
          </children>
       </HBox>
-      <ImageView fitHeight="545.0" fitWidth="960.0" layoutY="38.0" opacity="0.24" pickOnBounds="true">
+      <ImageView fitHeight="545.0" fitWidth="960.0" layoutY="38.0" opacity="0.3" pickOnBounds="true">
          <image>
-            <Image url="@../image/background-black-blank-733857.jpg" />
+            <Image url="@../image/jess-watters-483666-unsplash.jpg" />
          </image>
       </ImageView>
       <AnchorPane layoutY="38.0" opacity="0.9" prefHeight="545.0" prefWidth="160.0" style="-fx-background-color: #e5e5e5; -fx-border-color: #494949; -fx-border-width: 0;">

@@ -55,9 +55,9 @@
             </JFXButton>
          </children>
       </HBox>
-      <ImageView fitHeight="545.0" fitWidth="960.0" layoutY="38.0" opacity="0.24" pickOnBounds="true">
+      <ImageView fitHeight="545.0" fitWidth="960.0" layoutY="38.0" opacity="0.2" pickOnBounds="true">
          <image>
-            <Image url="@../image/background-black-blank-733857.jpg" />
+            <Image url="@../image/rawpixel-645294-unsplash.jpg" />
          </image>
       </ImageView>
       <JFXButton buttonType="RAISED" layoutX="510.0" layoutY="530.0" prefHeight="35.0" prefWidth="180.0" style="-fx-background-color: #494949;" text="Update" textFill="#e5e5e5">
@@ -122,10 +122,17 @@
          </font>
       </JFXTextField>
       <Circle fx:id="ppcirlce2" fill="#e5e5e5" layoutX="761.0" layoutY="225.0" radius="100.0" stroke="BLACK" strokeType="INSIDE" />
-      <JFXButton alignment="CENTER" blendMode="SOFT_LIGHT" buttonType="RAISED" cache="true" contentDisplay="CENTER" ellipsisString="" graphicTextGap="0.0" layoutX="711.0" layoutY="125.0" prefHeight="100.0" prefWidth="100.0" style="-fx-border-radius: 100;" textOverrun="CENTER_ELLIPSIS">
+      <JFXButton alignment="CENTER" blendMode="SOFT_LIGHT" buttonType="RAISED" cache="true" contentDisplay="CENTER" ellipsisString="" graphicTextGap="0.0" layoutX="711.0" layoutY="175.0" prefHeight="100.0" prefWidth="100.0" style="-fx-border-radius: 100;" textOverrun="CENTER_ELLIPSIS">
          <font>
             <Font name="Arial" size="11.0" />
          </font>
+         <graphic>
+            <ImageView blendMode="DARKEN" cache="true" cacheHint="ROTATE" fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/icons8_Add_Camera_50px.png" />
+               </image>
+            </ImageView>
+         </graphic>
       </JFXButton>
       <JFXRadioButton layoutX="276.0" layoutY="350.0" prefHeight="35.0" prefWidth="100.0" text="Male">
          <font>
@@ -184,18 +191,13 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </JFXButton>
-      <ImageView blendMode="DARKEN" cache="true" cacheHint="ROTATE" fitHeight="80.0" fitWidth="80.0" layoutX="723.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../image/icons8_Add_Camera_50px.png" />
-         </image>
-      </ImageView>
       <Label layoutX="126.0" layoutY="72.0" text="Search Teacher">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
       <JFXTextField layoutX="320.0" layoutY="71.0" prefHeight="26.0" prefWidth="394.0" />
-      <JFXButton contentDisplay="CENTER" layoutX="764.0" layoutY="70.0" prefHeight="30.0" prefWidth="30.0" textFill="#0000000b">
+      <JFXButton contentDisplay="CENTER" layoutX="751.0" layoutY="71.0" prefHeight="30.0" prefWidth="30.0" textFill="#0000000b">
          <graphic>
             <ImageView fitHeight="23.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
                <image>

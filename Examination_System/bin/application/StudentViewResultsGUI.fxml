@@ -53,9 +53,9 @@
             </JFXButton>
          </children>
       </HBox>
-      <ImageView fitHeight="542.0" fitWidth="960.0" layoutY="38.0" opacity="0.43" pickOnBounds="true">
+      <ImageView fitHeight="542.0" fitWidth="960.0" layoutY="38.0" opacity="0.3" pickOnBounds="true">
          <image>
-            <Image url="@../image/background-black-blank-733857.jpg" />
+            <Image url="@../image/jess-watters-483666-unsplash.jpg" />
          </image>
       </ImageView>
       <TableView layoutX="21.0" layoutY="113.0" prefHeight="440.0" prefWidth="918.0">
