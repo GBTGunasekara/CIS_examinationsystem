@@ -28,7 +28,7 @@ public class AdminStudentRegistrationController implements Initializable{
 	private JFXHamburger Hamburger;
 	@FXML
 	private JFXDrawer Drawer;
-	
+
 	@FXML
 	private void handleClose(MouseEvent event)
 	{
