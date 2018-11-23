@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="450.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="450.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.TeacherViewClassListController">
    <children>
       <HBox prefHeight="40.0" prefWidth="850.0" style="-fx-background-color: #494949;">
          <children>
@@ -19,7 +19,7 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <JFXButton contentDisplay="CENTER" prefHeight="35.0" prefWidth="35.0" textFill="#0000000b">
+            <JFXButton contentDisplay="CENTER" onMouseClicked="#handleMinimize" prefHeight="35.0" prefWidth="35.0" textFill="#0000000b">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -28,7 +28,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton contentDisplay="CENTER" prefHeight="35.0" prefWidth="35.0" textFill="#0000000b">
+            <JFXButton contentDisplay="CENTER" onMouseClicked="#handleClose" prefHeight="35.0" prefWidth="35.0" textFill="#0000000b">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>

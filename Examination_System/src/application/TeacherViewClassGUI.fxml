@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDrawer?>
+<?import com.jfoenix.controls.JFXHamburger?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
@@ -15,6 +17,7 @@
    <children>
       <HBox prefHeight="35.0" prefWidth="960.0" style="-fx-background-color: #494949;">
          <children>
+            <JFXHamburger fx:id="Hamburger" prefHeight="40.0" prefWidth="50.0" />
             <Label prefHeight="35.0" prefWidth="386.0" text="  View Class" textFill="#e5e5e5">
                <font>
                   <Font name="System Bold" size="20.0" />
@@ -30,7 +33,7 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <JFXButton contentDisplay="CENTER" prefHeight="35.0" prefWidth="35.0" textFill="#0000000b">
+            <JFXButton contentDisplay="CENTER" onMouseClicked="#handleMinimize" prefHeight="35.0" prefWidth="35.0" textFill="#0000000b">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -39,7 +42,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton contentDisplay="CENTER" prefHeight="35.0" prefWidth="35.0" textFill="#0000000b">
+            <JFXButton contentDisplay="CENTER" onMouseClicked="#handleClose" prefHeight="35.0" prefWidth="35.0" textFill="#0000000b">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -65,15 +68,6 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </JFXButton>
-      <TableView layoutX="27.0" layoutY="111.0" prefHeight="398.0" prefWidth="918.0">
-         <columns>
-            <TableColumn prefWidth="144.0" text="Student ID" />
-            <TableColumn prefWidth="250.0" text="Student Name" />
-            <TableColumn prefWidth="264.0" text="Email" />
-            <TableColumn prefWidth="110.0" text="No. Papers" />
-            <TableColumn minWidth="0.0" prefWidth="149.0" text="Status" />
-         </columns>
-      </TableView>
       <Label layoutX="74.0" layoutY="64.0" text="Search Class Details">
          <font>
             <Font name="System Bold" size="20.0" />
@@ -89,15 +83,25 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="ClassListbtn" buttonType="RAISED" layoutX="50.0" layoutY="530.0" onMouseClicked="#MovetoClassList" prefHeight="35.0" prefWidth="180.0" style="-fx-background-color: #494949;" text="Class List" textFill="#e5e5e5">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </JFXButton>
       <JFXButton buttonType="RAISED" layoutX="280.0" layoutY="530.0" prefHeight="35.0" prefWidth="180.0" style="-fx-background-color: #494949;" text="Student Profile" textFill="#e5e5e5">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </JFXButton>
+      <JFXDrawer fx:id="Drawer" defaultDrawerSize="200.0" layoutY="38.0" prefHeight="545.0" prefWidth="200.0" />
+      <JFXButton fx:id="ClassListbtn" buttonType="RAISED" layoutX="50.0" layoutY="530.0" onMouseClicked="#MovetoClassList" prefHeight="35.0" prefWidth="180.0" style="-fx-background-color: #494949;" text="Class List" textFill="#e5e5e5">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </JFXButton>
+      <TableView layoutX="27.0" layoutY="111.0" prefHeight="398.0" prefWidth="918.0">
+         <columns>
+            <TableColumn prefWidth="144.0" text="Student ID" />
+            <TableColumn prefWidth="250.0" text="Student Name" />
+            <TableColumn prefWidth="264.0" text="Email" />
+            <TableColumn prefWidth="110.0" text="No. Papers" />
+            <TableColumn minWidth="0.0" prefWidth="149.0" text="Status" />
+         </columns>
+      </TableView>
    </children>
 </AnchorPane>

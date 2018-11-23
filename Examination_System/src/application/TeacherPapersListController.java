@@ -17,9 +17,11 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-public class TeacherViewClassController implements Initializable {
-	@FXML
-	private Button Closebttn, Minimizebttn, ClassListbtn;
+public class TeacherPapersListController implements Initializable{
+
+	@FXML 
+	private Button Closebttn2, Minimizebttn2, ViewQuestionsbtn;
+	
 	@FXML
 	private JFXHamburger Hamburger;
 	@FXML
@@ -38,7 +40,6 @@ public class TeacherViewClassController implements Initializable {
 		Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		stage.setIconified(true);
 	}
-	
 	public void fxmlLoader(String link) throws Exception
 	{
 		Stage stage = new Stage();
@@ -51,17 +52,17 @@ public class TeacherViewClassController implements Initializable {
 	}
 	
 	@FXML
-	private void MovetoClassList(MouseEvent event) throws Exception
+	private void MovetoViewQuestions(MouseEvent event) throws Exception
 	{
-		String link = "/application/TeacherViewClassListGUI.fxml";
+		String link = "/application/TeacherViewQuestionsGUI.fxml";
 		fxmlLoader(link);
 		
 	}
-
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
 		TeacherDrawerController ad1 = new TeacherDrawerController();
 		ad1.TeacherDrawer(Hamburger, Drawer);
 	}
+
 }

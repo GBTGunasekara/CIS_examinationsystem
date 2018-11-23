@@ -1,27 +1,16 @@
 package application;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
-import com.jfoenix.controls.JFXDrawer;
-import com.jfoenix.controls.JFXHamburger;
 
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-public class TeacherSubmitPaperController implements Initializable{
-	
+public class TeacherViewClassListController {
 	@FXML
 	private Button Closebttn, Minimizebttn;
 	
-	@FXML
-	private JFXHamburger Hamburger;
-	@FXML
-	private JFXDrawer Drawer;
 	
 	@FXML
 	private void handleClose(MouseEvent event)
@@ -36,15 +25,4 @@ public class TeacherSubmitPaperController implements Initializable{
 		Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		stage.setIconified(true);
 	}
-		
-	
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
-		TeacherDrawerController ad1 = new TeacherDrawerController();
-		ad1.TeacherDrawer(Hamburger, Drawer);
-		
-	}
-	
-	
 }

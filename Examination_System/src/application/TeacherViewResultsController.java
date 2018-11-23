@@ -7,19 +7,16 @@ import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
-public class TeacherViewClassController implements Initializable {
+public class TeacherViewResultsController implements Initializable{
+
 	@FXML
-	private Button Closebttn, Minimizebttn, ClassListbtn;
+	private Button Closebttn, Minimizebttn, ClassListbtn, viewbtn;
 	@FXML
 	private JFXHamburger Hamburger;
 	@FXML
@@ -39,29 +36,12 @@ public class TeacherViewClassController implements Initializable {
 		stage.setIconified(true);
 	}
 	
-	public void fxmlLoader(String link) throws Exception
-	{
-		Stage stage = new Stage();
-		Parent root = FXMLLoader.load(getClass().getResource(link));
-		stage.initStyle(StageStyle.UNDECORATED);
-		Scene scene = new Scene(root);
-		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-		stage.setScene(scene);
-		stage.show();
-	}
 	
-	@FXML
-	private void MovetoClassList(MouseEvent event) throws Exception
-	{
-		String link = "/application/TeacherViewClassListGUI.fxml";
-		fxmlLoader(link);
-		
-	}
-
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
 		TeacherDrawerController ad1 = new TeacherDrawerController();
 		ad1.TeacherDrawer(Hamburger, Drawer);
 	}
+	
 }
