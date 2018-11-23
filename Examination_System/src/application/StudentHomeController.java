@@ -13,13 +13,15 @@ import javafx.stage.StageStyle;
 public class StudentHomeController {
 
 	@FXML
-	private Button Closebttn3, Minimizebttn3, AnswerPaperbtn, ViewPaperbtn, ViewResultsbtn, JoinClassbtn, ViewClassbtn, StudentProbtn; 
-	
+	private Button Closebttn3;
+	@FXML
+	private Button Minimizebttn3, AnswerPaperbtn, ViewPaperbtn, ViewResultsbtn, JoinClassbtn, ViewClassbtn, StudentProbtn;
 	
 	@FXML
 	private void handleClose(MouseEvent event)
 	{
-		System.exit(0);
+		Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		stage.close();
 	}
 	
 	@FXML

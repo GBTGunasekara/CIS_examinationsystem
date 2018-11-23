@@ -16,17 +16,25 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-public class AdminStudentRegistrationController implements Initializable{
-	@FXML
+public class AdminTeacherProfileController implements Initializable{
+
 	private Button Closebttn4; 
 	@FXML
 	private Button Minimizebttn4; 
 	@FXML
-	private Button TeacherRegbtn, StudentProfilebtn;
-	@FXML
 	private JFXHamburger Hamburger;
 	@FXML
 	private JFXDrawer Drawer;
+	@FXML
+	private Button ClassListbtn, PaperListbtn;
+	
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		// TODO Auto-generated method stub
+		AdminDrawerController ad1 = new AdminDrawerController();
+		ad1.AdminDrawer(Hamburger, Drawer);
+	}
+
 	
 	public void fxmlLoader(String link) throws Exception
 	{
@@ -38,25 +46,20 @@ public class AdminStudentRegistrationController implements Initializable{
 		stage.setScene(scene);
 		stage.show();
 	}
+	
 	@FXML
-	private void MovetoAdminTeacherReg(MouseEvent event) throws Exception
+	private void MovetoClassList(MouseEvent event) throws Exception
 	{
-		String link = "/application/AdminTeacherRegistrationGUI.fxml";
+		String link = "/application/TeacherViewClassGUI.fxml";
 		fxmlLoader(link);
 		
 	}
 	
 	@FXML
-	private void MovetoStudentProfile(MouseEvent event) throws Exception
+	private void MovetoPaperList(MouseEvent event) throws Exception
 	{
-		String link = "/application/StudentProfileGUI.fxml";
+		String link = "/application/TeacherPapersListGUI.fxml";
 		fxmlLoader(link);
 		
-	}
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
-		AdminDrawerController ad1 = new AdminDrawerController();
-		ad1.AdminDrawer(Hamburger, Drawer);
 	}
 }

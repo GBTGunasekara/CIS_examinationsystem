@@ -20,7 +20,8 @@ public class TeacherHomeController {
 	@FXML
 	private void handleClose(MouseEvent event)
 	{
-		System.exit(0);
+		Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		stage.close();
 	}
 	
 	@FXML
