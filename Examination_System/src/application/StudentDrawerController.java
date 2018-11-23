@@ -1,6 +1,5 @@
 package application;
 
-
 import java.io.IOException;
 
 import com.jfoenix.controls.JFXDrawer;
@@ -18,8 +17,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-public class AdminDrawerController {
-	
+public class StudentDrawerController {
 	@FXML
 	private Button Home;
 	
@@ -34,37 +32,53 @@ public class AdminDrawerController {
 		stage.show();
 	}
 	@FXML
-	private void MovetoAdminHome(MouseEvent event) throws Exception
+	private void MovetoStudentHome(MouseEvent event) throws Exception
 	{
-		String link = "/application/AdminHomeGUI.fxml";
+		String link = "/application/StudentHomeGUI.fxml";
 		fxmlLoader(link);
 		((Node)event.getSource()).getScene().getWindow().hide();
 		
 	}
 	
 	@FXML
-	private void MovetoAdminTeacherReg(MouseEvent event) throws Exception
+	private void MovetoSelectPaper(MouseEvent event) throws Exception
 	{
-		String link = "/application/AdminTeacherRegistrationGUI.fxml";
+		String link = "/application/StudentSelectPaperGUI.fxml";
 		fxmlLoader(link);
 		((Node)event.getSource()).getScene().getWindow().hide();
 		
 	}
 	
 	@FXML
-	private void MovetoClassReg(MouseEvent event) throws Exception
+	private void MovetoViewPaper(MouseEvent event) throws Exception
 	{
-		String link = "/application/AdminClassListGUI.fxml";
+		String link = "/application/StudentPaperListGUI.fxml";
 		fxmlLoader(link);
 		((Node)event.getSource()).getScene().getWindow().hide();
 	}
 	
 	@FXML
-	private void MovetoTeacherProfile(MouseEvent event) throws Exception
+	private void MovetoViewResults(MouseEvent event) throws Exception
 	{
-		String link = "/application/TeacherProfileGUI.fxml";
+		String link = "/application/StudentViewResultsGUI.fxml";
 		fxmlLoader(link);
 		((Node)event.getSource()).getScene().getWindow().hide();
+	}
+	
+	@FXML
+	private void MovetoJoinClass(MouseEvent event) throws Exception
+	{
+		String link = "/application/StudentJoinClassGUI.fxml";
+		fxmlLoader(link);
+		((Node)event.getSource()).getScene().getWindow().hide();
+	}
+	
+	@FXML
+	private void MovetoViewClass(MouseEvent event) throws Exception
+	{
+		String link = "/application/StudentViewClassGUI.fxml";
+		fxmlLoader(link);
+		
 	}
 	
 	@FXML
@@ -75,28 +89,12 @@ public class AdminDrawerController {
 		((Node)event.getSource()).getScene().getWindow().hide();
 	}
 	
-	@FXML
-	private void MovetoSystemSettings(MouseEvent event) throws Exception
-	{
-		//String link = "/application/AdminSystemSettingsGUI.fxml";
-		//fxmlLoader(link);
-		
-	}
-	
-	@FXML
-	private void MovetoAdminProfile(MouseEvent event) throws Exception
-	{
-		String link = "/application/AdminProfileGUI.fxml";
-		fxmlLoader(link);
-		((Node)event.getSource()).getScene().getWindow().hide();
-	}
-	
 	//Reference - https://www.youtube.com/watch?v=tgV8dDP9DtM
 	// https://github.com/afsalashyana/JavaFX-Tutorial-Codes/blob/master/JavaFX%20Navigation%20Drawer/src/genuinecoder/main/MainController.java
-	public void AdminDrawer(JFXHamburger Hamburger, JFXDrawer Drawer)
+	public void StudentDrawer(JFXHamburger Hamburger, JFXDrawer Drawer)
 	{
 		try {
-			VBox box =  FXMLLoader.load(getClass().getResource("/application/AdminDrawerGUI.fxml"));
+			VBox box =  FXMLLoader.load(getClass().getResource("/application/StudentDrawerGUI.fxml"));
              
             
             Drawer.setSidePane(box);

@@ -9,6 +9,7 @@ import com.jfoenix.controls.JFXHamburger;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -16,18 +17,30 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-public class StudentProfileController implements Initializable {
+public class StudentJoinClassController implements Initializable {
 	
 	@FXML
 	private Button Closebttn4; 
 	@FXML
 	private Button Minimizebttn4; 
 	@FXML
-	private Button ClassListbtn, PaperListbtn;
-	@FXML
 	private JFXHamburger Hamburger;
 	@FXML
 	private JFXDrawer Drawer;
+	
+	@FXML
+	private void handleClose(MouseEvent event)
+	{
+		Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		stage.close();
+	}
+	
+	@FXML
+	private void handleMinimize(MouseEvent event)
+	{
+		Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		stage.setIconified(true);
+	}
 	
 	public void fxmlLoader(String link) throws Exception
 	{
@@ -40,24 +53,20 @@ public class StudentProfileController implements Initializable {
 		stage.show();
 	}
 	@FXML
-	private void MovetoStudentClassList(MouseEvent event) throws Exception
+	private void MovetoStudentHome(MouseEvent event) throws Exception
 	{
-		String link = "/application/StudentViewClassGUI.fxml";
+		String link = "/application/StudentHomeGUI.fxml";
 		fxmlLoader(link);
 		
 	}
 	
-	@FXML
-	private void MovetoStudentPaperList(MouseEvent event) throws Exception
-	{
-		String link = "/application/StudentPaperListGUI.fxml";
-		fxmlLoader(link);
-	}
+	
+	
 	@Override
-	public void initialize(URL location, ResourceBundle resources) {
+	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 		StudentDrawerController ad1 = new StudentDrawerController();
 		ad1.StudentDrawer(Hamburger, Drawer);
 	}
-	
+
 }

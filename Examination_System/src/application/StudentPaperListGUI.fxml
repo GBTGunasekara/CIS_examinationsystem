@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDrawer?>
+<?import com.jfoenix.controls.JFXHamburger?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
@@ -15,6 +17,7 @@
    <children>
       <HBox prefHeight="35.0" prefWidth="960.0" style="-fx-background-color: #494949;">
          <children>
+            <JFXHamburger fx:id="Hamburger" prefHeight="40.0" prefWidth="50.0" />
             <Label prefHeight="35.0" prefWidth="386.0" text="  View Papers List" textFill="#e5e5e5">
                <font>
                   <Font name="System Bold" size="20.0" />
@@ -30,7 +33,7 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <JFXButton contentDisplay="CENTER" prefHeight="35.0" prefWidth="35.0" textFill="#0000000b">
+            <JFXButton contentDisplay="CENTER" onMouseClicked="#handleMinimize" prefHeight="35.0" prefWidth="35.0" textFill="#0000000b">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -39,7 +42,7 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <JFXButton contentDisplay="CENTER" prefHeight="35.0" prefWidth="35.0" textFill="#0000000b">
+            <JFXButton contentDisplay="CENTER" onMouseClicked="#handleClose" prefHeight="35.0" prefWidth="35.0" textFill="#0000000b">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -92,5 +95,6 @@
             </ImageView>
          </graphic>
       </JFXButton>
+      <JFXDrawer fx:id="Drawer" defaultDrawerSize="200.0" layoutY="35.0" prefHeight="545.0" prefWidth="200.0" />
    </children>
 </AnchorPane>

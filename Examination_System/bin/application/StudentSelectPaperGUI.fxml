@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDrawer?>
+<?import com.jfoenix.controls.JFXHamburger?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -12,6 +14,7 @@
    <children>
       <HBox prefHeight="35.0" prefWidth="960.0" style="-fx-background-color: #494949;">
          <children>
+            <JFXHamburger fx:id="Hamburger" prefHeight="40.0" prefWidth="50.0" />
             <Label prefHeight="35.0" prefWidth="386.0" text="  Select Paper" textFill="#e5e5e5">
                <font>
                   <Font name="System Bold" size="20.0" />
@@ -162,5 +165,6 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </JFXButton>
+      <JFXDrawer fx:id="Drawer" defaultDrawerSize="200.0" layoutY="38.0" prefHeight="545.0" prefWidth="200.0" />
    </children>
 </AnchorPane>
