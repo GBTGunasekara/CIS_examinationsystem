@@ -2,11 +2,21 @@ package application;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
+import java.rmi.Naming;
+import java.rmi.RemoteException;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 import javax.imageio.ImageIO;
+import javax.swing.JOptionPane;
+
+import com.jfoenix.controls.JFXDatePicker;
+import com.jfoenix.controls.JFXPasswordField;
+import com.jfoenix.controls.JFXRadioButton;
+import com.jfoenix.controls.JFXTextField;
 
 import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
@@ -14,6 +24,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.ImagePattern;
@@ -31,22 +42,66 @@ public class StudentRegController implements Initializable{
 	@FXML
 	private Button Stppbtn;
 	
-	//eaxmple
-	@FXML
-	private TextField Stid; 
-	@FXML
-	private TextField Stid2; 
 	@FXML
 	private Button Save; 
+	@FXML
+	private JFXTextField stIDtxt;
+	@FXML
+	private JFXTextField stNametxt;
+	@FXML
+	private JFXTextField stEmailtxt;
+	@FXML
+	private JFXPasswordField stPasswordtxt;
+	@FXML
+	private JFXPasswordField stRePasswordtxt;
+	@FXML
+	private JFXDatePicker stDOB;
+	@FXML
+	private JFXRadioButton stMale;
+	@FXML
+	private JFXRadioButton stFemale;
+	@FXML
+	private ToggleGroup stGender;
+	
+	String path = null;
 	
 	@FXML
-	private void showt(MouseEvent event)
+	private void SaveStudentReg(MouseEvent event) throws FileNotFoundException, RemoteException 
 	{
-		String st = Stid.getText();
-		Stid2.setText(st);	
+		
+		String stID = stIDtxt.getText();
+		String stName = stNametxt.getText();
+		String stEmail = stEmailtxt.getText();
+		String stPassword = stPasswordtxt.getText();
+		String stRePassword = stRePasswordtxt.getText();
+		
+		
+		
+		String stGender = null ;
+			if (stMale.isSelected())
+				stGender = stMale.getText();
+			else if (stFemale.isSelected())
+				stGender = stFemale.getText();
+			else
+				JOptionPane.showMessageDialog(null, "Select Gender");
+			
+			LocalDate DOB = stDOB.getValue();
+			
+		
+			//TeacherRegFunction tr1 = new TeacherRegFunction();
+			//tr1.createTeacherAccount(teID,teName,teEmail,tePassword,DOB,teGender,path,teRePassword);
+		
+			try {
+				
+				StudentRegFunctionInterface  StudentReg = (StudentRegFunctionInterface) 
+				Naming.lookup("rmi://localhost:1099/Student");
+				StudentReg.createStudentAccount(stID,stName,stEmail,stPassword,DOB,stGender,path,stRePassword);
+				
+			} catch (Exception e){
+				System.out.println(" Failed to connect to Hello Server ");
+			}
+			
 	}
-	
-	//exover
 	
 	@FXML
 	private void handleClose(MouseEvent event)
@@ -83,6 +138,9 @@ public class StudentRegController implements Initializable{
             BufferedImage bufferedImage = ImageIO.read(file);
             Image image = SwingFXUtils.toFXImage(bufferedImage, null);
     		ppcirlce.setFill(new ImagePattern(image));
+    		
+    		path = file.getAbsolutePath();
+    		
         } 
         catch (IOException ex)
         {
@@ -90,11 +148,12 @@ public class StudentRegController implements Initializable{
         }
 	}
 
+	
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
-		//Image pp1 = new Image("/image/Michael-Stone-Death.jpg",false);
-		//ppcirlce.setFill(new ImagePattern(pp1));
+		
 		
 	}
 	

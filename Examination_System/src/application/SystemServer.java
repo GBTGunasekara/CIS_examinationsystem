@@ -12,6 +12,7 @@ public class SystemServer {
 		try {
 			LocateRegistry.createRegistry(1099);
 			Naming.rebind("rmi://localhost:1099/Hello", new TeacherRegFunction());
+			Naming.rebind("rmi://localhost:1099/Student", new StudentRegFunction());
 			System.out.println("Hello Server Strarted");
 		} catch (Exception e){
 			System.out.println("Hello Server Failed");
