@@ -78,54 +78,54 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="46.0" layoutY="230.0" text="No. Questions">
+            <Label layoutX="46.0" layoutY="230.0" text="Subject Name">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="46.0" layoutY="280.0" text="No. Answers">
+            <Label layoutX="46.0" layoutY="280.0" text="No. Questions">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="46.0" layoutY="330.0" text="Subject Name">
+            <Label layoutX="46.0" layoutY="330.0" text="No. Answers">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <JFXTextField layoutX="247.0" layoutY="61.0" prefHeight="30.0" prefWidth="250.0">
+            <JFXTextField fx:id="teacherIDtxt" layoutX="247.0" layoutY="61.0" prefHeight="30.0" prefWidth="250.0">
                <font>
                   <Font size="16.0" />
                </font>
             </JFXTextField>
-            <JFXTextField layoutX="247.0" layoutY="111.0" prefHeight="30.0" prefWidth="250.0">
+            <JFXTextField fx:id="classIDtxt" layoutX="247.0" layoutY="111.0" prefHeight="30.0" prefWidth="250.0">
                <font>
                   <Font size="16.0" />
                </font>
             </JFXTextField>
-            <JFXTextField layoutX="247.0" layoutY="161.0" prefHeight="30.0" prefWidth="250.0">
+            <JFXTextField fx:id="paperIDtxt" layoutX="247.0" layoutY="161.0" prefHeight="30.0" prefWidth="250.0">
                <font>
                   <Font size="16.0" />
                </font>
             </JFXTextField>
-            <JFXTextField layoutX="247.0" layoutY="219.0" prefHeight="30.0" prefWidth="250.0">
+            <JFXTextField fx:id="subjcetNametxt" layoutX="247.0" layoutY="219.0" prefHeight="30.0" prefWidth="250.0">
                <font>
                   <Font size="16.0" />
                </font>
             </JFXTextField>
-            <JFXTextField layoutX="247.0" layoutY="269.0" prefHeight="30.0" prefWidth="250.0">
+            <JFXTextField fx:id="noQusetiontxt" layoutX="247.0" layoutY="269.0" prefHeight="30.0" prefWidth="250.0">
                <font>
                   <Font size="16.0" />
                </font>
             </JFXTextField>
-            <JFXTextField layoutX="247.0" layoutY="319.0" prefHeight="30.0" prefWidth="250.0">
+            <JFXTextField fx:id="noAnswertxt" layoutX="247.0" layoutY="319.0" prefHeight="30.0" prefWidth="250.0">
                <font>
                   <Font size="16.0" />
                </font>
             </JFXTextField>
          </children>
       </AnchorPane>
-      <JFXButton fx:id="Createbtn" buttonType="RAISED" layoutX="242.0" layoutY="514.0" onMouseClicked="#MovetoAddQuestions" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #494949;" text="Create" textFill="#e5e5e5">
+      <JFXButton fx:id="createbtn" buttonType="RAISED" layoutX="242.0" layoutY="514.0" onMouseClicked="#MovetoAddQuestions" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #494949;" text="Create" textFill="#e5e5e5">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
