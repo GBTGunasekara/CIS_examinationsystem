@@ -37,6 +37,8 @@ import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+
+import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.File;
 import java.io.FileInputStream;
@@ -91,35 +93,59 @@ public class TeacherRegController implements Initializable {
 		//String DOB = dateformat.format(teDOB.getValue());
 		
 		//String DOB = teDOB.getEditor().getText();
-		LocalDate DOB = teDOB.getValue();
+		//LocalDate DOB = teDOB.getValue();
 		
 		//DateFormat dateformat =new SimpleDateFormat("yyyy-MM-dd");
 		//String dob1 = dateformat.format(DOB);
 		
-		String dob1 = DOB.toString();
+		//String dob1 = DOB.toString();
 		
-		InputStream imagePath = new FileInputStream(new File(path));
+		//InputStream imagePath = new FileInputStream(new File(path));
+		
+		/*if (!tePassword.equals(teRePassword))
+		{
+			JOptionPane.showMessageDialog(null, "Passwords are not similar");
+		}*/
+		
+		/*else if (!teMale.isSelected() && !teFemale.isSelected())
+		{
+			JOptionPane.showMessageDialog(null, "Select Gender");
+		}*/
+		
+		/* if  (teDOB.getValue() == null)
+		{
+			JOptionPane.showMessageDialog(null, "Insert DOB");
+		}
+		else if (path == null)
+		{
+			JOptionPane.showMessageDialog(null, "Insert image");
+		}*/
+		//else
+		//{
 		
 		String teGender = null ;
+			if (teMale.isSelected())
+				teGender = teMale.getText();
+			else if (teFemale.isSelected())
+				teGender = teFemale.getText();
+			else
+				JOptionPane.showMessageDialog(null, "Select Gender");
+			//InputStream imagePath = new FileInputStream(new File(path));
+			LocalDate DOB = teDOB.getValue();
+			//String dob1 = DOB.toString();
 		
-		if (teMale.isSelected())
-			teGender = teMale.getText();
-		else
-			teGender = teFemale.getText();
-		
-		TeacherRegFunction tr1 = new TeacherRegFunction();
-		 tr1.createTeacherAccount(teID,teName,teEmail,tePassword,dob1,teGender,imagePath);
-		
-		/*String teID = teIDtxt.getText();
-		TeacherRegFunction tr1 = new TeacherRegFunction();
-		 tr1.testingdb(teID);*/
-		
+			TeacherRegFunction tr1 = new TeacherRegFunction();
+			tr1.createTeacherAccount(teID,teName,teEmail,tePassword,DOB,teGender,path,teRePassword);
+		//}
+			
 	}
 	
 	@FXML
 	private void handleClose(MouseEvent event)
 	{
-		System.exit(0);
+		Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		stage.close();
+		
 	}
 	
 	@FXML
