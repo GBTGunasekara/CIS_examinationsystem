@@ -4,18 +4,24 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.rmi.server.UnicastRemoteObject;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
-
+import java.rmi.*;
+import java.rmi.server.*;
 import javax.swing.JOptionPane;
 
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
 
-public class TeacherRegFunction {
+public class TeacherRegFunction extends UnicastRemoteObject implements TeacherRegFunctionInterface {
 
-	public void createTeacherAccount (String tid, String tname, String temail, String tpassword, LocalDate tdob, String tgender, String timgPath, String trepassword) throws FileNotFoundException
+	public TeacherRegFunction() throws RemoteException{
+		
+	}
+	
+	public void createTeacherAccount (String tid, String tname, String temail, String tpassword, LocalDate tdob, String tgender, String timgPath, String trepassword) throws FileNotFoundException, RemoteException
 	{
 		
 		
@@ -68,7 +74,7 @@ public class TeacherRegFunction {
 		}
 	}
 	
-	public void testingdb (String tid)
+	/*public void testingdb (String tid)
 	{
 		DBconnection dbn = new DBconnection();
 		Connection c1 = dbn.Connect();
@@ -93,5 +99,5 @@ public class TeacherRegFunction {
         System.out.println(ex);
         JOptionPane.showMessageDialog(null, "error");
     }
-	}
+	}*/
 }

@@ -4,6 +4,8 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.rmi.Naming;
+import java.rmi.RemoteException;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.text.DateFormat;
@@ -80,7 +82,7 @@ public class TeacherRegController implements Initializable {
 	
 	
 	@FXML
-	private void SaveTeacherReg(MouseEvent event) throws FileNotFoundException 
+	private void SaveTeacherReg(MouseEvent event) throws FileNotFoundException, RemoteException 
 	{
 		
 		String teID = teIDtxt.getText();
@@ -134,9 +136,18 @@ public class TeacherRegController implements Initializable {
 			LocalDate DOB = teDOB.getValue();
 			//String dob1 = DOB.toString();
 		
-			TeacherRegFunction tr1 = new TeacherRegFunction();
-			tr1.createTeacherAccount(teID,teName,teEmail,tePassword,DOB,teGender,path,teRePassword);
-		//}
+			//TeacherRegFunction tr1 = new TeacherRegFunction();
+			//tr1.createTeacherAccount(teID,teName,teEmail,tePassword,DOB,teGender,path,teRePassword);
+		
+			try {
+				
+				TeacherRegFunctionInterface  TeacherReg = (TeacherRegFunctionInterface) 
+				Naming.lookup("rmi://localhost:1099/Hello");
+			    TeacherReg.createTeacherAccount(teID,teName,teEmail,tePassword,DOB,teGender,path,teRePassword);
+				
+			} catch (Exception e){
+				System.out.println(" Failed to connect to Hello Server ");
+			}
 			
 	}
 	
