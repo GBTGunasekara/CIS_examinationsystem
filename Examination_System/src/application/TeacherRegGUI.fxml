@@ -15,7 +15,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="520.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.TeacherRegController">
+<AnchorPane prefHeight="520.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.TeacherRegController">
    <children>
       <ImageView fitHeight="480.0" fitWidth="600.0" layoutY="40.0" opacity="0.18" pickOnBounds="true">
          <image>
@@ -49,12 +49,12 @@
             <Insets />
          </opaqueInsets>
       </Label>
-      <JFXTextField layoutX="25.0" layoutY="90.0" prefHeight="35.0" prefWidth="225.0">
+      <JFXTextField fx:id="teIDtxt" layoutX="25.0" layoutY="90.0" prefHeight="35.0" prefWidth="225.0">
          <font>
             <Font size="15.0" />
          </font>
       </JFXTextField>
-      <JFXButton layoutX="85.0" layoutY="467.0" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #494949;" text="Save" textFill="#e5e5e5">
+      <JFXButton fx:id="Savebtn" layoutX="85.0" layoutY="467.0" onMouseClicked="#SaveTeacherReg" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #494949;" text="Save" textFill="#e5e5e5">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></JFXButton>
@@ -62,18 +62,18 @@
          <font>
             <Font name="System Bold" size="15.0" />
          </font></JFXButton>
-      <JFXTextField layoutX="25.0" layoutY="170.0" prefHeight="35.0" prefWidth="225.0">
+      <JFXTextField fx:id="teNametxt" layoutX="25.0" layoutY="170.0" prefHeight="35.0" prefWidth="225.0">
          <font>
             <Font size="15.0" />
          </font>
       </JFXTextField>
-      <JFXTextField layoutX="25.0" layoutY="245.0" prefHeight="35.0" prefWidth="225.0">
+      <JFXTextField fx:id="teEmailtxt" layoutX="25.0" layoutY="245.0" prefHeight="35.0" prefWidth="225.0">
          <font>
             <Font size="15.0" />
          </font>
       </JFXTextField>
-      <JFXPasswordField layoutX="25.0" layoutY="325.0" prefHeight="35.0" prefWidth="225.0" />
-      <JFXPasswordField layoutX="25.0" layoutY="400.0" prefHeight="35.0" prefWidth="225.0" />
+      <JFXPasswordField fx:id="tePasswordtxt" layoutX="25.0" layoutY="325.0" prefHeight="35.0" prefWidth="225.0" />
+      <JFXPasswordField fx:id="teRePasswordtxt" layoutX="25.0" layoutY="400.0" prefHeight="35.0" prefWidth="225.0" />
       <Label layoutX="25.0" layoutY="290.0" prefHeight="35.0" prefWidth="120.0" text="Password">
          <font>
             <Font name="System Bold" size="15.0" />
@@ -130,16 +130,16 @@
             <Insets />
          </opaqueInsets>
       </Label>
-      <JFXDatePicker defaultColor="#494949" layoutX="325.0" layoutY="90.0" />
-      <JFXRadioButton layoutX="325.0" layoutY="170.0" prefHeight="35.0" prefWidth="100.0" text="Male">
+      <JFXDatePicker fx:id="teDOB" defaultColor="#494949" layoutX="325.0" layoutY="90.0" />
+      <JFXRadioButton fx:id="teMale" layoutX="325.0" layoutY="170.0" prefHeight="35.0" prefWidth="100.0" text="Male">
          <font>
             <Font size="15.0" />
          </font>
          <toggleGroup>
-            <ToggleGroup fx:id="TeacherGender" />
+            <ToggleGroup fx:id="teGender" />
          </toggleGroup>
       </JFXRadioButton>
-      <JFXRadioButton layoutX="450.0" layoutY="170.0" prefHeight="35.0" prefWidth="100.0" text="Female" toggleGroup="$TeacherGender">
+      <JFXRadioButton fx:id="teFemale" layoutX="450.0" layoutY="170.0" prefHeight="35.0" prefWidth="100.0" text="Female" toggleGroup="$teGender">
          <font>
             <Font size="15.0" />
          </font>
