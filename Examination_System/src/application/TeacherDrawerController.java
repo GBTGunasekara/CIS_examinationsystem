@@ -96,26 +96,32 @@ public class TeacherDrawerController {
 	{
 		try {
 			VBox box =  FXMLLoader.load(getClass().getResource("/application/TeacherDrawerGUI.fxml"));
-             
-            
             Drawer.setSidePane(box);
+            
+            HamburgerBackArrowBasicTransition burgertask = new HamburgerBackArrowBasicTransition(Hamburger);
+    		burgertask.setRate(-1);
+    		Hamburger.addEventHandler(MouseEvent.MOUSE_PRESSED, (e) -> {
+    		burgertask.setRate(burgertask.getRate()*-1);
+    		burgertask.play();
+    		if (Drawer.isShown())
+    		{   			
+    			Drawer.close();
+    			Drawer.toBack();
+    		}
+    		else
+    		{
+       			Drawer.open();
+    			Drawer.toFront();
+    		}	
+    			
+    			
+    		});
+    		
         } catch (IOException ex) {
         	System.out.println(ex);;
         }
 		
-		HamburgerBackArrowBasicTransition burgertask = new HamburgerBackArrowBasicTransition(Hamburger);
-		burgertask.setRate(-1);
-		Hamburger.addEventHandler(MouseEvent.MOUSE_PRESSED, (e) -> {
-		burgertask.setRate(burgertask.getRate()*-1);
-		burgertask.play();
-		if (Drawer.isShown())
-		{
-			Drawer.close();
-		}
-		else
-			Drawer.open();
-			
-		});
+		
 	}
 	
 }

@@ -14,7 +14,6 @@
 
 <AnchorPane prefHeight="580.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.TeacherAddQuestionController">
    <children>
-      <JFXDrawer fx:id="Drawer" defaultDrawerSize="200.0" layoutY="38.0" prefHeight="545.0" prefWidth="200.0" />
       <HBox prefHeight="35.0" prefWidth="960.0" style="-fx-background-color: #494949;">
          <children>
             <JFXHamburger fx:id="Hamburger" prefHeight="40.0" prefWidth="50.0" />
@@ -174,5 +173,6 @@
             <Font name="System Bold" size="16.0" />
          </font>
       </JFXButton>
+      <JFXDrawer fx:id="Drawer" defaultDrawerSize="200.0" layoutY="38.0" prefHeight="545.0" prefWidth="200.0" />
    </children>
 </AnchorPane>

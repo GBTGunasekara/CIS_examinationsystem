@@ -46,6 +46,7 @@ public class TeacherViewQuestionsController implements Initializable {
 		// TODO Auto-generated method stub
 		TeacherDrawerController ad1 = new TeacherDrawerController();
 		ad1.TeacherDrawer(Hamburger, Drawer);
+		Drawer.toBack();
 	}
 	
 }

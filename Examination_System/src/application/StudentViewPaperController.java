@@ -41,6 +41,7 @@ public class StudentViewPaperController implements Initializable {
 		// TODO Auto-generated method stub
 		StudentDrawerController ad1 = new StudentDrawerController();
 		ad1.StudentDrawer(Hamburger, Drawer);
+		Drawer.toBack();
 	}
 	
 }

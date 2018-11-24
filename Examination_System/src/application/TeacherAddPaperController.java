@@ -103,8 +103,10 @@ public class TeacherAddPaperController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
+		
 		TeacherDrawerController ad1 = new TeacherDrawerController();
 		ad1.TeacherDrawer(Hamburger, Drawer);
+		Drawer.toBack();
 	}
 
 }

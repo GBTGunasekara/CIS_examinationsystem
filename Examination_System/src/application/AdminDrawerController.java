@@ -112,9 +112,13 @@ public class AdminDrawerController {
 		if (Drawer.isShown())
 		{
 			Drawer.close();
+			Drawer.toBack();
 		}
 		else
+		{
 			Drawer.open();
+			Drawer.toFront();
+		}
 		});
 	}
 }

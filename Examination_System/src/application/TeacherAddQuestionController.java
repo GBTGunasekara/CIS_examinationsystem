@@ -27,6 +27,8 @@ public class TeacherAddQuestionController implements Initializable{
 	@FXML
 	private JFXDrawer Drawer;
 	
+	
+	
 	@FXML
 	private void handleClose(MouseEvent event)
 	{
@@ -63,7 +65,9 @@ public class TeacherAddQuestionController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
+		
 		TeacherDrawerController ad1 = new TeacherDrawerController();
 		ad1.TeacherDrawer(Hamburger, Drawer);
+		Drawer.toBack();
 	}
 }
