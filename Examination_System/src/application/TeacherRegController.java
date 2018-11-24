@@ -7,7 +7,6 @@ import java.net.URL;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
@@ -79,7 +78,7 @@ public class TeacherRegController implements Initializable {
 	
 	
 	@FXML
-	private void SaveTeacherReg(MouseEvent event) throws FileNotFoundException, ParseException 
+	private void SaveTeacherReg(MouseEvent event) throws FileNotFoundException 
 	{
 		
 		String teID = teIDtxt.getText();
@@ -92,11 +91,12 @@ public class TeacherRegController implements Initializable {
 		//String DOB = dateformat.format(teDOB.getValue());
 		
 		//String DOB = teDOB.getEditor().getText();
-		String DOB = teDOB.getPromptText();
+		LocalDate DOB = teDOB.getValue();
 		
 		//DateFormat dateformat =new SimpleDateFormat("yyyy-MM-dd");
-		//Date dob1 = dateformat.format(DOB);
-		Date date1=(Date) new SimpleDateFormat("dd/MM/yyyy").parse(DOB);
+		//String dob1 = dateformat.format(DOB);
+		
+		String dob1 = DOB.toString();
 		
 		InputStream imagePath = new FileInputStream(new File(path));
 		
@@ -108,7 +108,7 @@ public class TeacherRegController implements Initializable {
 			teGender = teFemale.getText();
 		
 		TeacherRegFunction tr1 = new TeacherRegFunction();
-		 tr1.createTeacherAccount(teID,teName,teEmail,tePassword,date1,teGender,imagePath);
+		 tr1.createTeacherAccount(teID,teName,teEmail,tePassword,dob1,teGender,imagePath);
 		
 		/*String teID = teIDtxt.getText();
 		TeacherRegFunction tr1 = new TeacherRegFunction();
