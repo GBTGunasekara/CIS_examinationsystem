@@ -33,6 +33,7 @@ public class TeacherAddPaperFunction {
         if(ps.executeUpdate() > 0)
         {
             JOptionPane.showMessageDialog(null, "New  paper create");
+           
         }
 	}
 	

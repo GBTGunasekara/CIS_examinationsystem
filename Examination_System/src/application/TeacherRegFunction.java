@@ -40,6 +40,7 @@ public class TeacherRegFunction extends UnicastRemoteObject implements TeacherRe
 		else if (timgPath == null)
 		{
 				JOptionPane.showMessageDialog(null, "Insert image");
+				
 		}
 		else
 		{

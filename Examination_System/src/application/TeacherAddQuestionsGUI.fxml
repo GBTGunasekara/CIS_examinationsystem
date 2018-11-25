@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXDrawer?>
 <?import com.jfoenix.controls.JFXHamburger?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
@@ -14,6 +15,7 @@
 
 <AnchorPane prefHeight="580.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.TeacherAddQuestionController">
    <children>
+      <JFXDrawer fx:id="Drawer" defaultDrawerSize="200.0" layoutY="38.0" prefHeight="545.0" prefWidth="200.0" />
       <HBox prefHeight="35.0" prefWidth="960.0" style="-fx-background-color: #494949;">
          <children>
             <JFXHamburger fx:id="Hamburger" prefHeight="40.0" prefWidth="50.0" />
@@ -69,7 +71,7 @@
                   <Font name="System Bold" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="15.0" layoutY="105.0" text="PID12345678">
+            <Label fx:id="paperIDlabel" layoutX="15.0" layoutY="105.0" prefHeight="25.0" prefWidth="120.0">
                <font>
                   <Font size="16.0" />
                </font>
@@ -84,7 +86,7 @@
                   <Font name="System Bold" size="16.0" />
                </font>
             </Label>
-            <Label contentDisplay="CENTER" layoutX="15.0" layoutY="270.0" prefHeight="30.0" prefWidth="30.0" text="00">
+            <Label fx:id="completeQuestionlabel" contentDisplay="CENTER" layoutX="15.0" layoutY="270.0" prefHeight="30.0" prefWidth="30.0" text="00">
                <font>
                   <Font size="16.0" />
                </font>
@@ -94,7 +96,7 @@
                   <Font name="System Bold" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="15.0" layoutY="160.0" text="QID1234">
+            <Label fx:id="quesetionIDlabel" layoutX="15.0" layoutY="160.0" prefHeight="25.0" prefWidth="105.0" text="QID1234">
                <font>
                   <Font size="16.0" />
                </font>
@@ -114,7 +116,7 @@
                   <Font name="System Bold" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="15.0" layoutY="215.0" text="AID123401">
+            <Label fx:id="answerIDlabel" layoutX="15.0" layoutY="215.0" text="AID123401">
                <font>
                   <Font size="16.0" />
                </font>
@@ -124,8 +126,12 @@
                   <Font name="System Bold" size="16.0" />
                </font>
             </Label>
-            <ComboBox layoutX="13.0" layoutY="325.0" prefHeight="35.0" prefWidth="50.0" />
-            <ComboBox layoutX="13.0" layoutY="390.0" prefHeight="35.0" prefWidth="50.0" />
+            <ComboBox fx:id="AnsNoCombo" layoutX="13.0" layoutY="325.0" prefHeight="35.0" prefWidth="60.0" />
+            <ComboBox fx:id="QuestionNoCombo" layoutX="13.0" layoutY="390.0" prefHeight="35.0" prefWidth="60.0" promptText="01">
+               <padding>
+                  <Insets bottom="-5.0" left="-5.0" right="-5.0" top="-5.0" />
+               </padding>
+            </ComboBox>
          </children>
       </AnchorPane>
       <Label layoutX="225.0" layoutY="248.0" prefWidth="91.0" text="Answers">
@@ -133,7 +139,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <TextArea layoutX="225.0" layoutY="82.0" prefHeight="160.0" prefWidth="700.0" />
+      <TextArea fx:id="QuestionTextArea" layoutX="225.0" layoutY="82.0" prefHeight="160.0" prefWidth="700.0" />
       <Label layoutX="225.0" layoutY="47.0" prefWidth="91.0" text="Question">
          <font>
             <Font size="18.0" />
@@ -144,26 +150,26 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <TextArea layoutX="225.0" layoutY="288.0" prefHeight="40.0" prefWidth="700.0" />
-      <TextArea layoutX="225.0" layoutY="348.0" prefHeight="40.0" prefWidth="700.0" />
+      <TextArea fx:id="AnswerATextArea" layoutX="225.0" layoutY="288.0" prefHeight="40.0" prefWidth="700.0" />
+      <TextArea fx:id="AnswerBTextArea" layoutX="225.0" layoutY="348.0" prefHeight="40.0" prefWidth="700.0" />
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="194.0" layoutY="353.0" prefHeight="30.0" prefWidth="30.0" text="B">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <TextArea layoutX="225.0" layoutY="408.0" prefHeight="40.0" prefWidth="700.0" />
+      <TextArea fx:id="AnswerCTextArea" layoutX="225.0" layoutY="408.0" prefHeight="40.0" prefWidth="700.0" />
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="194.0" layoutY="413.0" prefHeight="30.0" prefWidth="30.0" text="C">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <TextArea layoutX="225.0" layoutY="468.0" prefHeight="40.0" prefWidth="700.0" />
+      <TextArea fx:id="AnswerDTextArea" layoutX="225.0" layoutY="468.0" prefHeight="40.0" prefWidth="700.0" />
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="194.0" layoutY="473.0" prefHeight="30.0" prefWidth="30.0" text="D">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <JFXButton buttonType="RAISED" layoutX="522.0" layoutY="527.0" prefHeight="30.0" prefWidth="160.0" style="-fx-background-color: #494949;" text="Next" textFill="#e5e5e5">
+      <JFXButton fx:id="Nextbtn" buttonType="RAISED" layoutX="522.0" layoutY="527.0" prefHeight="30.0" prefWidth="160.0" style="-fx-background-color: #494949;" text="Next" textFill="#e5e5e5">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
@@ -173,6 +179,10 @@
             <Font name="System Bold" size="16.0" />
          </font>
       </JFXButton>
-      <JFXDrawer fx:id="Drawer" defaultDrawerSize="200.0" layoutY="38.0" prefHeight="545.0" prefWidth="200.0" />
+      <Label layoutX="341.0" layoutY="47.0" prefHeight="27.0" prefWidth="30.0" text="01">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

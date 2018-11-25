@@ -65,20 +65,29 @@ public class TeacherAddPaperController implements Initializable{
 	public void fxmlLoader(String link) throws Exception
 	{
 		Stage stage = new Stage();
-		Parent root = FXMLLoader.load(getClass().getResource(link));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource(link));
+		
+		Parent root = loader.load();
+		
 		stage.initStyle(StageStyle.UNDECORATED);
 		Scene scene = new Scene(root);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		stage.setScene(scene);
 		stage.show();
+		
+		TeacherAddQuestionController taqc = loader.getController();
+		taqc.setPaperID(paperIDtxt.getText(), Integer.parseInt(noQusetiontxt.getText()));
 	}
 	
 	@FXML
 	private void MovetoAddQuestions(MouseEvent event) throws Exception
 	{
 		CreatePaper();
+		
 		String link = "/application/TeacherAddQuestionsGUI.fxml";
 		fxmlLoader(link);
+		
+		
 		
 	}
 	
@@ -97,6 +106,7 @@ public class TeacherAddPaperController implements Initializable{
 	    	    
 		TeacherAddPaperFunction tap1 = new TeacherAddPaperFunction();
 		tap1.createPaper(techerID,classID,paperID, currentdatetime,noQuestions,noAnswers);
+		
 		
 	}
 
