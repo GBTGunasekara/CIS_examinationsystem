@@ -71,7 +71,7 @@
                   <Font name="System Bold" size="16.0" />
                </font>
             </Label>
-            <Label fx:id="paperIDlabel" layoutX="15.0" layoutY="105.0" prefHeight="25.0" prefWidth="120.0">
+            <Label fx:id="paperIDlabel" layoutX="15.0" layoutY="105.0" prefHeight="25.0" prefWidth="140.0">
                <font>
                   <Font size="16.0" />
                </font>
@@ -86,7 +86,7 @@
                   <Font name="System Bold" size="16.0" />
                </font>
             </Label>
-            <Label fx:id="completeQuestionlabel" contentDisplay="CENTER" layoutX="15.0" layoutY="270.0" prefHeight="30.0" prefWidth="30.0" text="00">
+            <Label fx:id="completeQuestionlabel" contentDisplay="CENTER" layoutX="15.0" layoutY="270.0" prefHeight="30.0" prefWidth="80.0" text="00">
                <font>
                   <Font size="16.0" />
                </font>
@@ -126,8 +126,8 @@
                   <Font name="System Bold" size="16.0" />
                </font>
             </Label>
-            <ComboBox fx:id="AnsNoCombo" layoutX="13.0" layoutY="325.0" prefHeight="35.0" prefWidth="60.0" />
-            <ComboBox fx:id="QuestionNoCombo" layoutX="13.0" layoutY="390.0" prefHeight="35.0" prefWidth="60.0" promptText="01">
+            <ComboBox fx:id="AnsNoCombo" layoutX="13.0" layoutY="325.0" prefHeight="35.0" prefWidth="80.0" />
+            <ComboBox fx:id="QuestionNoCombo" layoutX="13.0" layoutY="390.0" prefHeight="35.0" prefWidth="80.0">
                <padding>
                   <Insets bottom="-5.0" left="-5.0" right="-5.0" top="-5.0" />
                </padding>
@@ -179,7 +179,12 @@
             <Font name="System Bold" size="16.0" />
          </font>
       </JFXButton>
-      <Label layoutX="341.0" layoutY="47.0" prefHeight="27.0" prefWidth="30.0" text="01">
+      <Label fx:id="QuestionNoLabel" layoutX="341.0" layoutY="47.0" prefHeight="27.0" prefWidth="30.0" text="01">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="AnswerNoLabel" layoutX="341.0" layoutY="248.0" prefHeight="27.0" prefWidth="30.0" text="01">
          <font>
             <Font size="18.0" />
          </font>

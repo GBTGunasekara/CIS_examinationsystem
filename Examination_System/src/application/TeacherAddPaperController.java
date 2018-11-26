@@ -117,6 +117,8 @@ public class TeacherAddPaperController implements Initializable{
 		TeacherDrawerController ad1 = new TeacherDrawerController();
 		ad1.TeacherDrawer(Hamburger, Drawer);
 		Drawer.toBack();
+		
+		TeacherAddPaperFunction adpf = new TeacherAddPaperFunction();
+		paperIDtxt.setText(adpf.paperIDgenerate ());
 	}
-
-}
+	}

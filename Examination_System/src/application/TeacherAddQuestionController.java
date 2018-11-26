@@ -2,6 +2,8 @@ package application;
 
 
 import java.net.URL;
+import java.rmi.RemoteException;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXDrawer;
@@ -38,6 +40,10 @@ public class TeacherAddQuestionController implements Initializable{
 	private Label answerIDlabel;
 	@FXML
 	private Label completeQuestionlabel;
+	@FXML
+	private Label QuestionNoLabel;
+	@FXML
+	private Label AnswerNoLabel;
 	@FXML
 	private ComboBox AnsNoCombo;
 	@FXML
@@ -93,13 +99,41 @@ public class TeacherAddQuestionController implements Initializable{
 
 	public void setPaperID (String paperid, int noQuestion)
 	{
-		paperIDlabel.setText(paperid);
+		paperIDlabel.setText(paperid); //set created paperid on teacherAddQuestionGUI 
+       
+		//insert given question numbers to combo box
 		int numbers_to_add_max = noQuestion;
-		for (int i = 1; i <= numbers_to_add_max; i++) {
+		for ( int i = 1; i <= numbers_to_add_max; i++) 
+		{
 			QuestionNoCombo.getItems().add(new Integer(i));
-			
 		}
-		 
+		QuestionNoCombo.getSelectionModel().selectFirst(); // select 1st index of combo box
+		
+		
+	}
+
+	
+	@FXML
+	private void SaveEnterNextQuestion() throws RemoteException 
+	{
+		
+		String PaperID = AnswerBTextArea.getText();
+		String QusetionID= AnswerCTextArea.getText();
+		//String AnswerID = AnswerDTextArea.getText();
+		String Question = QuestionTextArea.getText();
+		String AnswerA = AnswerATextArea.getText();
+		String AnswerB = AnswerBTextArea.getText();
+		String AnswerC= AnswerCTextArea.getText();
+		String AnswerD = AnswerDTextArea.getText();
+		
+		int noQuestions = Integer.parseInt(QuestionNoCombo.getSelectionModel().getSelectedItem().toString());
+		String correctAnswer = AnsNoCombo.getSelectionModel().getSelectedItem().toString();
+
+	   
+	    	    
+		//TeacherAddPaperFunction tap1 = new TeacherAddPaperFunction();
+		//tap1.createPaper(techerID,classID,paperID, currentdatetime,noQuestions,noAnswers);
+		
 		
 	}
 	
