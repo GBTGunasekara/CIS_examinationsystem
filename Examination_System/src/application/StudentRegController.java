@@ -18,6 +18,8 @@ import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextField;
 
+import javafx.concurrent.Service;
+import javafx.concurrent.Task;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -64,6 +66,7 @@ public class StudentRegController implements Initializable{
 	private ToggleGroup stGender;
 	
 	String path = null;
+	String stGenderstr = null ;
 	
 	@FXML
 	private void SaveStudentReg(MouseEvent event) throws FileNotFoundException, RemoteException 
@@ -77,11 +80,11 @@ public class StudentRegController implements Initializable{
 		
 		
 		
-		String stGender = null ;
+		
 			if (stMale.isSelected())
-				stGender = stMale.getText();
+				stGenderstr = stMale.getText();
 			else if (stFemale.isSelected())
-				stGender = stFemale.getText();
+				stGenderstr = stFemale.getText();
 			else
 				JOptionPane.showMessageDialog(null, "Select Gender");
 			
@@ -95,7 +98,19 @@ public class StudentRegController implements Initializable{
 				
 				StudentRegFunctionInterface  StudentReg = (StudentRegFunctionInterface) 
 				Naming.lookup("rmi://localhost:1099/Student");
-				StudentReg.createStudentAccount(stID,stName,stEmail,stPassword,DOB,stGender,path,stRePassword);
+				
+				//create thread
+				Service<Void>src=new Service<Void>() {
+					protected Task<Void>createTask(){
+						return new Task<Void>() {
+							protected Void call()throws Exception{
+								StudentReg.createStudentAccount(stID,stName,stEmail,stPassword,DOB,stGenderstr,path,stRePassword);
+								return null;
+							}
+						};
+					}
+				};
+			    src.start();
 				
 			} catch (Exception e){
 				System.out.println(" Failed to connect to Hello Server ");
