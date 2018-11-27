@@ -120,5 +120,7 @@ public class TeacherAddPaperController implements Initializable{
 		
 		TeacherAddPaperFunction adpf = new TeacherAddPaperFunction();
 		paperIDtxt.setText(adpf.paperIDgenerate ());
+		
+		
 	}
 	}

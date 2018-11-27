@@ -30,7 +30,7 @@ public class TeacherRegFunction extends UnicastRemoteObject implements TeacherRe
 			JOptionPane.showMessageDialog(null, "Complete data fields");
 		}
 		else if (!tpassword.equals(trepassword))
-		{
+		{ 
 			JOptionPane.showMessageDialog(null, "Passwords are not similar");
 		}
 		else if  (tdob == null)

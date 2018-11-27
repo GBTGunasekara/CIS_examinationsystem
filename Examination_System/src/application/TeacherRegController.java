@@ -128,7 +128,7 @@ public class TeacherRegController implements Initializable {
 		//{
 		
 	
-			if (teMale.isSelected())
+			if (teMale.isSelected()) 
 				teGenderstr = teMale.getText();
 			else if (teFemale.isSelected())
 				teGenderstr = teFemale.getText();

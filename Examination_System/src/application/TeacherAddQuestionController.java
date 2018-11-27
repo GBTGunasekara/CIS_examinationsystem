@@ -45,7 +45,7 @@ public class TeacherAddQuestionController implements Initializable{
 	@FXML
 	private Label AnswerNoLabel;
 	@FXML
-	private ComboBox AnsNoCombo;
+	private ComboBox<Character> AnsNoCombo;
 	@FXML
 	private ComboBox<Integer> QuestionNoCombo;
 	@FXML
@@ -109,17 +109,23 @@ public class TeacherAddQuestionController implements Initializable{
 		}
 		QuestionNoCombo.getSelectionModel().selectFirst(); // select 1st index of combo box
 		
+	
+		for ( int i = 65; i <= 69; i++) 
+		{
+			AnsNoCombo.getItems().add((char)i);
+		}
+		
 		
 	}
 
 	
 	@FXML
-	private void SaveEnterNextQuestion() throws RemoteException 
+	private void SaveEnterNextQuestion(MouseEvent event) throws RemoteException 
 	{
 		
-		String PaperID = AnswerBTextArea.getText();
-		String QusetionID= AnswerCTextArea.getText();
-		//String AnswerID = AnswerDTextArea.getText();
+		String PaperID = paperIDlabel.getText();
+		String QusetionID= quesetionIDlabel.getText();
+		
 		String Question = QuestionTextArea.getText();
 		String AnswerA = AnswerATextArea.getText();
 		String AnswerB = AnswerBTextArea.getText();
@@ -131,11 +137,16 @@ public class TeacherAddQuestionController implements Initializable{
 
 	   
 	    	    
-		//TeacherAddPaperFunction tap1 = new TeacherAddPaperFunction();
-		//tap1.createPaper(techerID,classID,paperID, currentdatetime,noQuestions,noAnswers);
+		TeacherAddQuestionsFunction tap1 = new TeacherAddQuestionsFunction();
+		tap1.SaveNextQuestion(PaperID,QusetionID, Question,AnswerA,AnswerB,AnswerC,AnswerD,noQuestions,correctAnswer);
 		
 		
 	}
+	
+
+		
+		
+	
 	
 	
 	@Override
@@ -146,5 +157,8 @@ public class TeacherAddQuestionController implements Initializable{
 		ad1.TeacherDrawer(Hamburger, Drawer);
 		Drawer.toBack();
 		
+		TeacherAddPaperFunction adpf = new TeacherAddPaperFunction(); //set questionid on label by adding one to paperid
+		String questionID =  adpf.paperIDgenerate () +  String.valueOf(1);
+		quesetionIDlabel.setText(questionID);
 	}
 }

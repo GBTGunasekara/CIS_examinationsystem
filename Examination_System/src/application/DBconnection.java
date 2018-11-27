@@ -12,14 +12,14 @@ public class DBconnection {
 		try
 		{
 			Class.forName("com.mysql.jdbc.Driver");
-			con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/dbexamsystem","root","");	
+			con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/dbexamsystem?autoReconnect=true&useSSL=false","root","");	
 		}
 		catch (Exception ex)
 		{
 			System.out.println(ex);
 		}
 		
-		return con;
+		return con; 
 		
 	}
 	

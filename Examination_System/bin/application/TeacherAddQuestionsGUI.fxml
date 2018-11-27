@@ -169,7 +169,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <JFXButton fx:id="Nextbtn" buttonType="RAISED" layoutX="522.0" layoutY="527.0" prefHeight="30.0" prefWidth="160.0" style="-fx-background-color: #494949;" text="Next" textFill="#e5e5e5">
+      <JFXButton fx:id="Nextbtn" buttonType="RAISED" layoutX="522.0" layoutY="527.0" onMouseClicked="#SaveEnterNextQuestion" prefHeight="30.0" prefWidth="160.0" style="-fx-background-color: #494949;" text="Next" textFill="#e5e5e5">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
