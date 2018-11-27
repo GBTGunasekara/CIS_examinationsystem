@@ -6,6 +6,8 @@ import java.rmi.RemoteException;
 import java.util.Date;
 import java.util.ResourceBundle;
 
+import javax.swing.JOptionPane;
+
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
 
@@ -103,14 +105,16 @@ public class TeacherAddQuestionController implements Initializable{
        
 		//insert given question numbers to combo box
 		int numbers_to_add_max = noQuestion;
-		for ( int i = 1; i <= numbers_to_add_max; i++) 
+		for ( int i = 1; i <= numbers_to_add_max; i++)  //set question numbers according to previous entry
 		{
 			QuestionNoCombo.getItems().add(new Integer(i));
 		}
 		QuestionNoCombo.getSelectionModel().selectFirst(); // select 1st index of combo box
 		
+		String questionID =  paperid +  String.valueOf(1); //create questionID according to paperID
+		quesetionIDlabel.setText(questionID);
 	
-		for ( int i = 65; i <= 69; i++) 
+		for ( int i = 65; i <= 68; i++) //set A-D in answer combo box
 		{
 			AnsNoCombo.getItems().add((char)i);
 		}
@@ -132,15 +136,51 @@ public class TeacherAddQuestionController implements Initializable{
 		String AnswerC= AnswerCTextArea.getText();
 		String AnswerD = AnswerDTextArea.getText();
 		
+		String correctAnswer =null;
 		int noQuestions = Integer.parseInt(QuestionNoCombo.getSelectionModel().getSelectedItem().toString());
-		String correctAnswer = AnsNoCombo.getSelectionModel().getSelectedItem().toString();
-
-	   
+		if(AnsNoCombo.getSelectionModel().getSelectedItem()!= null)
+		{
+			 correctAnswer = AnsNoCombo.getSelectionModel().getSelectedItem().toString();
+			 try
+			 {
+				 TeacherAddQuestionsFunction tap1 = new TeacherAddQuestionsFunction();
+				 tap1.SaveNextQuestion(PaperID,QusetionID, Question,AnswerA,AnswerB,AnswerC,AnswerD,noQuestions,correctAnswer);
+			 }
+			 catch (Exception e)
+			 {
+				 System.out.println("method not working");
+			 }
+			 //clear text area and ready the GUI for next question and answers
+			 QuestionTextArea.setText(""); 
+			 AnswerATextArea.setText("");
+			 AnswerBTextArea.setText("");
+			 AnswerCTextArea.setText("");
+			 AnswerDTextArea.setText("");
+			 
+			 
+			 QuestionNoCombo.getSelectionModel().select(QuestionNoCombo.getSelectionModel().getSelectedIndex()  +1); //set next question number on question combo box by adding 1 to selected index
+			 AnsNoCombo.getSelectionModel().select(null); // set null on next question's answer at the beginning 
+			 
+			 //increment the questionID by 1
+             int papernum_len = QusetionID.length();
+             String letters_set = QusetionID.substring(0,2);
+             String numbers_set = QusetionID.substring(2, papernum_len);
+             int numbers_set_int = Integer.parseInt(numbers_set);
+             numbers_set_int = numbers_set_int + 1;
+             numbers_set = Integer.toString(numbers_set_int);
+             String NewQusetionID = (letters_set + numbers_set); 
+             quesetionIDlabel.setText(NewQusetionID);
+             
+             
+             
+             
+		}	
+		else 
+		{
+			JOptionPane.showMessageDialog(null, "Selcet Correct Answer");
 	    	    
-		TeacherAddQuestionsFunction tap1 = new TeacherAddQuestionsFunction();
-		tap1.SaveNextQuestion(PaperID,QusetionID, Question,AnswerA,AnswerB,AnswerC,AnswerD,noQuestions,correctAnswer);
-		
-		
+			
+		}	
 	}
 	
 
@@ -157,8 +197,7 @@ public class TeacherAddQuestionController implements Initializable{
 		ad1.TeacherDrawer(Hamburger, Drawer);
 		Drawer.toBack();
 		
-		TeacherAddPaperFunction adpf = new TeacherAddPaperFunction(); //set questionid on label by adding one to paperid
-		String questionID =  adpf.paperIDgenerate () +  String.valueOf(1);
-		quesetionIDlabel.setText(questionID);
+		//TeacherAddPaperFunction adpf = new TeacherAddPaperFunction(); //set questionid on label by adding one to paperid
+		
 	}
 }
