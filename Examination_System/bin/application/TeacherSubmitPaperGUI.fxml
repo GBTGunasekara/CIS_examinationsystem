@@ -134,13 +134,13 @@
                </font>
             </Label>
             <JFXButton buttonType="RAISED" layoutX="440.0" layoutY="121.0" style="-fx-background-color: #e5e5e5;" text="Copy" />
-            <JFXDatePicker defaultColor="#494949" layoutX="275.0" layoutY="345.0" prefHeight="28.0" prefWidth="120.0" />
-            <JFXDatePicker defaultColor="#494949" layoutX="275.0" layoutY="390.0" prefHeight="28.0" prefWidth="120.0" />
-            <JFXDatePicker defaultColor="#494949" layoutX="414.0" layoutY="342.0" prefHeight="37.0" prefWidth="120.0" showTime="true" />
-            <JFXDatePicker defaultColor="#494949" layoutX="414.0" layoutY="387.0" prefHeight="37.0" prefWidth="120.0" showTime="true" />
+            <JFXDatePicker fx:id="ReleaseDatedp" defaultColor="#494949" layoutX="275.0" layoutY="345.0" prefHeight="28.0" prefWidth="120.0" />
+            <JFXDatePicker fx:id="TerminateDatedp" defaultColor="#494949" layoutX="275.0" layoutY="390.0" prefHeight="28.0" prefWidth="120.0" />
+            <JFXDatePicker fx:id="ReleaseTimedp" defaultColor="#494949" layoutX="414.0" layoutY="342.0" prefHeight="37.0" prefWidth="120.0" showTime="true" />
+            <JFXDatePicker fx:id="TerminateTimedp" defaultColor="#494949" layoutX="414.0" layoutY="387.0" prefHeight="37.0" prefWidth="120.0" showTime="true" />
          </children>
       </AnchorPane>
-      <JFXButton buttonType="RAISED" layoutX="259.0" layoutY="524.0" prefHeight="35.0" prefWidth="180.0" style="-fx-background-color: #494949;" text="Save" textFill="#e5e5e5">
+      <JFXButton fx:id="Submitbtn" buttonType="RAISED" layoutX="259.0" layoutY="524.0" onMouseClicked="#SubmitExamPaper" prefHeight="35.0" prefWidth="180.0" style="-fx-background-color: #494949;" text="Submit" textFill="#e5e5e5">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>

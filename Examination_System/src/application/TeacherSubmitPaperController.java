@@ -1,10 +1,15 @@
 package application;
 
 import java.net.URL;
+import java.rmi.RemoteException;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ResourceBundle;
 
+import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
+import com.jfoenix.controls.JFXTimePicker;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -18,6 +23,8 @@ public class TeacherSubmitPaperController implements Initializable{
 	
 	@FXML
 	private Button Closebttn, Minimizebttn;
+	@FXML
+	private Button Submitbtn;
 	
 	@FXML
 	private JFXHamburger Hamburger;
@@ -35,6 +42,14 @@ public class TeacherSubmitPaperController implements Initializable{
 	private Label noAnswerlbl;
 	@FXML
 	private Label paperPasswordlbl;
+	@FXML
+	private JFXDatePicker ReleaseDatedp;
+	@FXML
+	private JFXDatePicker ReleaseTimedp;
+	@FXML
+	private JFXDatePicker TerminateDatedp;
+	@FXML
+	private JFXDatePicker TerminateTimedp;
 	
 	
 	
@@ -60,6 +75,26 @@ public class TeacherSubmitPaperController implements Initializable{
 		 noQusetionlbl.setText(noQuestions);
 		noAnswerlbl.setText(noAnswers);
 				
+	}
+	
+	
+	@FXML
+	private void SubmitExamPaper(MouseEvent event) throws RemoteException 
+	{
+		//String teahcerID = teacherIDlbl.getText();
+		//String classID =  classIDlbl.getText();
+		String paperID =  paperIDlbl.getText();
+		//String noQuestions =  noQusetionlbl.getText();
+		//String noAnswers = noAnswerlbl.getText();
+
+		LocalDate ReleaseDate = ReleaseDatedp.getValue();
+		LocalTime ReleaseTime = ReleaseTimedp.getTime();
+		LocalDate TerminateDate = TerminateDatedp.getValue();
+		LocalTime TerminateTime = TerminateTimedp.getTime();
+		
+		TeacherSubmitPaperFunction tspf = new TeacherSubmitPaperFunction();  
+		tspf.submitPaper(paperID,ReleaseDate,ReleaseTime,TerminateDate,TerminateTime); //called submitPaper method here and pass these values
+		
 	}
 	
 	@Override

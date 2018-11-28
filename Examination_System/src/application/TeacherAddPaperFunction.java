@@ -47,6 +47,7 @@ public class TeacherAddPaperFunction {
     	JOptionPane.showMessageDialog(null, "error");
  	}
 	}
+	
 	public String paperIDgenerate ()
     {
         String paperID = null;
