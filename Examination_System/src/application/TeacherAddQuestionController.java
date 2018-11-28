@@ -40,7 +40,9 @@ public class TeacherAddQuestionController implements Initializable{
 	@FXML
 	private Label quesetionIDlabel;
 	@FXML
-	private Label answerIDlabel;
+	private Label classIDlabel;
+	@FXML
+	private Label teacherIDlabel;
 	@FXML
 	private Label completeQuestionlabel;
 	@FXML
@@ -84,12 +86,24 @@ public class TeacherAddQuestionController implements Initializable{
 	public void fxmlLoader(String link) throws Exception
 	{
 		Stage stage = new Stage();
-		Parent root = FXMLLoader.load(getClass().getResource(link));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource(link));
+		
+		Parent root = loader.load();
+		
 		stage.initStyle(StageStyle.UNDECORATED);
 		Scene scene = new Scene(root);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		stage.setScene(scene);
 		stage.show();
+		
+		ObservableList<Integer> totQuestionlist = QuestionNoCombo.getItems();		
+		String totQuestion = String.valueOf(totQuestionlist.size());
+		
+		ObservableList<Character> totAnslist = AnsNoCombo.getItems();		
+		String totAns = String.valueOf(totAnslist.size());
+		
+		TeacherSubmitPaperController tspc = loader.getController();
+		tspc.paperDetails( teacherIDlabel.getText(),  classIDlabel.getText(),  paperIDlabel.getText(),  totQuestion,  totAns );
 	}
 	
 	@FXML
@@ -98,12 +112,20 @@ public class TeacherAddQuestionController implements Initializable{
 		String link = "/application/TeacherSubmitPaperGUI.fxml";
 		fxmlLoader(link);
 		
+		
+		
+	
+		
+		
+		
 	}
 
-	public void setPaperDetails (String paperid, int noQuestion)
+	public void setPaperDetails (String paperid, int noQuestion, String classID, String teacherID)
 	{
 		paperIDlabel.setText(paperid); //set created paperid on teacherAddQuestionGUI 
-       
+		classIDlabel.setText(classID);
+		teacherIDlabel.setText(teacherID);
+		
 		//insert given question numbers to combo box
 		int numbers_to_add_max = noQuestion;
 		for ( int i = 1; i <= numbers_to_add_max; i++)  //set question numbers according to previous entry
@@ -114,6 +136,8 @@ public class TeacherAddQuestionController implements Initializable{
 		
 		String questionID =  paperid +  String.valueOf(1); //create questionID according to paperID
 		quesetionIDlabel.setText(questionID);
+		
+		
 	
 		for ( int i = 65; i <= 68; i++) //set A-D in answer combo box
 		{
@@ -204,10 +228,12 @@ public class TeacherAddQuestionController implements Initializable{
 	    	    
 			
 		}	
+		
+		
 	}
 	
 
-		
+	
 		
 	
 	

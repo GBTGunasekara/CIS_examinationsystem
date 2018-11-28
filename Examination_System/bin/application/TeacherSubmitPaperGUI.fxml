@@ -103,32 +103,32 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="285.0" layoutY="75.0" prefHeight="27.0" prefWidth="150.0" text="PID475863219">
+            <Label fx:id="paperIDlbl" layoutX="285.0" layoutY="75.0" prefHeight="27.0" prefWidth="150.0" text="PID475863219">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="285.0" layoutY="120.0" prefWidth="150.0" text="dfdgd4545445">
+            <Label fx:id="paperPasswordlbl" layoutX="285.0" layoutY="120.0" prefWidth="150.0" text="dfdgd4545445">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="285.0" layoutY="165.0" prefWidth="150.0" text="CID963125478">
+            <Label fx:id="classIDlbl" layoutX="285.0" layoutY="165.0" prefWidth="150.0" text="CID963125478">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="285.0" layoutY="209.0" prefWidth="150.0" text="TID924563187">
+            <Label fx:id="teacherIDlbl" layoutX="285.0" layoutY="209.0" prefWidth="150.0" text="TID924563187">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="285.0" layoutY="255.0" text="10">
+            <Label fx:id="noQusetionlbl" layoutX="285.0" layoutY="255.0" text="10">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="285.0" layoutY="300.0" prefWidth="20.0" text="40">
+            <Label fx:id="noAnswerlbl" layoutX="285.0" layoutY="300.0" prefWidth="20.0" text="40">
                <font>
                   <Font size="18.0" />
                </font>

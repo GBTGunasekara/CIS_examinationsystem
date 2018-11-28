@@ -76,7 +76,7 @@ public class TeacherAddPaperController implements Initializable{
 		stage.show();
 		
 		TeacherAddQuestionController taqc = loader.getController();
-		taqc.setPaperDetails(paperIDtxt.getText(), Integer.parseInt(noQusetiontxt.getText())); //pass this values to next GUI
+		taqc.setPaperDetails(paperIDtxt.getText(), Integer.parseInt(noQusetiontxt.getText()),classIDtxt.getText(), teacherIDtxt.getText()); //pass this values to next GUI
 	}
 	
 	@FXML
@@ -109,13 +109,7 @@ public class TeacherAddPaperController implements Initializable{
 		
 	}
 	
-	/*public static int noQuestions = 0;
 	
-	public int passQuestionCount () //pass question counts to add question panel
-	{
-		noQuestions = Integer.parseInt(noQusetiontxt.getText());
-		return noQuestions;
-	}*/
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

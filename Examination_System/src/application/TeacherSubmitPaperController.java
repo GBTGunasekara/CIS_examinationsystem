@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -22,6 +23,20 @@ public class TeacherSubmitPaperController implements Initializable{
 	private JFXHamburger Hamburger;
 	@FXML
 	private JFXDrawer Drawer;
+	@FXML
+	private Label teacherIDlbl;
+	@FXML
+	private Label classIDlbl;
+	@FXML
+	private Label paperIDlbl;
+	@FXML
+	private Label noQusetionlbl;
+	@FXML
+	private Label noAnswerlbl;
+	@FXML
+	private Label paperPasswordlbl;
+	
+	
 	
 	@FXML
 	private void handleClose(MouseEvent event)
@@ -36,7 +51,16 @@ public class TeacherSubmitPaperController implements Initializable{
 		Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		stage.setIconified(true);
 	}
-		
+	
+	public void  paperDetails(String techerID, String classID, String paperID, String noQuestions, String noAnswers )
+	{
+		  teacherIDlbl.setText(techerID);
+		 classIDlbl.setText(classID);
+		 paperIDlbl.setText(paperID);
+		 noQusetionlbl.setText(noQuestions);
+		noAnswerlbl.setText(noAnswers);
+				
+	}
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
