@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXDrawer?>
 <?import com.jfoenix.controls.JFXHamburger?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -55,7 +56,7 @@
             <Image url="@../image/jess-watters-483666-unsplash.jpg" />
          </image>
       </ImageView>
-      <AnchorPane layoutX="214.0" layoutY="62.0" opacity="0.9" prefHeight="446.0" prefWidth="554.0" style="-fx-background-color: #e5e5e5; -fx-border-color: #494949; -fx-border-width: 4;">
+      <AnchorPane layoutX="214.0" layoutY="62.0" opacity="0.9" prefHeight="446.0" prefWidth="600.0" style="-fx-background-color: #e5e5e5; -fx-border-color: #494949; -fx-border-width: 4;">
          <children>
             <Label layoutX="45.0" layoutY="75.0" prefWidth="91.0" text="Paper ID">
                <font>
@@ -102,16 +103,6 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="285.0" layoutY="75.0" prefHeight="27.0" prefWidth="150.0" text="PID475863219">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="285.0" layoutY="120.0" prefWidth="150.0" text="dfdgd4545445">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
             <Label layoutX="285.0" layoutY="165.0" prefWidth="150.0" text="CID963125478">
                <font>
                   <Font size="18.0" />
@@ -132,7 +123,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <JFXButton buttonType="RAISED" layoutX="440.0" layoutY="121.0" style="-fx-background-color: #e5e5e5;" text="Search" />
+            <JFXButton buttonType="RAISED" layoutX="500.0" layoutY="95.0" style="-fx-background-color: #e5e5e5;" text="Search" />
             <Label layoutX="285.0" layoutY="345.0" text="12/02/2019">
                <font>
                   <Font size="18.0" />
@@ -153,6 +144,16 @@
                   <Font size="18.0" />
                </font>
             </Label>
+            <JFXTextField fx:id="teacherIDtxt" layoutX="277.0" layoutY="67.0" prefHeight="30.0" prefWidth="200.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </JFXTextField>
+            <JFXTextField fx:id="classIDtxt" layoutX="277.0" layoutY="100.0" prefHeight="30.0" prefWidth="200.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </JFXTextField>
          </children>
       </AnchorPane>
       <JFXButton fx:id="enrollbtn" buttonType="RAISED" layoutX="259.0" layoutY="524.0" onMouseClicked="#MovetoAnswerPaper" prefHeight="35.0" prefWidth="180.0" style="-fx-background-color: #494949;" text="Enroll" textFill="#e5e5e5">
