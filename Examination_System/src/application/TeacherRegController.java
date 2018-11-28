@@ -93,39 +93,7 @@ public class TeacherRegController implements Initializable {
 		String tePassword = tePasswordtxt.getText();
 		String teRePassword = teRePasswordtxt.getText();
 		
-		//SimpleDateFormat dateformat =new SimpleDateFormat("dd/MM/YYYY ");
-		//String DOB = dateformat.format(teDOB.getValue());
 		
-		//String DOB = teDOB.getEditor().getText();
-		//LocalDate DOB = teDOB.getValue();
-		
-		//DateFormat dateformat =new SimpleDateFormat("yyyy-MM-dd");
-		//String dob1 = dateformat.format(DOB);
-		
-		//String dob1 = DOB.toString();
-		
-		//InputStream imagePath = new FileInputStream(new File(path));
-		
-		/*if (!tePassword.equals(teRePassword))
-		{
-			JOptionPane.showMessageDialog(null, "Passwords are not similar");
-		}*/
-		
-		/*else if (!teMale.isSelected() && !teFemale.isSelected())
-		{
-			JOptionPane.showMessageDialog(null, "Select Gender");
-		}*/
-		
-		/* if  (teDOB.getValue() == null)
-		{
-			JOptionPane.showMessageDialog(null, "Insert DOB");
-		}
-		else if (path == null)
-		{
-			JOptionPane.showMessageDialog(null, "Insert image");
-		}*/
-		//else
-		//{
 		
 	
 			if (teMale.isSelected()) 
@@ -134,12 +102,9 @@ public class TeacherRegController implements Initializable {
 				teGenderstr = teFemale.getText();
 			else
 				JOptionPane.showMessageDialog(null, "Select Gender");
-			//InputStream imagePath = new FileInputStream(new File(path));
+			
 			LocalDate DOB = teDOB.getValue();
-			//String dob1 = DOB.toString();
-		
-			//TeacherRegFunction tr1 = new TeacherRegFunction();
-			//tr1.createTeacherAccount(teID,teName,teEmail,tePassword,DOB,teGender,path,teRePassword);
+			
 		
 			try {
 				

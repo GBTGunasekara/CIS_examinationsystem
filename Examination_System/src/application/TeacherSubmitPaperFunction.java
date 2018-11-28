@@ -17,25 +17,43 @@ public class TeacherSubmitPaperFunction {
 		
 		//java.sql.Timestamp sqlcurrentDateTime = new java.sql.Timestamp(createDateTime.getTime()); //convert util datetime into sqltime date
 		
-		Date rdate = java.sql.Date.valueOf(releaseDate);
-		Time  rtime = java.sql.Time.valueOf(releaseTime);
-		Date Tdate = java.sql.Date.valueOf(TerminateDate);
-		Time  Ttime = java.sql.Time.valueOf(TerminateTime);
 		
-		PreparedStatement ps;
-		
-	try
+	if  (releaseDate == null)
 	{
-		String submitpaper = "update paper set pePassword = '"+ paperPassword +"', releaseDate = '"+ rdate +"', releaseTime = '"+ rtime +"', terminateDate = '"+ Tdate +"', terminateTime = '"+ Ttime +"' where paperID = '"+ paID +"'";
-		ps = (PreparedStatement) DBconnection.Connect().prepareStatement(submitpaper);
-		ps.execute();
+			JOptionPane.showMessageDialog(null, "Insert Release Date");
+	}
+	else if  (releaseTime == null)
+	{
+			JOptionPane.showMessageDialog(null, "Insert Release Time");
+	}	
+	else if  (TerminateDate == null)
+	{
+			JOptionPane.showMessageDialog(null, "Insert Terminate Date");
+	}	
+	else if  (TerminateTime == null)
+	{
+			JOptionPane.showMessageDialog(null, "Insert Terminate Time");
+	}	
+	else
+	{
+		try
+		{
+			Date rdate = java.sql.Date.valueOf(releaseDate);
+			Time  rtime = java.sql.Time.valueOf(releaseTime);
+			Date Tdate = java.sql.Date.valueOf(TerminateDate);
+			Time  Ttime = java.sql.Time.valueOf(TerminateTime);
+		
+			PreparedStatement ps;
+		
+			String submitpaper = "update paper set pePassword = '"+ paperPassword +"', releaseDate = '"+ rdate +"', releaseTime = '"+ rtime +"', terminateDate = '"+ Tdate +"', terminateTime = '"+ Ttime +"' where paperID = '"+ paID +"'";
+			ps = (PreparedStatement) DBconnection.Connect().prepareStatement(submitpaper);
+			ps.execute();
         
         
-        if(ps.executeUpdate() > 0)
-        {
-            JOptionPane.showMessageDialog(null, "paper is submited");
-           
-        }
+			if(ps.executeUpdate() > 0)
+			{
+				JOptionPane.showMessageDialog(null, "paper is submited");   
+			}
 	}
 	
 	
@@ -46,7 +64,7 @@ public class TeacherSubmitPaperFunction {
     	JOptionPane.showMessageDialog(null, "error");
  	}
 	}
-	
+	}
 	// reference - https://youtu.be/PBAX8r9YWW0
 	
 	public String GeneratePassword ()
