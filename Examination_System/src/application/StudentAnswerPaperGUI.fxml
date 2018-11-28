@@ -80,37 +80,47 @@
                   <Font name="Consolas" size="24.0" />
                </font>
             </Label>
-            <Label layoutX="10.0" layoutY="245.0" text="Answered Questions ">
-               <font>
-                  <Font name="System Bold" size="16.0" />
-               </font>
-            </Label>
-            <Label contentDisplay="CENTER" layoutX="15.0" layoutY="270.0" prefHeight="30.0" prefWidth="30.0" text="00">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-            <Label layoutX="10.0" layoutY="177.0" text="Question ID">
-               <font>
-                  <Font name="System Bold" size="16.0" />
-               </font>
-            </Label>
-            <Label layoutX="15.0" layoutY="202.0" text="QID1234">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-            <JFXButton fx:id="savebtn" buttonType="RAISED" layoutX="30.0" layoutY="440.0" onMouseClicked="#MovetoResultPaper" prefHeight="30.0" prefWidth="120.0" style="-fx-background-color: #494949;" text="Save" textFill="#e5e5e5">
+            <JFXButton fx:id="savebtn" buttonType="RAISED" layoutX="23.0" layoutY="440.0" onMouseClicked="#MovetoResultPaper" prefHeight="30.0" prefWidth="120.0" style="-fx-background-color: #494949;" text="Save" textFill="#e5e5e5">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
             </JFXButton>
-            <JFXButton buttonType="RAISED" layoutX="30.0" layoutY="494.0" prefHeight="30.0" prefWidth="120.0" style="-fx-background-color: #494949;" text="Cancel" textFill="#e5e5e5">
+            <JFXButton buttonType="RAISED" layoutX="23.0" layoutY="494.0" prefHeight="30.0" prefWidth="120.0" style="-fx-background-color: #494949;" text="Cancel" textFill="#e5e5e5">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
             </JFXButton>
             <ComboBox layoutX="15.0" layoutY="354.0" prefHeight="35.0" prefWidth="50.0" />
+            <Label layoutX="9.0" layoutY="263.0" text="Teacher ID">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="teacherIDlabel" contentDisplay="CENTER" layoutX="14.0" layoutY="288.0" prefHeight="30.0" prefWidth="120.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="9.0" layoutY="153.0" text="Question ID">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="quesetionIDlabel" layoutX="14.0" layoutY="178.0" prefHeight="25.0" prefWidth="120.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="9.0" layoutY="208.0" text="Class ID">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="classIDlabel" layoutX="14.0" layoutY="233.0" prefHeight="25.0" prefWidth="120.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
       <Label layoutX="225.0" layoutY="248.0" prefHeight="27.0" prefWidth="74.0" text="Answers">
