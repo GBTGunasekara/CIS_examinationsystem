@@ -74,26 +74,25 @@ public class TeacherSubmitPaperController implements Initializable{
 		 paperIDlbl.setText(paperID);
 		 noQusetionlbl.setText(noQuestions);
 		noAnswerlbl.setText(noAnswers);
-				
+		
+		TeacherSubmitPaperFunction tspf = new TeacherSubmitPaperFunction();
+		paperPasswordlbl.setText(tspf.GeneratePassword()); //set the automatically generated password to label
 	}
 	
 	
 	@FXML
 	private void SubmitExamPaper(MouseEvent event) throws RemoteException 
 	{
-		//String teahcerID = teacherIDlbl.getText();
-		//String classID =  classIDlbl.getText();
+		
 		String paperID =  paperIDlbl.getText();
-		//String noQuestions =  noQusetionlbl.getText();
-		//String noAnswers = noAnswerlbl.getText();
-
+		String paperPassword =  paperPasswordlbl.getText();
 		LocalDate ReleaseDate = ReleaseDatedp.getValue();
 		LocalTime ReleaseTime = ReleaseTimedp.getTime();
 		LocalDate TerminateDate = TerminateDatedp.getValue();
 		LocalTime TerminateTime = TerminateTimedp.getTime();
 		
 		TeacherSubmitPaperFunction tspf = new TeacherSubmitPaperFunction();  
-		tspf.submitPaper(paperID,ReleaseDate,ReleaseTime,TerminateDate,TerminateTime); //called submitPaper method here and pass these values
+		tspf.submitPaper(paperID, paperPassword,ReleaseDate,ReleaseTime,TerminateDate,TerminateTime); //called submitPaper method here and pass these values
 		
 	}
 	

@@ -144,7 +144,7 @@ public class TeacherAddQuestionController implements Initializable{
 			AnsNoCombo.getItems().add((char)i);
 		}
 		
-		//QuestionNoCombo.getItems().get;
+		
 		
 	}
 

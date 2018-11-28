@@ -12,7 +12,7 @@ import com.mysql.jdbc.PreparedStatement;
 
 public class TeacherSubmitPaperFunction {
 	
-	public void submitPaper (String paID, LocalDate releaseDate, LocalTime releaseTime, LocalDate TerminateDate, LocalTime TerminateTime)
+	public void submitPaper (String paID, String paperPassword, LocalDate releaseDate, LocalTime releaseTime, LocalDate TerminateDate, LocalTime TerminateTime)
 	{
 		
 		//java.sql.Timestamp sqlcurrentDateTime = new java.sql.Timestamp(createDateTime.getTime()); //convert util datetime into sqltime date
@@ -26,7 +26,7 @@ public class TeacherSubmitPaperFunction {
 		
 	try
 	{
-		String submitpaper = "update paper set releaseDate = '"+ rdate +"', releaseTime = '"+ rtime +"', terminateDate = '"+ Tdate +"', terminateTime = '"+ Ttime +"' where paperID = '"+ paID +"'";
+		String submitpaper = "update paper set pePassword = '"+ paperPassword +"', releaseDate = '"+ rdate +"', releaseTime = '"+ rtime +"', terminateDate = '"+ Tdate +"', terminateTime = '"+ Ttime +"' where paperID = '"+ paID +"'";
 		ps = (PreparedStatement) DBconnection.Connect().prepareStatement(submitpaper);
 		ps.execute();
         
@@ -45,6 +45,36 @@ public class TeacherSubmitPaperFunction {
 	 	System.out.println(ex);
     	JOptionPane.showMessageDialog(null, "error");
  	}
+	}
+	
+	// reference - https://youtu.be/PBAX8r9YWW0
+	
+	public String GeneratePassword ()
+	{
+		String password = "";
+		
+		for(int i = 0; i < 8; i++)
+		{
+			password = password + randomCharacter("abcdefghijklmnopqrstuwxyz");
+			
+		}
+		String randomDigit = randomCharacter("0123456789");
+		password = insertAtRandom(password, randomDigit);
+		return password;
+	}
+
+
+	public String randomCharacter(String charachters) {
+		int n = charachters.length();
+		int r = (int) (n* Math.random());
+		return charachters.substring(r, r+1);
+	}
+	
+	public String insertAtRandom (String str, String toInsert)
+	{
+		int n = str.length();
+		int r = (int)((n+1) * Math.random());
+		return str.substring(0,r) + toInsert + str.substring(r);
 	}
 	
 }
