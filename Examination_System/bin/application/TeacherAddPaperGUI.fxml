@@ -118,7 +118,7 @@
                   <Font size="16.0" />
                </font>
             </JFXTextField>
-            <JFXTextField fx:id="noAnswertxt" layoutX="247.0" layoutY="319.0" prefHeight="30.0" prefWidth="250.0">
+            <JFXTextField fx:id="noAnswertxt" editable="false" layoutX="247.0" layoutY="319.0" prefHeight="30.0" prefWidth="250.0" text="4">
                <font>
                   <Font size="16.0" />
                </font>
