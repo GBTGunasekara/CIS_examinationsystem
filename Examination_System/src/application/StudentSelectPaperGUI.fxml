@@ -103,53 +103,53 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="285.0" layoutY="165.0" prefWidth="150.0" text="CID963125478">
+            <Label fx:id="classIDlbl" layoutX="285.0" layoutY="165.0" prefWidth="150.0" text="CID963125478">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="285.0" layoutY="209.0" prefWidth="150.0" text="TID924563187">
+            <Label fx:id="teacherIDlbl" layoutX="285.0" layoutY="209.0" prefWidth="150.0" text="TID924563187">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="285.0" layoutY="255.0" text="10">
+            <Label fx:id="noQusetionlbl" layoutX="285.0" layoutY="255.0" text="10">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="285.0" layoutY="300.0" prefWidth="20.0" text="40">
+            <Label fx:id="noAnswerlbl" layoutX="285.0" layoutY="300.0" prefWidth="20.0" text="40">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <JFXButton buttonType="RAISED" layoutX="500.0" layoutY="95.0" style="-fx-background-color: #e5e5e5;" text="Search" />
-            <Label layoutX="285.0" layoutY="345.0" text="12/02/2019">
+            <JFXButton fx:id="searchPaperbtn" buttonType="RAISED" layoutX="500.0" layoutY="95.0" onMouseClicked="#SearchPaper" style="-fx-background-color: #e5e5e5;" text="Search" />
+            <Label fx:id="ReleaseDatelbl" layoutX="285.0" layoutY="345.0" text="12/02/2019">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="285.0" layoutY="390.0" text="13/02/2019">
+            <Label fx:id="TerminateDatelbl" layoutX="285.0" layoutY="390.0" text="13/02/2019">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="413.0" layoutY="345.0" text="12:00">
+            <Label fx:id="ReleaseTimelbl" layoutX="413.0" layoutY="345.0" text="12:00">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="413.0" layoutY="390.0" text="12:00">
+            <Label fx:id="TerminateTimelbl" layoutX="413.0" layoutY="390.0" text="12:00">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <JFXTextField fx:id="teacherIDtxt" layoutX="277.0" layoutY="67.0" prefHeight="30.0" prefWidth="200.0">
+            <JFXTextField fx:id="paperIDtxt" layoutX="277.0" layoutY="67.0" prefHeight="30.0" prefWidth="200.0">
                <font>
                   <Font size="16.0" />
                </font>
             </JFXTextField>
-            <JFXTextField fx:id="classIDtxt" layoutX="277.0" layoutY="100.0" prefHeight="30.0" prefWidth="200.0">
+            <JFXTextField fx:id="paperPasswordtxt" layoutX="277.0" layoutY="100.0" prefHeight="30.0" prefWidth="200.0">
                <font>
                   <Font size="16.0" />
                </font>
