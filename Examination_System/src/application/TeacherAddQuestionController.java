@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
 
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -99,7 +100,7 @@ public class TeacherAddQuestionController implements Initializable{
 		
 	}
 
-	public void setPaperID (String paperid, int noQuestion)
+	public void setPaperDetails (String paperid, int noQuestion)
 	{
 		paperIDlabel.setText(paperid); //set created paperid on teacherAddQuestionGUI 
        
@@ -119,6 +120,7 @@ public class TeacherAddQuestionController implements Initializable{
 			AnsNoCombo.getItems().add((char)i);
 		}
 		
+		//QuestionNoCombo.getItems().get;
 		
 	}
 
@@ -138,8 +140,22 @@ public class TeacherAddQuestionController implements Initializable{
 		
 		String correctAnswer =null;
 		int noQuestions = Integer.parseInt(QuestionNoCombo.getSelectionModel().getSelectedItem().toString());
+		
+		
+		//TeacherAddPaperController tapc = new TeacherAddPaperController();
+		//int totQuestion =  tapc.passQuestionCount(); // get totQuestion form TeacherAddPaperController class
+				
+		ObservableList<Integer> totQuestionlist = QuestionNoCombo.getItems();		
+		
+		int totQuestion = totQuestionlist.size();
+		
+		
 		if(AnsNoCombo.getSelectionModel().getSelectedItem()!= null)
 		{
+			
+			
+			
+			
 			 correctAnswer = AnsNoCombo.getSelectionModel().getSelectedItem().toString();
 			 try
 			 {
@@ -150,6 +166,13 @@ public class TeacherAddQuestionController implements Initializable{
 			 {
 				 System.out.println("method not working");
 			 }
+			 
+			 if (noQuestions == totQuestion) //preventing move on to next question which out of the limit of totQuestion 
+				{
+					JOptionPane.showMessageDialog(null, "You have entered all questions");
+				}
+			 else
+			 {
 			 //clear text area and ready the GUI for next question and answers
 			 QuestionTextArea.setText(""); 
 			 AnswerATextArea.setText("");
@@ -170,8 +193,8 @@ public class TeacherAddQuestionController implements Initializable{
              numbers_set = Integer.toString(numbers_set_int);
              String NewQusetionID = (letters_set + numbers_set); 
              quesetionIDlabel.setText(NewQusetionID);
-             
-             
+			 }
+			
              
              
 		}	

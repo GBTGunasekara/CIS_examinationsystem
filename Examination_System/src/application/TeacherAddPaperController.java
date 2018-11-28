@@ -76,7 +76,7 @@ public class TeacherAddPaperController implements Initializable{
 		stage.show();
 		
 		TeacherAddQuestionController taqc = loader.getController();
-		taqc.setPaperID(paperIDtxt.getText(), Integer.parseInt(noQusetiontxt.getText()));
+		taqc.setPaperDetails(paperIDtxt.getText(), Integer.parseInt(noQusetiontxt.getText())); //pass this values to next GUI
 	}
 	
 	@FXML
@@ -107,8 +107,15 @@ public class TeacherAddPaperController implements Initializable{
 		TeacherAddPaperFunction tap1 = new TeacherAddPaperFunction();
 		tap1.createPaper(techerID,classID,paperID, currentdatetime,noQuestions,noAnswers);
 		
-		
 	}
+	
+	/*public static int noQuestions = 0;
+	
+	public int passQuestionCount () //pass question counts to add question panel
+	{
+		noQuestions = Integer.parseInt(noQusetiontxt.getText());
+		return noQuestions;
+	}*/
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -118,7 +125,7 @@ public class TeacherAddPaperController implements Initializable{
 		ad1.TeacherDrawer(Hamburger, Drawer);
 		Drawer.toBack();
 		
-		TeacherAddPaperFunction adpf = new TeacherAddPaperFunction();
+		TeacherAddPaperFunction adpf = new TeacherAddPaperFunction(); //paperID generate and show it on text field when load this GUI
 		paperIDtxt.setText(adpf.paperIDgenerate ());
 		
 		
