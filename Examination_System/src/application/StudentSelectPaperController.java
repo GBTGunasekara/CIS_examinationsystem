@@ -68,7 +68,8 @@ public class StudentSelectPaperController implements Initializable {
 		stage.setIconified(true);
 	}
 	
-	public void fxmlLoader(String link) throws Exception
+	@FXML
+	private void MovetoAnswerPaper(MouseEvent event) throws Exception
 	{
 		
 		if  ( paperIDtxt.getText().isEmpty() || classIDlbl.getText().isEmpty() || teacherIDlbl.getText().isEmpty() || noQusetionlbl.getText().isEmpty() )
@@ -80,7 +81,7 @@ public class StudentSelectPaperController implements Initializable {
 		{
 			
 			Stage stage = new Stage();
-			FXMLLoader loader = new FXMLLoader(getClass().getResource(link));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/StudentAnswerPaperGUI.fxml"));
 		
 			Parent root = loader.load();
 		
@@ -96,14 +97,14 @@ public class StudentSelectPaperController implements Initializable {
 		
 		
 	}
-	@FXML
+	/*@FXML
 	private void MovetoAnswerPaper(MouseEvent event) throws Exception
 	{
 		String link = "/application/StudentAnswerPaperGUI.fxml";
 		fxmlLoader(link);
 		
 		
-	}
+	}*/
 	
 	@FXML
 	private void SearchPaper(MouseEvent event) 
