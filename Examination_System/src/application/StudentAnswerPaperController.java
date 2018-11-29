@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
 
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -120,13 +121,15 @@ public class StudentAnswerPaperController implements Initializable{
 		}
 		
 		
-		setFirstQuestionAnswer(paperid);
+		setFirstQuestionAnswer(paperid); //set first question of the paper when page load
 
 	}
 	
+	StudentAnswerPaperFunction sapf = new StudentAnswerPaperFunction();
+	
 	public void setFirstQuestionAnswer (String paperID)
 	{
-		StudentAnswerPaperFunction sapf = new StudentAnswerPaperFunction();
+		
 		String fisrtQuestion = sapf.selectFirstQuestion(paperID);
 		
 		QuestionTextArea.setText(fisrtQuestion);
@@ -142,6 +145,47 @@ public class StudentAnswerPaperController implements Initializable{
 		
 	}
 	
+	public void setQuestion_Answer (String paperID, int Qno, int numofQs)
+	{
+		//StudentAnswerPaperFunction sapf = new StudentAnswerPaperFunction();
+		String [][] Questionlist = sapf.loadQuestionsList(paperID, numofQs);
+		
+		String nextQuestion = Questionlist[Qno][1]; 
+		String nextQuestionID = Questionlist[0][Qno];
+		
+		QuestionTextArea.setText(nextQuestion);
+		
+		String[][] AnswerList = sapf.loadAnswerlist(paperID, Qno);
+		
+		String AnswerA = AnswerList[0][1];
+		String AnswerB = AnswerList[1][1];
+		String AnswerC = AnswerList[2][1];
+		String AnswerD = AnswerList[3][1];
+		
+		String AnswerAID = AnswerList[0][0];
+		String AnswerBID = AnswerList[1][0];
+		String AnswerCID = AnswerList[2][0];
+		String AnswerDID = AnswerList[3][0];
+		
+		 AnswerATextArea.setText(AnswerA);
+		 AnswerBTextArea.setText(AnswerB);
+		 AnswerCTextArea.setText(AnswerC);
+		 AnswerDTextArea.setText(AnswerD);
+		
+	}
+	
+	@FXML
+	private void NextQuestion(MouseEvent event) throws Exception
+	{
+		int QuestionNo = Integer.parseInt(QuestionNoCombo.getSelectionModel().getSelectedItem().toString());
+		//String AnswerNo = AnsNoCombo.getSelectionModel().getSelectedItem().toString();
+		
+		ObservableList<Integer> totQuestionlist = QuestionNoCombo.getItems(); // get the combo box values into a observer list to get total questions 
+		int totQuestion = totQuestionlist.size(); //get item count of combobox which equals total number questions in this paper
+		
+		setQuestion_Answer (paperIDlabel.getText(),QuestionNo,totQuestion);
+		 QuestionNoCombo.getSelectionModel().select(QuestionNoCombo.getSelectionModel().getSelectedIndex()  +1);// increment the Question number by one
+	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

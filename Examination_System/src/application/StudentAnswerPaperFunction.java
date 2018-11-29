@@ -43,7 +43,7 @@ public class StudentAnswerPaperFunction {
 	            System.out.println(e);
 	        }
 	   
-	    Collections.shuffle(questionIDlist); //shuffle the array list
+	   // Collections.shuffle(questionIDlist); //shuffle the array list
 	    return questionIDlist; 
 	}
 	
@@ -75,14 +75,14 @@ public class StudentAnswerPaperFunction {
 		
 	}
 	
-	public ArrayList<String> SelectShuffleAnswerID (String paperID)
+	public ArrayList<String> SelectShuffleAnswerID (String paperID, int Qno) //first question answer shuffle
 	{
 		
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		ArrayList<String> answerIDlist = new ArrayList<String>();
 	    
-		String firstquestionID = SelectShuffleQuestionID(paperID).get(0); //get the 1st questionID
+		String firstquestionID = SelectShuffleQuestionID(paperID).get(Qno); //get the 1st questionID
 	    
 	    try{
 	           String searchPaperDetails = "select answerID from answer where questionID = '"+firstquestionID+"'"; //select relevant anserIDs
@@ -102,7 +102,7 @@ public class StudentAnswerPaperFunction {
 	            System.out.println(e);
 	        }
 	   
-	    Collections.shuffle(answerIDlist); //shuffle array list
+	    //Collections.shuffle(answerIDlist); //shuffle array list
 	    return answerIDlist; // return shuffled answerID list
 	}
 	
@@ -112,7 +112,7 @@ public class StudentAnswerPaperFunction {
 		ResultSet rs = null;
 		String []  answerlist =  new String[4];
 		
-		ArrayList<String> firstqusetionAnswerlist = SelectShuffleAnswerID(paperID); //initializing shuffled answerID array list 
+		ArrayList<String> firstqusetionAnswerlist = SelectShuffleAnswerID(paperID,0); //initializing shuffled answerID array list 
 		
 		for(int i = 0; i < firstqusetionAnswerlist.size(); i++) //get answers into an array list
 		{
@@ -138,4 +138,71 @@ public class StudentAnswerPaperFunction {
 		
 	}
 	
+	public  String [][] loadQuestionsList (String paperID, int noOfQs)
+	{
+		
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String [][]  questionlist =  new String[noOfQs][noOfQs];
+		
+		ArrayList<String> qusetionlist = SelectShuffleQuestionID(paperID); //initializing shuffled questionID array list 
+		
+		for(int i = 0; i < qusetionlist.size(); i++) //get answers into an array list
+		{
+		try{
+			
+	           String searchPaperDetails = "select questionID, question from question where questionID = '"+qusetionlist.get(i)+"'";
+	             
+	             
+	             ps = (PreparedStatement) DBconnection.Connect().prepareStatement(searchPaperDetails);
+	             rs = ps.executeQuery();
+	             if(rs.next())
+	             {
+	            	 questionlist[i][0] = rs.getString(1);
+	            	 questionlist[i][1] = rs.getString(2);
+	            	 
+	             }
+	            
+	    }
+	    catch (SQLException e){
+	            JOptionPane.showMessageDialog(null, "unable to select paper details.");
+	            System.out.println(e);
+	        }
+		}
+		return questionlist; //return 1st question list
+		
+	}
+	
+	public String [][] loadAnswerlist (String paperID, int Qno)
+	{
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String [][]  answerlist =  new String[4][4];
+		
+		ArrayList<String> qusetionAnswerlist = SelectShuffleAnswerID(paperID, Qno); //initializing shuffled answerID array list and notified which answer set needs
+		
+		for(int i = 0; i < qusetionAnswerlist.size(); i++) //get answers into an array list
+		{
+		try{
+			
+	           String searchPaperDetails = "select answerID, answer from answer where answerID = '"+qusetionAnswerlist.get(i)+"'";
+	             
+	             
+	             ps = (PreparedStatement) DBconnection.Connect().prepareStatement(searchPaperDetails);
+	             rs = ps.executeQuery();
+	             if(rs.next())
+	             {
+	            	 answerlist[i][0] = rs.getString(1);
+	            	 answerlist[i][1] = rs.getString(2);
+	             }
+	            
+	    }
+	    catch (SQLException e){
+	            JOptionPane.showMessageDialog(null, "unable to select paper details.");
+	            System.out.println(e);
+	        }
+		}
+		return answerlist; //return 1st question's answer list
+		
+	}
 }
