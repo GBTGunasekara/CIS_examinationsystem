@@ -1,6 +1,7 @@
 package application;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXDrawer;
@@ -112,14 +113,32 @@ public class StudentAnswerPaperController implements Initializable{
 		String questionID =  paperid +  String.valueOf(1); //create questionID according to paperID
 		quesetionIDlabel.setText(questionID);
 		
-		
-	
+
 		for ( int i = 65; i <= 68; i++) //set A-D in answer combo box
 		{
 			AnsNoCombo.getItems().add((char)i);
 		}
 		
 		
+		setFirstQuestionAnswer(paperid);
+
+	}
+	
+	public void setFirstQuestionAnswer (String paperID)
+	{
+		StudentAnswerPaperFunction sapf = new StudentAnswerPaperFunction();
+		String fisrtQuestion = sapf.selectFirstQuestion(paperID);
+		
+		QuestionTextArea.setText(fisrtQuestion);
+		
+		String[] AnswerList = sapf.selectFirstAnswerset(paperID);
+
+		 //AnswerList = sapf.selectFirstAnswerset(paperID);
+		 
+		 AnswerATextArea.setText(AnswerList[0]);
+		 AnswerBTextArea.setText(AnswerList[1]);
+		 AnswerCTextArea.setText(AnswerList[2]);
+		 AnswerDTextArea.setText(AnswerList[3]);
 		
 	}
 	
@@ -130,5 +149,8 @@ public class StudentAnswerPaperController implements Initializable{
 		StudentDrawerController ad1 = new StudentDrawerController();
 		ad1.StudentDrawer(Hamburger, Drawer);
 		Drawer.toBack();
+		
+	
+	
 	}
 }

@@ -93,7 +93,9 @@ public class StudentSelectPaperController implements Initializable {
 		
 			StudentAnswerPaperController taqc = loader.getController();
 			taqc.setStudentPaperDetails(paperIDtxt.getText(), noQusetionlbl.getText(),classIDlbl.getText(), teacherIDlbl.getText()); //pass this values to next GUI
+			//taqc.setFirstQuestionAnswer(paperIDtxt.getText());
 		}
+		
 		
 		
 	}

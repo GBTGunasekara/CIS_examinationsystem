@@ -85,7 +85,7 @@ public class StudentAnswerPaperFunction {
 		String firstquestionID = SelectShuffleQuestionID(paperID).get(0); //get the 1st questionID
 	    
 	    try{
-	           String searchPaperDetails = "select questionID from question where paperID = '"+firstquestionID+"'"; //select relevant anserIDs
+	           String searchPaperDetails = "select answerID from answer where questionID = '"+firstquestionID+"'"; //select relevant anserIDs
 	             
 	             
 	             ps = (PreparedStatement) DBconnection.Connect().prepareStatement(searchPaperDetails);
@@ -106,11 +106,11 @@ public class StudentAnswerPaperFunction {
 	    return answerIDlist; // return shuffled answerID list
 	}
 	
-	public ArrayList<String> selectFirstAnswerset (String paperID)
+	public String [] selectFirstAnswerset (String paperID)
 	{
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		ArrayList<String>  answerlist =  null;
+		String []  answerlist =  new String[4];
 		
 		ArrayList<String> firstqusetionAnswerlist = SelectShuffleAnswerID(paperID); //initializing shuffled answerID array list 
 		
@@ -125,7 +125,7 @@ public class StudentAnswerPaperFunction {
 	             rs = ps.executeQuery();
 	             if(rs.next())
 	             {
-	            	 answerlist.add(rs.getString(1));
+	            	 answerlist[i] = rs.getString(1);
 	             }
 	            
 	    }
