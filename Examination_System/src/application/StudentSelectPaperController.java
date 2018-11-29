@@ -71,7 +71,7 @@ public class StudentSelectPaperController implements Initializable {
 	public void fxmlLoader(String link) throws Exception
 	{
 		
-		if  ( classIDlbl.getText() == null || teacherIDlbl.getText() == null || noQusetionlbl.getText() == null )
+		if  ( paperIDtxt.getText().isEmpty() || classIDlbl.getText().isEmpty() || teacherIDlbl.getText().isEmpty() || noQusetionlbl.getText().isEmpty() )
 		{
 				JOptionPane.showMessageDialog(null, "Selcet a paper ");
 		}
