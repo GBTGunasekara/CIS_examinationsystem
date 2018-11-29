@@ -71,12 +71,19 @@ public class StudentSelectPaperController implements Initializable {
 	public void fxmlLoader(String link) throws Exception
 	{
 		Stage stage = new Stage();
-		Parent root = FXMLLoader.load(getClass().getResource(link));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource(link));
+		
+		Parent root = loader.load();
+		
 		stage.initStyle(StageStyle.UNDECORATED);
 		Scene scene = new Scene(root);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		stage.setScene(scene);
 		stage.show();
+		
+		StudentAnswerPaperController taqc = loader.getController();
+		taqc.setStudentPaperDetails(paperIDtxt.getText(), Integer.parseInt(noQusetionlbl.getText()),classIDlbl.getText(), teacherIDlbl.getText()); //pass this values to next GUI
+		
 	}
 	@FXML
 	private void MovetoAnswerPaper(MouseEvent event) throws Exception

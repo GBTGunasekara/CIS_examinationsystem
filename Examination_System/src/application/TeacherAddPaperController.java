@@ -76,7 +76,7 @@ public class TeacherAddPaperController implements Initializable{
 		stage.show();
 		
 		TeacherAddQuestionController taqc = loader.getController();
-		taqc.setPaperDetails(paperIDtxt.getText(), Integer.parseInt(noQusetiontxt.getText()),classIDtxt.getText(), teacherIDtxt.getText()); //pass this values to next GUI
+		taqc.seTeachertPaperDetails(paperIDtxt.getText(), Integer.parseInt(noQusetiontxt.getText()),classIDtxt.getText(), teacherIDtxt.getText()); //pass this values to next GUI
 	}
 	
 	@FXML

@@ -120,7 +120,7 @@ public class TeacherAddQuestionController implements Initializable{
 		
 	}
 
-	public void setPaperDetails (String paperid, int noQuestion, String classID, String teacherID)
+	public void seTeachertPaperDetails (String paperid, int noQuestion, String classID, String teacherID)
 	{
 		paperIDlabel.setText(paperid); //set created paperid on teacherAddQuestionGUI 
 		classIDlabel.setText(classID);
