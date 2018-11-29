@@ -95,14 +95,14 @@ public class StudentAnswerPaperController implements Initializable{
 		
 	}
 	
-	public void setStudentPaperDetails (String paperid, int noQuestion, String classID, String teacherID)
+	public void setStudentPaperDetails (String paperid, String noQuestion, String classID, String teacherID)
 	{
 		paperIDlabel.setText(paperid); //set created paperid on teacherAddQuestionGUI 
 		classIDlabel.setText(classID);
 		teacherIDlabel.setText(teacherID);
 		
 		//insert given question numbers to combo box
-		int numbers_to_add_max = noQuestion;
+		int numbers_to_add_max = Integer.parseInt(noQuestion);
 		for ( int i = 1; i <= numbers_to_add_max; i++)  //set question numbers according to previous entry
 		{
 			QuestionNoCombo.getItems().add(new Integer(i));

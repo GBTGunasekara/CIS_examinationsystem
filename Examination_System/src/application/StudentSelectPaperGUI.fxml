@@ -103,43 +103,43 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="classIDlbl" layoutX="285.0" layoutY="165.0" prefWidth="150.0" text="CID963125478">
+            <Label fx:id="classIDlbl" ellipsisString="" layoutX="285.0" layoutY="165.0" prefWidth="150.0">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="teacherIDlbl" layoutX="285.0" layoutY="209.0" prefWidth="150.0" text="TID924563187">
+            <Label fx:id="teacherIDlbl" ellipsisString="" layoutX="285.0" layoutY="209.0" prefWidth="150.0">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="noQusetionlbl" layoutX="285.0" layoutY="255.0" text="10">
+            <Label fx:id="noQusetionlbl" ellipsisString="" layoutX="285.0" layoutY="255.0" prefHeight="27.0" prefWidth="85.0">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="noAnswerlbl" layoutX="285.0" layoutY="300.0" prefWidth="20.0" text="40">
+            <Label fx:id="noAnswerlbl" ellipsisString="" layoutX="285.0" layoutY="300.0" prefHeight="27.0" prefWidth="113.0">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
             <JFXButton fx:id="searchPaperbtn" buttonType="RAISED" layoutX="500.0" layoutY="95.0" onMouseClicked="#SearchPaper" style="-fx-background-color: #e5e5e5;" text="Search" />
-            <Label fx:id="ReleaseDatelbl" layoutX="285.0" layoutY="345.0" text="12/02/2019">
+            <Label fx:id="ReleaseDatelbl" ellipsisString="" layoutX="285.0" layoutY="345.0" prefHeight="27.0" prefWidth="100.0">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="TerminateDatelbl" layoutX="285.0" layoutY="390.0" text="13/02/2019">
+            <Label fx:id="TerminateDatelbl" ellipsisString="" layoutX="285.0" layoutY="390.0" prefHeight="27.0" prefWidth="100.0">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="ReleaseTimelbl" layoutX="413.0" layoutY="345.0" text="12:00">
+            <Label fx:id="ReleaseTimelbl" ellipsisString="" layoutX="413.0" layoutY="345.0" prefHeight="27.0" prefWidth="99.0">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="TerminateTimelbl" layoutX="413.0" layoutY="390.0" text="12:00">
+            <Label fx:id="TerminateTimelbl" ellipsisString="" layoutX="413.0" layoutY="390.0" prefHeight="27.0" prefWidth="100.0">
                <font>
                   <Font size="18.0" />
                </font>

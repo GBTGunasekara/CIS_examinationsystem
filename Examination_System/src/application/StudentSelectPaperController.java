@@ -70,19 +70,30 @@ public class StudentSelectPaperController implements Initializable {
 	
 	public void fxmlLoader(String link) throws Exception
 	{
-		Stage stage = new Stage();
-		FXMLLoader loader = new FXMLLoader(getClass().getResource(link));
 		
-		Parent root = loader.load();
+		if  ( classIDlbl.getText() == null || teacherIDlbl.getText() == null || noQusetionlbl.getText() == null )
+		{
+				JOptionPane.showMessageDialog(null, "Selcet a paper ");
+		}
 		
-		stage.initStyle(StageStyle.UNDECORATED);
-		Scene scene = new Scene(root);
-		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-		stage.setScene(scene);
-		stage.show();
+		else 
+		{
+			
+			Stage stage = new Stage();
+			FXMLLoader loader = new FXMLLoader(getClass().getResource(link));
 		
-		StudentAnswerPaperController taqc = loader.getController();
-		taqc.setStudentPaperDetails(paperIDtxt.getText(), Integer.parseInt(noQusetionlbl.getText()),classIDlbl.getText(), teacherIDlbl.getText()); //pass this values to next GUI
+			Parent root = loader.load();
+		
+			stage.initStyle(StageStyle.UNDECORATED);
+			Scene scene = new Scene(root);
+			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			stage.setScene(scene);
+			stage.show();
+		
+			StudentAnswerPaperController taqc = loader.getController();
+			taqc.setStudentPaperDetails(paperIDtxt.getText(), noQusetionlbl.getText(),classIDlbl.getText(), teacherIDlbl.getText()); //pass this values to next GUI
+		}
+		
 		
 	}
 	@FXML
@@ -90,6 +101,7 @@ public class StudentSelectPaperController implements Initializable {
 	{
 		String link = "/application/StudentAnswerPaperGUI.fxml";
 		fxmlLoader(link);
+		
 		
 	}
 	
