@@ -177,15 +177,48 @@ public class StudentAnswerPaperController implements Initializable{
 	@FXML
 	private void NextQuestion(MouseEvent event) throws Exception
 	{
-		int QuestionNo = Integer.parseInt(QuestionNoCombo.getSelectionModel().getSelectedItem().toString());
+		int QuestionNo = 0 ;
+		QuestionNo = Integer.parseInt(QuestionNoCombo.getSelectionModel().getSelectedItem().toString());
 		//String AnswerNo = AnsNoCombo.getSelectionModel().getSelectedItem().toString();
 		
 		ObservableList<Integer> totQuestionlist = QuestionNoCombo.getItems(); // get the combo box values into a observer list to get total questions 
 		int totQuestion = totQuestionlist.size(); //get item count of combobox which equals total number questions in this paper
 		
-		setQuestion_Answer (paperIDlabel.getText(),QuestionNo,totQuestion);
-		 QuestionNoCombo.getSelectionModel().select(QuestionNoCombo.getSelectionModel().getSelectedIndex()  +1);// increment the Question number by one
+		if (QuestionNo == totQuestion)
+		{
+			QuestionNo = 1;
+			setQuestion_Answer (paperIDlabel.getText(),QuestionNo,totQuestion);
+			QuestionNoCombo.getSelectionModel().select(0);// set combobox value to number one
+		}
+		else
+		{
+			setQuestion_Answer (paperIDlabel.getText(),QuestionNo,totQuestion);
+			QuestionNoCombo.getSelectionModel().select(QuestionNoCombo.getSelectionModel().getSelectedIndex()  +1);// increase the Question number by one
+		}
 	}
+	
+	/*@FXML
+	private void BackQuestion(MouseEvent event) throws Exception
+	{
+		int QuestionNo = 0 ;
+		QuestionNo = Integer.parseInt(QuestionNoCombo.getSelectionModel().getSelectedItem().toString());
+		//String AnswerNo = AnsNoCombo.getSelectionModel().getSelectedItem().toString();
+		
+		ObservableList<Integer> totQuestionlist = QuestionNoCombo.getItems(); // get the combo box values into a observer list to get total questions 
+		int totQuestion = totQuestionlist.size(); //get item count of combobox which equals total number questions in this paper
+		
+		if (QuestionNo == 1)
+		{
+			QuestionNo = totQuestion;
+			setQuestion_Answer (paperIDlabel.getText(),QuestionNo,totQuestion);
+			QuestionNoCombo.getSelectionModel().select(totQuestion - 1 );// set combobox value to maximum question number
+		}
+		else
+		{
+			setQuestion_Answer (paperIDlabel.getText(),QuestionNo,totQuestion);
+			QuestionNoCombo.getSelectionModel().select(QuestionNoCombo.getSelectionModel().getSelectedIndex()- 1);// decrease the Question number by one
+		}
+	}*/
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
