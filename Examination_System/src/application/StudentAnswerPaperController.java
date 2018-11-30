@@ -64,6 +64,8 @@ public class StudentAnswerPaperController implements Initializable{
 	@FXML 
 	private Button Backbtn;
 	
+	
+	
 	@FXML
 	private void handleClose(MouseEvent event)
 	{
@@ -78,23 +80,29 @@ public class StudentAnswerPaperController implements Initializable{
 		stage.setIconified(true);
 	}
 	
-	public void fxmlLoader(String link) throws Exception
+	
+	
+	@FXML
+	private void MovetoResultPaper(MouseEvent event) throws Exception
 	{
+		
+		
 		Stage stage = new Stage();
-		Parent root = FXMLLoader.load(getClass().getResource(link));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/StudentResultPaperGUI.fxml"));
+	
+		Parent root = loader.load();
+	
 		stage.initStyle(StageStyle.UNDECORATED);
 		Scene scene = new Scene(root);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		stage.setScene(scene);
 		stage.show();
-	}
 	
-	@FXML
-	private void MovetoResultPaper(MouseEvent event) throws Exception
-	{
-		String link = "/application/StudentResultPaperGUI.fxml";
-		fxmlLoader(link);
+		ObservableList<Integer> totQuestionlist = QuestionNoCombo.getItems(); // get the combo box values into a observer list to get total questions 
+		int totQuestion = totQuestionlist.size(); //get item count of combobox which equals total number questions in this paper
 		
+		StudentResultPaperController stapf = loader.getController();
+		stapf.paperResults(teacherIDlabel.getText(), classIDlabel.getText(), paperIDlabel.getText(), totQuestion);
 	}
 	
 	public void setStudentPaperDetails (String paperid, String noQuestion, String classID, String teacherID)
@@ -145,41 +153,57 @@ public class StudentAnswerPaperController implements Initializable{
 		
 	}
 	
-	public void setQuestion_Answer (String paperID, int Qno, int numofQs)
+	public void setQuestion_Answer (String paperID, int Qno, int numofQs, String answerNo)
 	{
-		//StudentAnswerPaperFunction sapf = new StudentAnswerPaperFunction();
+		
 		String [][] Questionlist = sapf.loadQuestionsList(paperID, numofQs);
 		
-		String nextQuestion = Questionlist[Qno][1]; 
-		String nextQuestionID = Questionlist[0][Qno];
+		String nextQuestion = Questionlist[Qno][1]; // set next question 
+		String QuestionID = Questionlist[0][Qno-1]; //set the current questionID
 		
-		QuestionTextArea.setText(nextQuestion);
+		QuestionTextArea.setText(nextQuestion); //set question 
 		
 		String[][] AnswerList = sapf.loadAnswerlist(paperID, Qno);
 		
+		//initializing answers
 		String AnswerA = AnswerList[0][1];
 		String AnswerB = AnswerList[1][1];
 		String AnswerC = AnswerList[2][1];
 		String AnswerD = AnswerList[3][1];
 		
+		//set answers to relevant text areas
+		AnswerATextArea.setText(AnswerA);
+		AnswerBTextArea.setText(AnswerB);
+		AnswerCTextArea.setText(AnswerC);
+		AnswerDTextArea.setText(AnswerD);
+		
+		//initializing answer id 
 		String AnswerAID = AnswerList[0][0];
 		String AnswerBID = AnswerList[1][0];
 		String AnswerCID = AnswerList[2][0];
 		String AnswerDID = AnswerList[3][0];
 		
-		 AnswerATextArea.setText(AnswerA);
-		 AnswerBTextArea.setText(AnswerB);
-		 AnswerCTextArea.setText(AnswerC);
-		 AnswerDTextArea.setText(AnswerD);
+		
+		 
+		 String StudentID = "STID012546" ; 
+		 
+		 if (answerNo.equals("A"))
+			 sapf.InsertStudentAnswer(StudentID, paperID,AnswerAID);
+		 else if (answerNo.equals("B"))
+			 sapf.InsertStudentAnswer(StudentID, paperID ,AnswerBID);
+		 else if (answerNo.equals("C"))
+			 sapf.InsertStudentAnswer(StudentID, paperID,AnswerCID);
+		 else if (answerNo.equals("D"))
+			 sapf.InsertStudentAnswer(StudentID, paperID,AnswerDID);
 		
 	}
 	
 	@FXML
 	private void NextQuestion(MouseEvent event) throws Exception
 	{
-		int QuestionNo = 0 ;
+		int QuestionNo;
 		QuestionNo = Integer.parseInt(QuestionNoCombo.getSelectionModel().getSelectedItem().toString());
-		//String AnswerNo = AnsNoCombo.getSelectionModel().getSelectedItem().toString();
+		String AnswerNo = AnsNoCombo.getSelectionModel().getSelectedItem().toString();
 		
 		ObservableList<Integer> totQuestionlist = QuestionNoCombo.getItems(); // get the combo box values into a observer list to get total questions 
 		int totQuestion = totQuestionlist.size(); //get item count of combobox which equals total number questions in this paper
@@ -187,12 +211,12 @@ public class StudentAnswerPaperController implements Initializable{
 		if (QuestionNo == totQuestion)
 		{
 			QuestionNo = 1;
-			setQuestion_Answer (paperIDlabel.getText(),QuestionNo,totQuestion);
+			setQuestion_Answer (paperIDlabel.getText(),QuestionNo,totQuestion,AnswerNo);
 			QuestionNoCombo.getSelectionModel().select(0);// set combobox value to number one
 		}
 		else
 		{
-			setQuestion_Answer (paperIDlabel.getText(),QuestionNo,totQuestion);
+			setQuestion_Answer (paperIDlabel.getText(),QuestionNo,totQuestion,AnswerNo);
 			QuestionNoCombo.getSelectionModel().select(QuestionNoCombo.getSelectionModel().getSelectedIndex()  +1);// increase the Question number by one
 		}
 	}
@@ -219,6 +243,8 @@ public class StudentAnswerPaperController implements Initializable{
 			QuestionNoCombo.getSelectionModel().select(QuestionNoCombo.getSelectionModel().getSelectedIndex()- 1);// decrease the Question number by one
 		}
 	}*/
+	
+	
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

@@ -205,4 +205,63 @@ public class StudentAnswerPaperFunction {
 		return answerlist; //return 1st question's answer list
 		
 	}
+	
+	
+	public void InsertStudentAnswer (String stID, String paID, String anID)
+	{
+		
+
+		PreparedStatement ps;
+		String tRegQuery = "INSERT INTO studentanswer(studentID, paperID, answerID) VALUES (?,?,?)";
+	try
+	{
+		ps = (PreparedStatement) DBconnection.Connect().prepareStatement(tRegQuery);
+		ps.setString(1, stID);
+        ps.setString(2, paID);
+        ps.setString(3, anID);
+       
+        
+        
+        if(ps.executeUpdate() > 0)
+        {
+            System.out.println("Answer added to database");
+        }
+	}
+
+	 catch (SQLException ex) 
+		{
+		 	System.out.println(ex);
+	    	JOptionPane.showMessageDialog(null, "error");
+	 	}
+	}
+	public int resultCalculate (String paperID, String StudentID )
+	{
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		int result = 0;
+		try{
+				String status = "Correct";
+	           String searchPaperDetails = "select count(*) from answer a, studentanswer s where a.answerID = s.answerID and s.studentID = '"+StudentID+"' and s.paperID ='"+paperID+"' and a.ansStatus = '"+status+"'";
+	             
+	             
+	             ps = (PreparedStatement) DBconnection.Connect().prepareStatement(searchPaperDetails);
+	             rs = ps.executeQuery();
+	             if(rs.next())
+	             {
+	            	 result = rs.getInt(1);
+	            	 
+	             }
+	            
+	    }
+	    catch (SQLException e){
+	            JOptionPane.showMessageDialog(null, "unable count correct answers");
+	            System.out.println(e);
+	        }
+		return result;
+		
+	}
+
+	
+
+	
 }

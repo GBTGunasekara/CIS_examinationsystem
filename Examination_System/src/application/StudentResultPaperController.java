@@ -3,6 +3,7 @@ package application;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
 
@@ -13,6 +14,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -27,6 +29,27 @@ public class StudentResultPaperController implements Initializable{
 	private JFXHamburger Hamburger;
 	@FXML
 	private JFXDrawer Drawer;
+	@FXML
+	private Label teacherIDlbl;
+	@FXML
+	private Label classIDlbl;
+	@FXML
+	private Label paperIDlbl;
+	@FXML
+	private Label noQusetionlbl;
+	@FXML
+	private Label noAnswerlbl;
+	@FXML
+	private Label resultlbl;
+	@FXML
+	private JFXDatePicker ReleaseDatedp;
+	@FXML
+	private JFXDatePicker ReleaseTimedp;
+	@FXML
+	private JFXDatePicker TerminateDatedp;
+	@FXML
+	private JFXDatePicker TerminateTimedp;
+	
 	
 	@FXML
 	private void handleClose(MouseEvent event)
@@ -60,6 +83,17 @@ public class StudentResultPaperController implements Initializable{
 		
 	}
 	
+	public void  paperResults(String techerID, String classID, String paperID, int noQuestions )
+	{
+		  teacherIDlbl.setText(techerID);
+		 classIDlbl.setText(classID);
+		 paperIDlbl.setText(paperID);
+		 noQusetionlbl.setText(String.valueOf(noQuestions));
+		String studentID = "STID012546"; 
+		
+		 StudentAnswerPaperFunction sapf = new StudentAnswerPaperFunction();
+		resultlbl.setText(String.valueOf(sapf.resultCalculate(paperID, studentID))); //set the automatically generated password to label
+	}
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
