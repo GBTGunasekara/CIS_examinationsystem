@@ -1,15 +1,19 @@
 package application;
 
 import java.net.URL;
+import java.rmi.RemoteException;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
+import com.jfoenix.controls.JFXTextField;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.Labeled;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -21,6 +25,20 @@ public class TeacherAddClassController implements Initializable{
 	private JFXHamburger Hamburger;
 	@FXML
 	private JFXDrawer Drawer;
+	@FXML
+	public JFXTextField teacherIDbox;
+	@FXML
+	public JFXTextField classIDbox;
+	@FXML
+	public JFXTextField subNamebox;
+	@FXML
+	public JFXTextField gradebox;
+	@FXML
+	public JFXTextField classNamebox;
+	@FXML
+	public JFXTextField locNamebox;
+	@FXML
+	public Button clearbtn;
 	
 	@FXML
 	private void handleClose(MouseEvent event)
@@ -43,4 +61,32 @@ public class TeacherAddClassController implements Initializable{
 		ad1.TeacherDrawer(Hamburger, Drawer);
 	}
 	
+	@FXML
+	private void CreateClass() throws RemoteException 
+	{
+		
+		int teID = Integer.parseInt(teacherIDbox.getText());
+		int classID = Integer.parseInt(classIDbox.getText());
+		int grade = Integer.parseInt(gradebox.getText());
+		String subName = subNamebox.getText();
+		String className = classNamebox.getText();
+		String location = locNamebox.getText();
+
+	    	    
+		TeacherAddClassFunction tac1 = new TeacherAddClassFunction();
+		tac1.createClass(teID,classID,subName, grade,className,location);
+		
+	}
+	
+	@FXML
+	private void clear(MouseEvent event) {
+		
+		teacherIDbox.setText("");
+		teacherIDbox.setText("");
+		gradebox.setText("");
+		subNamebox.setText("");
+		classNamebox.setText("");
+		locNamebox.setText("");
+		
+	}
 }
