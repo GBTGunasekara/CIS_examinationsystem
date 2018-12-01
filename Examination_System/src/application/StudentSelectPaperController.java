@@ -1,6 +1,11 @@
 package application;
 
+import java.awt.HeadlessException;
+import java.net.MalformedURLException;
 import java.net.URL;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
@@ -109,12 +114,16 @@ public class StudentSelectPaperController implements Initializable {
 	}*/
 	
 	@FXML
-	private void SearchPaper(MouseEvent event) 
+	private void SearchPaper(MouseEvent event) throws HeadlessException, RemoteException, MalformedURLException, NotBoundException 
 	{
 		String paperID = paperIDtxt.getText();
 		String paperPassword = paperPasswordtxt.getText(); 
 		
-		StudentSelectPaperFunction sspf = new StudentSelectPaperFunction();
+		StudentSelectPaperInterface  SearchPe = (StudentSelectPaperInterface) 
+				Naming.lookup("rmi://localhost:1099/StudentSelectPaper");
+		
+		//StudentSelectPaperFunction sspf = new StudentSelectPaperFunction();
+		
 		if  (paperID.equals(""))
 		{
 				JOptionPane.showMessageDialog(null, "Insert paperID ");
@@ -126,11 +135,11 @@ public class StudentSelectPaperController implements Initializable {
 		else
 		{
 		try {
-			if (sspf.paperIDcheck(paperID) == true)
+			if (SearchPe.paperIDcheck(paperID) == true)
 			{
-				if (sspf.paperPasswordcheck(paperPassword,paperID) == true)
+				if (SearchPe.paperPasswordcheck(paperPassword,paperID) == true)
 				{
-					String peDetArr[] = sspf.enrollPaper(paperID);
+					String peDetArr[] = SearchPe.enrollPaper(paperID);
 					
 					classIDlbl.setText(peDetArr[0]);
 					teacherIDlbl.setText(peDetArr[1]);

@@ -1,5 +1,7 @@
 package application;
 
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLException;
 import java.sql.Time;
 import java.time.LocalDate;
@@ -10,9 +12,19 @@ import javax.swing.JOptionPane;
 
 import com.mysql.jdbc.PreparedStatement;
 
-public class TeacherSubmitPaperFunction {
+public class TeacherSubmitPaperFunction extends UnicastRemoteObject implements TeacherSubmitPaperFunctionInterface{
 	
-	public void submitPaper (String paID, String paperPassword, LocalDate releaseDate, LocalTime releaseTime, LocalDate TerminateDate, LocalTime TerminateTime)
+	protected TeacherSubmitPaperFunction() throws RemoteException {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public void submitPaper (String paID, String paperPassword, LocalDate releaseDate, LocalTime releaseTime, LocalDate TerminateDate, LocalTime TerminateTime) throws RemoteException 
 	{
 		
 		//java.sql.Timestamp sqlcurrentDateTime = new java.sql.Timestamp(createDateTime.getTime()); //convert util datetime into sqltime date
@@ -58,16 +70,16 @@ public class TeacherSubmitPaperFunction {
 	
 	
 
- catch (SQLException ex) 
-	{
-	 	System.out.println(ex);
+	catch (SQLException ex) 
+		{
+			System.out.println(ex);
     	JOptionPane.showMessageDialog(null, "error");
- 	}
+		}
 	}
 	}
 	// reference - https://youtu.be/PBAX8r9YWW0
 	
-	public String GeneratePassword ()
+	public String GeneratePassword () throws RemoteException 
 	{
 		String password = "";
 		

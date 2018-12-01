@@ -2,6 +2,7 @@ package application;
 
 
 import java.net.URL;
+import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.util.Date;
 import java.util.ResourceBundle;
@@ -111,13 +112,7 @@ public class TeacherAddQuestionController implements Initializable{
 	{
 		String link = "/application/TeacherSubmitPaperGUI.fxml";
 		fxmlLoader(link);
-		
-		
-		
-	
-		
-		
-		
+			
 	}
 
 	public void seTeachertPaperDetails (String paperid, int noQuestion, String classID, String teacherID)
@@ -183,8 +178,10 @@ public class TeacherAddQuestionController implements Initializable{
 			 correctAnswer = AnsNoCombo.getSelectionModel().getSelectedItem().toString();
 			 try
 			 {
-				 TeacherAddQuestionsFunction tap1 = new TeacherAddQuestionsFunction();
-				 tap1.SaveNextQuestion(PaperID,QusetionID, Question,AnswerA,AnswerB,AnswerC,AnswerD,noQuestions,correctAnswer);
+				 TeacherAddQuestionsFunctionInterface  nextQe = (TeacherAddQuestionsFunctionInterface) 
+							Naming.lookup("rmi://localhost:1099/TeacherAddQuestions");
+				 //TeacherAddQuestionsFunction tap1 = new TeacherAddQuestionsFunction();
+				 nextQe.SaveNextQuestion(PaperID,QusetionID, Question,AnswerA,AnswerB,AnswerC,AnswerD,noQuestions,correctAnswer);
 			 }
 			 catch (Exception e)
 			 {

@@ -1,5 +1,7 @@
 package application;
 
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,11 +15,23 @@ import javax.swing.JOptionPane;
 
 import com.mysql.jdbc.PreparedStatement;
 
-public class StudentSelectPaperFunction {
+public class StudentSelectPaperFunction extends UnicastRemoteObject implements StudentSelectPaperInterface{
 	
 	
 	
-	public boolean paperIDcheck (String paperID) throws SQLException
+	protected StudentSelectPaperFunction() throws RemoteException {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+
+	public boolean paperIDcheck (String paperID) throws RemoteException, SQLException
     {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -41,7 +55,7 @@ public class StudentSelectPaperFunction {
         
     }
 	
-	public boolean paperPasswordcheck (String paperPassword, String paperID) throws SQLException
+	public boolean paperPasswordcheck (String paperPassword, String paperID) throws RemoteException, SQLException
     {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -65,7 +79,7 @@ public class StudentSelectPaperFunction {
     }
 	
 	
-	public String[] enrollPaper (String paperID)
+	public String[] enrollPaper (String paperID) throws RemoteException
 	{
 		PreparedStatement ps = null;
 		ResultSet rs = null;

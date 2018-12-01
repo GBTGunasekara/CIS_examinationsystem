@@ -1,6 +1,10 @@
 package application;
 
+import java.net.MalformedURLException;
 import java.net.URL;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXDatePicker;
@@ -83,7 +87,7 @@ public class StudentResultPaperController implements Initializable{
 		
 	}
 	
-	public void  paperResults(String techerID, String classID, String paperID, int noQuestions )
+	public void  paperResults(String techerID, String classID, String paperID, int noQuestions ) throws MalformedURLException, RemoteException, NotBoundException
 	{
 		  teacherIDlbl.setText(techerID);
 		 classIDlbl.setText(classID);
@@ -91,8 +95,11 @@ public class StudentResultPaperController implements Initializable{
 		 noQusetionlbl.setText(String.valueOf(noQuestions));
 		String studentID = "STID012546"; 
 		
-		 StudentAnswerPaperFunction sapf = new StudentAnswerPaperFunction();
-		resultlbl.setText(String.valueOf(sapf.resultCalculate(paperID, studentID))); //set the automatically generated password to label
+		StudentResultPaperInterface  showResult = (StudentResultPaperInterface) 
+				Naming.lookup("rmi://localhost:1099/StudentResultPaper");
+		
+		 //StudentAnswerPaperFunction sapf = new StudentAnswerPaperFunction();
+		resultlbl.setText(String.valueOf(showResult.resultCalculate(paperID, studentID))); //set the the rsult to label
 	}
 	
 	@Override

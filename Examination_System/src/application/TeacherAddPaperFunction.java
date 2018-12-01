@@ -1,6 +1,8 @@
 package application;
 
 import java.io.InputStream;
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
@@ -12,9 +14,19 @@ import javax.swing.JOptionPane;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
 
-public class TeacherAddPaperFunction {
+public class TeacherAddPaperFunction extends UnicastRemoteObject implements TeacherAddPaperInterface {
 
-	public void createPaper (String teID, String clID, String paID, Date createDateTime, int noQuestions, int noAnswers)
+	protected TeacherAddPaperFunction() throws RemoteException {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public void createPaper (String teID, String clID, String paID, Date createDateTime, int noQuestions, int noAnswers) throws RemoteException
 	{
 		
 		java.sql.Timestamp sqlcurrentDateTime = new java.sql.Timestamp(createDateTime.getTime()); //convert util datetime into sqltime date
@@ -48,7 +60,7 @@ public class TeacherAddPaperFunction {
  	}
 	}
 	
-	public String paperIDgenerate ()
+	public String paperIDgenerate () throws RemoteException
     {
         String paperID = null;
        // Connection con = null;

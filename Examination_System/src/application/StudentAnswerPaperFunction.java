@@ -1,5 +1,7 @@
 package application;
 
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,9 +16,18 @@ import javax.swing.JOptionPane;
 
 import com.mysql.jdbc.PreparedStatement;
 
-public class StudentAnswerPaperFunction {
+public class StudentAnswerPaperFunction extends UnicastRemoteObject implements StudentAnswerPaperFunctionInterface{
 	
-	public ArrayList<String> SelectShuffleQuestionID (String paperID)
+	protected StudentAnswerPaperFunction() throws RemoteException {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	public ArrayList<String> SelectShuffleQuestionID (String paperID) throws RemoteException
 	{
 		
 		PreparedStatement ps = null;
@@ -47,7 +58,7 @@ public class StudentAnswerPaperFunction {
 	    return questionIDlist; 
 	}
 	
-	public String selectFirstQuestion (String paperID)
+	public String selectFirstQuestion (String paperID) throws RemoteException
 	{
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -75,7 +86,7 @@ public class StudentAnswerPaperFunction {
 		
 	}
 	
-	public ArrayList<String> SelectShuffleAnswerID (String paperID, int Qno) //first question answer shuffle
+	public ArrayList<String> SelectShuffleAnswerID (String paperID, int Qno) throws RemoteException//first question answer shuffle
 	{
 		
 		PreparedStatement ps = null;
@@ -106,7 +117,7 @@ public class StudentAnswerPaperFunction {
 	    return answerIDlist; // return shuffled answerID list
 	}
 	
-	public String [] selectFirstAnswerset (String paperID)
+	public String [] selectFirstAnswerset (String paperID) throws RemoteException
 	{
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -138,7 +149,7 @@ public class StudentAnswerPaperFunction {
 		
 	}
 	
-	public  String [][] loadQuestionsList (String paperID, int noOfQs)
+	public  String [][] loadQuestionsList (String paperID, int noOfQs) throws RemoteException
 	{
 		
 		PreparedStatement ps = null;
@@ -173,7 +184,7 @@ public class StudentAnswerPaperFunction {
 		
 	}
 	
-	public String [][] loadAnswerlist (String paperID, int Qno)
+	public String [][] loadAnswerlist (String paperID, int Qno) throws RemoteException
 	{
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -207,7 +218,7 @@ public class StudentAnswerPaperFunction {
 	}
 	
 	
-	public void InsertStudentAnswer (String stID, String paID, String anID)
+	public void InsertStudentAnswer (String stID, String paID, String anID) throws RemoteException
 	{
 		
 
@@ -234,32 +245,7 @@ public class StudentAnswerPaperFunction {
 	    	JOptionPane.showMessageDialog(null, "error");
 	 	}
 	}
-	public int resultCalculate (String paperID, String StudentID )
-	{
-		PreparedStatement ps = null;
-		ResultSet rs = null;
-		int result = 0;
-		try{
-				String status = "Correct";
-	           String searchPaperDetails = "select count(*) from answer a, studentanswer s where a.answerID = s.answerID and s.studentID = '"+StudentID+"' and s.paperID ='"+paperID+"' and a.ansStatus = '"+status+"'";
-	             
-	             
-	             ps = (PreparedStatement) DBconnection.Connect().prepareStatement(searchPaperDetails);
-	             rs = ps.executeQuery();
-	             if(rs.next())
-	             {
-	            	 result = rs.getInt(1);
-	            	 
-	             }
-	            
-	    }
-	    catch (SQLException e){
-	            JOptionPane.showMessageDialog(null, "unable count correct answers");
-	            System.out.println(e);
-	        }
-		return result;
-		
-	}
+	
 
 	
 

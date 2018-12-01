@@ -1,5 +1,7 @@
 package application;
 
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLException;
 import java.util.Date;
 
@@ -7,9 +9,20 @@ import javax.swing.JOptionPane;
 
 import com.mysql.jdbc.PreparedStatement;
 
-public class TeacherAddQuestionsFunction {
+public class TeacherAddQuestionsFunction extends UnicastRemoteObject implements TeacherAddQuestionsFunctionInterface{
 	
 	
+	protected TeacherAddQuestionsFunction() throws RemoteException {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	String Answer =null;
 	String AnsNo = null;
 	String AnsStatus = null;
@@ -17,7 +30,7 @@ public class TeacherAddQuestionsFunction {
 	
 	
 	
-	public void SaveNextQuestion (String paID, String qeID , String Question, String AnswerA, String AnswerB, String AnswerC, String AnswerD, int QeNo, String correctAns)
+	public void SaveNextQuestion (String paID, String qeID , String Question, String AnswerA, String AnswerB, String AnswerC, String AnswerD, int QeNo, String correctAns) throws RemoteException
 	{
 		if(Question.equals("")) 
 		{

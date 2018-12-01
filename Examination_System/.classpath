@@ -10,6 +10,6 @@
 	<classpathentry kind="lib" path="C:/Users/Jar files/jfoenix.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Jar files/jfoenix-8.0.7.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Jar files/jfoenix-9.0.6.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Thareendra/git/CIS_examinationsystem/Examination_System/jar files/mysql-connector-java-5.1.40-bin.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Jar files/mysql-connector-java-5.1.40-bin.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

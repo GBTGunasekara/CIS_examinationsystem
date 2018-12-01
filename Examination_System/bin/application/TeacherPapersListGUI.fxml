@@ -15,6 +15,7 @@
 
 <AnchorPane prefHeight="580.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.TeacherPapersListController">
    <children>
+      <JFXDrawer fx:id="Drawer" defaultDrawerSize="200.0" layoutY="38.0" prefHeight="545.0" prefWidth="200.0" />
       <HBox prefHeight="35.0" prefWidth="960.0" style="-fx-background-color: #494949;">
          <children>
             <JFXHamburger fx:id="Hamburger" prefHeight="40.0" prefWidth="50.0" />
@@ -68,16 +69,14 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </JFXButton>
-      <TableView layoutX="21.0" layoutY="108.0" prefHeight="398.0" prefWidth="918.0">
+      <TableView fx:id="paperTable" layoutX="21.0" layoutY="108.0" prefHeight="398.0" prefWidth="918.0">
         <columns>
-          <TableColumn prefWidth="93.60000228881836" text="Paper ID" />
-          <TableColumn prefWidth="119.20002746582031" text="Paper Password" />
-            <TableColumn prefWidth="92.0" text="Class ID" />
-            <TableColumn prefWidth="112.0" text="No. Questions" />
-            <TableColumn prefWidth="100.00009155273438" text="No. Answers" />
-            <TableColumn prefWidth="141.60003662109375" text="Release Date &amp; Time" />
-            <TableColumn prefWidth="155.99993896484375" text="Terminate Date &amp; Time" />
-            <TableColumn prefWidth="100.00009155273438" text="No. Students" />
+          <TableColumn fx:id="PaperIDcol" prefWidth="93.60000228881836" text="Paper ID" />
+          <TableColumn fx:id="PaperPasswordcol" prefWidth="137.0" text="Paper Password" />
+            <TableColumn fx:id="ClassIDcol" prefWidth="139.0" text="Class ID" />
+            <TableColumn fx:id="NoQecol" prefWidth="177.0" text="No. Questions" />
+            <TableColumn fx:id="NoAnscol" prefWidth="186.0" text="No. Answers" />
+            <TableColumn fx:id="createdate" prefWidth="184.0" text="Created Date" />
         </columns>
       </TableView>
       <Label layoutX="74.0" layoutY="64.0" text="Search Created Paper">
@@ -95,6 +94,5 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXDrawer fx:id="Drawer" defaultDrawerSize="200.0" layoutY="38.0" prefHeight="545.0" prefWidth="200.0" />
    </children>
 </AnchorPane>

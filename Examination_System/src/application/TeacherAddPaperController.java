@@ -1,7 +1,10 @@
 package application;
 
 import java.io.FileNotFoundException;
+import java.net.MalformedURLException;
 import java.net.URL;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.Date;
 import java.sql.Timestamp;
@@ -92,7 +95,7 @@ public class TeacherAddPaperController implements Initializable{
 	}
 	
 	@FXML
-	private void CreatePaper() throws RemoteException 
+	private void CreatePaper() throws RemoteException, MalformedURLException, NotBoundException 
 	{
 		
 		String techerID = teacherIDtxt.getText();
@@ -102,10 +105,11 @@ public class TeacherAddPaperController implements Initializable{
 		int noQuestions = Integer.parseInt(noQusetiontxt.getText());
 		int noAnswers = Integer.parseInt(noAnswertxt.getText());
 
-	    Date currentdatetime = new Date();
-	    	    
-		TeacherAddPaperFunction tap1 = new TeacherAddPaperFunction();
-		tap1.createPaper(techerID,classID,paperID, currentdatetime,noQuestions,noAnswers);
+	    Date currentdatetime = new Date(); //get current date and time
+	    
+	    TeacherAddPaperInterface  PaperIDGen = (TeacherAddPaperInterface) 
+				Naming.lookup("rmi://localhost:1099/TeacherAddPaper");
+		PaperIDGen.createPaper(techerID,classID,paperID, currentdatetime,noQuestions,noAnswers);
 		
 	}
 	
@@ -119,9 +123,16 @@ public class TeacherAddPaperController implements Initializable{
 		ad1.TeacherDrawer(Hamburger, Drawer);
 		Drawer.toBack();
 		
-		TeacherAddPaperFunction adpf = new TeacherAddPaperFunction(); //paperID generate and show it on text field when load this GUI
-		paperIDtxt.setText(adpf.paperIDgenerate ());
 		
+		try {
+			TeacherAddPaperInterface  PaperIDGen = (TeacherAddPaperInterface) 
+					Naming.lookup("rmi://localhost:1099/TeacherAddPaper");
+			paperIDtxt.setText(PaperIDGen.paperIDgenerate ());
+		} catch (MalformedURLException | RemoteException | NotBoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
 		
 	}
 	}

@@ -1,6 +1,9 @@
 package application;
 
+import java.net.MalformedURLException;
 import java.net.URL;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -67,7 +70,7 @@ public class TeacherSubmitPaperController implements Initializable{
 		stage.setIconified(true);
 	}
 	
-	public void  paperDetails(String techerID, String classID, String paperID, String noQuestions, String noAnswers )
+	public void  paperDetails(String techerID, String classID, String paperID, String noQuestions, String noAnswers ) throws MalformedURLException, RemoteException, NotBoundException
 	{
 		  teacherIDlbl.setText(techerID);
 		 classIDlbl.setText(classID);
@@ -75,13 +78,15 @@ public class TeacherSubmitPaperController implements Initializable{
 		 noQusetionlbl.setText(noQuestions);
 		noAnswerlbl.setText(noAnswers);
 		
-		TeacherSubmitPaperFunction tspf = new TeacherSubmitPaperFunction();
-		paperPasswordlbl.setText(tspf.GeneratePassword()); //set the automatically generated password to label
+		TeacherSubmitPaperFunctionInterface  passwordGen = (TeacherSubmitPaperFunctionInterface) 
+				Naming.lookup("rmi://localhost:1099/TeacherSubmitPaper");
+		
+		paperPasswordlbl.setText(passwordGen.GeneratePassword()); //set the automatically generated password to label
 	}
 	
 	
 	@FXML
-	private void SubmitExamPaper(MouseEvent event) throws RemoteException 
+	private void SubmitExamPaper(MouseEvent event) throws RemoteException, MalformedURLException, NotBoundException 
 	{
 		
 		String paperID =  paperIDlbl.getText();
@@ -91,8 +96,11 @@ public class TeacherSubmitPaperController implements Initializable{
 		LocalDate TerminateDate = TerminateDatedp.getValue();
 		LocalTime TerminateTime = TerminateTimedp.getTime();
 		
-		TeacherSubmitPaperFunction tspf = new TeacherSubmitPaperFunction();  
-		tspf.submitPaper(paperID, paperPassword,ReleaseDate,ReleaseTime,TerminateDate,TerminateTime); //called submitPaper method here and pass these values
+		TeacherSubmitPaperFunctionInterface  submit = (TeacherSubmitPaperFunctionInterface) 
+				Naming.lookup("rmi://localhost:1099/TeacherSubmitPaper");
+		
+		//TeacherSubmitPaperFunction tspf = new TeacherSubmitPaperFunction();  
+		submit.submitPaper(paperID, paperPassword,ReleaseDate,ReleaseTime,TerminateDate,TerminateTime); //called submitPaper method here and pass these values
 		
 	}
 	

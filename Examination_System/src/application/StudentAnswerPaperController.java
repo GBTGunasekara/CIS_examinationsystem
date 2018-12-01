@@ -1,6 +1,10 @@
 package application;
 
+import java.net.MalformedURLException;
 import java.net.URL;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -105,7 +109,7 @@ public class StudentAnswerPaperController implements Initializable{
 		stapf.paperResults(teacherIDlabel.getText(), classIDlabel.getText(), paperIDlabel.getText(), totQuestion);
 	}
 	
-	public void setStudentPaperDetails (String paperid, String noQuestion, String classID, String teacherID)
+	public void setStudentPaperDetails (String paperid, String noQuestion, String classID, String teacherID) throws RemoteException, MalformedURLException, NotBoundException
 	{
 		paperIDlabel.setText(paperid); //set created paperid on teacherAddQuestionGUI 
 		classIDlabel.setText(classID);
@@ -132,17 +136,23 @@ public class StudentAnswerPaperController implements Initializable{
 		setFirstQuestionAnswer(paperid); //set first question of the paper when page load
 
 	}
+	public Object interfaceClass() throws MalformedURLException, RemoteException, NotBoundException
+	{
 	
-	StudentAnswerPaperFunction sapf = new StudentAnswerPaperFunction();
+	StudentAnswerPaperFunctionInterface  SearchPe = (StudentAnswerPaperFunctionInterface) 
+			Naming.lookup("rmi://localhost:1099/StudentAnswerPaper");
+	//StudentAnswerPaperFunction sapf = new StudentAnswerPaperFunction();
+	return SearchPe;
+	}
 	
-	public void setFirstQuestionAnswer (String paperID)
+	public void setFirstQuestionAnswer (String paperID) throws RemoteException, MalformedURLException, NotBoundException
 	{
 		
-		String fisrtQuestion = sapf.selectFirstQuestion(paperID);
+		String fisrtQuestion = ((StudentAnswerPaperFunctionInterface) interfaceClass()).selectFirstQuestion(paperID);
 		
 		QuestionTextArea.setText(fisrtQuestion);
 		
-		String[] AnswerList = sapf.selectFirstAnswerset(paperID);
+		String[] AnswerList = ((StudentAnswerPaperFunctionInterface) interfaceClass()).selectFirstAnswerset(paperID);
 
 		 //AnswerList = sapf.selectFirstAnswerset(paperID);
 		 
@@ -153,17 +163,17 @@ public class StudentAnswerPaperController implements Initializable{
 		
 	}
 	
-	public void setQuestion_Answer (String paperID, int Qno, int numofQs, String answerNo)
+	public void setQuestion_Answer (String paperID, int Qno, int numofQs, String answerNo) throws RemoteException, MalformedURLException, NotBoundException
 	{
 		
-		String [][] Questionlist = sapf.loadQuestionsList(paperID, numofQs);
+		String [][] Questionlist = ((StudentAnswerPaperFunctionInterface) interfaceClass()).loadQuestionsList(paperID, numofQs);
 		
 		String nextQuestion = Questionlist[Qno][1]; // set next question 
 		String QuestionID = Questionlist[0][Qno-1]; //set the current questionID
 		
 		QuestionTextArea.setText(nextQuestion); //set question 
 		
-		String[][] AnswerList = sapf.loadAnswerlist(paperID, Qno);
+		String[][] AnswerList = ((StudentAnswerPaperFunctionInterface) interfaceClass()).loadAnswerlist(paperID, Qno);
 		
 		//initializing answers
 		String AnswerA = AnswerList[0][1];
@@ -188,13 +198,13 @@ public class StudentAnswerPaperController implements Initializable{
 		 String StudentID = "STID012546" ; 
 		 
 		 if (answerNo.equals("A"))
-			 sapf.InsertStudentAnswer(StudentID, paperID,AnswerAID);
+			 ((StudentAnswerPaperFunctionInterface) interfaceClass()).InsertStudentAnswer(StudentID, paperID,AnswerAID);
 		 else if (answerNo.equals("B"))
-			 sapf.InsertStudentAnswer(StudentID, paperID ,AnswerBID);
+			 ((StudentAnswerPaperFunctionInterface) interfaceClass()).InsertStudentAnswer(StudentID, paperID ,AnswerBID);
 		 else if (answerNo.equals("C"))
-			 sapf.InsertStudentAnswer(StudentID, paperID,AnswerCID);
+			 ((StudentAnswerPaperFunctionInterface) interfaceClass()).InsertStudentAnswer(StudentID, paperID,AnswerCID);
 		 else if (answerNo.equals("D"))
-			 sapf.InsertStudentAnswer(StudentID, paperID,AnswerDID);
+			 ((StudentAnswerPaperFunctionInterface) interfaceClass()).InsertStudentAnswer(StudentID, paperID,AnswerDID);
 		
 	}
 	

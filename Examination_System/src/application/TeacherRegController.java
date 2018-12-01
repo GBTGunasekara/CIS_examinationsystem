@@ -109,7 +109,7 @@ public class TeacherRegController implements Initializable {
 			try {
 				
 				TeacherRegFunctionInterface  TeacherReg = (TeacherRegFunctionInterface) 
-				Naming.lookup("rmi://localhost:1099/Hello");
+				Naming.lookup("rmi://localhost:1099/TeacherReg");
 				
 				//create thread
 				Service<Void>src=new Service<Void>() {

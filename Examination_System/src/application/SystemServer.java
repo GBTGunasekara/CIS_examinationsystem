@@ -11,11 +11,18 @@ public class SystemServer {
 		// TODO Auto-generated method stub
 		try {
 			LocateRegistry.createRegistry(1099);
-			Naming.rebind("rmi://localhost:1099/Hello", new TeacherRegFunction());
+			Naming.rebind("rmi://localhost:1099/TeacherReg", new TeacherRegFunction());
 			Naming.rebind("rmi://localhost:1099/Student", new StudentRegFunction());
-			System.out.println("Hello Server Strarted");
+			Naming.rebind("rmi://localhost:1099/Login", new LoginFunctions());
+			Naming.rebind("rmi://localhost:1099/TeacherAddPaper", new TeacherAddPaperFunction());
+			Naming.rebind("rmi://localhost:1099/TeacherAddQuestions", new TeacherAddQuestionsFunction());
+			Naming.rebind("rmi://localhost:1099/TeacherSubmitPaper", new TeacherSubmitPaperFunction());
+			Naming.rebind("rmi://localhost:1099/StudentSelectPaper", new StudentSelectPaperFunction());
+			Naming.rebind("rmi://localhost:1099/StudentAnswerPaper", new StudentAnswerPaperFunction());
+			Naming.rebind("rmi://localhost:1099/StudentResultPaper", new StudentResultPaperFunction());
+			System.out.println("MCQ app Server Strarted");
 		} catch (Exception e){
-			System.out.println("Hello Server Failed");
+			System.out.println("MCQ app Server Failed");
 		}
 	}
 

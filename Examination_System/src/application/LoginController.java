@@ -7,6 +7,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.rmi.Naming;
+import java.sql.SQLException;
+
 import javax.swing.JOptionPane;
 
 import javafx.event.ActionEvent;
@@ -24,7 +27,9 @@ public class LoginController  {
 	private Button Closebttn, Minimizebttn, TeacherRegbtn, loginbtn;
 	
 	@FXML
-	private TextField email; 
+	private TextField userIDtxt; 
+	@FXML
+	private TextField userPasswordtxt; 
 	
 	
 	@FXML
@@ -71,28 +76,98 @@ public class LoginController  {
 	@FXML
 	private void MovetoMenue(MouseEvent event) throws Exception
 	{
-		String userid = email.getText(); //get the entered value and check the user catagory through it.
 		
-		if (userid.equals("SID") || userid.equals("sid"))
+		String userID = userIDtxt.getText();
+		String userPassword = userPasswordtxt.getText(); 
+		
+		LoginFunctionsInterface  loginobj = (LoginFunctionsInterface) 
+				Naming.lookup("rmi://localhost:1099/Login");
+		
+		
+		//LoginFunctions lf = new LoginFunctions();
+		if  (userID.equals(""))
 		{
-			String linktoStudent = "/application/StudentHomeGUI.fxml";
-			fxmlLoader(linktoStudent);
+				JOptionPane.showMessageDialog(null, "Insert userID ");
 		}
-		else if (userid.equals("TID") || userid.equals("tid"))
+		else if  (userPassword.equals(""))
 		{
-			String linktoTeacher = "/application/TeacherHomeGUI.fxml";
-			fxmlLoader(linktoTeacher);
-		}
-		else if (userid.equals("AID") || userid.equals("aid"))
-		{
-			String linktoAdmin = "/application/AdminHomeGUI.fxml";
-			fxmlLoader(linktoAdmin);
+				JOptionPane.showMessageDialog(null, "Insert user Password");
 		}
 		else
 		{
-			JOptionPane.showMessageDialog(null, "Invalid login");
+			try {
+				if (loginobj.CheckUSercategory(userID).equals("student")) //load student menu
+				{
+					if (loginobj.userIDcheck(userID) == true)
+						{
+							if (loginobj.userPasswordcheck(userPassword,userID) == true)
+							{
+								String linktoStudent = "/application/StudentHomeGUI.fxml";
+								fxmlLoader(linktoStudent);
+							}
+							else
+							{
+								JOptionPane.showMessageDialog(null, "Invalid user password");
+							}
+						}
+						else
+						{
+							JOptionPane.showMessageDialog(null, "Invalid userID");
+						}
+				}
+				
+				else if (loginobj.CheckUSercategory(userID).equals("teacher")) //load student menu
+				{
+					if (loginobj.userIDcheck(userID) == true)
+						{
+							if (loginobj.userPasswordcheck(userPassword,userID) == true)
+							{
+								String linktoStudent = "/application/TeacherHomeGUI.fxml";
+								fxmlLoader(linktoStudent);
+							}
+							else
+							{
+								JOptionPane.showMessageDialog(null, "Invalid user password");
+							}
+						}
+						else
+						{
+							JOptionPane.showMessageDialog(null, "Invalid userID");
+						}
+				}
+				
+				else if (loginobj.CheckUSercategory(userID).equals("admin")) //load student menu
+				{
+					if (loginobj.userIDcheck(userID) == true)
+						{
+							if (loginobj.userPasswordcheck(userPassword,userID) == true)
+							{
+								String linktoStudent = "/application/AdminHomeGUI.fxml";
+								fxmlLoader(linktoStudent);
+							}
+							else
+							{
+								JOptionPane.showMessageDialog(null, "Invalid user password");
+							}
+						}
+						else
+						{
+							JOptionPane.showMessageDialog(null, "Invalid userID");
+						}
+				}
+					
+				else
+				{
+					JOptionPane.showMessageDialog(null, "Invalid userID Format");
+				}
+					
+			
+			
+		} catch (SQLException e) 
+		{
+			System.out.println(e);
 		}
-	
+		}
 		
 	}
 	
