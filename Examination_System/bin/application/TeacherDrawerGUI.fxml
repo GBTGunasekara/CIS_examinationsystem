@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="545.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.TeacherDrawerController">
+   <children>
+      <ImageView fitHeight="160.0" fitWidth="200.0" opacity="0.47" pickOnBounds="true">
+         <image>
+            <Image url="@../image/sharon-mccutcheon-532782-unsplash.jpg" />
+         </image>
+      </ImageView>
+      <JFXButton fx:id="Home" buttonType="RAISED" graphicTextGap="25.0" onMouseClicked="#MovetoTeacherHome" prefHeight="55.0" prefWidth="200.0" style="-fx-background-color: #7C7A7A;" text="Home" textFill="#e5e5e5">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/icons8_Home_96px.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" graphicTextGap="2.0" onMouseClicked="#MovetoAddPaper" prefHeight="55.0" prefWidth="200.0" style="-fx-background-color: #7C7A7A;" text="Questions" textFill="#e5e5e5">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/icons8_Paper_96px.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" graphicTextGap="20.0" onMouseClicked="#MovetoViewPaper" prefHeight="55.0" prefWidth="200.0" style="-fx-background-color: #7C7A7A;" text="Paper" textFill="#e5e5e5">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="33.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/icons8_View_100px.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" graphicTextGap="15.0" onMouseClicked="#MovetoViewResults" prefHeight="55.0" prefWidth="200.0" style="-fx-background-color: #7C7A7A;" text="Results" textFill="#e5e5e5">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="32.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/icons8_Test_Results_100px.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" graphicTextGap="20.0" onMouseClicked="#MovetoAddClass" prefHeight="55.0" prefWidth="200.0" style="-fx-background-color: #7C7A7A;" text="Create" textFill="#e5e5e5">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/icons8_Class_100px.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" graphicTextGap="30.0" onMouseClicked="#MovetoViewClass" prefHeight="55.0" prefWidth="200.0" style="-fx-background-color: #7C7A7A;" text="Class" textFill="#e5e5e5">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/icons8_Classroom_100px.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" graphicTextGap="20.0" onMouseClicked="#MovetoTeacherProfile" prefHeight="55.0" prefWidth="200.0" style="-fx-background-color: #7C7A7A;" text="Profile" textFill="#e5e5e5">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/icons8_Student_Male_96px.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+   </children>
+</VBox>
