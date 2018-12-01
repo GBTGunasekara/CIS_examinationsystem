@@ -1,24 +1,24 @@
 package application;
 
 import java.net.URL;
-<<<<<<< HEAD
+
 import java.rmi.RemoteException;
 import java.util.Arrays;
-=======
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
->>>>>>> branch 'master' of https://github.com/GBTGunasekara/CIS_examinationsystem.git
+
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
 import com.mysql.jdbc.Connection;
 
-<<<<<<< HEAD
+
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
-=======
->>>>>>> branch 'master' of https://github.com/GBTGunasekara/CIS_examinationsystem.git
+
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -29,23 +29,23 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
-<<<<<<< HEAD
+
 import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-=======
+
 import javafx.scene.control.TableView;
->>>>>>> branch 'master' of https://github.com/GBTGunasekara/CIS_examinationsystem.git
+
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-<<<<<<< HEAD
+
 import javafx.util.Callback;
-=======
+
 import tables.PaperListTable;
 import tables.ViewClassTable;
->>>>>>> branch 'master' of https://github.com/GBTGunasekara/CIS_examinationsystem.git
+
 
 public class TeacherPapersListController implements Initializable{
 
@@ -56,7 +56,7 @@ public class TeacherPapersListController implements Initializable{
 	private JFXHamburger Hamburger;
 	@FXML
 	private JFXDrawer Drawer;
-<<<<<<< HEAD
+
 	@FXML
 	private TableView  paperTable;
 	@FXML
@@ -79,7 +79,7 @@ public class TeacherPapersListController implements Initializable{
 	private TableColumn  createdatecol;
 	
 	
-=======
+
 	@FXML 
 	private TableView<PaperListTable> viewPaperListTbl;
 	@FXML 
@@ -123,7 +123,7 @@ public class TeacherPapersListController implements Initializable{
 			e.printStackTrace();
 		}
 	}
->>>>>>> branch 'master' of https://github.com/GBTGunasekara/CIS_examinationsystem.git
+
 	
 	@FXML
 	private void handleClose(MouseEvent event)
@@ -160,16 +160,16 @@ public class TeacherPapersListController implements Initializable{
 	
 	public void loadPaperListTable () throws RemoteException
 	{
-		String teacherID = "sdsd";
+		//String teacherID = "sdsd";
 		
-		TeacherPapersListFunction tplf = new TeacherPapersListFunction();
+		/*TeacherPapersListFunction tplf = new TeacherPapersListFunction();
 		String[][] paperList = tplf.selcetPaperList(teacherID);
 		int papercount = tplf.paperCount(teacherID);
 		
 		
         ObservableList<String[]> data = FXCollections.observableArrayList();
         data.addAll(Arrays.asList(paperList));
-        //data.remove(0);//remove titles from data
+        //data.remove(0);//remove titles from data*/
         
        /* TableView<String[]> paperTable = new TableView<>();
        for (int i = 0; i < paperList[0].length; i++) {
@@ -193,7 +193,7 @@ public class TeacherPapersListController implements Initializable{
         createdatecol.setCellValueFactory(new PropertyValueFactory<>("noStudents"));*/
 		
 		
-        paperTable.setItems(data);
+        //paperTable.setItems(data);
         
         
 		
