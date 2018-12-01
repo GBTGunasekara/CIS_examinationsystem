@@ -1,15 +1,24 @@
 package application;
 
 import java.net.URL;
+<<<<<<< HEAD
 import java.rmi.RemoteException;
 import java.util.Arrays;
+=======
+import java.sql.ResultSet;
+import java.sql.SQLException;
+>>>>>>> branch 'master' of https://github.com/GBTGunasekara/CIS_examinationsystem.git
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
+import com.mysql.jdbc.Connection;
 
+<<<<<<< HEAD
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
+=======
+>>>>>>> branch 'master' of https://github.com/GBTGunasekara/CIS_examinationsystem.git
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -20,14 +29,23 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
+<<<<<<< HEAD
 import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+=======
+import javafx.scene.control.TableView;
+>>>>>>> branch 'master' of https://github.com/GBTGunasekara/CIS_examinationsystem.git
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+<<<<<<< HEAD
 import javafx.util.Callback;
+=======
+import tables.PaperListTable;
+import tables.ViewClassTable;
+>>>>>>> branch 'master' of https://github.com/GBTGunasekara/CIS_examinationsystem.git
 
 public class TeacherPapersListController implements Initializable{
 
@@ -38,6 +56,7 @@ public class TeacherPapersListController implements Initializable{
 	private JFXHamburger Hamburger;
 	@FXML
 	private JFXDrawer Drawer;
+<<<<<<< HEAD
 	@FXML
 	private TableView  paperTable;
 	@FXML
@@ -60,6 +79,51 @@ public class TeacherPapersListController implements Initializable{
 	private TableColumn  createdatecol;
 	
 	
+=======
+	@FXML 
+	private TableView<PaperListTable> viewPaperListTbl;
+	@FXML 
+	private TableColumn<PaperListTable, String> col_Pid;
+	@FXML 
+	private TableColumn<PaperListTable, String> col_Ppwd;
+	@FXML 
+	private TableColumn<PaperListTable, String> col_clID;
+	@FXML 
+	private TableColumn<PaperListTable, String> col_numQ;
+	@FXML 
+	private TableColumn<PaperListTable, String> col_numA;
+	@FXML 
+	private TableColumn<PaperListTable, String> col_rDate;
+	@FXML 
+	private TableColumn<PaperListTable, String> col_tDate;
+	@FXML 
+	private TableColumn<PaperListTable, String> col_numStd;
+	
+	
+	ObservableList<PaperListTable> oblist = FXCollections.observableArrayList();
+	
+	ResultSet rs = null;
+	
+	public void tableload() {
+		try {
+		Connection con = DBconnection.Connect();
+		
+			rs= con.createStatement().executeQuery("Select paperID, pePassword, classID, numQuestion, numAnswers, releseDate,"
+					+ " terminateDate, createDateTime from paper");
+			
+			while(rs.next()) {
+				
+				
+				oblist.add(new PaperListTable(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), 
+						rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8)));
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+>>>>>>> branch 'master' of https://github.com/GBTGunasekara/CIS_examinationsystem.git
 	
 	@FXML
 	private void handleClose(MouseEvent event)

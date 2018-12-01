@@ -6,6 +6,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -16,6 +17,9 @@ public class StudentHomeController {
 	private Button Closebttn3;
 	@FXML
 	private Button Minimizebttn3, AnswerPaperbtn, ViewPaperbtn, ViewResultsbtn, JoinClassbtn, ViewClassbtn, StudentProbtn;
+	
+	@FXML
+	private Label UIDlbl;
 	
 	@FXML
 	private void handleClose(MouseEvent event)
@@ -84,8 +88,21 @@ public class StudentHomeController {
 	@FXML
 	private void MovetoStudentProfile(MouseEvent event) throws Exception
 	{
-		String link = "/application/StudentProfileGUI.fxml";
-		fxmlLoader(link);
+		Stage stage = new Stage();
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/StudentProfileGUI.fxml"));
+	
+		Parent root = loader.load();
+	
+		stage.initStyle(StageStyle.UNDECORATED);
+		Scene scene = new Scene(root);
+		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		stage.setScene(scene);
+		stage.show();
+	
+
+		
+		StudentProfileController spc = loader.getController();
+		 spc.SetUserDetails(UIDlbl.getText());
 		
 	}
 
