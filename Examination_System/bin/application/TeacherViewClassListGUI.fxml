@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="450.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.TeacherViewClassListController">
+<AnchorPane prefHeight="450.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.TeacherViewClassListController">
    <children>
       <HBox prefHeight="40.0" prefWidth="850.0" style="-fx-background-color: #494949;">
          <children>
@@ -44,14 +44,14 @@
             <Image url="@../image/background-black-blank-733857.jpg" />
          </image>
       </ImageView>
-      <TableView layoutX="21.0" layoutY="64.0" prefHeight="366.0" prefWidth="807.0">
+      <TableView fx:id="viewClassListTbl" layoutX="21.0" layoutY="64.0" prefHeight="366.0" prefWidth="807.0">
          <columns>
-            <TableColumn prefWidth="127.0" text="Class ID" />
-            <TableColumn prefWidth="150.0" text="Class Name" />
-            <TableColumn prefWidth="81.0" text="Grade" />
-            <TableColumn prefWidth="169.0" text="Subject Name" />
-            <TableColumn minWidth="0.0" prefWidth="172.0" text="Location" />
-            <TableColumn minWidth="0.0" prefWidth="107.0" text="No. Students" />
+            <TableColumn fx:id="col_clID" prefWidth="127.0" text="Class ID" />
+            <TableColumn fx:id="col_clName" prefWidth="150.0" text="Class Name" />
+            <TableColumn fx:id="col_grade" prefWidth="81.0" text="Grade" />
+            <TableColumn fx:id="col_subName" prefWidth="169.0" text="Subject Name" />
+            <TableColumn fx:id="col_location" minWidth="0.0" prefWidth="172.0" text="Location" />
+            <TableColumn fx:id="col_noStudents" minWidth="0.0" prefWidth="107.0" text="No. Students" />
          </columns>
       </TableView>
    </children>

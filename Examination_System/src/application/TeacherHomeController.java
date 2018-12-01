@@ -1,11 +1,15 @@
 package application;
 
+import javafx.collections.ObservableList;
+
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
@@ -30,6 +34,32 @@ public class TeacherHomeController {
 		Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		stage.setIconified(true);
 	}
+	@FXML
+	private Label UIDlbl;
+	
+
+	
+	
+	
+	@FXML
+	private void MovetoAddPaper(MouseEvent event) throws Exception
+	{
+		
+		
+		Stage stage = new Stage();
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/TeacherAddPaperGUI.fxml"));
+	
+		Parent root = loader.load();
+	
+		stage.initStyle(StageStyle.UNDECORATED);
+		Scene scene = new Scene(root);
+		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		stage.setScene(scene);
+		stage.show();
+	
+
+		
+	}
 	
 	public void fxmlLoader(String link) throws Exception
 	{
@@ -42,13 +72,6 @@ public class TeacherHomeController {
 		stage.show();
 	}
 	
-	@FXML
-	private void MovetoAddPaper(MouseEvent event) throws Exception
-	{
-		String link = "/application/TeacherAddPaperGUI.fxml";
-		fxmlLoader(link);
-		
-	}
 	
 	@FXML
 	private void MovetoViewPaper(MouseEvent event) throws Exception
@@ -85,9 +108,24 @@ public class TeacherHomeController {
 	@FXML
 	private void MovetoTeacherProfile(MouseEvent event) throws Exception
 	{
-		String link = "/application/TeacherProfileGUI.fxml";
-		fxmlLoader(link);
 		
+		
+		
+		Stage stage = new Stage();
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/TeacherProfileGUI.fxml"));
+	
+		Parent root = loader.load();
+	
+		stage.initStyle(StageStyle.UNDECORATED);
+		Scene scene = new Scene(root);
+		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		stage.setScene(scene);
+		stage.show();
+	
+
+		
+		TeacherProfileController tpc = loader.getController();
+		 tpc.SetUserDetails(UIDlbl.getText());
 	}
 
 }
