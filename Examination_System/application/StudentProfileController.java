@@ -1,6 +1,10 @@
 package application;
 
+import java.net.MalformedURLException;
 import java.net.URL;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
@@ -117,13 +121,15 @@ public class StudentProfileController implements Initializable {
 		ad1.StudentDrawer(Hamburger, Drawer);
 	}
 	
-	public void SetUserDetails(String userID) {
+	public void SetUserDetails(String userID) throws MalformedURLException, RemoteException, NotBoundException {
 		
+		StudentProfileFunctionInterface  loginobj = (StudentProfileFunctionInterface) 
+				Naming.lookup("rmi://localhost:1099/StudentProfile");
 		
-		StudentProfileFunction spf = new StudentProfileFunction();
+		//StudentProfileFunction spf = new StudentProfileFunction();
 		String[] UserDetails = new String[6]; 
 		//String userID2 = "TID123";
-		UserDetails = spf.getUsrDetails(userID);
+		UserDetails = loginobj.getUsrDetails(userID);
 		
 		LocalDate DOB =  LocalDate.parse(UserDetails[3]);
 		

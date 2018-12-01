@@ -1,6 +1,9 @@
 package application;
 
+import java.net.MalformedURLException;
 import java.net.URL;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.Date;
 import java.util.ResourceBundle;
@@ -62,7 +65,7 @@ public class TeacherAddClassController implements Initializable{
 	}
 	
 	@FXML
-	private void CreateClass() throws RemoteException 
+	private void CreateClass() throws RemoteException, MalformedURLException, NotBoundException 
 	{
 		
 		int teID = Integer.parseInt(teacherIDbox.getText());
@@ -72,9 +75,11 @@ public class TeacherAddClassController implements Initializable{
 		String className = classNamebox.getText();
 		String location = locNamebox.getText();
 
+		TeacherAddClassFunctionInterface  loginobj = (TeacherAddClassFunctionInterface) 
+				Naming.lookup("rmi://localhost:1099/TeacherAddClass");
 	    	    
-		TeacherAddClassFunction tac1 = new TeacherAddClassFunction();
-		tac1.createClass(teID,classID,subName, grade,className,location);
+		//TeacherAddClassFunction tac1 = new TeacherAddClassFunction();
+		loginobj.createClass(teID,classID,subName, grade,className,location);
 		
 	}
 	

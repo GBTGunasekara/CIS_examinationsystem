@@ -1,13 +1,26 @@
 package application;
 
 import java.io.InputStream;
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
 
 import com.mysql.jdbc.PreparedStatement;
 
-public class TeacherAddClassFunction {
+public class TeacherAddClassFunction extends UnicastRemoteObject implements TeacherAddClassFunctionInterface {
+	
+	protected TeacherAddClassFunction() throws RemoteException {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public void createClass (int teID, int clID, String subName, int grade, String clName, String location) {
 		
 		PreparedStatement ps;

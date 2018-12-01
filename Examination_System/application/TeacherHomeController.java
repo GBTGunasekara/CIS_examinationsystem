@@ -122,10 +122,10 @@ public class TeacherHomeController {
 		stage.setScene(scene);
 		stage.show();
 	
-
+		String userIDlabel =UIDlbl.getText();
 		
 		TeacherProfileController tpc = loader.getController();
-		 tpc.SetUserDetails(UIDlbl.getText());
+		 tpc.SetUserDetails(userIDlabel);
 	}
 
 }

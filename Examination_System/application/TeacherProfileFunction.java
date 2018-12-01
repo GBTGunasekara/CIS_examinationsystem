@@ -1,13 +1,27 @@
 package application;
 
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.sql.ResultSet;
 
 import javax.swing.JOptionPane;
 
 import com.mysql.jdbc.Connection;
 
-public class TeacherProfileFunction {
+public class TeacherProfileFunction extends UnicastRemoteObject implements TeacherProfileFunctionInterface{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+
+	protected TeacherProfileFunction() throws RemoteException {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
 	public String[] getUsrDetails(String userID) {
 		String [] UserDetails = new String[6];
 		//String  TID = "TID123";

@@ -1,6 +1,10 @@
 package application;
 
+import java.net.MalformedURLException;
 import java.net.URL;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
@@ -117,13 +121,16 @@ public class TeacherProfileController implements Initializable{
 	}
 	
 	
-	public void SetUserDetails(String userID) {
+	public void SetUserDetails(String userID) throws RemoteException, MalformedURLException, NotBoundException {
 		
 		
-		TeacherProfileFunction tpf = new TeacherProfileFunction();
+		TeacherProfileFunctionInterface  loginobj = (TeacherProfileFunctionInterface) 
+				Naming.lookup("rmi://localhost:1099/TeacherProfile");
+		
+		//TeacherProfileFunction tpf = new TeacherProfileFunction();
 		String[] UserDetails = new String[6]; 
 		//String userID2 = "TID123";
-		UserDetails = tpf.getUsrDetails(userID);
+		UserDetails = loginobj.getUsrDetails(userID);
 		
 		LocalDate DOB =  LocalDate.parse(UserDetails[3]);
 		

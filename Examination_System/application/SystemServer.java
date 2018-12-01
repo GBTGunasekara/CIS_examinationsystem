@@ -20,6 +20,11 @@ public class SystemServer {
 			Naming.rebind("rmi://localhost:1099/StudentSelectPaper", new StudentSelectPaperFunction());
 			Naming.rebind("rmi://localhost:1099/StudentAnswerPaper", new StudentAnswerPaperFunction());
 			Naming.rebind("rmi://localhost:1099/StudentResultPaper", new StudentResultPaperFunction());
+			
+			Naming.rebind("rmi://localhost:1099/TeacherAddClass", new TeacherAddClassFunction());
+			Naming.rebind("rmi://localhost:1099/TeacherProfile", new TeacherProfileFunction());
+			Naming.rebind("rmi://localhost:1099/StudentProfile", new StudentProfileFunction());
+			
 			System.out.println("MCQ app Server Strarted");
 		} catch (Exception e){
 			System.out.println("MCQ app Server Failed");
