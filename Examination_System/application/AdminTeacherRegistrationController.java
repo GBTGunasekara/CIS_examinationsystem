@@ -69,6 +69,7 @@ public class AdminTeacherRegistrationController implements Initializable {
 		fxmlLoader(link);
 		
 	}
+	//comment 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
