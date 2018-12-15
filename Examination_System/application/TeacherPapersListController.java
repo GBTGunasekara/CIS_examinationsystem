@@ -99,7 +99,7 @@ public class TeacherPapersListController implements Initializable{
 	@FXML 
 	private TableColumn<PaperListTable, String> col_numStd;
 	
-	
+	/*
 	ObservableList<PaperListTable> oblist = FXCollections.observableArrayList();
 	
 	ResultSet rs = null;
@@ -122,7 +122,7 @@ public class TeacherPapersListController implements Initializable{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
+	}*/
 
 	
 	@FXML
@@ -158,8 +158,8 @@ public class TeacherPapersListController implements Initializable{
 	}
 
 	
-	public void loadPaperListTable () throws RemoteException
-	{
+//	public void loadPaperListTable () throws RemoteException
+	//{
 		//String teacherID = "sdsd";
 		
 		/*TeacherPapersListFunction tplf = new TeacherPapersListFunction();
@@ -208,7 +208,7 @@ public class TeacherPapersListController implements Initializable{
 			}
 		}*/
 		
-	}
+	//}
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -216,12 +216,7 @@ public class TeacherPapersListController implements Initializable{
 		TeacherDrawerController ad1 = new TeacherDrawerController();
 		ad1.TeacherDrawer(Hamburger, Drawer);
 		
-		/*try {
-			loadPaperListTable();
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
+		
 	}
 
 }
