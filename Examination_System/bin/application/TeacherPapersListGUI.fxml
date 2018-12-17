@@ -76,12 +76,14 @@
 
         <columns>
 
-          <TableColumn fx:id="PaperIDcol" prefWidth="93.60000228881836" text="Paper ID" />
-          <TableColumn fx:id="PaperPasswordcol" prefWidth="137.0" text="Paper Password" />
-            <TableColumn fx:id="ClassIDcol" prefWidth="139.0" text="Class ID" />
-            <TableColumn fx:id="NoQecol" prefWidth="177.0" text="No. Questions" />
-            <TableColumn fx:id="NoAnscol" prefWidth="186.0" text="No. Answers" />
-            <TableColumn fx:id="createdatecol" prefWidth="184.0" text="Created Date" />
+          <TableColumn fx:id="PaperIDcol" prefWidth="98.0" text="Paper ID" />
+          <TableColumn fx:id="PaperPasswordcol" prefWidth="95.0" text="Password" />
+            <TableColumn fx:id="ClassIDcol" prefWidth="98.0" text="Class ID" />
+            <TableColumn fx:id="NoQecol" text="Questions" />
+            <TableColumn fx:id="createdatecol" prefWidth="145.0" text="Created Date" />
+            <TableColumn fx:id="releaseDateCol" minWidth="-Infinity" prefWidth="145.0" text="Release Date" />
+            <TableColumn fx:id="terminateDateCol" prefWidth="145.0" text="Terminate Date" />
+            <TableColumn fx:id="stCountCol" prefWidth="111.0" text="Student Count" />
 
         </columns>
       </TableView>

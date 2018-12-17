@@ -3,6 +3,10 @@ package application;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
+
+//Reference (You Tube video)
+// B2 Tech (2017).JavaFx Database Operations - Part 8 - Display the DB values in TableView. [Video] Available at: https://www.youtube.com/watch?v=L8iuBXl-F8U [Accessed Day : 17-12-2018].
+
 public class TeacherPaperListTable {
 
 	
@@ -10,19 +14,24 @@ public class TeacherPaperListTable {
 	private StringProperty paperPassword;
 	private StringProperty classID;
 	private StringProperty noQuestions;
-	private StringProperty noAnswers;
+	//private StringProperty noAnswers;
 	private StringProperty createDate;
+	private StringProperty releaseDateTime;
+	private StringProperty terminateDateTime;
+	private StringProperty studentCount;
 	
 	public TeacherPaperListTable ()
 	{
-		
-		
+
 		this.paperID = new SimpleStringProperty();
 		this.paperPassword = new SimpleStringProperty();
 		this.classID = new SimpleStringProperty();
 		this.noQuestions = new SimpleStringProperty();
-		this.noAnswers = new SimpleStringProperty();
+		//this.noAnswers = new SimpleStringProperty();
 		this.createDate = new SimpleStringProperty();
+		this.releaseDateTime = new SimpleStringProperty();
+		this.terminateDateTime = new SimpleStringProperty();
+		this.studentCount = new SimpleStringProperty();
 	}
 	
 	public String getPaperID ()
@@ -77,7 +86,7 @@ public class TeacherPaperListTable {
 		return noQuestions;
 	}
 	
-	public String getNoAnswers ()
+	/*public String getNoAnswers ()
 	{
 		return noAnswers.get();
 	}
@@ -88,7 +97,7 @@ public class TeacherPaperListTable {
 	public StringProperty getNoAns()
 	{
 		return noAnswers;
-	}
+	}*/
 	
 	public String getCreateDate ()
 	{
@@ -101,5 +110,44 @@ public class TeacherPaperListTable {
 	public StringProperty getCtDate()
 	{
 		return createDate;
+	}
+	
+	public String getReleaseDateTime ()
+	{
+		return releaseDateTime.get();
+	}
+	public void setReleaseDate (String rlDT)
+	{
+		this.releaseDateTime.set(rlDT);
+	}
+	public StringProperty getReDateTime()
+	{
+		return releaseDateTime;
+	}
+	
+	public String getTerminateDateTime ()
+	{
+		return terminateDateTime.get();
+	}
+	public void setTerminateDate (String teDT)
+	{
+		this.terminateDateTime.set(teDT);
+	}
+	public StringProperty getTeDateTime()
+	{
+		return terminateDateTime;
+	}
+	
+	public String getStudentCount ()
+	{
+		return studentCount.get();
+	}
+	public void setStudentCount(String stCount)
+	{
+		this.studentCount.set(stCount);
+	}
+	public StringProperty getstCount()
+	{
+		return studentCount;
 	}
 }
