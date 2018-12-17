@@ -57,6 +57,7 @@ public class TeacherPapersListController implements Initializable{
 	@FXML
 	private JFXDrawer Drawer;
 
+	/*
 	@FXML
 	private TableView  paperTable;
 	@FXML
@@ -76,28 +77,32 @@ public class TeacherPapersListController implements Initializable{
 	@FXML
 	private TableColumn  noStudentscol;
 	@FXML
-	private TableColumn  createdatecol;
+	private TableColumn  createdatecol; */
 	
 	
 
 	@FXML 
-	private TableView<PaperListTable> viewPaperListTbl;
+	private TableView<TeacherPaperListTable> viewPaperListTbl;
 	@FXML 
-	private TableColumn<PaperListTable, String> col_Pid;
+	private TableColumn<TeacherPaperListTable, String> PaperIDcol;
 	@FXML 
-	private TableColumn<PaperListTable, String> col_Ppwd;
+	private TableColumn<TeacherPaperListTable, String> PaperPasswordcol;
 	@FXML 
-	private TableColumn<PaperListTable, String> col_clID;
+	private TableColumn<TeacherPaperListTable, String> ClassIDcol;
 	@FXML 
-	private TableColumn<PaperListTable, String> col_numQ;
+	private TableColumn<TeacherPaperListTable, String> NoQecol;
 	@FXML 
-	private TableColumn<PaperListTable, String> col_numA;
+	private TableColumn<TeacherPaperListTable, String> NoAnscol;
 	@FXML 
+	private TableColumn<TeacherPaperListTable, String> createdatecol;
+	/*@FXML 
 	private TableColumn<PaperListTable, String> col_rDate;
 	@FXML 
 	private TableColumn<PaperListTable, String> col_tDate;
 	@FXML 
-	private TableColumn<PaperListTable, String> col_numStd;
+	private TableColumn<PaperListTable, String> col_numStd;*/
+	
+	
 	
 	/*
 	ObservableList<PaperListTable> oblist = FXCollections.observableArrayList();
@@ -210,11 +215,34 @@ public class TeacherPapersListController implements Initializable{
 		
 	//}
 	
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
 		TeacherDrawerController ad1 = new TeacherDrawerController();
 		ad1.TeacherDrawer(Hamburger, Drawer);
+		
+		PaperIDcol.setCellValueFactory(cellData -> cellData.getValue().getPID());
+		PaperPasswordcol.setCellValueFactory(cellData -> cellData.getValue().getPwd());
+		ClassIDcol.setCellValueFactory(cellData -> cellData.getValue().getCID());
+		NoQecol.setCellValueFactory(cellData -> cellData.getValue().getNoQ());
+		NoAnscol.setCellValueFactory(cellData -> cellData.getValue().getNoAns());
+		createdatecol.setCellValueFactory(cellData -> cellData.getValue().getCtDate());
+		
+		
+		try {
+			String teacherID = "TID123";
+			ObservableList<TeacherPaperListTable> plist = TeacherPapersListFunction.selcetPaperList1(teacherID);
+			viewPaperListTbl.setItems(plist);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
 		
 		
 	}
