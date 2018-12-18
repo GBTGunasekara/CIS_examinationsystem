@@ -15,6 +15,7 @@
 
 <AnchorPane prefHeight="580.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.TeacherViewResultsController">
    <children>
+      <JFXDrawer fx:id="Drawer" defaultDrawerSize="200.0" layoutY="38.0" prefHeight="545.0" prefWidth="200.0" />
       <HBox prefHeight="35.0" prefWidth="960.0" style="-fx-background-color: #494949;">
          <children>
             <JFXHamburger fx:id="Hamburger" prefHeight="40.0" prefWidth="50.0" />
@@ -53,36 +54,78 @@
             </JFXButton>
          </children>
       </HBox>
-      <ImageView fitHeight="542.0" fitWidth="960.0" layoutY="38.0" opacity="0.43" pickOnBounds="true">
+      <ImageView fitHeight="542.0" fitWidth="960.0" layoutY="38.0" opacity="0.2" pickOnBounds="true">
          <image>
             <Image url="@../image/background-black-blank-733857.jpg" />
          </image>
       </ImageView>
-      <TableView layoutX="21.0" layoutY="113.0" prefHeight="440.0" prefWidth="918.0">
+      <TableView fx:id="viewPaperResultTbl" layoutX="21.0" layoutY="236.0" prefHeight="317.0" prefWidth="918.0">
          <columns>
-            <TableColumn prefWidth="154.3999900817871" text="Student ID" />
-            <TableColumn prefWidth="168.8000030517578" text="Student Name" />
-            <TableColumn prefWidth="156.00006103515625" text="Class ID" />
-            <TableColumn prefWidth="164.0" text="No. Questions" />
-            <TableColumn prefWidth="120.79998779296875" text="Marks" />
-            <TableColumn prefWidth="152.7999267578125" text="Date &amp; Time" />
+            <TableColumn fx:id="studentIDcol" prefWidth="212.0" text="Student ID" />
+            <TableColumn fx:id="studentNameCol" prefWidth="339.0" text="Student Name" />
+            <TableColumn fx:id="MarksCol" prefWidth="131.0" text="Marks" />
+            <TableColumn fx:id="ansdatecol" prefWidth="235.0" text="Date &amp; Time" />
          </columns>
       </TableView>
-      <Label layoutX="85.0" layoutY="62.0" text="Search Paper ID">
+      <Label layoutX="44.0" layoutY="65.0" text="Paper ID">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <JFXTextField layoutX="285.0" layoutY="65.0" prefHeight="26.0" prefWidth="446.0" />
-      <JFXButton contentDisplay="CENTER" layoutX="773.0" layoutY="62.0" prefHeight="30.0" prefWidth="30.0" textFill="#0000000b">
-         <graphic>
-            <ImageView fitHeight="23.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../image/icons8_Search_52px.png" />
-               </image>
-            </ImageView>
-         </graphic>
+      <JFXTextField fx:id="paperIDtxt" layoutX="146.0" layoutY="61.0" maxWidth="356.0" minWidth="200.0" prefHeight="37.0" prefWidth="356.0">
+         <font>
+            <Font size="20.0" />
+         </font></JFXTextField>
+      <Label layoutX="21.0" layoutY="126.0" text="PaperID">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="paperIDtxt2" editable="false" layoutX="131.0" layoutY="121.0" maxWidth="249.0" minWidth="126.0" prefHeight="37.0" prefWidth="180.0" />
+      <JFXButton fx:id="printbtn" buttonType="RAISED" layoutX="653.0" layoutY="61.0" prefHeight="30.0" prefWidth="120.0" style="-fx-background-color: #494949;" text="Print" textFill="#e5e5e5">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
       </JFXButton>
-      <JFXDrawer fx:id="Drawer" defaultDrawerSize="200.0" layoutY="38.0" prefHeight="545.0" prefWidth="200.0" />
+      <JFXButton fx:id="Searchbtn" buttonType="RAISED" layoutX="516.0" layoutY="61.0" onMouseClicked="#showResultList" prefHeight="30.0" prefWidth="120.0" style="-fx-background-color: #494949;" text="Search" textFill="#e5e5e5">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </JFXButton>
+      <Label layoutX="21.0" layoutY="179.0" text="Questions">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="noQusetiontxt" editable="false" layoutX="131.0" layoutY="174.0" maxWidth="249.0" minWidth="126.0" prefHeight="37.0" prefWidth="180.0" />
+      <Label layoutX="324.0" layoutY="126.0" text="Teacher ID">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="teacherIDtxt" editable="false" layoutX="442.0" layoutY="121.0" maxWidth="249.0" minWidth="126.0" prefHeight="37.0" prefWidth="180.0" />
+      <Label layoutX="324.0" layoutY="179.0" text="Release Date">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="ReleaseDateTimetxt" editable="false" layoutX="442.0" layoutY="174.0" maxWidth="249.0" minWidth="126.0" prefHeight="37.0" prefWidth="180.0" />
+      <Label layoutX="628.0" layoutY="126.0" text="Class ID">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="classIDtxt" editable="false" layoutX="759.0" layoutY="121.0" maxWidth="249.0" minWidth="126.0" prefHeight="37.0" prefWidth="180.0" />
+      <Label layoutX="628.0" layoutY="179.0" text="Terminate Date">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="TerminateDateTimetxt" editable="false" layoutX="759.0" layoutY="174.0" maxWidth="249.0" minWidth="126.0" prefHeight="37.0" prefWidth="180.0" />
+      <JFXButton fx:id="printbtn1" buttonType="RAISED" layoutX="790.0" layoutY="61.0" prefHeight="30.0" prefWidth="120.0" style="-fx-background-color: #494949;" text="Clear" textFill="#e5e5e5">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>

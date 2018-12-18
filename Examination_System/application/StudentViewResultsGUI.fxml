@@ -15,6 +15,7 @@
 
 <AnchorPane prefHeight="580.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.StudentViewResultsController">
    <children>
+      <JFXDrawer fx:id="Drawer" defaultDrawerSize="200.0" layoutY="38.0" prefHeight="545.0" prefWidth="200.0" />
       <HBox prefHeight="35.0" prefWidth="960.0" style="-fx-background-color: #494949;">
          <children>
             <JFXHamburger fx:id="Hamburger" prefHeight="40.0" prefWidth="50.0" />
@@ -58,14 +59,14 @@
             <Image url="@../image/jess-watters-483666-unsplash.jpg" />
          </image>
       </ImageView>
-      <TableView layoutX="21.0" layoutY="113.0" prefHeight="440.0" prefWidth="918.0">
+      <TableView fx:id="viewResultTbl" layoutX="21.0" layoutY="113.0" prefHeight="440.0" prefWidth="918.0">
          <columns>
-            <TableColumn prefWidth="156.00006103515625" text="PaperID" />
-            <TableColumn prefWidth="164.0" text="ClassID" />
-            <TableColumn prefWidth="120.79998779296875" text="TeacherID" />
-            <TableColumn prefWidth="152.7999267578125" text="No. Questions" />
-            <TableColumn prefWidth="156.00006103515625" text="Result" />
-            <TableColumn prefWidth="156.00006103515625" text="Time" />
+            <TableColumn fx:id="PaperIDcol" prefWidth="162.0" text="PaperID" />
+            <TableColumn fx:id="ClassIDcol" prefWidth="158.0" text="ClassID" />
+            <TableColumn fx:id="TeacherID" prefWidth="169.0" text="TeacherID" />
+            <TableColumn fx:id="NoQecol" prefWidth="113.0" text="Questions" />
+            <TableColumn fx:id="MarksCol" prefWidth="107.0" text="Result" />
+            <TableColumn fx:id="ansdatecol" prefWidth="208.0" text="Time" />
          </columns>
       </TableView>
       <Label layoutX="85.0" layoutY="62.0" text="Search Paper ID">
@@ -83,6 +84,5 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXDrawer fx:id="Drawer" defaultDrawerSize="200.0" layoutY="38.0" prefHeight="545.0" prefWidth="200.0" />
    </children>
 </AnchorPane>

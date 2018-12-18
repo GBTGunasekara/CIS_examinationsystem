@@ -105,9 +105,7 @@ public class StudentPaperListController implements Initializable{
 		ansdatecol.setCellValueFactory(cellData -> cellData.getValue().getAnsTime());
 		releaseDateCol.setCellValueFactory(cellData -> cellData.getValue().getReDateTime());
 		terminateDateCol.setCellValueFactory(cellData -> cellData.getValue().getTeDateTime());
-		
-		
-		
+
 		try {
 			String studentID = "SID123";
 			ObservableList<StudentPaperListTable> plist = StudentPaperListFunction.selcetAnsPaperList(studentID);
