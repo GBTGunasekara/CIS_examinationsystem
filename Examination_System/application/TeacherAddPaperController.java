@@ -98,19 +98,25 @@ public class TeacherAddPaperController implements Initializable{
 	private void CreatePaper() throws RemoteException, MalformedURLException, NotBoundException 
 	{
 		
-		String techerID = teacherIDtxt.getText();
+		String teacherID = teacherIDtxt.getText();
 		String classID = classIDtxt.getText();
 		String paperID = paperIDtxt.getText();
 		String subjcetName = subjcetNametxt.getText();
 		int noQuestions = Integer.parseInt(noQusetiontxt.getText());
 		int noAnswers = Integer.parseInt(noAnswertxt.getText());
-
+/*
 	    Date currentdatetime = new Date(); //get current date and time
 	    
 	    TeacherAddPaperInterface  PaperIDGen = (TeacherAddPaperInterface) 
 				Naming.lookup("rmi://localhost:1099/TeacherAddPaper");
-		PaperIDGen.createPaper(techerID,classID,paperID, currentdatetime,noQuestions,noAnswers);
+		PaperIDGen.createPaper(teacherID,classID,paperID, currentdatetime,noQuestions,noAnswers);*/
 		
+		String paperPassword = "123";
+		//String teacherID = "TID123";
+		String ReleaseDate = "rdate";
+		String TerminateDate = "tdate";
+		TeacherSubmitPaperFunction tsp = new TeacherSubmitPaperFunction();
+		tsp.generateEmail(paperID, paperPassword, classID, teacherID, ReleaseDate, TerminateDate);
 	}
 	
 	

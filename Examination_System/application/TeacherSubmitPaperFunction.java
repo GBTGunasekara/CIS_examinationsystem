@@ -116,17 +116,27 @@ public class TeacherSubmitPaperFunction extends UnicastRemoteObject implements T
 		return str.substring(0,r) + toInsert + str.substring(r);
 	}
 	
-	public void generateEmail (/*String paperID, String paperPassword, String classID, String teacherID, String ReleaseDate, String TerminateDate*/)
+	//reference - https://www.youtube.com/watch?v=UMfjndwGwnM 
+	public void generateEmail (String paperID, String paperPassword, String classID, String teacherID, String ReleaseDate, String TerminateDate)
 	{
 		try{
+			boolean sessionDebug = false;
             String host ="smtp.gmail.com" ;
             String user = "mcqappuob@gmail.com";
             String pass = "mcqappUOB19";
             String to = "buddhimith@gmail.com";
             String from = "mcqappuob@gmail.com";
-            String subject = "This is confirmation number for your expertprogramming account. Please insert this number to activate your account.";
-            String messageText = "Your Is Test Email :";
-            boolean sessionDebug = false;
+            String subject = "New paper is uploaded";
+            String messageText = "Dear Student;\n"
+            		+ "New paper is uploaded into MCQ APP software. The paper details are mentioned below. Please enter paper ID and password into the software and do it after rleased. Good Luck.\n"
+            		+ "Paper Details \n" 
+            		+ "\t Paper ID              -  "  +paperID+ "\n"
+            		+ "\t Paper Password        -  "  +paperPassword+ "\n"
+            		+ "\t Class ID              -  "  +classID+ "\n"
+            		+ "\t Teacher ID            -  "  +teacherID+ "\n"
+            		+ "\t Release Date & Time   -  "  +ReleaseDate+ "\n"
+            		+ "\t Terminate Date & Time -  "  +TerminateDate+ "\n";
+            
 
             Properties props = System.getProperties();
             props.put("mail.smtp.ssl.trust", "smtp.gmail.com");

@@ -63,8 +63,6 @@ public class LoginController  {
 		String linktoTeacherReg = "/application/TeacherRegGUI.fxml";
 		fxmlLoader(linktoTeacherReg);
 		
-		TeacherSubmitPaperFunction tsf = new TeacherSubmitPaperFunction();
-		tsf.generateEmail();
 	}
 	
 	@FXML
