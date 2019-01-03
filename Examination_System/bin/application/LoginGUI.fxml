@@ -30,14 +30,14 @@
 						<Font size="16.0" />
 					</font>
 				</JFXButton>
-				<JFXPasswordField fx:id="userPasswordtxt" focusColor="#e5e5e5" layoutX="50.0" layoutY="190.0" prefHeight="35.0" prefWidth="250.0" promptText="Password" style="-fx-text-inner-color: #e5e5e5;" unFocusColor="#e5e5e5">
-               <font>
-                  <Font size="15.0" />
-               </font></JFXPasswordField>
 				<JFXTextField fx:id="userIDtxt" focusColor="#e5e5e5" layoutX="50.0" layoutY="117.0" prefHeight="35.0" prefWidth="250.0" promptText="UserID" style="-fx-text-inner-color: #e5e5e5;" unFocusColor="#e5e5e5">
                <font>
                   <Font size="15.0" />
                </font></JFXTextField>
+				<JFXPasswordField fx:id="userPasswordtxt" focusColor="#e5e5e5" layoutX="50.0" layoutY="190.0" prefHeight="35.0" prefWidth="250.0" promptText="Password" style="-fx-text-inner-color: #e5e5e5;" unFocusColor="#e5e5e5">
+               <font>
+                  <Font size="15.0" />
+               </font></JFXPasswordField>
 			</children>
 		</AnchorPane>
 		<Label layoutX="106.0" layoutY="129.0" prefHeight="87.0" prefWidth="330.0" text="MCQ App...">
