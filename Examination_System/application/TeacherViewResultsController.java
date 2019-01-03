@@ -22,6 +22,7 @@ import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
@@ -164,9 +165,42 @@ public class TeacherViewResultsController implements Initializable{
 		Document doc = new Document();
 		PdfWriter.getInstance(doc, new FileOutputStream(fileName));
 		doc.open();
-		doc.add(new Paragraph("Result List",FontFactory.getFont(FontFactory.HELVETICA_BOLD,20,Font.UNDERLINE,BaseColor.BLACK)));
+		doc.add(new Paragraph("Result List",FontFactory.getFont(FontFactory.COURIER_BOLD,20,Font.UNDERLINE,BaseColor.BLACK)));
 		doc.add(new Paragraph(" "));
+		doc.add(new Paragraph(" "));
+		
+		PdfPTable resultInfo = new PdfPTable(2);
+		resultInfo.getDefaultCell().setBorderWidth(0f);
+		resultInfo.setTotalWidth(new float[]{ 250, 250 });
+		resultInfo.setLockedWidth(true);
+		PdfPCell ri1 = new PdfPCell(new Paragraph("Paper ID - " + paperIDtxt2.getText()));
+		PdfPCell ri2 = new PdfPCell(new Paragraph("Teacher ID - "+ teacherIDtxt.getText()));
+		PdfPCell ri3 = new PdfPCell(new Paragraph("Class ID - " + classIDtxt.getText()));
+		PdfPCell ri4 = new PdfPCell(new Paragraph("Questions - " + noQusetiontxt.getText()));
+		PdfPCell ri5 = new PdfPCell(new Paragraph("Rlease Date - " + ReleaseDateTimetxt.getText()));
+		PdfPCell ri6 = new PdfPCell(new Paragraph("Terminate Date - " + TerminateDateTimetxt.getText()));
+		
+		ri1.setBorder(Rectangle.NO_BORDER);
+		ri2.setBorder(Rectangle.NO_BORDER);
+		ri3.setBorder(Rectangle.NO_BORDER);
+		ri4.setBorder(Rectangle.NO_BORDER);
+		ri5.setBorder(Rectangle.NO_BORDER);
+		ri6.setBorder(Rectangle.NO_BORDER);
+		
+		resultInfo.addCell(ri1);
+		resultInfo.addCell(ri2);
+		resultInfo.addCell(ri3);
+		resultInfo.addCell(ri4);
+		resultInfo.addCell(ri5);
+		resultInfo.addCell(ri6);
+		
+		doc.add(resultInfo);
+		doc.add(new Paragraph(" "));
+		doc.add(new Paragraph(" "));
+		
 		PdfPTable tb = new PdfPTable(4);
+		tb.setTotalWidth(new float[]{ 100, 180, 80, 180 });
+		tb.setLockedWidth(true);
 		
 		PdfPCell cell1 = new PdfPCell(new Paragraph("Student ID",FontFactory.getFont(FontFactory.HELVETICA,14,BaseColor.WHITE)));
 		PdfPCell cell2 = new PdfPCell(new Paragraph("Student Name",FontFactory.getFont(FontFactory.HELVETICA,14,BaseColor.WHITE)));
@@ -174,20 +208,19 @@ public class TeacherViewResultsController implements Initializable{
 		PdfPCell cell4 = new PdfPCell(new Paragraph("Date & Time",FontFactory.getFont(FontFactory.HELVETICA,14,BaseColor.WHITE)));
 		
 		cell1.setHorizontalAlignment(Element.ALIGN_CENTER);
-		cell1.setBackgroundColor(BaseColor.BLACK);
+		cell1.setBackgroundColor(BaseColor.DARK_GRAY);
 		tb.addCell(cell1);
 		
 		cell2.setHorizontalAlignment(Element.ALIGN_CENTER);
-		cell2.setBackgroundColor(BaseColor.BLACK);
+		cell2.setBackgroundColor(BaseColor.DARK_GRAY);
 		tb.addCell(cell2);
 		
 		cell3.setHorizontalAlignment(Element.ALIGN_CENTER);
-		cell3.setBackgroundColor(BaseColor.BLACK);
+		cell3.setBackgroundColor(BaseColor.DARK_GRAY);
 		tb.addCell(cell3);
 		
 		cell4.setHorizontalAlignment(Element.ALIGN_CENTER);
-		cell4.setBackgroundColor(BaseColor.BLACK);
-		cell4.setVerticalAlignment(20);
+		cell4.setBackgroundColor(BaseColor.DARK_GRAY);
 		tb.addCell(cell4);
 		
 		

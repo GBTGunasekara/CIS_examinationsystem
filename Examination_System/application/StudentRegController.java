@@ -150,11 +150,16 @@ public class StudentRegController implements Initializable{
          
         try 
         {	
-            BufferedImage bufferedImage = ImageIO.read(file);
-            Image image = SwingFXUtils.toFXImage(bufferedImage, null);
-    		ppcirlce.setFill(new ImagePattern(image));
-    		
-    		path = file.getAbsolutePath();
+        	if (file != null) //make sure file is selected
+        	{
+        		BufferedImage bufferedImage = ImageIO.read(file);
+                Image image = SwingFXUtils.toFXImage(bufferedImage, null);
+        		ppcirlce.setFill(new ImagePattern(image));
+        		
+        		path = file.getAbsolutePath();
+        	}
+        	
+            
     		
         } 
         catch (IOException ex)

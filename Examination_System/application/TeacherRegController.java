@@ -165,17 +165,16 @@ public class TeacherRegController implements Initializable {
         try 
         {	
         	
-            if(file != null){
-            BufferedImage bufferedImage = ImageIO.read(file);
-            Image image = SwingFXUtils.toFXImage(bufferedImage, null);
-    		ppcirlce2.setFill(new ImagePattern(image));
+            if(file != null)
+            {
+            	BufferedImage bufferedImage = ImageIO.read(file);
+            	Image image = SwingFXUtils.toFXImage(bufferedImage, null);
+            	ppcirlce2.setFill(new ImagePattern(image));
     		
-    		path = file.getAbsolutePath();
+            	path = file.getAbsolutePath();
     		
             }
-            else{
-                System.out.println("No Data");
-            }
+            
         } 
         catch (IOException ex)
         {
