@@ -2,6 +2,7 @@ package application;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Time;
 import java.time.LocalDate;
@@ -124,7 +125,7 @@ public class TeacherSubmitPaperFunction extends UnicastRemoteObject implements T
             String host ="smtp.gmail.com" ;
             String user = "mcqappuob@gmail.com";
             String pass = "mcqappUOB19";
-            String to = "buddhimith@gmail.com";
+           // String to = "buddhimith@gmail.com";
             String from = "mcqappuob@gmail.com";
             String subject = "New paper is uploaded";
             String messageText = "Dear Student;\n"
@@ -136,8 +137,9 @@ public class TeacherSubmitPaperFunction extends UnicastRemoteObject implements T
             		+ "\t Teacher ID            -  "  +teacherID+ "\n"
             		+ "\t Release Date & Time   -  "  +ReleaseDate+ "\n"
             		+ "\t Terminate Date & Time -  "  +TerminateDate+ "\n";
-            
-
+           
+            String[] emailset = getEmailList(classID);
+            int emailsetSize = emailset.length;
             Properties props = System.getProperties();
             props.put("mail.smtp.ssl.trust", "smtp.gmail.com");
             props.put("mail.smtp.starttls.enable", "true");
@@ -145,7 +147,10 @@ public class TeacherSubmitPaperFunction extends UnicastRemoteObject implements T
             props.put("mail.smtp.port", "587");
             props.put("mail.smtp.auth", "true");
             props.put("mail.smtp.starttls.required", "true");
-
+           
+            for (int i = 0 ; i < emailsetSize ; i++)
+            {
+            	String to = emailset[i];
             //java.security.Security.addProvider(new com.sun.net.ssl.internal.ssl.Provider());
             Session mailSession = Session.getDefaultInstance(props, null);
             mailSession.setDebug(sessionDebug);
@@ -160,10 +165,49 @@ public class TeacherSubmitPaperFunction extends UnicastRemoteObject implements T
            transport.connect(host, user, pass);
            transport.sendMessage(msg, msg.getAllRecipients());
            transport.close();
+            }
            System.out.println("message send successfully");
         }catch(Exception ex)
         {
             System.out.println(ex);
         }
+	}
+	
+	public String[] getEmailList (String classID) throws SQLException
+	{
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		int rawCount = getRowCount(classID);
+		String [] emailList = new String[rawCount];
+		
+		String showResultsDetails = "select s.stEmail from student s, studentclass c where s.studentID = c.studentID and c.classID = '"+classID+"'"; 
+
+	    ps = (PreparedStatement) DBconnection.Connect().prepareStatement(showResultsDetails);
+        rs = ps.executeQuery();
+        int i = 0; 
+        while (rs.next())
+	    {
+        	emailList[i] = rs.getString(1);
+        	i=i+1;
+	    }
+		return emailList;
+	
+	}
+	
+	public int getRowCount (String classID) throws SQLException
+	{
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		int rawCount = 0;
+		String rawCountquerry = "select count(*) from student s , studentclass c where s.studentID = c.studentID and c.classID = '"+classID+"'";
+		ps = (PreparedStatement) DBconnection.Connect().prepareStatement(rawCountquerry);
+        rs = ps.executeQuery();
+        while (rs.next())
+	    {
+        	rawCount = rs.getInt(1);
+	    }
+		
+		return rawCount;
 	}
 }

@@ -154,7 +154,7 @@ public class TeacherViewResultsFunction {
 		
 	    ps = (PreparedStatement) DBconnection.Connect().prepareStatement(showResultsDetails);
         rs = ps.executeQuery();
-        int i =0; 
+        int i = 0; 
         while (rs.next())
 	    {
         	
