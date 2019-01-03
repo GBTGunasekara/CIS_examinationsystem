@@ -1,8 +1,11 @@
 package application;
 
 import java.awt.HeadlessException;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.net.URL;
 import java.rmi.Naming;
 import java.rmi.RemoteException;
@@ -12,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 
@@ -30,6 +34,7 @@ import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
 
 import javafx.collections.ObservableList;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -38,7 +43,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.ImagePattern;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 public class TeacherViewResultsController implements Initializable{
@@ -161,7 +169,25 @@ public class TeacherViewResultsController implements Initializable{
 	@FXML
 	private void printResults(MouseEvent event) throws FileNotFoundException, DocumentException, RemoteException, SQLException
 	{
-		String fileName = "C:\\Users\\Thareendra\\Downloads\\javaFX\\results.pdf";
+		String savePath = null; 
+		FileChooser fchooser = new FileChooser();
+
+		fchooser.setInitialFileName("Paper ID " +paperIDtxt2.getText()+ " results list"); //set initial file name at filechooser
+		
+		//extention filter
+		FileChooser.ExtensionFilter PDFilter = new FileChooser.ExtensionFilter("PDF file (*.PDF)","*.PDF");
+		FileChooser.ExtensionFilter pdfFilter = new FileChooser.ExtensionFilter("pdf file (*.pdf)","*.pdf");
+		fchooser.getExtensionFilters().addAll(PDFilter,pdfFilter);
+
+        File file = fchooser.showSaveDialog(null); //Show open file dialog
+         
+        if (file != null) //make sure file is selected
+		{       		
+			savePath = file.getAbsolutePath();
+		
+		
+		
+		String fileName = savePath;
 		Document doc = new Document();
 		PdfWriter.getInstance(doc, new FileOutputStream(fileName));
 		doc.open();
@@ -237,6 +263,7 @@ public class TeacherViewResultsController implements Initializable{
 	    doc.add(tb);
 		doc.close();
 		
+		}
 	
 	}
 	
