@@ -224,9 +224,9 @@ public class TeacherViewResultsController implements Initializable{
 		doc.add(new Paragraph(" "));
 		doc.add(new Paragraph(" "));
 		
-		PdfPTable tb = new PdfPTable(4);
-		tb.setTotalWidth(new float[]{ 100, 180, 80, 180 });
-		tb.setLockedWidth(true);
+		PdfPTable resultTable = new PdfPTable(4);
+		resultTable.setTotalWidth(new float[]{ 100, 180, 80, 180 });
+		resultTable.setLockedWidth(true);
 		
 		PdfPCell cell1 = new PdfPCell(new Paragraph("Student ID",FontFactory.getFont(FontFactory.HELVETICA,14,BaseColor.WHITE)));
 		PdfPCell cell2 = new PdfPCell(new Paragraph("Student Name",FontFactory.getFont(FontFactory.HELVETICA,14,BaseColor.WHITE)));
@@ -235,19 +235,19 @@ public class TeacherViewResultsController implements Initializable{
 		
 		cell1.setHorizontalAlignment(Element.ALIGN_CENTER);
 		cell1.setBackgroundColor(BaseColor.DARK_GRAY);
-		tb.addCell(cell1);
+		resultTable.addCell(cell1);
 		
 		cell2.setHorizontalAlignment(Element.ALIGN_CENTER);
 		cell2.setBackgroundColor(BaseColor.DARK_GRAY);
-		tb.addCell(cell2);
+		resultTable.addCell(cell2);
 		
 		cell3.setHorizontalAlignment(Element.ALIGN_CENTER);
 		cell3.setBackgroundColor(BaseColor.DARK_GRAY);
-		tb.addCell(cell3);
+		resultTable.addCell(cell3);
 		
 		cell4.setHorizontalAlignment(Element.ALIGN_CENTER);
 		cell4.setBackgroundColor(BaseColor.DARK_GRAY);
-		tb.addCell(cell4);
+		resultTable.addCell(cell4);
 		
 		
 		TeacherViewResultsFunction tvrf2 = new TeacherViewResultsFunction();
@@ -255,12 +255,12 @@ public class TeacherViewResultsController implements Initializable{
 		int rowcount = resultsArray.length;
 		for (int i =0; i<rowcount; i++)
 		{
-			tb.addCell(resultsArray[i][0]);
-			tb.addCell(resultsArray[i][1]);
-			tb.addCell(resultsArray[i][2]);
-			tb.addCell(resultsArray[i][3]);
+			resultTable.addCell(resultsArray[i][0]);
+			resultTable.addCell(resultsArray[i][1]);
+			resultTable.addCell(resultsArray[i][2]);
+			resultTable.addCell(resultsArray[i][3]);
 		}
-	    doc.add(tb);
+	    doc.add(resultTable);
 		doc.close();
 		
 		}
