@@ -124,4 +124,49 @@ public class TeacherViewResultsFunction {
 	    return paperDetailsArr;
 	
 	}
+	
+	public int getRowCount (String paperID) throws SQLException
+	{
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		int rawCount = 0;
+		String rawCountquerry = "select count(*) from student s , result r where s.studentID = r.studentID and r.paperID = '"+paperID+"'";
+		ps = (PreparedStatement) DBconnection.Connect().prepareStatement(rawCountquerry);
+        rs = ps.executeQuery();
+        while (rs.next())
+	    {
+        	rawCount = rs.getInt(1);
+	    }
+		
+		return rawCount;
+	}
+	
+	public String[][] printResultList (String paperID) throws RemoteException, SQLException
+	{
+			
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		int rawCount = getRowCount(paperID);
+		
+		String [][] resultsArray = new String[rawCount][4];
+		String showResultsDetails = "select r.studentID,s.stName,r.Marks,r.ansDateTime from student s , result r where s.studentID = r.studentID and r.paperID = '"+paperID+"'"; 
+		
+		
+	    ps = (PreparedStatement) DBconnection.Connect().prepareStatement(showResultsDetails);
+        rs = ps.executeQuery();
+        int i =0; 
+        while (rs.next())
+	    {
+        	
+        	resultsArray[i][0] = rs.getString(1);
+        	resultsArray[i][1] = rs.getString(2);
+        	resultsArray[i][2] = rs.getString(3);
+        	resultsArray[i][3] = rs.getString(4);
+        	
+        	i=i+1;
+
+        	
+	        }
+			return resultsArray;
+		} 
 }

@@ -1,14 +1,30 @@
 package application;
 
 import java.awt.HeadlessException;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.net.URL;
 import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
+import java.text.MessageFormat;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.FontFactory;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
 
@@ -139,6 +155,56 @@ public class TeacherViewResultsController implements Initializable{
 		// B2 Tech (2017).JavaFx Database Operations - Part 8 - Display the DB values in TableView. [Video] Available at: https://www.youtube.com/watch?v=L8iuBXl-F8U [Accessed Day : 17-12-2018].
 		
 		
+	}
+	
+	@FXML
+	private void printResults(MouseEvent event) throws FileNotFoundException, DocumentException, RemoteException, SQLException
+	{
+		String fileName = "C:\\Users\\Thareendra\\Downloads\\javaFX\\results.pdf";
+		Document doc = new Document();
+		PdfWriter.getInstance(doc, new FileOutputStream(fileName));
+		doc.open();
+		doc.add(new Paragraph("Result List",FontFactory.getFont(FontFactory.HELVETICA_BOLD,20,Font.UNDERLINE,BaseColor.BLACK)));
+		doc.add(new Paragraph(" "));
+		PdfPTable tb = new PdfPTable(4);
+		
+		PdfPCell cell1 = new PdfPCell(new Paragraph("Student ID",FontFactory.getFont(FontFactory.HELVETICA,14,BaseColor.WHITE)));
+		PdfPCell cell2 = new PdfPCell(new Paragraph("Student Name",FontFactory.getFont(FontFactory.HELVETICA,14,BaseColor.WHITE)));
+		PdfPCell cell3 = new PdfPCell(new Paragraph("Marks",FontFactory.getFont(FontFactory.HELVETICA,14,BaseColor.WHITE)));
+		PdfPCell cell4 = new PdfPCell(new Paragraph("Date & Time",FontFactory.getFont(FontFactory.HELVETICA,14,BaseColor.WHITE)));
+		
+		cell1.setHorizontalAlignment(Element.ALIGN_CENTER);
+		cell1.setBackgroundColor(BaseColor.BLACK);
+		tb.addCell(cell1);
+		
+		cell2.setHorizontalAlignment(Element.ALIGN_CENTER);
+		cell2.setBackgroundColor(BaseColor.BLACK);
+		tb.addCell(cell2);
+		
+		cell3.setHorizontalAlignment(Element.ALIGN_CENTER);
+		cell3.setBackgroundColor(BaseColor.BLACK);
+		tb.addCell(cell3);
+		
+		cell4.setHorizontalAlignment(Element.ALIGN_CENTER);
+		cell4.setBackgroundColor(BaseColor.BLACK);
+		cell4.setVerticalAlignment(20);
+		tb.addCell(cell4);
+		
+		
+		TeacherViewResultsFunction tvrf2 = new TeacherViewResultsFunction();
+		String resultsArray[][] = tvrf2.printResultList(paperIDtxt2.getText());
+		int rowcount = resultsArray.length;
+		for (int i =0; i<rowcount; i++)
+		{
+			tb.addCell(resultsArray[i][0]);
+			tb.addCell(resultsArray[i][1]);
+			tb.addCell(resultsArray[i][2]);
+			tb.addCell(resultsArray[i][3]);
+		}
+	    doc.add(tb);
+		doc.close();
+		
+	
 	}
 	
 	
