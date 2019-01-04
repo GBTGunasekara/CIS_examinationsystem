@@ -36,8 +36,11 @@ import com.jfoenix.controls.JFXHamburger;
 import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -48,6 +51,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.ImagePattern;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class TeacherViewResultsController implements Initializable{
 
@@ -57,6 +61,8 @@ public class TeacherViewResultsController implements Initializable{
 	private Button Searchbtn;
 	@FXML
 	private Button printbtn;
+	@FXML
+	private Button chartbtn;
 	@FXML
 	private JFXHamburger Hamburger;
 	@FXML
@@ -267,6 +273,18 @@ public class TeacherViewResultsController implements Initializable{
 	
 	}
 	
+	@FXML
+	private void viewResultChart (MouseEvent event) throws Exception
+	{
+	
+		Stage stage = new Stage();
+		Parent root = FXMLLoader.load(getClass().getResource("/application/TeacherViewResultChartGUI.fxml"));
+		stage.initStyle(StageStyle.UNDECORATED);
+		Scene scene = new Scene(root);
+		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		stage.setScene(scene);
+		stage.show();
+	}
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
