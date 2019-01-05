@@ -39,7 +39,7 @@ public class TeacherViewClassController implements Initializable {
 	@FXML
 	private JFXDrawer Drawer;
 	@FXML 
-	private TableView viewClassTbl;
+	private TableView<TeacherViewClassTable> viewClassTbl;
 	@FXML 
 	private TableColumn<TeacherViewClassTable, Integer> col_ClassID;
 	@FXML 

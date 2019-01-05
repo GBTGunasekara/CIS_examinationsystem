@@ -19,7 +19,7 @@ public class TeacherViewClassFunction {
 		
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		String sql = "Select * from class where teacherID = '"+teacherID+"'"; //Get Class Details for the logged in teacher
+		String sql = "Select * from class"; // where teacherID = '"+teacherID+"'"; //Get Class Details for the logged in teacher
         
 		ObservableList Classobj = FXCollections.observableArrayList();
         
@@ -29,7 +29,7 @@ public class TeacherViewClassFunction {
         {
         	TeacherViewClassTable tvct = new TeacherViewClassTable(); 
         	tvct.setClID(Integer.parseInt(rs.getString("classID")));
-        	tvct.setTeID(Integer.parseInt(rs.getString("techerID")));
+        	tvct.setTeID(Integer.parseInt(rs.getString("teacherID")));
         	tvct.setClName(rs.getString("className"));
         	tvct.setSubName(rs.getString("subjectName"));
         	tvct.setGr(Integer.parseInt(rs.getString("grade")));
