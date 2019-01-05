@@ -1,6 +1,7 @@
 package application;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXDrawer;
@@ -14,6 +15,7 @@ import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -24,11 +26,15 @@ public class TeacherViewResultChartController implements Initializable{
 	@FXML
 	private Button Minimizebttn3;
 	@FXML
-	private BarChart<?,?> resultschart;
+	private BarChart<String,Integer> resultschart;
 	@FXML
 	private CategoryAxis Xaxis;
 	@FXML
 	private NumberAxis Yaxis;
+	@FXML
+	private TextField paperIDtxt;
+	@FXML
+	private TextField stCounttxt;
 
 	
 	@FXML
@@ -44,18 +50,34 @@ public class TeacherViewResultChartController implements Initializable{
 		Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		stage.setIconified(true);
 	}
+	public void setBarChart (String paperID) throws SQLException
+	{
+		
+			paperIDtxt.setText(paperID);
+			
+			TeacherViewResultChartFunction tvrcf = new TeacherViewResultChartFunction();
+			
+			int stcount = tvrcf.getStudentCount(paperID);
+			stCounttxt.setText(String.valueOf(stcount));
+			
+			int groupStudents[] = tvrcf.analyzeMarks(paperID);
+			
+			XYChart.Series<String, Integer> set = new XYChart.Series<>();
+			
+			set.getData().add(new XYChart.Data<String, Integer>("<35", groupStudents[0]));
+			set.getData().add(new XYChart.Data<String, Integer>("45-55", groupStudents[1]));
+			set.getData().add(new XYChart.Data<String, Integer>("55-65", groupStudents[2]));
+			set.getData().add(new XYChart.Data<String, Integer>("65-75", groupStudents[3]));
+			set.getData().add(new XYChart.Data<String, Integer>(">75", groupStudents[4]));
+			
+			resultschart.getData().addAll(set);
+			resultschart.setAnimated(false); // prevent the x axis label overlay by disable the animation. 
+	
+	}
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
-		XYChart.Series set = new XYChart.Series<>();
 		
-		set.getData().add(new XYChart.Data<>("<50", 5));
-		set.getData().add(new XYChart.Data<>("50-60", 15));
-		set.getData().add(new XYChart.Data<>("60-70", 25));
-		set.getData().add(new XYChart.Data<>("70-80", 10));
-		set.getData().add(new XYChart.Data<>(">80", 5));
-		
-		resultschart.getData().addAll(set);
 	}
 }

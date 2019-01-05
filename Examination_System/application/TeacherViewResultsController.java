@@ -278,12 +278,19 @@ public class TeacherViewResultsController implements Initializable{
 	{
 	
 		Stage stage = new Stage();
-		Parent root = FXMLLoader.load(getClass().getResource("/application/TeacherViewResultChartGUI.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/TeacherViewResultChartGUI.fxml"));
+		
+		Parent root = loader.load();
+		//Stage stage = new Stage();
+		//Parent root = FXMLLoader.load(getClass().getResource("/application/TeacherViewResultChartGUI.fxml"));
 		stage.initStyle(StageStyle.UNDECORATED);
 		Scene scene = new Scene(root);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		stage.setScene(scene);
 		stage.show();
+		
+		TeacherViewResultChartController tvcc = loader.getController();
+		tvcc.setBarChart(paperIDtxt2.getText());
 	}
 	
 	@Override
