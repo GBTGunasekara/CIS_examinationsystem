@@ -39,21 +39,26 @@ public class TeacherViewClassController implements Initializable {
 	@FXML
 	private JFXDrawer Drawer;
 	@FXML 
-	private TableView<ViewClassTable> viewClassTbl;
+	private TableView viewClassTbl;
 	@FXML 
-	private TableColumn<ViewClassTable, String> col_sID;
+	private TableColumn<TeacherViewClassTable, Integer> col_ClassID;
 	@FXML 
-	private TableColumn<ViewClassTable, String> col_sName;
+	private TableColumn<TeacherViewClassTable, Integer> col_TeacherID;
 	@FXML 
-	private TableColumn<ViewClassTable, String> col_email;
+	private TableColumn<TeacherViewClassTable, String> col_ClassName;
 	@FXML 
-	private TableColumn<ViewClassTable, String> col_status;
+	private TableColumn<TeacherViewClassTable, String> col_SubjectName;
 	@FXML 
-	private TableColumn<ViewClassTable, String> col_nPapers;
+	private TableColumn<TeacherViewClassTable, Integer> col_Grade;
+	@FXML
+	private TableColumn<TeacherViewClassTable, String> col_Location;
+	
+
 	
 	
 	
-	ObservableList<ViewClassTable> oblist = FXCollections.observableArrayList(); 
+	
+	//ObservableList<ViewClassTable> oblist = FXCollections.observableArrayList(); 
 	
 	@FXML
 	private void handleClose(MouseEvent event)
@@ -83,7 +88,7 @@ public class TeacherViewClassController implements Initializable {
 	
 	ResultSet rs = null;
 	
-	public void tableload() {
+	/*public void tableload() {
 		//fill table
 		try {
 			Connection con = DBconnection.Connect();
@@ -105,14 +110,14 @@ public class TeacherViewClassController implements Initializable {
 		}catch(SQLException ex) {
 			System.out.println(ex);
 	    	JOptionPane.showMessageDialog(null, "error\n" + ex);
-		}
+		}*/
 		
 		//table columns
-		col_sID.setCellValueFactory(new PropertyValueFactory<>("sID"));
+		/*col_sID.setCellValueFactory(new PropertyValueFactory<>("sID"));
 		col_sName.setCellValueFactory(new PropertyValueFactory<>("sName"));
 		col_email.setCellValueFactory(new PropertyValueFactory<>("sEmail"));
 		col_status.setCellValueFactory(new PropertyValueFactory<>("sStatus"));
-		col_nPapers.setCellValueFactory(new PropertyValueFactory<>("nPaper"));
+		col_nPapers.setCellValueFactory(new PropertyValueFactory<>("nPaper"));*/
 		
 		/*try {
 			fetch();
@@ -120,7 +125,7 @@ public class TeacherViewClassController implements Initializable {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}*/
-	}
+	//}
 	
 	//@FXML
 	/*private void fetch() throws Exception {
@@ -147,6 +152,30 @@ public class TeacherViewClassController implements Initializable {
 		// TODO Auto-generated method stub
 		TeacherDrawerController ad1 = new TeacherDrawerController();
 		ad1.TeacherDrawer(Hamburger, Drawer);
+		
+		col_ClassID.setCellValueFactory(cellData -> cellData.getValue().getClassID().asObject());
+		col_TeacherID.setCellValueFactory(cellData -> cellData.getValue().getTeacherID().asObject());
+		col_ClassName.setCellValueFactory(cellData -> cellData.getValue().getClassName());
+		col_SubjectName.setCellValueFactory(cellData -> cellData.getValue().getSubjectName());
+		col_Grade.setCellValueFactory(cellData -> cellData.getValue().getGrade().asObject());
+		col_Location.setCellValueFactory(cellData -> cellData.getValue().getLocation());
+
+		try {
+			try {
+				String teacherID = "TID123";
+				ObservableList<TeacherViewClassTable> ClassList = TeacherViewClassFunction.SelectClassList(teacherID);
+				viewClassTbl.setItems(ClassList);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+
+		
 		
 		/*TeacherViewClassController t1 = new TeacherViewClassController();
 		t1.tableload();*/

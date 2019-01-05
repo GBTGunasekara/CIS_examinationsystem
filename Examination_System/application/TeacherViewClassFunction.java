@@ -8,29 +8,37 @@ import javax.swing.table.DefaultTableModel;
 
 import com.mysql.jdbc.*;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 
 public class TeacherViewClassFunction {
 	
-	//TeacherViewClassController t1 = new TeacherViewClassController();
-	//t1.tableload();
-	
-	//public ResultSet fillViewClass() {
-		//return null;
-		/*ResultSet rs = null;
-		try {
-			PreparedStatement ps;
-			String q = "select s.studentID, s.stName, s.stEmail, s.stStatus from student s and sc.noPapers from studentclass sc where s.studentID = sc.studentID";
-			ps = (PreparedStatement) DBconnection.Connect().prepareStatement(q);
-			rs = ps.executeQuery();
-			
-			
+	public static ObservableList <TeacherViewClassTable> SelectClassList(String teacherID) throws ClassNotFoundException, SQLException{
+
 		
-		}catch(SQLException ex) {
-			System.out.println(ex);
-	    	JOptionPane.showMessageDialog(null, "error\n" + ex);
-		}
-		return rs;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String sql = "Select * from class where teacherID = '"+teacherID+"'"; //Get Class Details for the logged in teacher
+        
+		ObservableList Classobj = FXCollections.observableArrayList();
+        
+        ps = (PreparedStatement) DBconnection.Connect().prepareStatement(sql);
+        rs = ps.executeQuery();
+        while (rs.next())
+        {
+        	TeacherViewClassTable tvct = new TeacherViewClassTable(); 
+        	tvct.setClID(Integer.parseInt(rs.getString("classID")));
+        	tvct.setTeID(Integer.parseInt(rs.getString("techerID")));
+        	tvct.setClName(rs.getString("className"));
+        	tvct.setSubName(rs.getString("subjectName"));
+        	tvct.setGr(Integer.parseInt(rs.getString("grade")));
+        	tvct.setLoc(rs.getString("location"));
+
+        	
+        	Classobj.add(tvct);
+        }
+		return Classobj;
+	    
 	}
-*/
-//	}
 }

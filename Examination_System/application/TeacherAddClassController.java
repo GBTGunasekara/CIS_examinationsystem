@@ -75,11 +75,11 @@ public class TeacherAddClassController implements Initializable{
 		String className = classNamebox.getText();
 		String location = locNamebox.getText();
 
-		TeacherAddClassFunctionInterface  loginobj = (TeacherAddClassFunctionInterface) 
+		TeacherAddClassFunctionInterface  tacf = (TeacherAddClassFunctionInterface) 
 				Naming.lookup("rmi://localhost:1099/TeacherAddClass");
 	    	    
 		//TeacherAddClassFunction tac1 = new TeacherAddClassFunction();
-		loginobj.createClass(teID,classID,subName, grade,className,location);
+		tacf.createClass(teID,classID,subName, grade,className,location);
 		
 	}
 	
