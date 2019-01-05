@@ -58,8 +58,7 @@ public class TeacherProfileController implements Initializable{
 	private JFXRadioButton teGenderFemale;
 	@FXML
 	private ToggleGroup teGender;
-	@FXML
-	private Button Search;
+	
 	
 	@FXML
 	private void handleClose(MouseEvent event)
