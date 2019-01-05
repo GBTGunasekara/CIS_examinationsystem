@@ -87,7 +87,7 @@ public class TeacherAddClassController implements Initializable{
 	private void clear(MouseEvent event) {
 		
 		teacherIDbox.setText("");
-		teacherIDbox.setText("");
+		classIDbox.setText("");
 		gradebox.setText("");
 		subNamebox.setText("");
 		classNamebox.setText("");

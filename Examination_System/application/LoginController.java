@@ -44,6 +44,12 @@ public class LoginController  {
 		Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		stage.setIconified(true);
 	}
+	
+	public String getUID() {
+		
+		String UID=userIDtxt.getText();
+		return UID;
+	}
 
 	//this function contains fxml file loader. the sting value pass the  relevent fxml link
 	public void fxmlLoader(String link) throws Exception

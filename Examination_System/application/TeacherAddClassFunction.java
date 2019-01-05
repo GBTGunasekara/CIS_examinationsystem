@@ -24,7 +24,7 @@ public class TeacherAddClassFunction extends UnicastRemoteObject implements Teac
 	public void createClass (int teID, int clID, String subName, int grade, String clName, String location) {
 		
 		PreparedStatement ps;
-		String adClsQuery = "INSERT INTO class (classID, teacherID, className, subjectName, grade, location, NoStudents) VALUES (?, ?, ?, ?, ?, ?, ?)";
+		String adClsQuery = "INSERT INTO class (classID, teacherID, className, subjectName, grade, location) VALUES (?, ?, ?, ?, ?, ?)";
 		try
 		{
 			ps = (PreparedStatement) DBconnection.Connect().prepareStatement(adClsQuery);
@@ -34,7 +34,7 @@ public class TeacherAddClassFunction extends UnicastRemoteObject implements Teac
 	        ps.setString(4, clName);
 	        ps.setInt(5, grade);
 	        ps.setString(6, location);
-	        ps.setString(7, "0");
+	       
 	        
 	        
 	        if(ps.executeUpdate() > 0)

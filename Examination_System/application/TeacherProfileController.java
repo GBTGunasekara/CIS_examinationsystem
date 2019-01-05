@@ -39,7 +39,7 @@ public class TeacherProfileController implements Initializable{
 	@FXML
 	private JFXDrawer Drawer;
 	@FXML
-	private Label userIDlbl;
+	private Label UIDlbl;
 	@FXML
 	private JFXTextField teID;
 	@FXML
@@ -58,6 +58,8 @@ public class TeacherProfileController implements Initializable{
 	private JFXRadioButton teGenderFemale;
 	@FXML
 	private ToggleGroup teGender;
+	@FXML
+	private Button Search;
 	
 	@FXML
 	private void handleClose(MouseEvent event)
@@ -130,6 +132,7 @@ public class TeacherProfileController implements Initializable{
 		//TeacherProfileFunction tpf = new TeacherProfileFunction();
 		String[] UserDetails = new String[6]; 
 		//String userID2 = "TID123";
+		
 		UserDetails = loginobj.getUsrDetails(userID);
 		
 		LocalDate DOB =  LocalDate.parse(UserDetails[3]);
@@ -154,4 +157,5 @@ public class TeacherProfileController implements Initializable{
 			
 		teRePasswd.setText(password);	
 	}
+	
 }
