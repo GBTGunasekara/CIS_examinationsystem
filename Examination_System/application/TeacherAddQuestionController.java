@@ -97,14 +97,14 @@ public class TeacherAddQuestionController implements Initializable{
 		stage.setScene(scene);
 		stage.show();
 		
-		ObservableList<Integer> totQuestionlist = QuestionNoCombo.getItems();		
-		String totQuestion = String.valueOf(totQuestionlist.size());
+		ObservableList<Integer> totQuestionlist = QuestionNoCombo.getItems();//insert combo box items to observable list for get total number of questions
+		String totQuestion = String.valueOf(totQuestionlist.size()); //get item count of observable list and initialize it to totQuestion
 		
-		ObservableList<Character> totAnslist = AnsNoCombo.getItems();		
-		String totAns = String.valueOf(totAnslist.size());
+		ObservableList<Character> totAnslist = AnsNoCombo.getItems();//insert combo box items to observable list for get total number of answers per question		
+		String totAns = String.valueOf(totAnslist.size()); //get item count of observable list and initialize it to totAns
 		
 		TeacherSubmitPaperController tspc = loader.getController();
-		tspc.paperDetails( teacherIDlabel.getText(),  classIDlabel.getText(),  paperIDlabel.getText(),  totQuestion,  totAns );
+		tspc.paperDetails( teacherIDlabel.getText(),  classIDlabel.getText(),  paperIDlabel.getText(),  totQuestion,  totAns ); //pass need values to next panel
 	}
 	
 	@FXML
@@ -115,9 +115,9 @@ public class TeacherAddQuestionController implements Initializable{
 			
 	}
 
-	public void seTeachertPaperDetails (String paperid, int noQuestion, String classID, String teacherID)
+	public void setTeacherPaperDetails (String paperid, int noQuestion, String classID, String teacherID)
 	{
-		paperIDlabel.setText(paperid); //set created paperid on teacherAddQuestionGUI 
+		paperIDlabel.setText(paperid); //set created paperID on teacherAddQuestionGUI 
 		classIDlabel.setText(classID);
 		teacherIDlabel.setText(teacherID);
 		
@@ -138,19 +138,14 @@ public class TeacherAddQuestionController implements Initializable{
 		{
 			AnsNoCombo.getItems().add((char)i);
 		}
-		
-		
-		
 	}
 
-	
 	@FXML
 	private void SaveEnterNextQuestion(MouseEvent event) throws RemoteException 
 	{
 		
 		String PaperID = paperIDlabel.getText();
 		String QusetionID= quesetionIDlabel.getText();
-		
 		String Question = QuestionTextArea.getText();
 		String AnswerA = AnswerATextArea.getText();
 		String AnswerB = AnswerBTextArea.getText();
@@ -158,7 +153,7 @@ public class TeacherAddQuestionController implements Initializable{
 		String AnswerD = AnswerDTextArea.getText();
 		
 		String correctAnswer =null;
-		int noQuestions = Integer.parseInt(QuestionNoCombo.getSelectionModel().getSelectedItem().toString());
+		int noQuestions = Integer.parseInt(QuestionNoCombo.getSelectionModel().getSelectedItem().toString()); //initialize currently selected question number 
 		
 		
 		//TeacherAddPaperController tapc = new TeacherAddPaperController();
@@ -171,10 +166,7 @@ public class TeacherAddQuestionController implements Initializable{
 		
 		if(AnsNoCombo.getSelectionModel().getSelectedItem()!= null)
 		{
-			
-			
-			
-			
+
 			 correctAnswer = AnsNoCombo.getSelectionModel().getSelectedItem().toString();
 			 try
 			 {
