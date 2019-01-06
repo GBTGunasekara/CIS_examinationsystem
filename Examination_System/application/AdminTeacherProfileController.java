@@ -51,9 +51,9 @@ public class AdminTeacherProfileController implements Initializable{
 	@FXML
 	private JFXDatePicker teDOB;
 	@FXML
-	private JFXPasswordField tePasswd;
+	private JFXTextField tePasswd;
 	@FXML
-	private JFXPasswordField teRePasswd;
+	private JFXTextField teRePasswd;
 	@FXML
 	private JFXRadioButton teGenderMale;
 	@FXML
@@ -111,22 +111,18 @@ public class AdminTeacherProfileController implements Initializable{
 		
 	}
 	@FXML
-	private void Search(MouseEvent event)throws Exception {
-		String userID = SearchBox.getText();
-		SetUserDetails(userID);
+	private void Search(MouseEvent event) {
+		String uid = SearchBox.getText();
+		SetUserDetails(uid);
 	}
 	
-	public void SetUserDetails(String userID) throws RemoteException, MalformedURLException, NotBoundException {
+	public void SetUserDetails(String userID){
 		
 		
-		AdminTeacherProfileFunctionInterface  atpfi = (AdminTeacherProfileFunctionInterface) 
-				Naming.lookup("rmi://localhost:1099/AdminTeacherProfile");
+		AdminTeacherProfileFunction atpf = new AdminTeacherProfileFunction();
 		
-		//TeacherProfileFunction tpf = new TeacherProfileFunction();
-		String[] UserDetails = new String[6]; 
-		//String userID2 = "TID123";
-		
-		UserDetails = atpfi.getUsrDetails(userID);
+		String[] UserDetails = new String[6]; 	
+		UserDetails = atpf.getUsrDetails(userID);
 		
 		LocalDate DOB =  LocalDate.parse(UserDetails[3]);
 		
@@ -143,11 +139,8 @@ public class AdminTeacherProfileController implements Initializable{
 			teGenderFemale.setSelected(true);
 			teGenderMale.setSelected(false);
 		}
-		
 		String password = UserDetails[5];
 		tePasswd.setText(password);
-		//tePPic.setText(UserDetails[6]);
-			
 		teRePasswd.setText(password);	
 	}
 	

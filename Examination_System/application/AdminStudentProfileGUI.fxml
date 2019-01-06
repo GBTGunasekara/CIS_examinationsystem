@@ -25,7 +25,7 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Label prefHeight="35.0" prefWidth="258.0" text="User ID" textFill="#e5e5e5">
+            <Label fx:id="UIDlLbl" prefHeight="35.0" prefWidth="258.0" text="User ID" textFill="#e5e5e5">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
@@ -76,7 +76,7 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <JFXTextField layoutX="280.0" layoutY="100.0" prefHeight="30.0" prefWidth="250.0">
+      <JFXTextField fx:id="stID" layoutX="280.0" layoutY="100.0" prefHeight="30.0" prefWidth="250.0">
          <font>
             <Font size="18.0" />
          </font>
@@ -86,7 +86,7 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <JFXTextField layoutX="280.0" layoutY="160.0" prefHeight="30.0" prefWidth="250.0">
+      <JFXTextField fx:id="stName" layoutX="280.0" layoutY="160.0" prefHeight="30.0" prefWidth="250.0">
          <font>
             <Font size="18.0" />
          </font>
@@ -96,7 +96,7 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <JFXTextField layoutX="280.0" layoutY="220.0" prefHeight="30.0" prefWidth="250.0">
+      <JFXTextField fx:id="stEmail" layoutX="280.0" layoutY="220.0" prefHeight="30.0" prefWidth="250.0">
          <font>
             <Font size="18.0" />
          </font>
@@ -116,7 +116,7 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <JFXTextField layoutX="280.0" layoutY="400.0" prefHeight="30.0" prefWidth="250.0">
+      <JFXTextField fx:id="stPassword" layoutX="280.0" layoutY="400.0" prefHeight="30.0" prefWidth="250.0">
          <font>
             <Font size="18.0" />
          </font>
@@ -134,7 +134,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXRadioButton layoutX="280.0" layoutY="342.0" prefHeight="35.0" prefWidth="100.0" text="Male">
+      <JFXRadioButton fx:id="stGenderMale" layoutX="280.0" layoutY="342.0" prefHeight="35.0" prefWidth="100.0" text="Male">
          <font>
             <Font size="18.0" />
          </font>
@@ -142,7 +142,7 @@
             <ToggleGroup fx:id="TeacherGender" />
          </toggleGroup>
       </JFXRadioButton>
-      <JFXRadioButton layoutX="422.0" layoutY="342.0" prefHeight="35.0" prefWidth="100.0" text="Female">
+      <JFXRadioButton fx:id="stGenderFemale" layoutX="422.0" layoutY="342.0" prefHeight="35.0" prefWidth="100.0" text="Female">
          <toggleGroup>
             <ToggleGroup fx:id="TeacherGender" />
          </toggleGroup>
@@ -155,12 +155,12 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <JFXTextField layoutX="280.0" layoutY="460.0" prefHeight="30.0" prefWidth="250.0">
+      <JFXTextField fx:id="stRePassword" layoutX="280.0" layoutY="460.0" prefHeight="30.0" prefWidth="250.0">
          <font>
             <Font size="18.0" />
          </font>
       </JFXTextField>
-      <JFXDatePicker defaultColor="#494949" layoutX="280.0" layoutY="285.0" prefHeight="30.0" prefWidth="250.0" />
+      <JFXDatePicker fx:id="stDOB" defaultColor="#494949" layoutX="280.0" layoutY="285.0" prefHeight="30.0" prefWidth="250.0" />
       <Label layoutX="626.0" layoutY="370.0" prefHeight="30.0" prefWidth="135.0" text="No. Class">
          <font>
             <Font size="20.0" />
@@ -181,7 +181,7 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <JFXButton fx:id="ClassListbtn" buttonType="RAISED" layoutX="40.0" layoutY="530.0" onMouseClicked="#MovetoStudentClassList" prefHeight="35.0" prefWidth="180.0" style="-fx-background-color: #494949;" text="Class List" textFill="#e5e5e5">
+      <JFXButton fx:id="classListButton" buttonType="RAISED" layoutX="40.0" layoutY="530.0" onMouseClicked="#MovetoStudentClassList" prefHeight="35.0" prefWidth="180.0" style="-fx-background-color: #494949;" text="Class List" textFill="#e5e5e5">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -196,8 +196,8 @@
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <JFXTextField layoutX="310.0" layoutY="61.0" prefHeight="26.0" prefWidth="394.0" />
-      <JFXButton contentDisplay="CENTER" layoutX="733.0" layoutY="59.0" prefHeight="30.0" prefWidth="30.0" textFill="#0000000b">
+      <JFXTextField fx:id="searchBox" layoutX="310.0" layoutY="61.0" prefHeight="26.0" prefWidth="394.0" />
+      <JFXButton fx:id="searchButton" contentDisplay="CENTER" layoutX="733.0" layoutY="59.0" onMouseClicked="#searchFunc" prefHeight="30.0" prefWidth="30.0" textFill="#0000000b">
          <graphic>
             <ImageView fitHeight="23.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
                <image>

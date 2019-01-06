@@ -24,6 +24,8 @@ public class SystemServer {
 			Naming.rebind("rmi://localhost:1099/TeacherAddClass", new TeacherAddClassFunction());
 			Naming.rebind("rmi://localhost:1099/TeacherProfile", new TeacherProfileFunction());
 			Naming.rebind("rmi://localhost:1099/StudentProfile", new StudentProfileFunction());
+			Naming.rebind("rmi://localhost:1099/AdminTeacherProfile", new StudentProfileFunction());
+
 			
 			System.out.println("MCQ app Server Strarted");
 		} catch (Exception e){

@@ -8,15 +8,11 @@ import javax.swing.JOptionPane;
 
 import com.mysql.jdbc.Connection;
 
-public class AdminTeacherProfileFunction extends UnicastRemoteObject implements AdminTeacherProfileFunctionInterface{
+public class AdminTeacherProfileFunction{
 	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 
 
-	protected AdminTeacherProfileFunction() throws RemoteException {
+	protected AdminTeacherProfileFunction(){
 		super();
 		// TODO Auto-generated constructor stub
 	}
