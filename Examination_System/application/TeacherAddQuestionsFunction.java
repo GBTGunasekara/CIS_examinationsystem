@@ -298,7 +298,7 @@ public class TeacherAddQuestionsFunction extends UnicastRemoteObject implements 
 	}
 	
 	//select combo box selected question's answer set
-	public String [] selectFirstAnswerset (String questionID) throws RemoteException
+	public String [] comboAnswerSet (String questionID) throws RemoteException
 	{
 		PreparedStatement ps = null;
 		ResultSet rs = null;

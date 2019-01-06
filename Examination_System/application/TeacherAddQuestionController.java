@@ -1,12 +1,13 @@
 package application;
 
 
+//import java.awt.event.ActionEvent;
 import java.net.URL;
 import java.rmi.Naming;
 import java.rmi.RemoteException;
+import java.sql.SQLException;
 import java.util.Date;
 import java.util.ResourceBundle;
-
 import javax.swing.JOptionPane;
 
 import com.jfoenix.controls.JFXDrawer;
@@ -23,10 +24,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
+import javafx.event.ActionEvent;
 public class TeacherAddQuestionController implements Initializable{
 	
 	@FXML 
@@ -170,10 +172,10 @@ public class TeacherAddQuestionController implements Initializable{
 			 correctAnswer = AnsNoCombo.getSelectionModel().getSelectedItem().toString();
 			 try
 			 {
-				 TeacherAddQuestionsFunctionInterface  nextQe = (TeacherAddQuestionsFunctionInterface) 
-							Naming.lookup("rmi://localhost:1099/TeacherAddQuestions");
-				 //TeacherAddQuestionsFunction tap1 = new TeacherAddQuestionsFunction();
-				 nextQe.SaveNextQuestion(PaperID,QusetionID, Question,AnswerA,AnswerB,AnswerC,AnswerD,noQuestions,correctAnswer);
+				 /*TeacherAddQuestionsFunctionInterface  nextQe = (TeacherAddQuestionsFunctionInterface) 
+							Naming.lookup("rmi://localhost:1099/TeacherAddQuestions");*/
+				 TeacherAddQuestionsFunction tap1 = new TeacherAddQuestionsFunction();
+				 tap1.SaveNextQuestion(PaperID,QusetionID, Question,AnswerA,AnswerB,AnswerC,AnswerD,noQuestions,correctAnswer);
 			 }
 			 catch (Exception e)
 			 {
@@ -183,6 +185,7 @@ public class TeacherAddQuestionController implements Initializable{
 			 if (noQuestions == totQuestion) //preventing move on to next question which out of the limit of totQuestion 
 				{
 					JOptionPane.showMessageDialog(null, "You have entered all questions");
+					
 				}
 			 else
 			 {
@@ -198,13 +201,13 @@ public class TeacherAddQuestionController implements Initializable{
 			 AnsNoCombo.getSelectionModel().select(null); // set null on next question's answer at the beginning 
 			 
 			 //increment the questionID by 1
-             int papernum_len = QusetionID.length();
-             String letters_set = QusetionID.substring(0,2);
-             String numbers_set = QusetionID.substring(2, papernum_len);
+             int questionNumLen = QusetionID.length();
+             String lettersset = QusetionID.substring(0,2);
+             String numbers_set = QusetionID.substring(2, questionNumLen);
              int numbers_set_int = Integer.parseInt(numbers_set);
              numbers_set_int = numbers_set_int + 1;
              numbers_set = Integer.toString(numbers_set_int);
-             String NewQusetionID = (letters_set + numbers_set); 
+             String NewQusetionID = (lettersset + numbers_set); 
              quesetionIDlabel.setText(NewQusetionID);
 			 }
 			
@@ -214,14 +217,66 @@ public class TeacherAddQuestionController implements Initializable{
 		else 
 		{
 			JOptionPane.showMessageDialog(null, "Selcet Correct Answer");
-	    	    
-			
-		}	
-		
-		
+	    	    	
+		}		
 	}
 	
 
+
+
+	public void loadQuestion(ActionEvent event) 
+	{
+		//QuestionNoCombo.setOnAction((event) -> {
+			int QuestionNo = Integer.parseInt(QuestionNoCombo.getSelectionModel().getSelectedItem().toString());
+			String PaperID = paperIDlabel.getText();
+			
+			
+			try {
+			TeacherAddQuestionsFunction  taqf = new TeacherAddQuestionsFunction();
+			
+			if (taqf.checkComboQuestion(QuestionNo, PaperID) == true) //check is question already entered
+			{
+
+			//clear text area and ready the GUI for next question and answers
+			 QuestionTextArea.setText(""); 
+			 AnswerATextArea.setText("");
+			 AnswerBTextArea.setText("");
+			 AnswerCTextArea.setText("");
+			 AnswerDTextArea.setText("");
+			
+				String loadquestion[] = taqf.selectComboQuestion (String.valueOf(QuestionNo),PaperID);
+				quesetionIDlabel.setText(loadquestion[0]);
+				QuestionTextArea.setText(loadquestion[1]);
+				
+				String loadanswers[] = taqf.comboAnswerSet (loadquestion[0]);
+				AnswerATextArea.setText(loadanswers[0]);
+				AnswerBTextArea.setText(loadanswers[1]);
+				AnswerCTextArea.setText(loadanswers[2]);
+				AnswerDTextArea.setText(loadanswers[3]);
+				
+			}
+			else //if question is not entered previously 
+			{
+				QuestionTextArea.setText(""); 
+				 AnswerATextArea.setText("");
+				 AnswerBTextArea.setText("");
+				 AnswerCTextArea.setText("");
+				 AnswerDTextArea.setText("");
+				 
+				 String paperID= paperIDlabel.getText();
+				 String newQuestionID = paperID + QuestionNoCombo.getSelectionModel().getSelectedItem().toString() ;
+				 quesetionIDlabel.setText(newQuestionID);
+			}
+			}
+			 
+			catch (RemoteException | SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
+			
+		//});
+	}
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -230,8 +285,6 @@ public class TeacherAddQuestionController implements Initializable{
 		TeacherDrawerController ad1 = new TeacherDrawerController();
 		ad1.TeacherDrawer(Hamburger, Drawer);
 		Drawer.toBack();
-		
-		//TeacherAddPaperFunction adpf = new TeacherAddPaperFunction(); //set questionid on label by adding one to paperid
 		
 	}
 }

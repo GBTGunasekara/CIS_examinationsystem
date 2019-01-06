@@ -104,12 +104,12 @@ public class TeacherAddPaperController implements Initializable{
 		String subjcetName = subjcetNametxt.getText();
 		int noQuestions = Integer.parseInt(noQusetiontxt.getText());
 		int noAnswers = Integer.parseInt(noAnswertxt.getText());
-/*
+
 	    Date currentdatetime = new Date(); //get current date and time
 	    
 	    TeacherAddPaperInterface  PaperIDGen = (TeacherAddPaperInterface) 
 				Naming.lookup("rmi://localhost:1099/TeacherAddPaper");
-		PaperIDGen.createPaper(teacherID,classID,paperID, currentdatetime,noQuestions,noAnswers);*/
+		PaperIDGen.createPaper(teacherID,classID,paperID, currentdatetime,noQuestions,noAnswers);
 		
 		String paperPassword = "123";
 		//String teacherID = "TID123";
