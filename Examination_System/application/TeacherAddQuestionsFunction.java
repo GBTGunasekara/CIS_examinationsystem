@@ -298,24 +298,26 @@ public class TeacherAddQuestionsFunction extends UnicastRemoteObject implements 
 	}
 	
 	//select combo box selected question's answer set
-	public String [] comboAnswerSet (String questionID) throws RemoteException
+	public String [][] comboAnswerSet (String questionID) throws RemoteException
 	{
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		String []  answerlist =  new String[4];
+		String [][]  answerlist =  new String[4][2];
 		
-		for(int i = 0; i < 4; i++) //get answers into an array list
-		{
+		
+		
 		try{
 			
-	           String searchPaperDetails = "select answer from answer where questionID = '"+questionID+"'";
+	           String searchPaperDetails = "select answer, ansStatus from answer where questionID = '"+questionID+"'";
 	             
 	             
 	             ps = (PreparedStatement) DBconnection.Connect().prepareStatement(searchPaperDetails);
 	             rs = ps.executeQuery();
+	             for(int i = 0; i < 4; i++) //get answers into an array list
 	             if(rs.next())
 	             {
-	            	 answerlist[i] = rs.getString(1);
+	            	 answerlist[i][0] = rs.getString(1);
+	            	 answerlist[i][1] = rs.getString(2);
 	             }
 	            
 	    }
@@ -323,7 +325,7 @@ public class TeacherAddQuestionsFunction extends UnicastRemoteObject implements 
 	            JOptionPane.showMessageDialog(null, "unable to select paper details.");
 	            System.out.println(e);
 	        }
-		}
+		
 		return answerlist; //return selected question's answer list
 		
 	}

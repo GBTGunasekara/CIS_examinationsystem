@@ -248,11 +248,23 @@ public class TeacherAddQuestionController implements Initializable{
 				quesetionIDlabel.setText(loadquestion[0]);
 				QuestionTextArea.setText(loadquestion[1]);
 				
-				String loadanswers[] = taqf.comboAnswerSet (loadquestion[0]);
-				AnswerATextArea.setText(loadanswers[0]);
-				AnswerBTextArea.setText(loadanswers[1]);
-				AnswerCTextArea.setText(loadanswers[2]);
-				AnswerDTextArea.setText(loadanswers[3]);
+				String loadanswers[][] = taqf.comboAnswerSet (loadquestion[0]);
+				AnswerATextArea.setText(loadanswers[0][0]);
+				AnswerBTextArea.setText(loadanswers[1][0]);
+				AnswerCTextArea.setText(loadanswers[2][0]);
+				AnswerDTextArea.setText(loadanswers[3][0]);
+				
+				for (int i=0; i<4; i++)
+				{
+					if(loadanswers[i][1].equals("Correct"))
+					{
+						AnsNoCombo.getSelectionModel().select(i);
+					}
+					else
+					{
+						System.out.println("not choosing correct answer");
+					}
+				}
 				
 			}
 			else //if question is not entered previously 
@@ -266,6 +278,7 @@ public class TeacherAddQuestionController implements Initializable{
 				 String paperID= paperIDlabel.getText();
 				 String newQuestionID = paperID + QuestionNoCombo.getSelectionModel().getSelectedItem().toString() ;
 				 quesetionIDlabel.setText(newQuestionID);
+				 AnsNoCombo.getSelectionModel().select(null);
 			}
 			}
 			 
