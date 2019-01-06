@@ -20,8 +20,6 @@ public class TeacherAddQuestionsFunction extends UnicastRemoteObject implements 
 		// TODO Auto-generated constructor stub
 	}
 
-
-
 	/**
 	 * 
 	 */
@@ -31,8 +29,8 @@ public class TeacherAddQuestionsFunction extends UnicastRemoteObject implements 
 	String AnsStatus = null;
 	PreparedStatement ps;
 	
-	
-	
+	//save and move onto question
+	//update question
 	public void SaveNextQuestion (String paID, String qeID , String Question, String AnswerA, String AnswerB, String AnswerC, String AnswerD, int QeNo, String correctAns) throws RemoteException, HeadlessException, SQLException
 	{
 		if(Question.equals("")) 
@@ -71,9 +69,6 @@ public class TeacherAddQuestionsFunction extends UnicastRemoteObject implements 
         ps.setString(3, Question);
         ps.setInt(4, QeNo);
 
-        
-        
-        
         
         if(ps.executeUpdate() > 0)
         {
@@ -120,11 +115,8 @@ public class TeacherAddQuestionsFunction extends UnicastRemoteObject implements 
         		}
         		
         		String answerID =  qeID +  String.valueOf(i);
- 
         		String insertAnsQuery = "INSERT INTO answer( answerID, questionID , answerNo, answer, ansStatus) VALUES (?,?,?,?,?)";
-        		
-        		//UPDATE `answer` SET `answer`= "new answer" ,`ansStatus`= "correct" WHERE answerNo = "D" and questionID = "PA100000181" //update quarry
-        		
+
         		try
         		{
         			PreparedStatement ps2 =null;
@@ -146,7 +138,7 @@ public class TeacherAddQuestionsFunction extends UnicastRemoteObject implements 
         	    	JOptionPane.showMessageDialog(null, "Answers not added");
         	 	}
         		
-        	}
+        	} //insert answers for loop over
         	 
         	}
   
@@ -156,12 +148,13 @@ public class TeacherAddQuestionsFunction extends UnicastRemoteObject implements 
 	 	System.out.println(ex);
     	JOptionPane.showMessageDialog(null, "Question not added");
  	}
-	}
+	}// insert questions and answers process over
+			
+			//update questions and answers
 			else 
 			{
 				String updateQuestionQuery = "UPDATE question SET question = '"+Question+"' WHERE questionID= '"+qeID+"'";
-				
-				//UPDATE `question` SET `question`= "new question" WHERE questionID= "PA100000031" // update question quarry
+
 		try
 		{
 			ps = (PreparedStatement) DBconnection.Connect().prepareStatement(updateQuestionQuery);
@@ -170,11 +163,8 @@ public class TeacherAddQuestionsFunction extends UnicastRemoteObject implements 
 	        ps.setString(2, paID);
 	        ps.setString(3, Question);
 	        ps.setInt(4, QeNo);*/
-
-	        
-	        
-	        
-	        
+			
+			//update answers
 	        if(ps.executeUpdate() > 0)
 	        {
 	        
@@ -245,7 +235,7 @@ public class TeacherAddQuestionsFunction extends UnicastRemoteObject implements 
 	        	    	JOptionPane.showMessageDialog(null, "Answers not added");
 	        	 	}
 	        		
-	        	}
+	        	}// update answer for loop over
 	        	 
 	        	}
 	  
@@ -255,7 +245,7 @@ public class TeacherAddQuestionsFunction extends UnicastRemoteObject implements 
 		 	System.out.println(ex);
 	    	JOptionPane.showMessageDialog(null, "Question not added");
 	 	}
-			}
+			}// update question for loop over
 	}
 	
 		
