@@ -3,10 +3,13 @@ package application;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.time.LocalDate;
 
 import javax.swing.JOptionPane;
 
 import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.PreparedStatement;
 
 public class TeacherProfileFunction extends UnicastRemoteObject implements TeacherProfileFunctionInterface{
 	
@@ -46,4 +49,39 @@ public class TeacherProfileFunction extends UnicastRemoteObject implements Teach
 		
 		return UserDetails;
 	}
+	
+public void updateDetails(String uid, String uName, String uEmail, String uPword, String uGender, LocalDate uDOB) {
+		
+		if(uid.equals("") || uName.equals("") || uEmail.equals("") || uPword.equals(""))
+		{
+			JOptionPane.showMessageDialog(null, "Complete data fields");
+			return;
+		}
+		
+		else if  (uDOB == null)
+		{
+				JOptionPane.showMessageDialog(null, "Insert DOB");
+				return;
+
+		}
+		
+		try {
+		String DOBtoString = uDOB.toString();
+		PreparedStatement ps;
+		
+		String updateQuery = "UPDATE Teacher SET TeacherID='"+uid+"',teName='"+uName+"',teEmail='"+uEmail+"',"
+				+ "tePassword='"+uPword+"',teDOB='"+DOBtoString+"',teGender='"+uGender+"' WHERE teacherID = '"+uid+"'";
+		
+			ps = (PreparedStatement) DBconnection.Connect().prepareStatement(updateQuery);
+			 if(ps.executeUpdate() > 0)
+	            {
+	                JOptionPane.showMessageDialog(null, "Updated");
+	            }
+			
+		} catch (SQLException e) {
+			
+			JOptionPane.showMessageDialog(null, e);
+		}
+	}
+	
 }
