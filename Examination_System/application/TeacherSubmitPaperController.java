@@ -14,6 +14,8 @@ import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.controls.JFXTimePicker;
 
+import javafx.concurrent.Service;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -91,16 +93,31 @@ public class TeacherSubmitPaperController implements Initializable{
 		
 		String paperID =  paperIDlbl.getText();
 		String paperPassword =  paperPasswordlbl.getText();
+		String classID =  classIDlbl.getText(); 
+		String teacherID=  teacherIDlbl.getText();
 		LocalDate ReleaseDate = ReleaseDatedp.getValue();
 		LocalTime ReleaseTime = ReleaseTimedp.getTime();
 		LocalDate TerminateDate = TerminateDatedp.getValue();
 		LocalTime TerminateTime = TerminateTimedp.getTime();
 		
-		TeacherSubmitPaperFunctionInterface  submit = (TeacherSubmitPaperFunctionInterface) 
-				Naming.lookup("rmi://localhost:1099/TeacherSubmitPaper");
+		//TeacherSubmitPaperFunctionInterface  submit = (TeacherSubmitPaperFunctionInterface) 
+			//	Naming.lookup("rmi://localhost:1099/TeacherSubmitPaper");
 		
-		//TeacherSubmitPaperFunction tspf = new TeacherSubmitPaperFunction();  
-		submit.submitPaper(paperID, paperPassword,ReleaseDate,ReleaseTime,TerminateDate,TerminateTime); //called submitPaper method here and pass these values
+		//create thread
+		Service<Void>src=new Service<Void>() {
+			protected Task<Void>createTask(){
+				return new Task<Void>() {
+					protected Void call()throws Exception{
+						TeacherSubmitPaperFunction tspf = new TeacherSubmitPaperFunction();  
+						tspf.submitPaper(paperID, paperPassword,ReleaseDate,ReleaseTime,TerminateDate,TerminateTime); //called submitPaper method here and pass these values
+						tspf.generateEmail(paperID, paperPassword, classID, teacherID, String.valueOf(ReleaseDate +" "+ ReleaseTime ), String.valueOf(TerminateDate +" " + TerminateTime));
+						return null;
+					}
+				};
+			}
+		};
+	    src.start();
+		
 		
 	}
 	

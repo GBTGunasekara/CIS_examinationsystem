@@ -60,7 +60,7 @@ public class TeacherAddQuestionsFunction extends UnicastRemoteObject implements 
 			{
 				String insertQuestionQuery = "INSERT INTO question(questionID, paperID, question, questionNo) VALUES (?,?,?,?)";
 		
-			//UPDATE `question` SET `question`= "new question" WHERE questionID= "PA100000031" // update question quarry
+			
 	try
 	{
 		ps = (PreparedStatement) DBconnection.Connect().prepareStatement(insertQuestionQuery);
@@ -328,6 +328,21 @@ public class TeacherAddQuestionsFunction extends UnicastRemoteObject implements 
 		
 		return answerlist; //return selected question's answer list
 		
+	}
+	public int checkQuestionsSaved (String paperID) throws SQLException
+	{
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		int questionCount = 0;
+		String questionCountquarry = "select count(*) from question where paperID = '"+paperID+"'";
+		ps = (PreparedStatement) DBconnection.Connect().prepareStatement(questionCountquarry);
+        rs = ps.executeQuery();
+        while (rs.next())
+	    {
+        	questionCount = rs.getInt(1);
+	    }
+		
+		return questionCount;
 	}
 	
 	

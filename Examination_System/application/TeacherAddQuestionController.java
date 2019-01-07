@@ -101,14 +101,26 @@ public class TeacherAddQuestionController implements Initializable{
 		stage.setScene(scene);
 		stage.show();
 		
+		
+		
 		ObservableList<Integer> totQuestionlist = QuestionNoCombo.getItems();//insert combo box items to observable list for get total number of questions
 		String totQuestion = String.valueOf(totQuestionlist.size()); //get item count of observable list and initialize it to totQuestion
 		
 		ObservableList<Character> totAnslist = AnsNoCombo.getItems();//insert combo box items to observable list for get total number of answers per question		
 		String totAns = String.valueOf(totAnslist.size()); //get item count of observable list and initialize it to totAns
 		
-		TeacherSubmitPaperController tspc = loader.getController();
-		tspc.paperDetails( teacherIDlabel.getText(),  classIDlabel.getText(),  paperIDlabel.getText(),  totQuestion,  totAns ); //pass need values to next panel
+		TeacherAddQuestionsFunction taqf = new TeacherAddQuestionsFunction();
+		int savedQuestionsCount = taqf.checkQuestionsSaved(paperIDlabel.getText());
+		
+		if (Integer.parseInt(totQuestion)== savedQuestionsCount)
+		{
+			TeacherSubmitPaperController tspc = loader.getController();
+			tspc.paperDetails( teacherIDlabel.getText(),  classIDlabel.getText(),  paperIDlabel.getText(),  totQuestion,  totAns ); //pass need values to next panel
+		}
+		else
+		{
+			JOptionPane.showMessageDialog(null, "Save all questions before save the paper");
+		}
 	}
 	
 	@FXML
@@ -145,9 +157,9 @@ public class TeacherAddQuestionController implements Initializable{
 	}
 
 	@FXML
-	private void SaveEnterNextQuestion(MouseEvent event) throws RemoteException 
+	private void SaveEnterNextQuestion(MouseEvent event) throws RemoteException, SQLException 
 	{
-		
+		//get required values from window
 		String PaperID = paperIDlabel.getText();
 		String QusetionID= quesetionIDlabel.getText();
 		String Question = QuestionTextArea.getText();
@@ -186,7 +198,19 @@ public class TeacherAddQuestionController implements Initializable{
 			 
 			 if (noQuestions == totQuestion) //preventing move on to next question which out of the limit of totQuestion 
 				{
-					JOptionPane.showMessageDialog(null, "You have entered all questions");
+				 TeacherAddQuestionsFunction taqf = new TeacherAddQuestionsFunction();
+					int savedQuestionsCount = taqf.checkQuestionsSaved(paperIDlabel.getText());
+					
+					if (totQuestion == savedQuestionsCount) //check all the questions save
+					{
+						JOptionPane.showMessageDialog(null, "You have entered all questions");
+					}
+					else
+					{
+						JOptionPane.showMessageDialog(null, "You have to enter some questions. Use Combo Box to move onto questions");
+					}
+				 
+				 
 					
 				}
 			 else

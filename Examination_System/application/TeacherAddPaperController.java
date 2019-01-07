@@ -110,13 +110,13 @@ public class TeacherAddPaperController implements Initializable{
 	    TeacherAddPaperInterface  PaperIDGen = (TeacherAddPaperInterface) 
 				Naming.lookup("rmi://localhost:1099/TeacherAddPaper");
 		PaperIDGen.createPaper(teacherID,classID,paperID, currentdatetime,noQuestions,noAnswers);
-		
+		/*
 		String paperPassword = "123";
 		//String teacherID = "TID123";
 		String ReleaseDate = "rdate";
 		String TerminateDate = "tdate";
 		TeacherSubmitPaperFunction tsp = new TeacherSubmitPaperFunction();
-		tsp.generateEmail(paperID, paperPassword, classID, teacherID, ReleaseDate, TerminateDate);
+		tsp.generateEmail(paperID, paperPassword, classID, teacherID, ReleaseDate, TerminateDate);*/
 	}
 	
 	
