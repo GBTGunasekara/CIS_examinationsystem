@@ -8,6 +8,8 @@ import java.rmi.RemoteException;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
+import javax.swing.JOptionPane;
+
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
@@ -53,7 +55,7 @@ public class AdminTeacherProfileController implements Initializable{
 	@FXML
 	private JFXTextField tePasswd;
 	@FXML
-	private JFXTextField teRePasswd;
+	private JFXTextField teStatus;
 	@FXML
 	private JFXRadioButton teGenderMale;
 	@FXML
@@ -141,7 +143,32 @@ public class AdminTeacherProfileController implements Initializable{
 		}
 		String password = UserDetails[5];
 		tePasswd.setText(password);
-		teRePasswd.setText(password);	
+		teStatus.setText(UserDetails[6]);	
+	}
+	
+	@FXML
+	private void updateTeacher() {
+		String uid = SearchBox.getText();
+		String uName = teName.getText();
+		String uEmail = teEmail.getText();
+		LocalDate uDOB= teDOB.getValue();
+		
+		String uGender = null;
+		if(teGenderMale.isSelected())
+			uGender = "Male";
+		else if(teGenderFemale.isSelected())
+			uGender = "Female";
+		else if(!teGenderMale.isSelected() && !teGenderFemale.isSelected())
+			JOptionPane.showMessageDialog(null, "Select Gender");
+		
+		String uPword = tePasswd.getText();
+		String uStatus = teStatus.getText();
+		
+		AdminStudentProfileFunction atpf = new AdminStudentProfileFunction();
+		atpf.updateDetails(uid, uName, uEmail, uPword, uGender, uDOB, uStatus);
+		
+		JOptionPane.showMessageDialog(null, "Button Pressed");
+		
 	}
 	
 }

@@ -60,7 +60,7 @@
             <Image url="@../image/rawpixel-645294-unsplash.jpg" />
          </image>
       </ImageView>
-      <JFXButton buttonType="RAISED" layoutX="510.0" layoutY="530.0" prefHeight="35.0" prefWidth="180.0" style="-fx-background-color: #494949;" text="Update" textFill="#e5e5e5">
+      <JFXButton buttonType="RAISED" layoutX="510.0" layoutY="530.0" onMouseClicked="#updateTeacher" prefHeight="35.0" prefWidth="180.0" style="-fx-background-color: #494949;" text="Update" textFill="#e5e5e5">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -139,23 +139,20 @@
             <Font size="18.0" />
          </font>
          <toggleGroup>
-            <ToggleGroup fx:id="TeacherGender" />
+            <ToggleGroup fx:id="teGender" />
          </toggleGroup>
       </JFXRadioButton>
-      <JFXRadioButton fx:id="teGenderFemale" layoutX="418.0" layoutY="350.0" prefHeight="35.0" prefWidth="100.0" text="Female">
-         <toggleGroup>
-            <ToggleGroup fx:id="TeacherGender" />
-         </toggleGroup>
+      <JFXRadioButton fx:id="teGenderFemale" layoutX="418.0" layoutY="350.0" prefHeight="35.0" prefWidth="100.0" text="Female" toggleGroup="$teGender">
          <font>
             <Font size="18.0" />
          </font>
       </JFXRadioButton>
-      <Label layoutX="66.0" layoutY="473.0" prefHeight="30.0" prefWidth="135.0" text="Re-Password">
+      <Label layoutX="66.0" layoutY="473.0" prefHeight="30.0" prefWidth="135.0" text="Status">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <JFXTextField fx:id="teRePasswd" layoutX="276.0" layoutY="468.0" prefHeight="30.0" prefWidth="250.0">
+      <JFXTextField fx:id="teStatus" layoutX="276.0" layoutY="468.0" prefHeight="30.0" prefWidth="250.0">
          <font>
             <Font size="18.0" />
          </font>

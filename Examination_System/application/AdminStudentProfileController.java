@@ -135,7 +135,7 @@ public class AdminStudentProfileController implements Initializable{
 			uGender = "Male";
 		else if(stGenderFemale.isSelected())
 			uGender = "Female";
-		else if(!stGenderMale.isSelected() || !stGenderFemale.isSelected())
+		else if(!stGenderMale.isSelected() && !stGenderFemale.isSelected())
 			JOptionPane.showMessageDialog(null, "Select Gender");
 		
 		String uPword = stPassword.getText();
