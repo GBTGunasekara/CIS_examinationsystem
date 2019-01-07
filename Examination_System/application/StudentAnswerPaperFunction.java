@@ -33,13 +33,10 @@ public class StudentAnswerPaperFunction extends UnicastRemoteObject implements S
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		ArrayList<String> questionIDlist = new ArrayList<String>();
-	    
-	    
-	    
+  
 	    try{
-	           String searchPaperDetails = "select questionID from question where paperID = '"+paperID+"'"; //select all questionIDs relevant to given paperID 
-	             
-	             
+	           String searchPaperDetails = "select questionID from question where paperID = '"+paperID+"' order by questionNo asc"; //select all questionIDs relevant to given paperID 
+  
 	             ps = (PreparedStatement) DBconnection.Connect().prepareStatement(searchPaperDetails);
 	             rs = ps.executeQuery();
 	             
@@ -58,6 +55,7 @@ public class StudentAnswerPaperFunction extends UnicastRemoteObject implements S
 	    return questionIDlist; 
 	}
 	
+	//select first question of the question paper from database and return that value
 	public String selectFirstQuestion (String paperID) throws RemoteException
 	{
 		PreparedStatement ps = null;
@@ -66,10 +64,8 @@ public class StudentAnswerPaperFunction extends UnicastRemoteObject implements S
 		
 		String firstquestionID = SelectShuffleQuestionID(paperID).get(0); //initializing first index of shuffled questionIDlist array list 
 		try{
-			
 	           String searchPaperDetails = "select question from question where questionID = '"+firstquestionID+"'"; //select first question 
-	             
-	             
+           
 	             ps = (PreparedStatement) DBconnection.Connect().prepareStatement(searchPaperDetails);
 	             rs = ps.executeQuery();
 	             if(rs.next())
@@ -136,7 +132,7 @@ public class StudentAnswerPaperFunction extends UnicastRemoteObject implements S
 	             rs = ps.executeQuery();
 	             if(rs.next())
 	             {
-	            	 answerlist[i] = rs.getString(1);
+	            	 answerlist[i] = rs.getString(1);   //store first question answers' to answerlist[] array
 	             }
 	            
 	    }
@@ -154,20 +150,19 @@ public class StudentAnswerPaperFunction extends UnicastRemoteObject implements S
 		
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		String [][]  questionlist =  new String[noOfQs][noOfQs];
+		String [][]  questionlist =  new String[noOfQs][noOfQs]; //initializing array for store questionIDs and questions
 		
 		ArrayList<String> qusetionlist = SelectShuffleQuestionID(paperID); //initializing shuffled questionID array list 
 		
+		//store all questions and questionID on questionlist[][] 2D array
 		for(int i = 0; i < qusetionlist.size(); i++) //get answers into an array list
 		{
 		try{
-			
 	           String searchPaperDetails = "select questionID, question from question where questionID = '"+qusetionlist.get(i)+"'";
-	             
-	             
+  
 	             ps = (PreparedStatement) DBconnection.Connect().prepareStatement(searchPaperDetails);
 	             rs = ps.executeQuery();
-	             if(rs.next())
+	             if(rs.next()) 
 	             {
 	            	 questionlist[i][0] = rs.getString(1);
 	            	 questionlist[i][1] = rs.getString(2);
@@ -180,7 +175,7 @@ public class StudentAnswerPaperFunction extends UnicastRemoteObject implements S
 	            System.out.println(e);
 	        }
 		}
-		return questionlist; //return 1st question list
+		return questionlist; //return question and its' ID list
 		
 	}
 	
@@ -192,10 +187,10 @@ public class StudentAnswerPaperFunction extends UnicastRemoteObject implements S
 		
 		ArrayList<String> qusetionAnswerlist = SelectShuffleAnswerID(paperID, Qno); //initializing shuffled answerID array list and notified which answer set needs
 		
-		for(int i = 0; i < qusetionAnswerlist.size(); i++) //get answers into an array list
+		//get answers into an array list
+		for(int i = 0; i < qusetionAnswerlist.size(); i++) 
 		{
 		try{
-			
 	           String searchPaperDetails = "select answerID, answer from answer where answerID = '"+qusetionAnswerlist.get(i)+"'";
 	             
 	             
@@ -213,15 +208,13 @@ public class StudentAnswerPaperFunction extends UnicastRemoteObject implements S
 	            System.out.println(e);
 	        }
 		}
-		return answerlist; //return 1st question's answer list
+		return answerlist; //return given question's answer list
 		
 	}
 	
 	
 	public void InsertStudentAnswer (String stID, String paID, String anID) throws RemoteException
 	{
-		
-
 		PreparedStatement ps;
 		String tRegQuery = "INSERT INTO studentanswer(studentID, paperID, answerID) VALUES (?,?,?)";
 	try

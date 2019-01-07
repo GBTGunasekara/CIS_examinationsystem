@@ -27,6 +27,7 @@ public class StudentResultPaperFunction extends UnicastRemoteObject implements S
 		ResultSet rs = null;
 		int result = 0;
 		try{
+	 //the below SQL quarry counts number of correct answer by checking student provided answers' status through answerID. if answer status is "Correct" then it will count as one correct answer. 
 				String status = "Correct";
 	            String searchPaperDetails = "select count(*) from answer a, studentanswer s where a.answerID = s.answerID and s.studentID = '"+StudentID+"' and s.paperID ='"+paperID+"' and a.ansStatus = '"+status+"'";
 	             
@@ -35,8 +36,7 @@ public class StudentResultPaperFunction extends UnicastRemoteObject implements S
 	             rs = ps.executeQuery();
 	             if(rs.next())
 	             {
-	            	 result = rs.getInt(1);
-	            	 
+	            	 result = rs.getInt(1); 
 	             }
 	            
 	    }
@@ -44,7 +44,7 @@ public class StudentResultPaperFunction extends UnicastRemoteObject implements S
 	            JOptionPane.showMessageDialog(null, "unable count correct answers");
 	            System.out.println(e);
 	        }
-		return result;
+		return result; // return the count of correct answers
 		
 	}
 	

@@ -99,7 +99,7 @@ public class StudentResultPaperController implements Initializable{
 				Naming.lookup("rmi://localhost:1099/StudentResultPaper");
 		
 		 //StudentAnswerPaperFunction sapf = new StudentAnswerPaperFunction();
-		resultlbl.setText(String.valueOf(showResult.resultCalculate(paperID, studentID))); //set the the rsult to label
+		resultlbl.setText(String.valueOf(showResult.resultCalculate(paperID, studentID))); //set the the result to label
 	}
 	
 	@Override
