@@ -16,7 +16,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="580.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.StudentProfileController">
+<AnchorPane prefHeight="580.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.StudentProfileController">
    <children>
       <HBox prefHeight="35.0" prefWidth="960.0" style="-fx-background-color: #494949;">
          <children>
@@ -61,7 +61,7 @@
             <Image url="@../image/jess-watters-483666-unsplash.jpg" />
          </image>
       </ImageView>
-      <JFXButton buttonType="RAISED" layoutX="510.0" layoutY="530.0" prefHeight="35.0" prefWidth="180.0" style="-fx-background-color: #494949;" text="Update" textFill="#e5e5e5">
+      <JFXButton buttonType="RAISED" layoutX="510.0" layoutY="530.0" onMouseClicked="#updateStudent" prefHeight="35.0" prefWidth="180.0" style="-fx-background-color: #494949;" text="Update" textFill="#e5e5e5">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -135,13 +135,10 @@
             <Font size="18.0" />
          </font>
          <toggleGroup>
-            <ToggleGroup fx:id="TeacherGender" />
+            <ToggleGroup fx:id="stGender" />
          </toggleGroup>
       </JFXRadioButton>
-      <JFXRadioButton fx:id="stGenderFemale" layoutX="422.0" layoutY="312.0" prefHeight="35.0" prefWidth="100.0" text="Female">
-         <toggleGroup>
-            <ToggleGroup fx:id="TeacherGender" />
-         </toggleGroup>
+      <JFXRadioButton fx:id="stGenderFemale" layoutX="422.0" layoutY="312.0" prefHeight="35.0" prefWidth="100.0" text="Female" toggleGroup="$stGender">
          <font>
             <Font size="18.0" />
          </font>

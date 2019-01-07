@@ -45,16 +45,14 @@ public class AdminStudentProfileFunction {
 		if(uid.equals("") || uName.equals("") || uEmail.equals("") || uPword.equals("") || uStatus.equals(""))
 		{
 			JOptionPane.showMessageDialog(null, "Complete data fields");
+			return;
 		}
-		
-		/*else if (!uPword.equals(uRePword))
-		{
-			JOptionPane.showMessageDialog(null, "Passwords are not similar");
-		}*/
 		
 		else if  (uDOB == null)
 		{
 				JOptionPane.showMessageDialog(null, "Insert DOB");
+				return;
+
 		}
 		
 		try {
@@ -65,18 +63,7 @@ public class AdminStudentProfileFunction {
 				+ "stPassword='"+uPword+"',stDOB='"+DOBtoString+"',stGender='"+uGender+"',stStatus= '"+uStatus+"'"
 						+ " WHERE studentID = '"+uid+"'";
 		
-		//String updateQuery = "UPDATE student SET studentID='?',stName='?',stEmail='?',"
-			//	+ "stPassword='?',stDOB='?',stGender='?',stStatus= '?' WHERE studentID = '"+uid+"'";
-		
 			ps = (PreparedStatement) DBconnection.Connect().prepareStatement(updateQuery);
-			/*ps.setString(1, uid);
-			ps.setString(2, uName);
-			ps.setString(3, uEmail);
-			ps.setString(4, uPword);
-			ps.setString(5, DOBtoString);
-			ps.setString(6, uGender);
-			ps.setString(7, uStatus);*/
-			
 			 if(ps.executeUpdate() > 0)
 	            {
 	                JOptionPane.showMessageDialog(null, "Updated");
@@ -89,4 +76,4 @@ public class AdminStudentProfileFunction {
 	}
 
 }
-//test comment
+

@@ -8,6 +8,8 @@ import java.rmi.RemoteException;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
+import javax.swing.JOptionPane;
+
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXDrawer;
@@ -153,6 +155,36 @@ public class StudentProfileController implements Initializable {
 			
 		stRePasswd.setText(password);
 	}
+	
+	@FXML
+	private void updateStudent() throws RemoteException {
+		String uid = stID.getText();
+		String uName = stName.getText();
+		String uEmail = stEmail.getText();
+		LocalDate uDOB= stDOB.getValue();
+		
+		String uGender = null;
+		if(stGenderMale.isSelected())
+			uGender = "Male";
+		else if(stGenderFemale.isSelected())
+			uGender = "Female";
+		else if(!stGenderMale.isSelected() || !stGenderFemale.isSelected())
+			JOptionPane.showMessageDialog(null, "Select Gender");
+		
+		String uPword = stPasswd.getText();
+		String uRePword = stRePasswd.getText();
+		
+		if(!uPword.equals(uRePword)) {
+			JOptionPane.showMessageDialog(null, "Passwords Don't Match");
+			return;
+		}
+		StudentProfileFunction spf = new StudentProfileFunction();
+		spf.updateDetails(uid, uName, uEmail, uPword, uGender, uDOB);
+		
+		
+		
+	}
+	
 }
 	
 
