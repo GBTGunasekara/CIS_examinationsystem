@@ -2,7 +2,7 @@ package application;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
-import java.sql.Date;
+import java.util.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Time;
@@ -10,7 +10,6 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
-
 import javax.swing.JOptionPane;
 
 import com.mysql.jdbc.PreparedStatement;
@@ -127,6 +126,68 @@ public class StudentSelectPaperFunction extends UnicastRemoteObject implements S
 	    
 	             String[] paperdetarr = new String[] {classID,teacherID,String.valueOf(noQuestions),String.valueOf(noAnswers),releaseDatestr, releaseTimestr, TerminateDatestr,TerminateTimestr};
 	             return paperdetarr;
+	}
+	
+	public String timeChecker (Date currentDate, Date currentTime,  Date releaseDate, Date releaseTime, Date terminateDate, Date terminateTime)
+	{
+		String status = null;
+	    
+	    if (currentDate.compareTo(releaseDate) > 0 && currentDate.compareTo(terminateDate) < 0 )
+	    {
+	    	status = "now";
+	    }
+
+	    else if (currentDate.compareTo(releaseDate) == 0 && currentDate.compareTo(terminateDate) < 0)
+	    {
+	    	if(currentTime.compareTo(releaseTime) >= 0)
+	    	{
+	    		status = "now";
+	    	}
+	    	else
+	    	{
+	    		status = "before";
+	    	}
+	    }
+	    else if (currentDate.compareTo(releaseDate) > 0 && currentDate.compareTo(terminateDate) == 0)
+	    {
+	    	if(currentTime.compareTo(terminateTime) <= 0)
+	    	{
+	    		status = "now";
+	    	}
+	    	else
+	    	{
+	    		status = "after";
+	    	}
+	    }
+	    else if (currentDate.compareTo(releaseDate) == 0 && currentDate.compareTo(terminateDate) == 0)
+	    {
+	    	if(currentTime.compareTo(releaseTime) >= 0 && currentTime.compareTo(terminateTime) <= 0)
+	    	{
+	    		status = "now";
+	    	}
+	    	else if (currentTime.compareTo(releaseTime) < 0 && currentTime.compareTo(terminateTime) < 0) 
+		    {
+		    	status = "before";
+	        } 
+		    else if (currentTime.compareTo(releaseTime) > 0 && currentTime.compareTo(terminateTime) > 0) 
+		    {
+		    	status = "after";
+	        } 
+	    }
+	   
+	    else if (currentDate.compareTo(releaseDate) < 0 && currentDate.compareTo(terminateDate) < 0) 
+	    {
+	    	status = "before";
+        } 
+	    else if (currentDate.compareTo(terminateDate) > 0 && currentDate.compareTo(terminateDate) > 0) 
+	    {
+	    	status = "after";
+        } 
+	    else 
+	    {
+            System.out.println("error");
+        }
+	    return status;
 	}
 	
 }

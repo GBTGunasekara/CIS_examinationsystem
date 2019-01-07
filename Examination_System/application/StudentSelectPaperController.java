@@ -7,6 +7,10 @@ import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 import javax.swing.JOptionPane;
@@ -84,21 +88,40 @@ public class StudentSelectPaperController implements Initializable {
 		
 		else 
 		{
-			
-			Stage stage = new Stage();
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/StudentAnswerPaperGUI.fxml"));
+			if (dateTimeCompare().equals("now")) 
+			{
+
+				Stage stage = new Stage();
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/StudentAnswerPaperGUI.fxml"));
 		
-			Parent root = loader.load();
+				Parent root = loader.load();
 		
-			stage.initStyle(StageStyle.UNDECORATED);
-			Scene scene = new Scene(root);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			stage.setScene(scene);
-			stage.show();
+				stage.initStyle(StageStyle.UNDECORATED);
+				Scene scene = new Scene(root);
+				scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+				stage.setScene(scene);
+				stage.show();
 		
-			StudentAnswerPaperController taqc = loader.getController();
-			taqc.setStudentPaperDetails(paperIDtxt.getText(), noQusetionlbl.getText(),classIDlbl.getText(), teacherIDlbl.getText()); //pass this values to next GUI
-			//taqc.setFirstQuestionAnswer(paperIDtxt.getText());
+				StudentAnswerPaperController taqc = loader.getController();
+				taqc.setStudentPaperDetails(paperIDtxt.getText(), noQusetionlbl.getText(),classIDlbl.getText(), teacherIDlbl.getText()); //pass this values to next GUI
+				//taqc.setFirstQuestionAnswer(paperIDtxt.getText());
+			}
+			else if (dateTimeCompare().equals("before")) 
+			{
+				JOptionPane.showMessageDialog(null, "Paper is not released");
+			}
+			else if (dateTimeCompare().equals("after")) 
+			{
+				JOptionPane.showMessageDialog(null, "Paper is terminated");
+			}
+			else if (dateTimeCompare().equals("error")) 
+			{
+				JOptionPane.showMessageDialog(null, "Check your PC time");
+			}
+			else
+			{
+				JOptionPane.showMessageDialog(null, "error");
+			}
 		}
 		
 		
@@ -166,6 +189,86 @@ public class StudentSelectPaperController implements Initializable {
 		}
 	}
 	
+	public String dateTimeCompare() throws ParseException, RemoteException
+	{
+		DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");  
+	    Date date = new Date();
+	    String currentdatestr = formatter.format(date); 
+	    Date currentDate = formatter.parse(currentdatestr);
+	    Date releaseDate = formatter.parse(ReleaseDatelbl.getText()) ;
+	    Date terminateDate = formatter.parse(TerminateDatelbl.getText()) ;
+	    
+	   
+	    SimpleDateFormat timeformatter = new SimpleDateFormat("HH:mm:ss");  
+	    String currenTimestr = timeformatter.format(date); 
+	    Date currentTime = timeformatter.parse(currenTimestr);
+	    Date releaseTime = timeformatter.parse(ReleaseTimelbl.getText()) ;
+	    Date terminateTime = timeformatter.parse(TerminateTimelbl.getText()) ;
+	   
+	    StudentSelectPaperFunction sspf = new StudentSelectPaperFunction();
+	    String status = sspf.timeChecker(currentDate, currentTime, releaseDate, releaseTime, terminateDate, terminateTime);
+	    return status;
+	    /*String status = null;
+	    
+	    if (currentDate.compareTo(releaseDate) > 0 && currentDate.compareTo(terminateDate) < 0 )
+	    {
+	    	status = "now";
+	    }
+
+	    else if (currentDate.compareTo(releaseDate) == 0 && currentDate.compareTo(terminateDate) < 0)
+	    {
+	    	if(currentTime.compareTo(releaseTime) >= 0)
+	    	{
+	    		status = "now";
+	    	}
+	    	else
+	    	{
+	    		status = "before";
+	    	}
+	    }
+	    else if (currentDate.compareTo(releaseDate) > 0 && currentDate.compareTo(terminateDate) == 0)
+	    {
+	    	if(currentTime.compareTo(terminateTime) <= 0)
+	    	{
+	    		status = "now";
+	    	}
+	    	else
+	    	{
+	    		status = "after";
+	    	}
+	    }
+	    else if (currentDate.compareTo(releaseDate) == 0 && currentDate.compareTo(terminateDate) == 0)
+	    {
+	    	if(currentTime.compareTo(releaseTime) >= 0 && currentTime.compareTo(terminateTime) <= 0)
+	    	{
+	    		status = "now";
+	    	}
+	    	else if (currentTime.compareTo(releaseTime) < 0 && currentTime.compareTo(terminateTime) < 0) 
+		    {
+		    	status = "before";
+	        } 
+		    else if (currentTime.compareTo(releaseTime) > 0 && currentTime.compareTo(terminateTime) > 0) 
+		    {
+		    	status = "after";
+	        } 
+	    }
+	   
+	    else if (currentDate.compareTo(releaseDate) < 0 && currentDate.compareTo(terminateDate) < 0) 
+	    {
+	    	status = "before";
+        } 
+	    else if (currentDate.compareTo(terminateDate) > 0 && currentDate.compareTo(terminateDate) > 0) 
+	    {
+	    	status = "after";
+        } 
+	    else 
+	    {
+            System.out.println("error");
+        }
+	    System.out.println(status);
+	    return status;*/
+	    
+	}
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
