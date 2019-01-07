@@ -25,7 +25,7 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Label prefHeight="35.0" prefWidth="258.0" text="User ID" textFill="#e5e5e5">
+            <Label fx:id="UIDlLbl" prefHeight="35.0" prefWidth="258.0" text="User ID" textFill="#e5e5e5">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
@@ -76,7 +76,7 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <JFXTextField layoutX="280.0" layoutY="70.0" prefHeight="30.0" prefWidth="250.0">
+      <JFXTextField fx:id="adID" layoutX="280.0" layoutY="70.0" prefHeight="30.0" prefWidth="250.0">
          <font>
             <Font size="18.0" />
          </font>
@@ -86,7 +86,7 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <JFXTextField layoutX="280.0" layoutY="130.0" prefHeight="30.0" prefWidth="250.0">
+      <JFXTextField fx:id="adName" layoutX="280.0" layoutY="130.0" prefHeight="30.0" prefWidth="250.0">
          <font>
             <Font size="18.0" />
          </font>
@@ -96,7 +96,7 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <JFXTextField layoutX="280.0" layoutY="190.0" prefHeight="30.0" prefWidth="250.0">
+      <JFXTextField fx:id="adEmail" layoutX="280.0" layoutY="190.0" prefHeight="30.0" prefWidth="250.0">
          <font>
             <Font size="18.0" />
          </font>
@@ -116,7 +116,7 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <JFXTextField layoutX="280.0" layoutY="370.0" prefHeight="30.0" prefWidth="250.0">
+      <JFXTextField fx:id="adPassword" layoutX="280.0" layoutY="370.0" prefHeight="30.0" prefWidth="250.0">
          <font>
             <Font size="18.0" />
          </font>
@@ -134,7 +134,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXRadioButton layoutX="280.0" layoutY="312.0" prefHeight="35.0" prefWidth="100.0" text="Male">
+      <JFXRadioButton fx:id="adGenderMale" layoutX="280.0" layoutY="312.0" prefHeight="35.0" prefWidth="100.0" text="Male">
          <font>
             <Font size="18.0" />
          </font>
@@ -142,7 +142,7 @@
             <ToggleGroup fx:id="TeacherGender" />
          </toggleGroup>
       </JFXRadioButton>
-      <JFXRadioButton layoutX="422.0" layoutY="312.0" prefHeight="35.0" prefWidth="100.0" text="Female">
+      <JFXRadioButton fx:id="adGenderFemale" layoutX="422.0" layoutY="312.0" prefHeight="35.0" prefWidth="100.0" text="Female">
          <toggleGroup>
             <ToggleGroup fx:id="TeacherGender" />
          </toggleGroup>
@@ -155,12 +155,12 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <JFXTextField layoutX="280.0" layoutY="430.0" prefHeight="30.0" prefWidth="250.0">
+      <JFXTextField fx:id="adRePassword" layoutX="280.0" layoutY="430.0" prefHeight="30.0" prefWidth="250.0">
          <font>
             <Font size="18.0" />
          </font>
       </JFXTextField>
-      <JFXDatePicker defaultColor="#494949" layoutX="280.0" layoutY="255.0" prefHeight="30.0" prefWidth="250.0" />
+      <JFXDatePicker fx:id="adDOB" defaultColor="#494949" layoutX="280.0" layoutY="255.0" prefHeight="30.0" prefWidth="250.0" />
       <JFXButton buttonType="RAISED" layoutX="40.0" layoutY="530.0" prefHeight="35.0" prefWidth="180.0" style="-fx-background-color: #494949;" text="Admin List" textFill="#e5e5e5">
          <font>
             <Font name="System Bold" size="18.0" />

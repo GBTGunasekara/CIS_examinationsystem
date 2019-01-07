@@ -120,7 +120,6 @@ public void SetUserDetails(String userID) {
 		String[] UserDetails = new String[6]; 
 		UserDetails = aspf.getUsrDetails(userID);
 		LocalDate DOB =  LocalDate.parse(UserDetails[3]);
-		
 		stID.setText(UserDetails[0]);
 		stName.setText(UserDetails[1]);
 		stEmail.setText(UserDetails[2]);

@@ -57,15 +57,14 @@
             <Image url="@../image/jess-watters-483666-unsplash.jpg" />
          </image>
       </ImageView>
-      <TableView layoutX="22.0" layoutY="55.0" prefHeight="508.0" prefWidth="917.0">
+      <TableView fx:id="viewClassTbl" layoutX="22.0" layoutY="55.0" prefHeight="508.0" prefWidth="917.0">
          <columns>
-            <TableColumn prefWidth="102.0" text="Class ID" />
-            <TableColumn prefWidth="114.0" text="TeacherID" />
-            <TableColumn prefWidth="181.0" text="Teacher Name" />
-            <TableColumn prefWidth="153.0" text="Class Name" />
-            <TableColumn minWidth="0.0" prefWidth="75.0" text="Grade" />
-            <TableColumn minWidth="0.0" prefWidth="138.0" text="Subject Name" />
-            <TableColumn minWidth="0.0" prefWidth="153.0" text="Location" />
+            <TableColumn fx:id="col_ClassID" prefWidth="102.0" text="Class ID" />
+            <TableColumn fx:id="col_TeacherID" prefWidth="114.0" text="TeacherID" />
+            <TableColumn fx:id="col_ClassName" prefWidth="186.33331298828125" text="Class Name" />
+            <TableColumn fx:id="col_Grade" minWidth="0.0" prefWidth="90.0" text="Grade" />
+            <TableColumn fx:id="col_SubjectName" minWidth="0.0" prefWidth="144.0" text="Subject Name" />
+            <TableColumn fx:id="col_Location" minWidth="0.0" prefWidth="193.6666259765625" text="Location" />
          </columns>
       </TableView>
       <JFXDrawer fx:id="Drawer" defaultDrawerSize="200.0" layoutY="38.0" prefHeight="545.0" prefWidth="200.0" />
