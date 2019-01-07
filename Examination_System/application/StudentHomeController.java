@@ -1,7 +1,13 @@
 package application;
 
+import java.net.URL;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.ResourceBundle;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -11,7 +17,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-public class StudentHomeController {
+public class StudentHomeController implements Initializable{
 
 	@FXML
 	private Button Closebttn3;
@@ -20,6 +26,9 @@ public class StudentHomeController {
 	
 	@FXML
 	private Label UIDlbl;
+	
+	@FXML
+	private Label systemTimelbl;
 	
 	@FXML
 	private void handleClose(MouseEvent event)
@@ -107,4 +116,42 @@ public class StudentHomeController {
 	}
 
 	
+	
+	public void SystemTime ()
+	{
+		Thread dateTimeRunning  = new Thread()
+		{
+			public void runDateTime() 
+			{
+				try {
+				for(;;)
+				{
+					Calendar gcalendar = new GregorianCalendar();
+					int day = gcalendar.get(Calendar.DAY_OF_MONTH);
+					int month = gcalendar.get(Calendar.MONTH);
+					int year = gcalendar.get(Calendar.YEAR);
+				
+					int second = gcalendar.get(Calendar.SECOND);
+					int minute = gcalendar.get(Calendar.MINUTE);
+					int hour = gcalendar.get(Calendar.HOUR);
+					
+					systemTimelbl.setText(day + " "+ month + " " + year+ "  "+ hour +":"+ minute + ":" + second);
+					
+						sleep(1000);
+				}
+				} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				
+				}
+		};
+		dateTimeRunning.start();
+	}
+
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		// TODO Auto-generated method stub
+		SystemTime();
+	}
 }
