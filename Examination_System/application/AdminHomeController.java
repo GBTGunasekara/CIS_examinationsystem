@@ -77,8 +77,8 @@ public class AdminHomeController {
 	@FXML
 	private void MovetoSystemSettings(MouseEvent event) throws Exception
 	{
-		//String link = "/application/AdminSystemSettingsGUI.fxml";
-		//fxmlLoader(link);
+		String link = "/application/AdminSettingsGUI.fxml";
+		fxmlLoader(link);
 		
 	}
 	
