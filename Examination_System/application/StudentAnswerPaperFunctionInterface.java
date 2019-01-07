@@ -8,5 +8,5 @@ public interface StudentAnswerPaperFunctionInterface extends Remote{
 	public String [] selectFirstAnswerset (String paperID) throws RemoteException;
 	public  String [][] loadQuestionsList (String paperID, int noOfQs) throws RemoteException;
 	public String [][] loadAnswerlist (String paperID, int Qno) throws RemoteException;
-	public void InsertStudentAnswer (String stID, String paID, String anID) throws RemoteException;
+	public void InsertStudentAnswer (String stID, String paID,String qeID, String anID) throws RemoteException;
 }

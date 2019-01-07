@@ -80,16 +80,18 @@ public class StudentSelectPaperController implements Initializable {
 	@FXML
 	private void MovetoAnswerPaper(MouseEvent event) throws Exception
 	{
-		
+		String studentID = "STID012546";
+		 StudentSelectPaperFunction sspf = new StudentSelectPaperFunction();
 		if  ( paperIDtxt.getText().isEmpty() || classIDlbl.getText().isEmpty() || teacherIDlbl.getText().isEmpty() || noQusetionlbl.getText().isEmpty() )
 		{
 				JOptionPane.showMessageDialog(null, "Selcet a paper ");
 		}
-		
-		else 
+		 else  
 		{
-			if (dateTimeCompare().equals("now")) 
-			{
+			 if (sspf.checkStudent(studentID,paperIDtxt.getText()) == false)
+			 {
+				 if (dateTimeCompare().equals("now")) 
+				 {
 
 				Stage stage = new Stage();
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/StudentAnswerPaperGUI.fxml"));
@@ -105,23 +107,28 @@ public class StudentSelectPaperController implements Initializable {
 				StudentAnswerPaperController taqc = loader.getController();
 				taqc.setStudentPaperDetails(paperIDtxt.getText(), noQusetionlbl.getText(),classIDlbl.getText(), teacherIDlbl.getText()); //pass this values to next GUI
 				//taqc.setFirstQuestionAnswer(paperIDtxt.getText());
-			}
-			else if (dateTimeCompare().equals("before")) 
-			{
-				JOptionPane.showMessageDialog(null, "Paper is not released");
-			}
-			else if (dateTimeCompare().equals("after")) 
-			{
-				JOptionPane.showMessageDialog(null, "Paper is terminated");
-			}
-			else if (dateTimeCompare().equals("error")) 
-			{
-				JOptionPane.showMessageDialog(null, "Check your PC time");
-			}
-			else
-			{
-				JOptionPane.showMessageDialog(null, "error");
-			}
+				 }
+				 else if (dateTimeCompare().equals("before")) 
+				 {
+					 JOptionPane.showMessageDialog(null, "Paper is not released");
+				 }
+				 else if (dateTimeCompare().equals("after")) 
+				 {
+					 JOptionPane.showMessageDialog(null, "Paper is terminated");
+				 }
+				 else if (dateTimeCompare().equals("error")) 
+				 {
+					 JOptionPane.showMessageDialog(null, "Check your PC time");
+				 }
+				 else
+				 {
+					 JOptionPane.showMessageDialog(null, "error");
+				 }
+			 }
+			 else
+			 {
+				 JOptionPane.showMessageDialog(null, "You have already completed this paper");
+			 }	 
 		}
 		
 		
@@ -208,66 +215,7 @@ public class StudentSelectPaperController implements Initializable {
 	    StudentSelectPaperFunction sspf = new StudentSelectPaperFunction();
 	    String status = sspf.timeChecker(currentDate, currentTime, releaseDate, releaseTime, terminateDate, terminateTime);
 	    return status;
-	    /*String status = null;
-	    
-	    if (currentDate.compareTo(releaseDate) > 0 && currentDate.compareTo(terminateDate) < 0 )
-	    {
-	    	status = "now";
-	    }
-
-	    else if (currentDate.compareTo(releaseDate) == 0 && currentDate.compareTo(terminateDate) < 0)
-	    {
-	    	if(currentTime.compareTo(releaseTime) >= 0)
-	    	{
-	    		status = "now";
-	    	}
-	    	else
-	    	{
-	    		status = "before";
-	    	}
-	    }
-	    else if (currentDate.compareTo(releaseDate) > 0 && currentDate.compareTo(terminateDate) == 0)
-	    {
-	    	if(currentTime.compareTo(terminateTime) <= 0)
-	    	{
-	    		status = "now";
-	    	}
-	    	else
-	    	{
-	    		status = "after";
-	    	}
-	    }
-	    else if (currentDate.compareTo(releaseDate) == 0 && currentDate.compareTo(terminateDate) == 0)
-	    {
-	    	if(currentTime.compareTo(releaseTime) >= 0 && currentTime.compareTo(terminateTime) <= 0)
-	    	{
-	    		status = "now";
-	    	}
-	    	else if (currentTime.compareTo(releaseTime) < 0 && currentTime.compareTo(terminateTime) < 0) 
-		    {
-		    	status = "before";
-	        } 
-		    else if (currentTime.compareTo(releaseTime) > 0 && currentTime.compareTo(terminateTime) > 0) 
-		    {
-		    	status = "after";
-	        } 
-	    }
-	   
-	    else if (currentDate.compareTo(releaseDate) < 0 && currentDate.compareTo(terminateDate) < 0) 
-	    {
-	    	status = "before";
-        } 
-	    else if (currentDate.compareTo(terminateDate) > 0 && currentDate.compareTo(terminateDate) > 0) 
-	    {
-	    	status = "after";
-        } 
-	    else 
-	    {
-            System.out.println("error");
-        }
-	    System.out.println(status);
-	    return status;*/
-	    
+  
 	}
 	
 	@Override

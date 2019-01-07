@@ -189,5 +189,20 @@ public class StudentSelectPaperFunction extends UnicastRemoteObject implements S
         }
 	    return status;
 	}
-	
+	public boolean checkStudent (String studentID, String paperID) throws SQLException
+	{
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+
+		String checkstudent ="select studentID from studentanswer where studentID = ? and paperID = '"+paperID+"'";
+
+		ps = (PreparedStatement) DBconnection.Connect().prepareStatement(checkstudent);
+		ps.setString(1,studentID);
+		rs = ps.executeQuery();	
+		if (!rs.next()) 
+			return false;
+		else
+		    return true;     
+		
+	}
 }

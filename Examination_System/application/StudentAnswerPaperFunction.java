@@ -213,16 +213,17 @@ public class StudentAnswerPaperFunction extends UnicastRemoteObject implements S
 	}
 	
 	
-	public void InsertStudentAnswer (String stID, String paID, String anID) throws RemoteException
+	public void InsertStudentAnswer (String stID, String paID,String qeID, String anID) throws RemoteException
 	{
 		PreparedStatement ps;
-		String tRegQuery = "INSERT INTO studentanswer(studentID, paperID, answerID) VALUES (?,?,?)";
+		String tRegQuery = "INSERT INTO studentanswer(studentID, paperID, questionID, answerID) VALUES (?,?,?,?)";
 	try
 	{
 		ps = (PreparedStatement) DBconnection.Connect().prepareStatement(tRegQuery);
 		ps.setString(1, stID);
         ps.setString(2, paID);
-        ps.setString(3, anID);
+        ps.setString(3, qeID);
+        ps.setString(4, anID);
        
         
         
@@ -239,6 +240,21 @@ public class StudentAnswerPaperFunction extends UnicastRemoteObject implements S
 	 	}
 	}
 	
+//	public boolean checkComboAnswer (String studentID, String paperID) throws SQLException
+//	{
+//		PreparedStatement ps = null;
+//		ResultSet rs = null;
+//
+//		String checkQuestion ="select questionID from question where studentID = '"+studentID+"' and paperID = '"+paperID+"'";
+//
+//		ps = (PreparedStatement) DBconnection.Connect().prepareStatement(checkQuestion);
+//		rs = ps.executeQuery();	
+//		if (!rs.next()) 
+//			return false;
+//		else
+//		    return true;     
+//		
+//	}
 
 	
 

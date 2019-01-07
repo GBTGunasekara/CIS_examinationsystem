@@ -5,6 +5,7 @@ import java.net.URL;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -14,6 +15,7 @@ import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
 
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -43,12 +45,6 @@ public class StudentAnswerPaperController implements Initializable{
 	private Label classIDlabel;
 	@FXML
 	private Label teacherIDlabel;
-	/*@FXML
-	private Label completeAnslabel;
-	@FXML
-	private Label QuestionNoLabel;
-	@FXML
-	private Label AnswerNoLabel;*/
 	@FXML
 	private ComboBox<Character> AnsNoCombo;
 	@FXML
@@ -171,7 +167,7 @@ public class StudentAnswerPaperController implements Initializable{
 		String [][] Questionlist = ((StudentAnswerPaperFunctionInterface) interfaceClass()).loadQuestionsList(paperID, numofQs);
 		
 		String nextQuestion = Questionlist[Qno][1]; // get next question 
-		String QuestionID = Questionlist[0][Qno-1]; //get the current questionID
+		//String QuestionID = Questionlist[0][Qno-1]; //get the current questionID
 		
 		QuestionTextArea.setText(nextQuestion); //set question 
 		
@@ -188,31 +184,51 @@ public class StudentAnswerPaperController implements Initializable{
 		AnswerBTextArea.setText(AnswerB);
 		AnswerCTextArea.setText(AnswerC);
 		AnswerDTextArea.setText(AnswerD);
-		
-		AnsNoCombo.getSelectionModel().select(null); //clear AnsNoCombo Combo Box value
-		
-		
-	}
 	
-	public void saveAnswer (String paperID, int Qno, String answerNo) throws RemoteException, MalformedURLException, NotBoundException
+	}
+//	 
+//
+//	public void loadQuestion(ActionEvent event) throws RemoteException, MalformedURLException, NotBoundException, SQLException 
+//	{
+//		
+//		
+//		if (AnsNoCombo.getSelectionModel().getSelectedItem()!= null)
+//		{
+//			//int QuestionNo = Integer.parseInt(QuestionNoCombo.getSelectionModel().getSelectedItem().toString());
+//			int QuestionNo = Integer.parseInt(QuestionNoCombo.getSelectionModel().getSelectedItem().toString());
+//			ObservableList<Integer> totQuestionlist = QuestionNoCombo.getItems(); // get the combo box values into a observer list to get total questions 
+//			int totQuestion = totQuestionlist.size(); //get item count of combobox which equals total number questions in this paper
+//			setQuestion_Answer(paperIDlabel.getText(), QuestionNo , totQuestion);
+//			
+//		}
+//		else
+//		{
+//			System.out.println("question 1 already printed");
+//			
+//		}
+//	}
+	
+	public void saveAnswer (String paperID, int Qno, String answerNo, String questionID) throws RemoteException, MalformedURLException, NotBoundException
 	{
+		String StudentID = "STID012546" ;
 		String[][] AnswerList = ((StudentAnswerPaperFunctionInterface) interfaceClass()).loadAnswerlist(paperID, Qno);
 		//initializing answer id 
 				String AnswerAID = AnswerList[0][0];
 				String AnswerBID = AnswerList[1][0];
 				String AnswerCID = AnswerList[2][0];
 				String AnswerDID = AnswerList[3][0];
+				
 
-				 String StudentID = "STID012546" ; 
+				 
 				 
 				 if (answerNo.equals("A"))
-					 ((StudentAnswerPaperFunctionInterface) interfaceClass()).InsertStudentAnswer(StudentID, paperID,AnswerAID);
+					 ((StudentAnswerPaperFunctionInterface) interfaceClass()).InsertStudentAnswer(StudentID, paperID, questionID, AnswerAID);
 				 else if (answerNo.equals("B"))
-					 ((StudentAnswerPaperFunctionInterface) interfaceClass()).InsertStudentAnswer(StudentID, paperID ,AnswerBID);
+					 ((StudentAnswerPaperFunctionInterface) interfaceClass()).InsertStudentAnswer(StudentID, paperID , questionID, AnswerBID);
 				 else if (answerNo.equals("C"))
-					 ((StudentAnswerPaperFunctionInterface) interfaceClass()).InsertStudentAnswer(StudentID, paperID,AnswerCID);
+					 ((StudentAnswerPaperFunctionInterface) interfaceClass()).InsertStudentAnswer(StudentID, paperID, questionID, AnswerCID);
 				 else if (answerNo.equals("D"))
-					 ((StudentAnswerPaperFunctionInterface) interfaceClass()).InsertStudentAnswer(StudentID, paperID,AnswerDID);
+					 ((StudentAnswerPaperFunctionInterface) interfaceClass()).InsertStudentAnswer(StudentID, paperID, questionID, AnswerDID);
 	}
 	
 	@FXML
@@ -230,6 +246,7 @@ public class StudentAnswerPaperController implements Initializable{
 			
 			if (QuestionNo == totQuestion)
 			{
+			
 				JOptionPane.showMessageDialog(null, "You have answered to all questions");
 			/*QuestionNo = 1;
 			setQuestion_Answer (paperIDlabel.getText(),QuestionNo,totQuestion);
@@ -237,9 +254,10 @@ public class StudentAnswerPaperController implements Initializable{
 			}
 			else
 			{
-				saveAnswer(paperIDlabel.getText(),QuestionNo,AnswerNo); //save the answer
-				setQuestion_Answer (paperIDlabel.getText(),QuestionNo,totQuestion);
+				saveAnswer(paperIDlabel.getText(),QuestionNo,AnswerNo,quesetionIDlabel.getText()); //save the answer
+				setQuestion_Answer (paperIDlabel.getText(),QuestionNo,totQuestion);//call methods of next question sets
 				QuestionNoCombo.getSelectionModel().select(QuestionNoCombo.getSelectionModel().getSelectedIndex()  +1);// increase the Question number by one
+				AnsNoCombo.getSelectionModel().select(null); //clear AnsNoCombo Combo Box value
 			}
 		}
 		else
@@ -247,30 +265,6 @@ public class StudentAnswerPaperController implements Initializable{
 			JOptionPane.showMessageDialog(null, "Selcet an Answer");
 		}
 	}
-	
-	/*@FXML
-	private void BackQuestion(MouseEvent event) throws Exception
-	{
-		int QuestionNo = 0 ;
-		QuestionNo = Integer.parseInt(QuestionNoCombo.getSelectionModel().getSelectedItem().toString());
-		//String AnswerNo = AnsNoCombo.getSelectionModel().getSelectedItem().toString();
-		
-		ObservableList<Integer> totQuestionlist = QuestionNoCombo.getItems(); // get the combo box values into a observer list to get total questions 
-		int totQuestion = totQuestionlist.size(); //get item count of combobox which equals total number questions in this paper
-		
-		if (QuestionNo == 1)
-		{
-			QuestionNo = totQuestion;
-			setQuestion_Answer (paperIDlabel.getText(),QuestionNo,totQuestion);
-			QuestionNoCombo.getSelectionModel().select(totQuestion - 1 );// set combobox value to maximum question number
-		}
-		else
-		{
-			setQuestion_Answer (paperIDlabel.getText(),QuestionNo,totQuestion);
-			QuestionNoCombo.getSelectionModel().select(QuestionNoCombo.getSelectionModel().getSelectedIndex()- 1);// decrease the Question number by one
-		}
-	}*/
-	
 	
 
 	@Override
@@ -280,6 +274,7 @@ public class StudentAnswerPaperController implements Initializable{
 		ad1.StudentDrawer(Hamburger, Drawer);
 		Drawer.toBack();
 		
+	
 	
 	
 	}

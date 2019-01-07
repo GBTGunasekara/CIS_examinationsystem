@@ -90,7 +90,7 @@
                   <Font name="System Bold" size="16.0" />
                </font>
             </JFXButton>
-            <ComboBox fx:id="QuestionNoCombo" layoutX="15.0" layoutY="354.0" prefHeight="35.0" prefWidth="80.0" />
+            <ComboBox fx:id="QuestionNoCombo" layoutX="21.0" layoutY="354.0" prefHeight="35.0" prefWidth="80.0" />
             <Label layoutX="9.0" layoutY="263.0" text="Teacher ID">
                <font>
                   <Font name="System Bold" size="16.0" />
@@ -128,7 +128,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <TextArea fx:id="QuestionTextArea" layoutX="225.0" layoutY="82.0" prefHeight="160.0" prefWidth="700.0" />
+      <TextArea fx:id="QuestionTextArea" editable="false" layoutX="225.0" layoutY="82.0" prefHeight="160.0" prefWidth="700.0" />
       <Label layoutX="225.0" layoutY="47.0" prefWidth="91.0" text="Question">
          <font>
             <Font size="18.0" />
@@ -139,20 +139,20 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <TextArea fx:id="AnswerATextArea" layoutX="225.0" layoutY="288.0" prefHeight="40.0" prefWidth="700.0" />
-      <TextArea fx:id="AnswerBTextArea" layoutX="225.0" layoutY="348.0" prefHeight="40.0" prefWidth="700.0" />
+      <TextArea fx:id="AnswerATextArea" editable="false" layoutX="225.0" layoutY="288.0" prefHeight="40.0" prefWidth="700.0" />
+      <TextArea fx:id="AnswerBTextArea" editable="false" layoutX="225.0" layoutY="348.0" prefHeight="40.0" prefWidth="700.0" />
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="194.0" layoutY="353.0" prefHeight="30.0" prefWidth="30.0" text="B">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <TextArea fx:id="AnswerCTextArea" layoutX="225.0" layoutY="408.0" prefHeight="40.0" prefWidth="700.0" />
+      <TextArea fx:id="AnswerCTextArea" editable="false" layoutX="225.0" layoutY="408.0" prefHeight="40.0" prefWidth="700.0" />
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="194.0" layoutY="413.0" prefHeight="30.0" prefWidth="30.0" text="C">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <TextArea fx:id="AnswerDTextArea" layoutX="225.0" layoutY="468.0" prefHeight="40.0" prefWidth="700.0" />
+      <TextArea fx:id="AnswerDTextArea" editable="false" layoutX="225.0" layoutY="468.0" prefHeight="40.0" prefWidth="700.0" />
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="194.0" layoutY="473.0" prefHeight="30.0" prefWidth="30.0" text="D">
          <font>
             <Font size="18.0" />

@@ -179,15 +179,5 @@
             <Font name="System Bold" size="16.0" />
          </font>
       </JFXButton>
-      <Label fx:id="QuestionNoLabel" layoutX="341.0" layoutY="47.0" prefHeight="27.0" prefWidth="30.0" text="01">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <Label fx:id="AnswerNoLabel" layoutX="341.0" layoutY="248.0" prefHeight="27.0" prefWidth="30.0" text="01">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
    </children>
 </AnchorPane>
