@@ -4,6 +4,8 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
+import javax.swing.JOptionPane;
+
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
@@ -18,6 +20,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -46,6 +49,8 @@ public class AdminStudentProfileController implements Initializable{
 	private JFXDatePicker stDOB;
 	//stGender
 	@FXML
+	private ToggleGroup stGender;
+	@FXML
 	private JFXRadioButton stGenderMale;
 	@FXML
 	private JFXRadioButton stGenderFemale;
@@ -54,11 +59,15 @@ public class AdminStudentProfileController implements Initializable{
 	@FXML
 	private JFXTextField stRePassword;
 	@FXML
+	private JFXTextField stStatus;
+	@FXML
 	private JFXTextField searchBox;
 	@FXML
 	private Button searchButton;
 	@FXML
 	private Button classListButton;
+	@FXML
+	private Button UpdateButton;
 
 	
 	@FXML
@@ -114,6 +123,29 @@ public class AdminStudentProfileController implements Initializable{
 		SetUserDetails(uid);
 	}
 	
+	@FXML
+	private void updateStudent() {
+		String uid = searchBox.getText();
+		String uName = stName.getText();
+		String uEmail = stEmail.getText();
+		LocalDate uDOB= stDOB.getValue();
+		
+		String uGender = null;
+		if(stGenderMale.isSelected())
+			uGender = "Male";
+		else if(stGenderFemale.isSelected())
+			uGender = "Female";
+		else if(!stGenderMale.isSelected() || !stGenderFemale.isSelected())
+			JOptionPane.showMessageDialog(null, "Select Gender");
+		
+		String uPword = stPassword.getText();
+		String uStatus = stStatus.getText();
+		
+		AdminStudentProfileFunction aspf = new AdminStudentProfileFunction();
+		aspf.updateDetails(uid, uName, uEmail, uPword, uGender, uDOB, uStatus);
+		
+	}
+	
 public void SetUserDetails(String userID) {
 		
 		AdminStudentProfileFunction aspf = new AdminStudentProfileFunction();
@@ -135,7 +167,7 @@ public void SetUserDetails(String userID) {
 		}
 		String password = UserDetails[5];
 		stPassword.setText(password);
-		stRePassword.setText(password);	
+		stStatus.setText(UserDetails[6]);	
 	}
 
 }

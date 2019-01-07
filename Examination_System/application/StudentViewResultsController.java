@@ -42,6 +42,7 @@ public class StudentViewResultsController implements Initializable{
 	private TableColumn<StudentViewResultsTable, String> ansdatecol;
 	
 	
+	
 	@FXML
 	private void handleClose(MouseEvent event)
 	{

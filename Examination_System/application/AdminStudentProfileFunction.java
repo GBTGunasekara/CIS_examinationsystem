@@ -1,10 +1,13 @@
 package application;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.time.LocalDate;
 
 import javax.swing.JOptionPane;
 
 import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.PreparedStatement;
 
 public class AdminStudentProfileFunction {
 	
@@ -13,10 +16,10 @@ public class AdminStudentProfileFunction {
 	}
 	
 	public String[] getUsrDetails(String userID) {
-		String [] UserDetails = new String[6];
+		String [] UserDetails = new String[7];
 		try {
 			Connection con = DBconnection.Connect();
-			ResultSet rs = con.createStatement().executeQuery("SELECT studentID, stName, stEmail, stDOB, stGender, stPassword FROM student where studentID = '"+userID+"' ");
+			ResultSet rs = con.createStatement().executeQuery("SELECT studentID, stName, stEmail, stDOB, stGender, stPassword, stStatus FROM student where studentID = '"+userID+"' ");
 	
 			if(rs.next()) {
 				UserDetails[0]=rs.getString(1);
@@ -25,6 +28,8 @@ public class AdminStudentProfileFunction {
 				UserDetails[3]=rs.getString(4);
 				UserDetails[4]=rs.getString(5);
 				UserDetails[5]=rs.getString(6);
+				UserDetails[6]=rs.getString(7);
+
 			}
 	
 		}
@@ -33,6 +38,54 @@ public class AdminStudentProfileFunction {
 		}
 		
 		return UserDetails;
+	}
+	
+	public void updateDetails(String uid, String uName, String uEmail, String uPword, String uGender, LocalDate uDOB, String uStatus) {
+		
+		if(uid.equals("") || uName.equals("") || uEmail.equals("") || uPword.equals("") || uStatus.equals(""))
+		{
+			JOptionPane.showMessageDialog(null, "Complete data fields");
+		}
+		
+		/*else if (!uPword.equals(uRePword))
+		{
+			JOptionPane.showMessageDialog(null, "Passwords are not similar");
+		}*/
+		
+		else if  (uDOB == null)
+		{
+				JOptionPane.showMessageDialog(null, "Insert DOB");
+		}
+		
+		try {
+		String DOBtoString = uDOB.toString();
+		PreparedStatement ps;
+		
+		String updateQuery = "UPDATE student SET studentID='"+uid+"',stName='"+uName+"',stEmail='"+uEmail+"',"
+				+ "stPassword='"+uPword+"',stDOB='"+DOBtoString+"',stGender='"+uGender+"',stStatus= '"+uStatus+"'"
+						+ " WHERE studentID = '"+uid+"'";
+		
+		//String updateQuery = "UPDATE student SET studentID='?',stName='?',stEmail='?',"
+			//	+ "stPassword='?',stDOB='?',stGender='?',stStatus= '?' WHERE studentID = '"+uid+"'";
+		
+			ps = (PreparedStatement) DBconnection.Connect().prepareStatement(updateQuery);
+			/*ps.setString(1, uid);
+			ps.setString(2, uName);
+			ps.setString(3, uEmail);
+			ps.setString(4, uPword);
+			ps.setString(5, DOBtoString);
+			ps.setString(6, uGender);
+			ps.setString(7, uStatus);*/
+			
+			 if(ps.executeUpdate() > 0)
+	            {
+	                JOptionPane.showMessageDialog(null, "Updated");
+	            }
+			
+		} catch (SQLException e) {
+			
+			JOptionPane.showMessageDialog(null, e);
+		}
 	}
 
 }

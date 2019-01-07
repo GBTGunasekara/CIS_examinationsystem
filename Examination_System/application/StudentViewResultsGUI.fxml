@@ -59,7 +59,7 @@
             <Image url="@../image/jess-watters-483666-unsplash.jpg" />
          </image>
       </ImageView>
-      <TableView fx:id="viewResultTbl" layoutX="21.0" layoutY="113.0" prefHeight="440.0" prefWidth="918.0">
+      <TableView fx:id="viewResultTbl" layoutX="21.0" layoutY="102.0" prefHeight="440.0" prefWidth="918.0">
          <columns>
             <TableColumn fx:id="PaperIDcol" prefWidth="162.0" text="PaperID" />
             <TableColumn fx:id="ClassIDcol" prefWidth="158.0" text="ClassID" />
