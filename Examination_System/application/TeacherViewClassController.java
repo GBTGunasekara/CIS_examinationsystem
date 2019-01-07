@@ -88,56 +88,7 @@ public class TeacherViewClassController implements Initializable {
 	
 	ResultSet rs = null;
 	
-	/*public void tableload() {
-		//fill table
-		try {
-			Connection con = DBconnection.Connect();
-			rs = con.createStatement().executeQuery("select student.studentID, student.stName, student.stEmail, student.stStatus, studentclass.noPapers from student "
-					+ "Inner Join studentclass on student.studentID=studentclass.studentID");
-			//PreparedStatement ps;
-			//String q = "select student.studentID, student.stName, student.stEmail, student.stStatus, studentclass.noPapers from student "
-					//+ "Inner Join studentclass on student.studentID=studentclass.studentID";
-			//ps = (PreparedStatement) DBconnection.Connect().prepareStatement(q);
-			//rs = ps.executeQuery();
-			
-			while (rs.next()) {
-				oblist.add(new ViewClassTable(rs.getString("studentID"), rs.getString("stName"), rs.getString("stEmail"),
-						rs.getString("stStatus"), rs.getString("noPapers")));
-			}
-			
-			
-		
-		}catch(SQLException ex) {
-			System.out.println(ex);
-	    	JOptionPane.showMessageDialog(null, "error\n" + ex);
-		}*/
-		
-		//table columns
-		/*col_sID.setCellValueFactory(new PropertyValueFactory<>("sID"));
-		col_sName.setCellValueFactory(new PropertyValueFactory<>("sName"));
-		col_email.setCellValueFactory(new PropertyValueFactory<>("sEmail"));
-		col_status.setCellValueFactory(new PropertyValueFactory<>("sStatus"));
-		col_nPapers.setCellValueFactory(new PropertyValueFactory<>("nPaper"));*/
-		
-		/*try {
-			fetch();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
-	//}
 	
-	//@FXML
-	/*private void fetch() throws Exception {
-		
-		TeacherViewClassFunction tap1 = new TeacherViewClassFunction();
-		while(tap1.fillViewClass().next()) {
-			oblist.add(new viewClassTable (tap1.fillViewClass().getString("studentID"), tap1.fillViewClass().getString("stName"),
-			tap1.fillViewClass().getString("stEmail"), tap1.fillViewClass().getString("stStatus"), tap1.fillViewClass().getString("noPapers")));
-		}
-		//viewClassTbl.setModel(DbUtils.resultSetToTableModel(tap1.fillViewClass()));
-		
-	}*/
 	
 	@FXML
 	private void MovetoClassList(MouseEvent event) throws Exception
