@@ -68,19 +68,19 @@ public class TeacherAddPaperFunction extends UnicastRemoteObject implements Teac
         ResultSet rs = null;
         //PreparedStatement ps;
          try{
-            String max_paperid  = "select paperID from paper order by paperID desc limit 1";
-            ps =  (PreparedStatement) DBconnection.Connect().prepareStatement(max_paperid);
+            String maxPaperid  = "select paperID from paper order by paperID desc limit 1";
+            ps =  (PreparedStatement) DBconnection.Connect().prepareStatement(maxPaperid);
             rs =ps.executeQuery();
             if(rs.next())
             {
-                String papernum = rs.getString("paperID");
-                int papernum_len = papernum.length();
-                String letters_set = papernum.substring(0,2);
-                String numbers_set = papernum.substring(2, papernum_len);
-                int numbers_set_int = Integer.parseInt(numbers_set);
-                numbers_set_int = numbers_set_int + 1;
-                numbers_set = Integer.toString(numbers_set_int);
-                paperID = (letters_set + numbers_set);     
+                String prePaperID = rs.getString("paperID");
+                int paperIDLen = prePaperID.length();
+                String lettersSet = prePaperID.substring(0,2);
+                String numbersSet = prePaperID.substring(2, paperIDLen);
+                int numbersSetInt = Integer.parseInt(numbersSet);
+                numbersSetInt = numbersSetInt + 1;
+                numbersSet = Integer.toString(numbersSetInt);
+                paperID = (lettersSet + numbersSet);     
             }
             else
             {

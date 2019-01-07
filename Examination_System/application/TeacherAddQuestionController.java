@@ -70,6 +70,8 @@ public class TeacherAddQuestionController implements Initializable{
 	private Button  Savebtn;
 	@FXML 
 	private Button Nextbtn;
+	@FXML 
+	private Button Clearbtn;
 	
 	
 	@FXML
@@ -262,7 +264,7 @@ public class TeacherAddQuestionController implements Initializable{
 					}
 					else
 					{
-						System.out.println("not choosing correct answer");
+						System.out.println("it is not the correct answer");
 					}
 				}
 				
@@ -291,6 +293,17 @@ public class TeacherAddQuestionController implements Initializable{
 		//});
 	}
 	
+	//clear button
+	@FXML
+	public void clearArea (MouseEvent event)
+	{
+		 QuestionTextArea.setText(""); 
+		 AnswerATextArea.setText("");
+		 AnswerBTextArea.setText("");
+		 AnswerCTextArea.setText("");
+		 AnswerDTextArea.setText("");
+		 AnsNoCombo.getSelectionModel().select(null);
+	}
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub

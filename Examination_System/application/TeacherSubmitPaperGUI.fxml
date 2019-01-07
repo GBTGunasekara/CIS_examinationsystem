@@ -103,37 +103,36 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="paperIDlbl" layoutX="285.0" layoutY="75.0" prefHeight="27.0" prefWidth="150.0" text="PID475863219">
+            <Label fx:id="paperIDlbl" layoutX="285.0" layoutY="75.0" prefHeight="27.0" prefWidth="150.0">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="paperPasswordlbl" layoutX="285.0" layoutY="120.0" prefWidth="150.0" text="dfdgd4545445">
+            <Label fx:id="paperPasswordlbl" layoutX="285.0" layoutY="120.0" prefWidth="150.0">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="classIDlbl" layoutX="285.0" layoutY="165.0" prefWidth="150.0" text="CID963125478">
+            <Label fx:id="classIDlbl" layoutX="285.0" layoutY="165.0" prefWidth="150.0">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="teacherIDlbl" layoutX="285.0" layoutY="209.0" prefWidth="150.0" text="TID924563187">
+            <Label fx:id="teacherIDlbl" layoutX="285.0" layoutY="209.0" prefWidth="150.0">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="noQusetionlbl" layoutX="285.0" layoutY="255.0" text="10">
+            <Label fx:id="noQusetionlbl" layoutX="285.0" layoutY="255.0" prefWidth="50.0">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="noAnswerlbl" layoutX="285.0" layoutY="300.0" prefWidth="20.0" text="40">
+            <Label fx:id="noAnswerlbl" layoutX="285.0" layoutY="300.0" prefWidth="20.0" text="4">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <JFXButton buttonType="RAISED" layoutX="440.0" layoutY="121.0" style="-fx-background-color: #e5e5e5;" text="Copy" />
             <JFXDatePicker fx:id="ReleaseDatedp" defaultColor="#494949" layoutX="275.0" layoutY="345.0" prefHeight="28.0" prefWidth="120.0" />
             <JFXDatePicker fx:id="TerminateDatedp" defaultColor="#494949" layoutX="275.0" layoutY="390.0" prefHeight="28.0" prefWidth="120.0" />
             <JFXDatePicker fx:id="ReleaseTimedp" defaultColor="#494949" layoutX="414.0" layoutY="342.0" prefHeight="37.0" prefWidth="120.0" showTime="true" />
