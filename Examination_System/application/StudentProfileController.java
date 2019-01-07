@@ -184,6 +184,23 @@ public class StudentProfileController implements Initializable {
 		
 		
 	}
+	@FXML
+	private void viewResultChart (MouseEvent event) throws Exception
+	{
+	
+		Stage stage = new Stage();
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/StudentProfileResultChartGUI.fxml"));
+		
+		Parent root = loader.load();
+		//Stage stage = new Stage();
+		//Parent root = FXMLLoader.load(getClass().getResource("/application/TeacherViewResultChartGUI.fxml"));
+		stage.initStyle(StageStyle.UNDECORATED);
+		Scene scene = new Scene(root);
+		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		stage.setScene(scene);
+		stage.show();
+		
+	}
 	
 }
 	
