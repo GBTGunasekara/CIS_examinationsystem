@@ -1,11 +1,13 @@
 package application;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
 
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -13,6 +15,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -28,6 +32,22 @@ public class AdminClassListController implements Initializable {
 	private JFXHamburger Hamburger;
 	@FXML
 	private JFXDrawer Drawer;
+	
+	@FXML 
+	private TableView<AdminClassListTable> viewClassTbl;
+	@FXML 
+	private TableColumn<AdminClassListTable, Integer> col_ClassID;
+	@FXML 
+	private TableColumn<AdminClassListTable, Integer> col_TeacherID;
+	@FXML 
+	private TableColumn<AdminClassListTable, String> col_ClassName;
+	@FXML 
+	private TableColumn<AdminClassListTable, String> col_SubjectName;
+	@FXML 
+	private TableColumn<AdminClassListTable, Integer> col_Grade;
+	@FXML
+	private TableColumn<AdminClassListTable, String> col_Location;
+	
 	
 	@FXML
 	private void handleClose(MouseEvent event)
@@ -65,5 +85,27 @@ public class AdminClassListController implements Initializable {
 		// TODO Auto-generated method stub
 		AdminDrawerController ad1 = new AdminDrawerController();
 		ad1.AdminDrawer(Hamburger, Drawer);
+		
+		col_ClassID.setCellValueFactory(cellData -> cellData.getValue().getClassID().asObject());
+		col_TeacherID.setCellValueFactory(cellData -> cellData.getValue().getTeacherID().asObject());
+		col_ClassName.setCellValueFactory(cellData -> cellData.getValue().getClassName());
+		col_SubjectName.setCellValueFactory(cellData -> cellData.getValue().getSubjectName());
+		col_Grade.setCellValueFactory(cellData -> cellData.getValue().getGrade().asObject());
+		col_Location.setCellValueFactory(cellData -> cellData.getValue().getLocation());
+
+		try {
+			try {
+				String teacherID = "TID123";
+				ObservableList<AdminClassListTable> ClassList = AdminClassListFunction.SelectClassList(teacherID);
+				viewClassTbl.setItems(ClassList);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 }

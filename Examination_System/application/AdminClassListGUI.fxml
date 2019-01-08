@@ -83,15 +83,14 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <TableView layoutX="27.0" layoutY="113.0" prefHeight="401.0" prefWidth="906.0">
+      <TableView fx:id="viewClassTbl" layoutX="27.0" layoutY="113.0" prefHeight="401.0" prefWidth="906.0">
          <columns>
-            <TableColumn prefWidth="127.0" text="Class ID" />
-            <TableColumn prefWidth="101.0" text="Teacher ID" />
-            <TableColumn prefWidth="150.0" text="Class Name" />
-            <TableColumn prefWidth="125.0" text="Subject Name" />
-            <TableColumn prefWidth="97.0" text="Grade" />
-            <TableColumn minWidth="0.0" prefWidth="185.0" text="Location" />
-            <TableColumn minWidth="0.0" prefWidth="120.0" text="No. Students" />
+            <TableColumn fx:id="col_ClassID" prefWidth="151.0" text="Class ID" />
+            <TableColumn fx:id="col_TeacherID" prefWidth="125.6666259765625" text="Teacher ID" />
+            <TableColumn fx:id="col_ClassName" prefWidth="136.66668701171875" text="Class Name" />
+            <TableColumn fx:id="col_SubjectName" prefWidth="151.66668701171875" text="Subject Name" />
+            <TableColumn fx:id="col_Grade" prefWidth="149.33331298828125" text="Grade" />
+            <TableColumn fx:id="col_Location" minWidth="0.0" prefWidth="190.33331298828125" text="Location" />
          </columns>
       </TableView>
       <JFXDrawer fx:id="Drawer" defaultDrawerSize="200.0" layoutY="38.0" prefHeight="545.0" prefWidth="200.0" />
