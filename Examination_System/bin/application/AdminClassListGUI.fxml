@@ -53,6 +53,7 @@
             </JFXButton>
          </children>
       </HBox>
+      <JFXDrawer fx:id="Drawer" defaultDrawerSize="200.0" layoutY="38.0" prefHeight="545.0" prefWidth="200.0" />
       <ImageView fitHeight="545.0" fitWidth="960.0" layoutY="38.0" opacity="0.24" pickOnBounds="true">
          <image>
             <Image url="@../image/rawpixel-645294-unsplash.jpg" />
@@ -93,7 +94,6 @@
             <TableColumn fx:id="col_Location" minWidth="0.0" prefWidth="190.33331298828125" text="Location" />
          </columns>
       </TableView>
-      <JFXDrawer fx:id="Drawer" defaultDrawerSize="200.0" layoutY="38.0" prefHeight="545.0" prefWidth="200.0" />
       <JFXButton fx:id="DeleteClassbtn" buttonType="RAISED" layoutX="508.0" layoutY="530.0" onMouseClicked="#DeleteClass" prefHeight="35.0" prefWidth="180.0" style="-fx-background-color: #494949;" text="Delete Class" textFill="#e5e5e5">
          <font>
             <Font name="System Bold" size="18.0" />

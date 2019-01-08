@@ -60,7 +60,7 @@
       </ImageView>
       <AnchorPane layoutY="38.0" opacity="0.9" prefHeight="545.0" prefWidth="160.0" style="-fx-background-color: #e5e5e5; -fx-border-color: #494949; -fx-border-width: 0;">
          <children>
-            <Label layoutX="10.0" layoutY="80.0" text="Paper ID">
+            <Label layoutX="10.0" layoutY="97.0" text="Paper ID">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
@@ -70,7 +70,7 @@
                   <Font name="System Bold" size="16.0" />
                </font>
             </Label>
-            <Label layoutX="15.0" layoutY="105.0" text="PID12345678">
+            <Label fx:id="paperIDlabel" layoutX="15.0" layoutY="122.0" text="PID12345678">
                <font>
                   <Font size="16.0" />
                </font>
@@ -80,42 +80,12 @@
                   <Font name="Consolas" size="24.0" />
                </font>
             </Label>
-            <Label layoutX="10.0" layoutY="245.0" text="Completed Questions ">
+            <Label layoutX="10.0" layoutY="152.0" text="Question ID">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
             </Label>
-            <Label contentDisplay="CENTER" layoutX="15.0" layoutY="270.0" prefHeight="30.0" prefWidth="30.0" text="00">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-            <Label layoutX="10.0" layoutY="135.0" text="Question ID">
-               <font>
-                  <Font name="System Bold" size="16.0" />
-               </font>
-            </Label>
-            <Label layoutX="15.0" layoutY="160.0" text="QID1234">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-            <JFXButton fx:id="Savebtn" buttonType="RAISED" layoutX="30.0" layoutY="440.0" prefHeight="30.0" prefWidth="120.0" style="-fx-background-color: #494949;" text="Save" textFill="#e5e5e5">
-               <font>
-                  <Font name="System Bold" size="16.0" />
-               </font>
-            </JFXButton>
-            <JFXButton buttonType="RAISED" layoutX="30.0" layoutY="494.0" prefHeight="30.0" prefWidth="120.0" style="-fx-background-color: #494949;" text="Cancel" textFill="#e5e5e5">
-               <font>
-                  <Font name="System Bold" size="16.0" />
-               </font>
-            </JFXButton>
-            <Label layoutX="10.0" layoutY="190.0" text="Answer ID">
-               <font>
-                  <Font name="System Bold" size="16.0" />
-               </font>
-            </Label>
-            <Label layoutX="15.0" layoutY="215.0" text="AID123401">
+            <Label fx:id="quesetionIDlabel" layoutX="15.0" layoutY="177.0" text="QID1234">
                <font>
                   <Font size="16.0" />
                </font>
@@ -125,8 +95,8 @@
                   <Font name="System Bold" size="16.0" />
                </font>
             </Label>
-            <ComboBox layoutX="16.0" layoutY="330.0" prefHeight="35.0" prefWidth="50.0" />
-            <ComboBox layoutX="16.0" layoutY="395.0" prefHeight="35.0" prefWidth="50.0" />
+            <ComboBox fx:id="AnsNoCombo" disable="true" layoutX="16.0" layoutY="330.0" prefHeight="35.0" prefWidth="87.0" />
+            <ComboBox fx:id="QuestionNoCombo" disable="true" layoutX="16.0" layoutY="395.0" prefHeight="35.0" prefWidth="87.0" />
          </children>
       </AnchorPane>
       <Label layoutX="225.0" layoutY="248.0" prefWidth="91.0" text="Answers">
@@ -134,7 +104,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <TextArea layoutX="225.0" layoutY="82.0" prefHeight="160.0" prefWidth="700.0" />
+      <TextArea fx:id="QuestionTextArea" editable="false" layoutX="225.0" layoutY="82.0" prefHeight="160.0" prefWidth="700.0" />
       <Label layoutX="225.0" layoutY="47.0" prefWidth="91.0" text="Question">
          <font>
             <Font size="18.0" />
@@ -145,31 +115,26 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <TextArea layoutX="225.0" layoutY="288.0" prefHeight="40.0" prefWidth="700.0" />
-      <TextArea layoutX="225.0" layoutY="348.0" prefHeight="40.0" prefWidth="700.0" />
+      <TextArea fx:id="AnswerATextArea" editable="false" layoutX="225.0" layoutY="288.0" prefHeight="40.0" prefWidth="700.0" />
+      <TextArea fx:id="AnswerBTextArea" editable="false" layoutX="225.0" layoutY="348.0" prefHeight="40.0" prefWidth="700.0" />
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="194.0" layoutY="353.0" prefHeight="30.0" prefWidth="30.0" text="B">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <TextArea layoutX="225.0" layoutY="408.0" prefHeight="40.0" prefWidth="700.0" />
+      <TextArea fx:id="AnswerCTextArea" editable="false" layoutX="225.0" layoutY="408.0" prefHeight="40.0" prefWidth="700.0" />
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="194.0" layoutY="413.0" prefHeight="30.0" prefWidth="30.0" text="C">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <TextArea layoutX="225.0" layoutY="468.0" prefHeight="40.0" prefWidth="700.0" />
+      <TextArea fx:id="AnswerDTextArea" editable="false" layoutX="225.0" layoutY="468.0" prefHeight="40.0" prefWidth="700.0" />
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="194.0" layoutY="473.0" prefHeight="30.0" prefWidth="30.0" text="D">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <JFXButton buttonType="RAISED" layoutX="522.0" layoutY="527.0" prefHeight="30.0" prefWidth="160.0" style="-fx-background-color: #494949;" text="Edit" textFill="#e5e5e5">
-         <font>
-            <Font name="System Bold" size="16.0" />
-         </font>
-      </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="765.0" layoutY="527.0" prefHeight="30.0" prefWidth="160.0" style="-fx-background-color: #494949;" text="Next" textFill="#e5e5e5">
+      <JFXButton fx:id="Nextbtn" buttonType="RAISED" layoutX="765.0" layoutY="527.0" onMouseClicked="#NextQuestion" prefHeight="30.0" prefWidth="160.0" style="-fx-background-color: #494949;" text="Next" textFill="#e5e5e5">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>

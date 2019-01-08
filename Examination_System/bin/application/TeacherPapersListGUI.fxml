@@ -72,7 +72,7 @@
 
       
 
-      <TableView fx:id="viewPaperListTbl" layoutX="21.0" layoutY="108.0" prefHeight="398.0" prefWidth="918.0">
+      <TableView fx:id="viewPaperListTbl" layoutX="21.0" layoutY="108.0" onMouseClicked="#SelectRow" prefHeight="398.0" prefWidth="918.0">
 
         <columns>
 

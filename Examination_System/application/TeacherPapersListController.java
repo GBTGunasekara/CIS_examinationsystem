@@ -1,25 +1,20 @@
 package application;
 
+import java.io.IOException;
 import java.net.URL;
-
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
-import java.util.Arrays;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import java.util.ResourceBundle;
 
+import javax.swing.JOptionPane;
+
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
-import com.mysql.jdbc.Connection;
 
 
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ObservableValue;
-
-
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -29,13 +24,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
-
-import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
-
-import javafx.scene.control.TableView;
-
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
@@ -102,14 +91,45 @@ public class TeacherPapersListController implements Initializable{
 		stage.setScene(scene);
 		stage.show();
 	}
-	
+	String paID = null;
+	String numQe = null;
 	@FXML
-	private void MovetoViewQuestions(MouseEvent event) throws Exception
+	private void SelectRow() {
+		ObservableList<TeacherPaperListTable> paperList;
+		paperList = viewPaperListTbl.getSelectionModel().getSelectedItems();
+		this.paID = paperList.get(0).getPaperID();
+		this.numQe = paperList.get(3).getNoQuestions();
+	}
+	@FXML
+	private void MovetoViewQuestions(MouseEvent event) throws NotBoundException, IOException
 	{
-		String link = "/application/TeacherViewQuestionsGUI.fxml";
-		fxmlLoader(link);
+		
+		
+	
+		if(paID != null && numQe != null)
+		{
+			Stage stage = new Stage();
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/TeacherViewQuestionsGUI.fxml"));
+			Parent root = loader.load();
+			stage.initStyle(StageStyle.UNDECORATED);
+			Scene scene = new Scene(root);
+			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			stage.setScene(scene);
+			stage.show();
+			
+//			TeacherViewQuestionsController taqc = loader.getController();
+//			taqc.setTeacherViewPaperDetails(paID,numQe); //pass this values to next GUI
+		}
+		else
+		{
+			JOptionPane.showMessageDialog(null, "Select a Row");
+		}
+		
+		
 		
 	}
+	
+
 
 
 	@Override
