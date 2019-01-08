@@ -164,10 +164,19 @@ public class AdminTeacherProfileController implements Initializable{
 		String uPword = tePasswd.getText();
 		String uStatus = teStatus.getText();
 		
-		AdminStudentProfileFunction atpf = new AdminStudentProfileFunction();
+		AdminTeacherProfileFunction atpf = new AdminTeacherProfileFunction();
 		atpf.updateDetails(uid, uName, uEmail, uPword, uGender, uDOB, uStatus);
 		
-		JOptionPane.showMessageDialog(null, "Button Pressed");
+		
+		
+	}
+	
+	@FXML
+	private void deleteTeacher() {
+		String uid = teID.getText();
+		
+		AdminTeacherProfileFunction atpf = new AdminTeacherProfileFunction();
+		atpf.deleteTeacherFunc(uid);
 		
 	}
 	

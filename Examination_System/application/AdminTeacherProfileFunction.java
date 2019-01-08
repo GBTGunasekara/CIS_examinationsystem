@@ -78,7 +78,26 @@ public void updateDetails(String uid, String uName, String uEmail, String uPword
 		} catch (SQLException e) {
 			
 			JOptionPane.showMessageDialog(null, e);
+			e.printStackTrace();
 		}
+	}
+
+
+	public void deleteTeacherFunc(String uid) {
+		PreparedStatement ps;
+		String DelQuery = "Delete From teacher Where teacherID = '"+uid+"'";
+		try {
+			ps = (PreparedStatement) DBconnection.Connect().prepareStatement(DelQuery);
+			if(ps.executeUpdate() > 0) 
+			{
+	            JOptionPane.showMessageDialog(null, "Deleted");
+
+			}
+		} catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+			e.printStackTrace();
+		}
+		
 	}
 	
 }

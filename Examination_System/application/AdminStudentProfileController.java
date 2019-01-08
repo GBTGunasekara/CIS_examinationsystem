@@ -170,4 +170,13 @@ public void SetUserDetails(String userID) {
 		stStatus.setText(UserDetails[6]);	
 	}
 
+	@FXML
+	private void deleteStudent() {
+		String uid = stID.getText();
+	
+		AdminStudentProfileFunction aspf = new AdminStudentProfileFunction();
+		aspf.deleteStudentFunc(uid);
+	
+}
+
 }

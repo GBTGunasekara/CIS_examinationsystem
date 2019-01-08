@@ -65,7 +65,7 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="740.0" layoutY="530.0" prefHeight="35.0" prefWidth="180.0" style="-fx-background-color: #494949;" text="Edit" textFill="#e5e5e5">
+      <JFXButton buttonType="RAISED" layoutX="740.0" layoutY="530.0" onMouseClicked="#deleteTeacher" prefHeight="35.0" prefWidth="180.0" style="-fx-background-color: #494949;" text="Delete" textFill="#e5e5e5">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>

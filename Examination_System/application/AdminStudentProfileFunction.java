@@ -74,6 +74,23 @@ public class AdminStudentProfileFunction {
 			JOptionPane.showMessageDialog(null, e);
 		}
 	}
+	
+	public void deleteStudentFunc(String uid) {
+		PreparedStatement ps;
+		String DelQuery = "Delete From student Where studentID = '"+uid+"'";
+		try {
+			ps = (PreparedStatement) DBconnection.Connect().prepareStatement(DelQuery);
+			if(ps.executeUpdate() > 0) 
+			{
+	            JOptionPane.showMessageDialog(null, "Deleted");
+
+			}
+		} catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+			e.printStackTrace();
+		}
+		
+	}
 
 }
 
