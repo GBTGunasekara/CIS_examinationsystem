@@ -58,7 +58,7 @@
             <Image url="@../image/rawpixel-645294-unsplash.jpg" />
          </image>
       </ImageView>
-      <JFXButton fx:id="ViewClassbtn" buttonType="RAISED" layoutX="510.0" layoutY="530.0" onMouseClicked="#MovetoAdminViewClass" prefHeight="35.0" prefWidth="180.0" style="-fx-background-color: #494949;" text="View Class" textFill="#e5e5e5">
+      <JFXButton fx:id="ViewClassbtn" buttonType="RAISED" layoutX="290.0" layoutY="530.0" onMouseClicked="#MovetoAdminViewClass" prefHeight="35.0" prefWidth="180.0" style="-fx-background-color: #494949;" text="View Class" textFill="#e5e5e5">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -83,7 +83,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <TableView fx:id="viewClassTbl" layoutX="27.0" layoutY="113.0" prefHeight="401.0" prefWidth="906.0">
+      <TableView fx:id="viewClassTbl" layoutX="27.0" layoutY="113.0" onMouseClicked="#SelectRow" prefHeight="401.0" prefWidth="906.0">
          <columns>
             <TableColumn fx:id="col_ClassID" prefWidth="151.0" text="Class ID" />
             <TableColumn fx:id="col_TeacherID" prefWidth="125.6666259765625" text="Teacher ID" />
@@ -94,5 +94,10 @@
          </columns>
       </TableView>
       <JFXDrawer fx:id="Drawer" defaultDrawerSize="200.0" layoutY="38.0" prefHeight="545.0" prefWidth="200.0" />
+      <JFXButton fx:id="DeleteClassbtn" buttonType="RAISED" layoutX="508.0" layoutY="530.0" onMouseClicked="#DeleteClass" prefHeight="35.0" prefWidth="180.0" style="-fx-background-color: #494949;" text="Delete Class" textFill="#e5e5e5">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>

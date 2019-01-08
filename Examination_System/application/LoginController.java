@@ -65,7 +65,7 @@ public class LoginController  {
 	
 	@FXML
 	private void promptTeacherReg(MouseEvent event) throws Exception
-	{
+	{	
 		String linktoTeacherReg = "/application/TeacherRegGUI.fxml";
 		fxmlLoader(linktoTeacherReg);
 		
@@ -74,6 +74,7 @@ public class LoginController  {
 	@FXML
 	private void promptStudentReg(MouseEvent event) throws Exception
 	{
+		
 		String linktoStudentReg = "/application/StudentRegGUI.fxml";
 		fxmlLoader(linktoStudentReg);
 		

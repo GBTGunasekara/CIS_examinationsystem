@@ -4,6 +4,8 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import javax.swing.JOptionPane;
+
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
 
@@ -28,6 +30,8 @@ public class AdminClassListController implements Initializable {
 	private Button Minimizebttn4; 
 	@FXML
 	private Button ViewClassbtn;
+	@FXML
+	private Button DeleteClassbtn;
 	@FXML
 	private JFXHamburger Hamburger;
 	@FXML
@@ -108,4 +112,47 @@ public class AdminClassListController implements Initializable {
 		}
 		
 	}
+	
+	int cid = 0;
+	@FXML
+	private void SelectRow() {
+		ObservableList<AdminClassListTable> ClList;
+		ClList=viewClassTbl.getSelectionModel().getSelectedItems();
+		cid = ClList.get(0).getClID();
+	}
+	@FXML
+	private void DeleteClass() {
+		
+		if(cid == 0)
+			JOptionPane.showMessageDialog(null, "Select Class Row");
+		else
+		{
+			AdminClassListFunction aclf = new AdminClassListFunction();
+			aclf.DeleteRow(cid);
+			
+			col_ClassID.setCellValueFactory(cellData -> cellData.getValue().getClassID().asObject());
+			col_TeacherID.setCellValueFactory(cellData -> cellData.getValue().getTeacherID().asObject());
+			col_ClassName.setCellValueFactory(cellData -> cellData.getValue().getClassName());
+			col_SubjectName.setCellValueFactory(cellData -> cellData.getValue().getSubjectName());
+			col_Grade.setCellValueFactory(cellData -> cellData.getValue().getGrade().asObject());
+			col_Location.setCellValueFactory(cellData -> cellData.getValue().getLocation());
+
+			try {
+				try {
+					String teacherID = "TID123";
+					ObservableList<AdminClassListTable> ClassList = AdminClassListFunction.SelectClassList(teacherID);
+					viewClassTbl.setItems(ClassList);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
+		}
+	} 
+	
 }

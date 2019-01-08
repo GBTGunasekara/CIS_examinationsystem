@@ -3,6 +3,8 @@ package application;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.swing.JOptionPane;
+
 import com.mysql.jdbc.PreparedStatement;
 
 import javafx.collections.FXCollections;
@@ -38,4 +40,22 @@ public static ObservableList <AdminClassListTable> SelectClassList(String teache
 	    
 	}
 
+		public void DeleteRow(int cid) {
+				PreparedStatement ps;
+				String DelQuery = "Delete From class Where classID = '"+cid+"'";
+				try {
+					ps = (PreparedStatement) DBconnection.Connect().prepareStatement(DelQuery);
+					if(ps.executeUpdate() > 0) 
+					{
+			            JOptionPane.showMessageDialog(null, "Class Deleted");
+
+					}
+				} catch (SQLException e) {
+		            JOptionPane.showMessageDialog(null, e);
+					e.printStackTrace();
+				}
+				
+			}
 }
+
+
