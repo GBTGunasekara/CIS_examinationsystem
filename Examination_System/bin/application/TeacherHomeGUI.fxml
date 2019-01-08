@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.TeacherHomeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.TeacherHomeController">
    <children>
       <ImageView fitHeight="465.0" fitWidth="900.0" layoutY="35.0" opacity="0.4" pickOnBounds="true">
          <image>
@@ -17,17 +17,17 @@
       </ImageView>
       <HBox prefHeight="35.0" prefWidth="900.0" style="-fx-background-color: #494949;">
          <children>
-            <Label prefHeight="35.0" prefWidth="300.0" text="  Teachers Menue" textFill="#e5e5e5">
+            <Label prefHeight="35.0" prefWidth="400.0" text="  Teachers Menue" textFill="#e5e5e5">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Label fx:id="UIDlbl" prefHeight="35.0" prefWidth="168.0" text="TID123" textFill="#e5e5e5">
+            <Label fx:id="UIDlbl" prefHeight="35.0" prefWidth="200.0" text="TID123" textFill="#e5e5e5">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Label prefHeight="35.0" prefWidth="369.0" text="Date and Time" textFill="#e5e5e5">
+            <Label fx:id="systemTimelbl" prefHeight="35.0" prefWidth="300.0" text="Date and Time" textFill="#e5e5e5">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>

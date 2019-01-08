@@ -17,17 +17,17 @@
       </ImageView>
       <HBox prefHeight="35.0" prefWidth="900.0" style="-fx-background-color: #494949;">
          <children>
-            <Label prefHeight="35.0" prefWidth="300.0" text="  Admin Menue" textFill="#e5e5e5">
+            <Label prefHeight="35.0" prefWidth="400.0" text="  Admin Menue" textFill="#e5e5e5">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Label prefHeight="35.0" prefWidth="168.0" text="User ID" textFill="#e5e5e5">
+            <Label fx:id="UIDlbl" prefHeight="35.0" prefWidth="200.0" text="User ID" textFill="#e5e5e5">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Label prefHeight="35.0" prefWidth="369.0" text="Date and Time" textFill="#e5e5e5">
+            <Label fx:id="systemTimelbl" prefHeight="35.0" prefWidth="250.0" text="Date and Time" textFill="#e5e5e5">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>

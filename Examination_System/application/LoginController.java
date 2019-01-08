@@ -52,11 +52,15 @@ public class LoginController  {
 		return UID;
 	}
 
+	FXMLLoader loader;
 	//this function contains fxml file loader. the sting value pass the  relevent fxml link
 	public void fxmlLoader(String link) throws Exception
 	{
 		Stage stage = new Stage();
-		Parent root = FXMLLoader.load(getClass().getResource(link));
+		 this.loader = new FXMLLoader(getClass().getResource(link));
+		Parent root = loader.load();
+		//Stage stage = new Stage();
+		//Parent root = FXMLLoader.load(getClass().getResource(link));
 		stage.initStyle(StageStyle.UNDECORATED);
 		Scene scene = new Scene(root);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
@@ -87,12 +91,13 @@ public class LoginController  {
 		
 		String userID = userIDtxt.getText();
 		String userPassword = userPasswordtxt.getText(); 
+		UserIdClass uc = new UserIdClass();
+		uc.setuserID(userID);
 		
 		LoginFunctionsInterface  loginobj = (LoginFunctionsInterface) 
 				Naming.lookup("rmi://localhost:1099/Login");
 		
 		
-		//LoginFunctions lf = new LoginFunctions();
 		if  (userID.equals(""))
 		{
 				JOptionPane.showMessageDialog(null, "Insert userID ");
@@ -112,6 +117,8 @@ public class LoginController  {
 							{
 								String linktoStudent = "/application/StudentHomeGUI.fxml";
 								fxmlLoader(linktoStudent);
+								StudentHomeController tspc = loader.getController(); //pass userID to next GUI
+								tspc.setUserID(userIDtxt.getText());
 							}
 							else
 							{
@@ -132,6 +139,8 @@ public class LoginController  {
 							{
 								String linktoStudent = "/application/TeacherHomeGUI.fxml";
 								fxmlLoader(linktoStudent);
+								TeacherHomeController tspc = loader.getController(); //pass userID to next GUI
+								tspc.setUserID(userIDtxt.getText());
 							}
 							else
 							{
@@ -152,6 +161,8 @@ public class LoginController  {
 							{
 								String linktoStudent = "/application/AdminHomeGUI.fxml";
 								fxmlLoader(linktoStudent);
+								AdminHomeController tspc = loader.getController(); //pass userID to next GUI
+								tspc.setUserID(userIDtxt.getText());
 							}
 							else
 							{

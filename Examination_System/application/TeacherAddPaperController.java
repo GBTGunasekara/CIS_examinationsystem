@@ -9,6 +9,7 @@ import java.rmi.RemoteException;
 import java.util.Date;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.ResourceBundle;
 
@@ -16,6 +17,9 @@ import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.controls.JFXTextField;
 
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -23,9 +27,11 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.util.Duration;
 
 public class TeacherAddPaperController implements Initializable{
 	
@@ -51,6 +57,8 @@ public class TeacherAddPaperController implements Initializable{
 	@FXML
 	private JFXTextField subjcetNametxt;
 	
+	@FXML
+	private Label systemTimelbl;
 	@FXML
 	private void handleClose(MouseEvent event)
 	{
@@ -119,7 +127,25 @@ public class TeacherAddPaperController implements Initializable{
 		tsp.generateEmail(paperID, paperPassword, classID, teacherID, ReleaseDate, TerminateDate);*/
 	}
 	
-	
+	// show live system time on the window 
+		public void liveDateTime () 
+		{
+			//reference - https://stackoverflow.com/questions/42383857/javafx-live-time-and-date 
+					Timeline clock = new Timeline(new KeyFrame(Duration.ZERO, e -> {        
+				        int second = LocalDateTime.now().getSecond();
+				        int minute = LocalDateTime.now().getMinute();
+				        int hour = LocalDateTime.now().getHour();
+				        int day = LocalDateTime.now().getDayOfMonth();
+				        int month = LocalDateTime.now().getMonthValue();
+				        int year = LocalDateTime.now().getYear();
+				        
+				        systemTimelbl.setText(hour +":"+ minute + ":" + second+ "  "+ day + "/"+ month + "/" +year);
+				    }),
+				         new KeyFrame(Duration.seconds(1))
+				    );
+				    clock.setCycleCount(Animation.INDEFINITE);
+				    clock.play();
+		}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -129,6 +155,7 @@ public class TeacherAddPaperController implements Initializable{
 		ad1.TeacherDrawer(Hamburger, Drawer);
 		Drawer.toBack();
 		
+		liveDateTime();
 		
 		try {
 			TeacherAddPaperInterface  PaperIDGen = (TeacherAddPaperInterface) 

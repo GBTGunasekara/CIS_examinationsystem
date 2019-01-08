@@ -6,6 +6,7 @@ import java.net.URL;
 import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.ResourceBundle;
 import javax.swing.JOptionPane;
@@ -13,6 +14,9 @@ import javax.swing.JOptionPane;
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
 
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -28,6 +32,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.util.Duration;
 import javafx.event.ActionEvent;
 public class TeacherAddQuestionController implements Initializable{
 	
@@ -72,7 +77,8 @@ public class TeacherAddQuestionController implements Initializable{
 	private Button Nextbtn;
 	@FXML 
 	private Button Clearbtn;
-	
+	@FXML
+	private Label systemTimelbl;
 	
 	@FXML
 	private void handleClose(MouseEvent event)
@@ -317,6 +323,26 @@ public class TeacherAddQuestionController implements Initializable{
 		//});
 	}
 	
+	// show live system time on the window 
+		public void liveDateTime () 
+		{
+			//reference - https://stackoverflow.com/questions/42383857/javafx-live-time-and-date 
+					Timeline clock = new Timeline(new KeyFrame(Duration.ZERO, e -> {        
+				        int second = LocalDateTime.now().getSecond();
+				        int minute = LocalDateTime.now().getMinute();
+				        int hour = LocalDateTime.now().getHour();
+				        int day = LocalDateTime.now().getDayOfMonth();
+				        int month = LocalDateTime.now().getMonthValue();
+				        int year = LocalDateTime.now().getYear();
+				        
+				        systemTimelbl.setText(hour +":"+ minute + ":" + second+ "  "+ day + "/"+ month + "/" +year);
+				    }),
+				         new KeyFrame(Duration.seconds(1))
+				    );
+				    clock.setCycleCount(Animation.INDEFINITE);
+				    clock.play();
+		}
+	
 	//clear button
 	@FXML
 	public void clearArea (MouseEvent event)
@@ -335,6 +361,6 @@ public class TeacherAddQuestionController implements Initializable{
 		TeacherDrawerController ad1 = new TeacherDrawerController();
 		ad1.TeacherDrawer(Hamburger, Drawer);
 		Drawer.toBack();
-		
+		liveDateTime();
 	}
 }

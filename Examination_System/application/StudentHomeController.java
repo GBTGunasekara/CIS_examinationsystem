@@ -120,25 +120,33 @@ public class StudentHomeController implements Initializable{
 		
 	}
 
+	public void setUserID (String userID)
+	{
+		UIDlbl.setText(userID);
+	}
 	
+	// show live system time on the window 
+	public void liveDateTime () 
+	{
+		//reference - https://stackoverflow.com/questions/42383857/javafx-live-time-and-date 
+				Timeline clock = new Timeline(new KeyFrame(Duration.ZERO, e -> {        
+			        int second = LocalDateTime.now().getSecond();
+			        int minute = LocalDateTime.now().getMinute();
+			        int hour = LocalDateTime.now().getHour();
+			        int day = LocalDateTime.now().getDayOfMonth();
+			        int month = LocalDateTime.now().getMonthValue();
+			        int year = LocalDateTime.now().getYear();
+			        
+			        systemTimelbl.setText(hour +":"+ minute + ":" + second+ "  "+ day + "/"+ month + "/" +year);
+			    }),
+			         new KeyFrame(Duration.seconds(1))
+			    );
+			    clock.setCycleCount(Animation.INDEFINITE);
+			    clock.play();
+	}
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		
-		//reference - https://stackoverflow.com/questions/42383857/javafx-live-time-and-date 
-		Timeline clock = new Timeline(new KeyFrame(Duration.ZERO, e -> {        
-	        int second = LocalDateTime.now().getSecond();
-	        int minute = LocalDateTime.now().getMinute();
-	        int hour = LocalDateTime.now().getHour();
-	        int day = LocalDateTime.now().getDayOfMonth();
-	        int month = LocalDateTime.now().getMonthValue();
-	        int year = LocalDateTime.now().getYear();
-	        
-	        systemTimelbl.setText(hour +":"+ minute + ":" + second+ "  "+ day + "/"+ month + "/" +year);
-	    }),
-	         new KeyFrame(Duration.seconds(1))
-	    );
-	    clock.setCycleCount(Animation.INDEFINITE);
-	    clock.play();
+		liveDateTime();
 	}
 }
