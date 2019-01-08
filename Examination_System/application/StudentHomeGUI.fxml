@@ -17,7 +17,7 @@
       </ImageView>
       <HBox layoutY="-1.0" prefHeight="35.0" prefWidth="900.0" style="-fx-background-color: #494949;">
          <children>
-            <Label prefHeight="35.0" prefWidth="300.0" text="  Students Menue" textFill="#e5e5e5">
+            <Label prefHeight="35.0" prefWidth="407.0" text="  Students Menue" textFill="#e5e5e5">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
@@ -27,7 +27,7 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Label fx:id="systemTimelbl" prefHeight="35.0" prefWidth="427.0" text="Date and Time" textFill="#e5e5e5">
+            <Label fx:id="systemTimelbl" prefHeight="35.0" prefWidth="243.0" text="Date and Time" textFill="#e5e5e5">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>

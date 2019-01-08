@@ -93,7 +93,7 @@ public class StudentResultPaperController implements Initializable{
 		 classIDlbl.setText(classID);
 		 paperIDlbl.setText(paperID);
 		 noQusetionlbl.setText(String.valueOf(noQuestions));
-		String studentID = "STID012546"; 
+		String studentID = "STID0123"; 
 		
 		StudentResultPaperInterface  showResult = (StudentResultPaperInterface) 
 				Naming.lookup("rmi://localhost:1099/StudentResultPaper");

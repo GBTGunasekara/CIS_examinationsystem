@@ -80,7 +80,7 @@ public class StudentSelectPaperController implements Initializable {
 	@FXML
 	private void MovetoAnswerPaper(MouseEvent event) throws Exception
 	{
-		String studentID = "STID012546";
+		String studentID = "STID0123";
 		 StudentSelectPaperFunction sspf = new StudentSelectPaperFunction();
 		if  ( paperIDtxt.getText().isEmpty() || classIDlbl.getText().isEmpty() || teacherIDlbl.getText().isEmpty() || noQusetionlbl.getText().isEmpty() )
 		{
@@ -88,8 +88,8 @@ public class StudentSelectPaperController implements Initializable {
 		}
 		 else  
 		{
-			 if (sspf.checkStudent(studentID,paperIDtxt.getText()) == false)
-			 {
+//			 if (sspf.checkStudent(studentID,paperIDtxt.getText()) == false)
+//			 {
 				 if (dateTimeCompare().equals("now")) 
 				 {
 
@@ -124,11 +124,11 @@ public class StudentSelectPaperController implements Initializable {
 				 {
 					 JOptionPane.showMessageDialog(null, "error");
 				 }
-			 }
-			 else
-			 {
-				 JOptionPane.showMessageDialog(null, "You have already completed this paper");
-			 }	 
+//			 }
+//			 else
+//			 {
+//				 JOptionPane.showMessageDialog(null, "You have already completed this paper");
+//			 }	 
 		}
 		
 		

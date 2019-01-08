@@ -167,8 +167,9 @@ public class StudentAnswerPaperController implements Initializable{
 		String [][] Questionlist = ((StudentAnswerPaperFunctionInterface) interfaceClass()).loadQuestionsList(paperID, numofQs);
 		
 		String nextQuestion = Questionlist[Qno][1]; // get next question 
-		//String QuestionID = Questionlist[0][Qno-1]; //get the current questionID
+		String QuestionID = Questionlist[Qno][0]; //get the next questionID
 		
+		quesetionIDlabel.setText(QuestionID); // set question ID
 		QuestionTextArea.setText(nextQuestion); //set question 
 		
 		String[][] AnswerList = ((StudentAnswerPaperFunctionInterface) interfaceClass()).loadAnswerlist(paperID, Qno);
@@ -186,20 +187,41 @@ public class StudentAnswerPaperController implements Initializable{
 		AnswerDTextArea.setText(AnswerD);
 	
 	}
-//	 
-//
+	 
+
 //	public void loadQuestion(ActionEvent event) throws RemoteException, MalformedURLException, NotBoundException, SQLException 
 //	{
 //		
 //		
 //		if (AnsNoCombo.getSelectionModel().getSelectedItem()!= null)
 //		{
-//			//int QuestionNo = Integer.parseInt(QuestionNoCombo.getSelectionModel().getSelectedItem().toString());
 //			int QuestionNo = Integer.parseInt(QuestionNoCombo.getSelectionModel().getSelectedItem().toString());
+//			//Integer QuestionNo =  QuestionNoCombo.getValue();
 //			ObservableList<Integer> totQuestionlist = QuestionNoCombo.getItems(); // get the combo box values into a observer list to get total questions 
 //			int totQuestion = totQuestionlist.size(); //get item count of combobox which equals total number questions in this paper
-//			setQuestion_Answer(paperIDlabel.getText(), QuestionNo , totQuestion);
+//			//setQuestion_Answer(paperIDlabel.getText(), QuestionNo , totQuestion);
 //			
+//			String [][] Questionlist = ((StudentAnswerPaperFunctionInterface) interfaceClass()).loadQuestionsList(paperIDlabel.getText(), totQuestion);
+//			
+//			String nextQuestion = Questionlist[QuestionNo-1][1]; // get next question 
+//			String QuestionID = Questionlist[QuestionNo-1][0]; //get the current questionID
+//			
+//			quesetionIDlabel.setText(QuestionID); // set question ID
+//			QuestionTextArea.setText(nextQuestion); //set question 
+//			
+//			String[][] AnswerList = ((StudentAnswerPaperFunctionInterface) interfaceClass()).loadAnswerlist(paperIDlabel.getText(), QuestionNo);
+//			
+//			//initializing answers
+//			String AnswerA = AnswerList[0][1];
+//			String AnswerB = AnswerList[1][1];
+//			String AnswerC = AnswerList[2][1];
+//			String AnswerD = AnswerList[3][1];
+//			
+//			//set answers to relevant text areas
+//			AnswerATextArea.setText(AnswerA);
+//			AnswerBTextArea.setText(AnswerB);
+//			AnswerCTextArea.setText(AnswerC);
+//			AnswerDTextArea.setText(AnswerD);
 //		}
 //		else
 //		{
