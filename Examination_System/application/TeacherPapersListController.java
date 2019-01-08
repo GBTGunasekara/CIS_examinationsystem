@@ -91,14 +91,22 @@ public class TeacherPapersListController implements Initializable{
 		stage.setScene(scene);
 		stage.show();
 	}
+	
 	String paID = null;
 	String numQe = null;
 	@FXML
 	private void SelectRow() {
-		ObservableList<TeacherPaperListTable> paperList;
-		paperList = viewPaperListTbl.getSelectionModel().getSelectedItems();
-		this.paID = paperList.get(0).getPaperID();
-		this.numQe = paperList.get(3).getNoQuestions();
+		
+		TeacherPaperListTable paperList = viewPaperListTbl.getSelectionModel().getSelectedItem();
+		if(paperList != null)
+		{
+			this.paID = paperList.getPaperID();
+			this.numQe = paperList.getNoQuestions();
+		}
+		else
+		{
+			System.out.println("select valid row");
+		}
 	}
 	@FXML
 	private void MovetoViewQuestions(MouseEvent event) throws NotBoundException, IOException
@@ -117,8 +125,8 @@ public class TeacherPapersListController implements Initializable{
 			stage.setScene(scene);
 			stage.show();
 			
-//			TeacherViewQuestionsController taqc = loader.getController();
-//			taqc.setTeacherViewPaperDetails(paID,numQe); //pass this values to next GUI
+			TeacherViewQuestionsController taqc = loader.getController();
+			taqc.setTeacherViewPaperDetails(paID,numQe); //pass this values to next GUI
 		}
 		else
 		{
