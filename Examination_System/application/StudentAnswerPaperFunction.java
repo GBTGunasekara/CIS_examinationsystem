@@ -216,10 +216,10 @@ public class StudentAnswerPaperFunction extends UnicastRemoteObject implements S
 	public void InsertStudentAnswer (String stID, String paID,String qeID, String anID) throws RemoteException
 	{
 		PreparedStatement ps;
-		String tRegQuery = "INSERT INTO studentanswer(studentID, paperID, questionID, answerID) VALUES (?,?,?,?)";
+		String setansQuery = "INSERT INTO studentanswer(studentID, paperID, questionID, answerID) VALUES (?,?,?,?)";
 	try
 	{
-		ps = (PreparedStatement) DBconnection.Connect().prepareStatement(tRegQuery);
+		ps = (PreparedStatement) DBconnection.Connect().prepareStatement(setansQuery);
 		ps.setString(1, stID);
         ps.setString(2, paID);
         ps.setString(3, qeID);
@@ -255,6 +255,25 @@ public class StudentAnswerPaperFunction extends UnicastRemoteObject implements S
 //		    return true;     
 //		
 //	}
+	public void  paperCountIncremant(String studentID, String classID) throws SQLException
+	{
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		int paperCount = 0;
+		
+		String papercountQuerry = "select noPapers from studentclass where studentID = '"+studentID+"' and classId = '"+classID+"'"; //get current paper count
+        ps = (PreparedStatement) DBconnection.Connect().prepareStatement(papercountQuerry);
+        rs = ps.executeQuery();
+        if(rs.next())
+        {
+        	paperCount= rs.getInt(1);
+        }
+        paperCount = paperCount +1; //increment the paper count by 1
+        String setpapercountQuerry = "Update studentclass set noPapers = '"+paperCount+"' where studentID = '"+studentID+"' and classId = '"+classID+"'"; //update incremented paper count by 1
+        ps = (PreparedStatement) DBconnection.Connect().prepareStatement(setpapercountQuerry);
+        ps.execute();
+        
+	}
 
 	
 

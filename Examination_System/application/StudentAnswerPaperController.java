@@ -103,6 +103,10 @@ public class StudentAnswerPaperController implements Initializable{
 		
 		StudentResultPaperController stapf = loader.getController(); //create object of StudentResultPaperController class for move relevant data to it
 		stapf.paperResults(teacherIDlabel.getText(), classIDlabel.getText(), paperIDlabel.getText(), totQuestion);
+		
+		StudentAnswerPaperFunction sapf = new StudentAnswerPaperFunction();
+		String studentID = "SID1";
+		sapf.paperCountIncremant(studentID, classIDlabel.getText()); //increameant student paper count by1
 	}
 	
 	public void setStudentPaperDetails (String paperid, String noQuestion, String classID, String teacherID) throws RemoteException, MalformedURLException, NotBoundException
