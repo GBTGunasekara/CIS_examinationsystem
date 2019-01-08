@@ -40,7 +40,7 @@ public class AdminStudentProfileFunction {
 		return UserDetails;
 	}
 	
-	public void updateDetails(String uid, String uName, String uEmail, String uPword, String uGender, LocalDate uDOB, String uStatus) {
+	public void updateDetails(String uid,String Nuid, String uName, String uEmail, String uPword, String uGender, LocalDate uDOB, String uStatus) {
 		
 		if(uid.equals("") || uName.equals("") || uEmail.equals("") || uPword.equals("") || uStatus.equals(""))
 		{
@@ -59,7 +59,7 @@ public class AdminStudentProfileFunction {
 		String DOBtoString = uDOB.toString();
 		PreparedStatement ps;
 		
-		String updateQuery = "UPDATE student SET studentID='"+uid+"',stName='"+uName+"',stEmail='"+uEmail+"',"
+		String updateQuery = "UPDATE student SET studentID='"+Nuid+"',stName='"+uName+"',stEmail='"+uEmail+"',"
 				+ "stPassword='"+uPword+"',stDOB='"+DOBtoString+"',stGender='"+uGender+"',stStatus= '"+uStatus+"'"
 						+ " WHERE studentID = '"+uid+"'";
 		

@@ -149,6 +149,7 @@ public class AdminTeacherProfileController implements Initializable{
 	@FXML
 	private void updateTeacher() {
 		String uid = SearchBox.getText();
+		String Nuid = teID.getText();
 		String uName = teName.getText();
 		String uEmail = teEmail.getText();
 		LocalDate uDOB= teDOB.getValue();
@@ -165,7 +166,7 @@ public class AdminTeacherProfileController implements Initializable{
 		String uStatus = teStatus.getText();
 		
 		AdminTeacherProfileFunction atpf = new AdminTeacherProfileFunction();
-		atpf.updateDetails(uid, uName, uEmail, uPword, uGender, uDOB, uStatus);
+		atpf.updateDetails(uid, Nuid, uName, uEmail, uPword, uGender, uDOB, uStatus);
 		
 		
 		

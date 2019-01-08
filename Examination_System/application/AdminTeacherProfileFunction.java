@@ -46,7 +46,7 @@ public class AdminTeacherProfileFunction{
 		return UserDetails;
 	}
 	
-public void updateDetails(String uid, String uName, String uEmail, String uPword, String uGender, LocalDate uDOB, String uStatus) {
+public void updateDetails(String uid,String Nuid, String uName, String uEmail, String uPword, String uGender, LocalDate uDOB, String uStatus) {
 		
 		if(uid.equals("") || uName.equals("") || uEmail.equals("") || uPword.equals("") || uStatus.equals(""))
 		{
@@ -65,7 +65,7 @@ public void updateDetails(String uid, String uName, String uEmail, String uPword
 		String DOBtoString = uDOB.toString();
 		PreparedStatement ps;
 		
-		String updateQuery = "UPDATE Teacher SET teacherID='"+uid+"',teName='"+uName+"',teEmail='"+uEmail+"',"
+		String updateQuery = "UPDATE Teacher SET teacherID='"+Nuid+"',teName='"+uName+"',teEmail='"+uEmail+"',"
 				+ "tePassword='"+uPword+"',teDOB='"+DOBtoString+"',teGender='"+uGender+"',teStatus= '"+uStatus+"'"
 						+ " WHERE teacherID = '"+uid+"'";
 		

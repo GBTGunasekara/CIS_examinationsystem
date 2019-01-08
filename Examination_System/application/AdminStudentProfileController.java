@@ -126,6 +126,7 @@ public class AdminStudentProfileController implements Initializable{
 	@FXML
 	private void updateStudent() {
 		String uid = searchBox.getText();
+		String Nuid = stID.getText();
 		String uName = stName.getText();
 		String uEmail = stEmail.getText();
 		LocalDate uDOB= stDOB.getValue();
@@ -142,7 +143,7 @@ public class AdminStudentProfileController implements Initializable{
 		String uStatus = stStatus.getText();
 		
 		AdminStudentProfileFunction aspf = new AdminStudentProfileFunction();
-		aspf.updateDetails(uid, uName, uEmail, uPword, uGender, uDOB, uStatus);
+		aspf.updateDetails(uid, Nuid, uName, uEmail, uPword, uGender, uDOB, uStatus);
 		
 	}
 	
