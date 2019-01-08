@@ -55,12 +55,18 @@
             <NumberAxis fx:id="Yaxis" label="Number of Students" side="LEFT" />
          </yAxis>
       </BarChart>
-      <Label layoutX="50.0" layoutY="57.0" text="ClassID">
+      <Label layoutX="21.0" layoutY="57.0" text="StudentID">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <JFXTextField fx:id="ClassIdbox" editable="false" layoutX="146.0" layoutY="52.0" maxWidth="309.0" minWidth="126.0" prefHeight="37.0" prefWidth="309.0" />
-      <Button layoutX="477.0" layoutY="55.0" mnemonicParsing="false" text="Search" />
+      <JFXTextField fx:id="ClassIdbox" editable="false" layoutX="107.0" layoutY="52.0" maxWidth="309.0" minWidth="126.0" prefHeight="37.0" prefWidth="148.0" />
+      <Button layoutX="501.0" layoutY="55.0" mnemonicParsing="false" text="Search" />
+      <Label layoutX="263.0" layoutY="57.0" text="ClassID">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="ClassIdbox1" editable="false" layoutX="341.0" layoutY="52.0" maxWidth="309.0" minWidth="126.0" prefHeight="37.0" prefWidth="148.0" />
    </children>
 </AnchorPane>
