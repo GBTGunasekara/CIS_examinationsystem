@@ -4,8 +4,8 @@ import java.sql.SQLException;
 
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
@@ -19,7 +19,7 @@ public class StudentProfileResultChartController {
 	@FXML
 	private Button Minimizebttn3;
 	@FXML
-	private BarChart<String,Integer> resultschart;
+	private LineChart<String,Integer> resultschart;
 	@FXML
 	private CategoryAxis Xaxis;
 	@FXML
@@ -28,6 +28,8 @@ public class StudentProfileResultChartController {
 	private TextField ClassIdbox;
 	@FXML
 	private TextField stCounttxt;
+	@FXML
+	private TextField stIDBox;
 
 	
 	@FXML
@@ -44,28 +46,36 @@ public class StudentProfileResultChartController {
 		stage.setIconified(true);
 	}
 	
-	public void setLineChart (String paperID) throws SQLException
+	@FXML
+	public void setLineChart (MouseEvent event) throws SQLException
 	{
 		
-			ClassIdbox.setText(paperID);
+			String ClID = ClassIdbox.getText();
+			//String stID = stIDBox.getText();
+			String stID = "SID1";
 			
-			TeacherViewResultChartFunction tvrcf = new TeacherViewResultChartFunction();
 			
-			int stcount = tvrcf.getStudentCount(paperID);
-			stCounttxt.setText(String.valueOf(stcount));
+			StudentProfileResultChartFunction sprcf = new StudentProfileResultChartFunction();
+		
 			
-			int groupStudents[] = tvrcf.analyzeMarks(paperID);
+			String stMarks[][] =  sprcf.ViewMarks(stID,ClID);
 			
 			XYChart.Series<String, Integer> set = new XYChart.Series<>();
 			
-			set.getData().add(new XYChart.Data<String, Integer>("<35", groupStudents[0]));
-			set.getData().add(new XYChart.Data<String, Integer>("45-55", groupStudents[1]));
-			set.getData().add(new XYChart.Data<String, Integer>("55-65", groupStudents[2]));
-			set.getData().add(new XYChart.Data<String, Integer>("65-75", groupStudents[3]));
-			set.getData().add(new XYChart.Data<String, Integer>(">75", groupStudents[4]));
+			int arRowcount = sprcf.getRowCount(stID, ClID);
+			for(int i =0; i<1; i++) {
+				int numQ = 0;											//calculate Percentage
+				int percen = 0;
+				numQ = sprcf.getNumQuestions(stMarks[i][0]);
+				percen = (Integer.parseInt(stMarks[i][1])*100)/numQ;
+				
+				
+				set.getData().add(new XYChart.Data<String, Integer>(stMarks[i][0], percen));
+			}
+			
 			
 			resultschart.getData().addAll(set);
-			resultschart.setAnimated(false); // prevent the x axis label overlay by disable the animation. 
+			//resultschart.setAnimated(false); // prevent the x axis label overlay by disable the animation. 
 	
 	}
 	
