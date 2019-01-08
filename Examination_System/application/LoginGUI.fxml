@@ -24,7 +24,7 @@
 						<Font size="28.0" />
 					</font>
 				</Label>
-				<Hyperlink alignment="CENTER" layoutX="88.0" layoutY="334.0" prefHeight="23.0" prefWidth="173.0" text="Forget Your Password?" textFill="#fdfafa" wrapText="true" />
+				<Hyperlink alignment="CENTER" layoutX="88.0" layoutY="334.0" onMouseClicked="#forgotPword" prefHeight="23.0" prefWidth="173.0" text="Forget Your Password?" textFill="#fdfafa" wrapText="true" />
 				<JFXButton fx:id="loginbtn" buttonType="RAISED" layoutX="50.0" layoutY="276.0" onMouseClicked="#MovetoMenue" prefHeight="35.0" prefWidth="250.0" ripplerFill="#494949" style="-fx-background-color: #E5E5E5;" text="Login" textFill="#494949">
 					<font>
 						<Font size="16.0" />

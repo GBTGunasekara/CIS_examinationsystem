@@ -9,6 +9,8 @@ import javax.swing.JOptionPane;
 
 import com.mysql.jdbc.PreparedStatement;
 
+import javafx.scene.control.Alert;
+
 public class LoginFunctions extends UnicastRemoteObject implements LoginFunctionsInterface{
 	
 	protected LoginFunctions() throws RemoteException {
@@ -178,4 +180,57 @@ public class LoginFunctions extends UnicastRemoteObject implements LoginFunction
             return true;
         
     }
+	
+	public void GetSEmail(String uid) {
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String SEmail = null;
+		String sql = "Select stEmail from student where studentID = '"+uid+"'";
+		try {
+			ps = (PreparedStatement) DBconnection.Connect().prepareStatement(sql);
+			rs = ps.executeQuery();
+			
+			if(rs.next()) {
+			SEmail = rs.getString(1);
+			}
+			Alert alertDialog = new Alert(Alert.AlertType.CONFIRMATION);
+			alertDialog.setTitle("Reset Password Confirmation");
+			alertDialog.setHeaderText("Do you want to reset your password?");
+			alertDialog.setContentText("You will recieve a temorary password to your email : \n '"+SEmail+"'");
+			alertDialog.showAndWait();
+			
+
+		} 
+		catch (SQLException e) {
+			JOptionPane.showMessageDialog(null, e);
+			e.printStackTrace();
+		}	
+	}
+	
+	public void GetTEmail(String uid) {
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String TEmail = null;
+		String sql = "Select stEmail from teacher where studentID = '"+uid+"'";
+		try {
+			ps = (PreparedStatement) DBconnection.Connect().prepareStatement(sql);
+			rs = ps.executeQuery();
+			
+			if(rs.next()) {
+			TEmail = rs.getString(1);
+			}
+			Alert alertDialog = new Alert(Alert.AlertType.CONFIRMATION);
+			alertDialog.setTitle("Reset Password Confirmation");
+			alertDialog.setHeaderText("Do you want to reset your password?");
+			alertDialog.setContentText("You will recieve a temorary password to your email : \n '"+TEmail+"'");
+			alertDialog.showAndWait();
+			
+
+		} 
+		catch (SQLException e) {
+			JOptionPane.showMessageDialog(null, e);
+			e.printStackTrace();
+		}
+	}
+	
 }

@@ -15,6 +15,11 @@
 
 <AnchorPane prefHeight="522.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.StudentProfileResultChartController">
    <children>
+      <ImageView fitHeight="500.0" fitWidth="600.0" layoutY="38.0" opacity="0.24" pickOnBounds="true">
+         <image>
+            <Image url="@../image/background-black-blank-733857.jpg" />
+         </image>
+      </ImageView>
       <HBox prefHeight="40.0" prefWidth="600.0" style="-fx-background-color: #494949;">
          <children>
             <Label prefHeight="35.0" prefWidth="496.0" text=" Result Chart" textFill="#e5e5e5">
@@ -42,14 +47,9 @@
             </JFXButton>
          </children>
       </HBox>
-      <ImageView fitHeight="500.0" fitWidth="600.0" layoutY="38.0" opacity="0.24" pickOnBounds="true">
-         <image>
-            <Image url="@../image/background-black-blank-733857.jpg" />
-         </image>
-      </ImageView>
       <BarChart fx:id="resultschart" layoutX="50.0" layoutY="101.0" title="Results">
          <xAxis>
-            <CategoryAxis fx:id="Xaxis" label="Score Level" side="BOTTOM" />
+            <CategoryAxis fx:id="Xaxis" label="Paper" side="BOTTOM" />
          </xAxis>
          <yAxis>
             <NumberAxis fx:id="Yaxis" label="Number of Students" side="LEFT" />
@@ -60,7 +60,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <JFXTextField fx:id="paperIDtxt" editable="false" layoutX="146.0" layoutY="52.0" maxWidth="309.0" minWidth="126.0" prefHeight="37.0" prefWidth="309.0" />
+      <JFXTextField fx:id="ClassIdbox" editable="false" layoutX="146.0" layoutY="52.0" maxWidth="309.0" minWidth="126.0" prefHeight="37.0" prefWidth="309.0" />
       <Button layoutX="477.0" layoutY="55.0" mnemonicParsing="false" text="Search" />
    </children>
 </AnchorPane>

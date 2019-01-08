@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.rmi.Naming;
+import java.rmi.RemoteException;
 import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
@@ -176,6 +177,18 @@ public class LoginController  {
 		}
 		}
 		
+	}
+	
+	//--------Forgot Password----------
+	@FXML
+	private void forgotPword() throws RemoteException {
+		String userID = userIDtxt.getText();
+		LoginFunctions lf  = new LoginFunctions();
+		
+		if (lf.CheckUSercategory(userID) == "student")
+			lf.GetSEmail(userID);
+		else if(lf.CheckUSercategory(userID) == "teacher")
+			lf.GetTEmail(userID);
 	}
 	
 }

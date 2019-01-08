@@ -115,7 +115,7 @@ public class AdminClassListController implements Initializable {
 	
 	int cid = 0;
 	@FXML
-	private void SelectRow() {
+	private void SelectRow() {						//Code referred from https://www.youtube.com/watch?v=3SJmlQQvxIs
 		ObservableList<AdminClassListTable> ClList;
 		ClList=viewClassTbl.getSelectionModel().getSelectedItems();
 		cid = ClList.get(0).getClID();
