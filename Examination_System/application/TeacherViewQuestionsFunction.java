@@ -134,4 +134,31 @@ public class TeacherViewQuestionsFunction {
 		return answerlist; //return given question's answer list
 		
 	}
-}
+	public String setAnswerNo (String questionID)
+	{
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String Status = "Correct";
+		String ansNo = null;
+		try{
+	           String searchPaperDetails = "select answerNo from answer where ansStatus = '"+Status+"' and questionID = '"+questionID+"'";
+	            
+	             
+	             ps = (PreparedStatement) DBconnection.Connect().prepareStatement(searchPaperDetails);
+	             rs = ps.executeQuery();
+	             if(rs.next())
+	             {
+	            	 ansNo = rs.getString(1);
+	             }
+	            
+	    }
+	    catch (SQLException e){
+	            JOptionPane.showMessageDialog(null, "unable to load answer list.");
+	            System.out.println(e);
+	        }
+		return ansNo;
+		}
+
+		
+	}
+

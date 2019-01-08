@@ -127,6 +127,9 @@ public class TeacherPapersListController implements Initializable{
 			
 			TeacherViewQuestionsController taqc = loader.getController();
 			taqc.setTeacherViewPaperDetails(paID,numQe); //pass this values to next GUI
+			
+			Stage stage2 = (Stage) ((Node)event.getSource()).getScene().getWindow();
+			stage2.close();
 		}
 		else
 		{

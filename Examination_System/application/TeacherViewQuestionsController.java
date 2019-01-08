@@ -43,7 +43,9 @@ public class TeacherViewQuestionsController implements Initializable {
 	@FXML
 	private Label teacherIDlabel;
 	@FXML
-	private ComboBox<Character> AnsNoCombo;
+	private Label ansNolbl;
+//	@FXML
+//	private ComboBox<Character> AnsNoCombo;
 	@FXML
 	private ComboBox<Integer> QuestionNoCombo;
 	@FXML
@@ -95,65 +97,56 @@ public class TeacherViewQuestionsController implements Initializable {
 		String questionID =  paperid +  String.valueOf(1); //create questionID according to paperID
 		quesetionIDlabel.setText(questionID); //set it on quesetionIDlabel label
 		
-		//set A-D in answer AnsNoCombo combo box
-		for ( int i = 65; i <= 68; i++) 
-		{
-			AnsNoCombo.getItems().add((char)i);
-		}
-		
+	
 		setQuestion_Answer(paperid,0,Integer.parseInt(noQuestion)); //call setQuestion_Answer method passed values to set first question of the paper when page load
 	}
 	
-//	public void setFirstQuestionAnswer (String paperID) throws RemoteException, MalformedURLException, NotBoundException
-//	{
-//		
-//		String fisrtQuestion = ((StudentAnswerPaperFunctionInterface) interfaceClass()).selectFirstQuestion(paperID); //called selectFirstQuestion() method and initialize its' return value to a String 
-//		
-//		QuestionTextArea.setText(fisrtQuestion); //set first question on QuestionTextArea text area
-//		
-//		String[] AnswerList = ((StudentAnswerPaperFunctionInterface) interfaceClass()).selectFirstAnswerset(paperID);
-//
-//		 //AnswerList = sapf.selectFirstAnswerset(paperID);
-//		 
-//		 AnswerATextArea.setText(AnswerList[0]);
-//		 AnswerBTextArea.setText(AnswerList[1]);
-//		 AnswerCTextArea.setText(AnswerList[2]);
-//		 AnswerDTextArea.setText(AnswerList[3]);
-//		
-//	}
+
 	@FXML
 	private void NextQuestion(MouseEvent event) throws Exception
 	{
-		if (AnsNoCombo.getSelectionModel().getSelectedItem()!= null) //check answer combo is empty or not
-		{
+
 
 			int QuestionNo;
 			QuestionNo = Integer.parseInt(QuestionNoCombo.getSelectionModel().getSelectedItem().toString()); //get the current question number
-			String AnswerNo = AnsNoCombo.getSelectionModel().getSelectedItem().toString(); // get the answer of the current question
+			//String AnswerNo = AnsNoCombo.getSelectionModel().getSelectedItem().toString(); // get the answer of the current question
 			
 			ObservableList<Integer> totQuestionlist = QuestionNoCombo.getItems(); // get the combo box values into a observer list to get total questions 
 			int totQuestion = totQuestionlist.size(); //get item count of combobox which equals total number questions in this paper
 			
 			if (QuestionNo == totQuestion)
 			{
-			
-				JOptionPane.showMessageDialog(null, "You have answered to all questions");
-			/*QuestionNo = 1;
-			setQuestion_Answer (paperIDlabel.getText(),QuestionNo,totQuestion);
-			QuestionNoCombo.getSelectionModel().select(0);// set combobox value to number one*/
+				Stage stage = new Stage();
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/TeacherPapersListGUI.fxml"));
+				Parent root = loader.load();
+				stage.initStyle(StageStyle.UNDECORATED);
+				Scene scene = new Scene(root);
+				scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+				stage.setScene(scene);
+				stage.show();
+				
+				Stage stage2 = (Stage) ((Node)event.getSource()).getScene().getWindow();
+				stage2.close();
+				
+			}
+			else if (QuestionNo == totQuestion-1)
+			{
+				Nextbtn.setText("Cancel");
+				setQuestion_Answer (paperIDlabel.getText(),QuestionNo,totQuestion);//call methods of next question sets
+				QuestionNoCombo.getSelectionModel().select(QuestionNoCombo.getSelectionModel().getSelectedIndex()  +1);// increase the Question number by one
 			}
 			else
 			{
 				//saveAnswer(paperIDlabel.getText(),QuestionNo,AnswerNo,quesetionIDlabel.getText()); //save the answer
 				setQuestion_Answer (paperIDlabel.getText(),QuestionNo,totQuestion);//call methods of next question sets
 				QuestionNoCombo.getSelectionModel().select(QuestionNoCombo.getSelectionModel().getSelectedIndex()  +1);// increase the Question number by one
-				AnsNoCombo.getSelectionModel().select(null); //clear AnsNoCombo Combo Box value
+				//AnsNoCombo.getSelectionModel().select(null); //clear AnsNoCombo Combo Box value
 			}
-		}
-		else
-		{
-			JOptionPane.showMessageDialog(null, "Selcet an Answer");
-		}
+//		}
+//		else
+//		{
+//			JOptionPane.showMessageDialog(null, "Selcet an Answer");
+//		}
 	}
 	
 	public void setQuestion_Answer (String paperID, int Qno, int numofQs) throws RemoteException, MalformedURLException, NotBoundException
@@ -180,6 +173,9 @@ public class TeacherViewQuestionsController implements Initializable {
 		AnswerBTextArea.setText(AnswerB);
 		AnswerCTextArea.setText(AnswerC);
 		AnswerDTextArea.setText(AnswerD);
+		
+		String ansno =  tvqf.setAnswerNo(QuestionID);
+		ansNolbl.setText(ansno);
 	
 	}
 	
