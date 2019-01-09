@@ -1,6 +1,9 @@
 package application;
 
 import java.rmi.RemoteException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Properties;
 import java.util.Random;
@@ -27,7 +30,9 @@ public class PasswordEmailVerificationFunction {
 	}
 
 	public void sendEmail(String email) {
-		// TODO Auto-generated method stub
+		Date d = Calendar.getInstance().getTime();
+		SimpleDateFormat dateF = new SimpleDateFormat("Y-MM-dd hh:mm:ss");
+		String StrDate = dateF.format(d);
 			try{
 				boolean sessionDebug = false;
 				String NewP = genPword();
@@ -68,11 +73,12 @@ public class PasswordEmailVerificationFunction {
 	           transport.sendMessage(msg, msg.getAllRecipients());
 	           transport.close();
 	           
-	           String sql = "Insert into systememail (email, password) Values (?,?)";
+	           String sql = "Insert into systememail (email, password, addedTime) Values (?,?,?)";
 	           PreparedStatement ps = null;
 	           ps = (PreparedStatement) DBconnection.Connect().prepareStatement(sql);
 	           ps.setString(1, email);
 	           ps.setString(2, NewP);
+	           ps.setString(3, StrDate);
 	           
 	           if(ps.executeUpdate() > 0)
 	            {
