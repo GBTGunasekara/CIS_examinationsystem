@@ -219,14 +219,9 @@ public class LoginController  {
 	
 	//--------Forgot Password----------
 	@FXML
-	private void forgotPword() throws RemoteException {
-		String userID = userIDtxt.getText();
-		LoginFunctions lf  = new LoginFunctions();
-		
-		if (lf.CheckUSercategory(userID) == "student")
-			lf.GetSEmail(userID);
-		else if(lf.CheckUSercategory(userID) == "teacher")
-			lf.GetTEmail(userID);
+	private void forgotUserIDPassword(MouseEvent event) throws Exception  {
+		String linktoStudentReg = "/application/PasswordEmailVerificationGUI.fxml";
+		fxmlLoader(linktoStudentReg);
 	}
 	
 }

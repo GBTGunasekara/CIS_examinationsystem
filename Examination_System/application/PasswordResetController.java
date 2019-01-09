@@ -35,14 +35,17 @@ public class PasswordResetController {
 		Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		stage.setIconified(true);
 	}
-	
-	private void resetPword() {
-		String uid = null;//*have to add user ID
-		String newPword = Pwordbox.getText();
-		String newRePword = RePwordbox.getText();
+	@FXML
+	private void resetPword(MouseEvent event) {
+//		String uid = null;//*have to add user ID
+//		String newPword = Pwordbox.getText();
+//		String newRePword = RePwordbox.getText();
+//		
+//		PasswordResetFunction prf = new PasswordResetFunction();
+//		prf.resetPwrod(newPword, newRePword, uid);
 		
-		PasswordResetFunction prf = new PasswordResetFunction();
-		prf.resetPwrod(newPword, newRePword, uid);
+		Stage stage2 = (Stage) ((Node)event.getSource()).getScene().getWindow(); //close current window
+		stage2.close();
 	}
 	
 }
