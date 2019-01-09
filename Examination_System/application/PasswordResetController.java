@@ -17,7 +17,9 @@ public class PasswordResetController {
     private JFXButton Closebttn3;
 
     @FXML
-    private JFXTextField stCounttxt;
+    private JFXTextField Pwordbox;
+    @FXML
+    private JFXTextField RePwordbox;
 
     @FXML
 	private void handleClose(MouseEvent event)
@@ -33,5 +35,14 @@ public class PasswordResetController {
 		Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		stage.setIconified(true);
 	}
-
+	
+	private void resetPword() {
+		String uid = null;//*have to add user ID
+		String newPword = Pwordbox.getText();
+		String newRePword = RePwordbox.getText();
+		
+		PasswordResetFunction prf = new PasswordResetFunction();
+		prf.resetPwrod(newPword, newRePword, uid);
+	}
+	
 }
