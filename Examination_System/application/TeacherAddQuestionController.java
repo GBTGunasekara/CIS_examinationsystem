@@ -79,6 +79,14 @@ public class TeacherAddQuestionController implements Initializable{
 	private Button Clearbtn;
 	@FXML
 	private Label systemTimelbl;
+	@FXML
+	private Label UIDlbl;
+
+	
+	public void setUserID (String userID) //set user ID on GUI
+	{
+		UIDlbl.setText(userID);
+	}
 	
 	@FXML
 	private void handleClose(MouseEvent event)
@@ -92,6 +100,9 @@ public class TeacherAddQuestionController implements Initializable{
 	{
 		Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		stage.setIconified(true);
+		
+		Stage stage2 = (Stage) ((Node)event.getSource()).getScene().getWindow(); //close current window
+		stage2.close();
 	}
 	
 	public void fxmlLoader(String link) throws Exception
@@ -228,7 +239,6 @@ public class TeacherAddQuestionController implements Initializable{
 			 AnswerCTextArea.setText("");
 			 AnswerDTextArea.setText("");
 			 
-			 
 			 QuestionNoCombo.getSelectionModel().select(QuestionNoCombo.getSelectionModel().getSelectedIndex()  +1); //set next question number on question combo box by adding 1 to selected index
 			 AnsNoCombo.getSelectionModel().select(null); // set null on next question's answer at the beginning 
 			 
@@ -241,10 +251,7 @@ public class TeacherAddQuestionController implements Initializable{
              numbers_set = Integer.toString(numbers_set_int);
              String NewQusetionID = (lettersset + numbers_set); 
              quesetionIDlabel.setText(NewQusetionID);
-			 }
-			
-             
-             
+			 }             
 		}	
 		else 
 		{
@@ -258,7 +265,7 @@ public class TeacherAddQuestionController implements Initializable{
 
 	public void loadQuestion(ActionEvent event) 
 	{
-		//QuestionNoCombo.setOnAction((event) -> {
+
 			int QuestionNo = Integer.parseInt(QuestionNoCombo.getSelectionModel().getSelectedItem().toString());
 			String PaperID = paperIDlabel.getText();
 			
@@ -318,9 +325,7 @@ public class TeacherAddQuestionController implements Initializable{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		
-			
-		//});
+
 	}
 	
 	// show live system time on the window 
@@ -335,7 +340,7 @@ public class TeacherAddQuestionController implements Initializable{
 				        int month = LocalDateTime.now().getMonthValue();
 				        int year = LocalDateTime.now().getYear();
 				        
-				        systemTimelbl.setText(hour +":"+ minute + ":" + second+ "  "+ day + "/"+ month + "/" +year);
+				        systemTimelbl.setText(hour +":"+ minute + ":" + second+ "    "+ day + "/"+ month + "/" +year);
 				    }),
 				         new KeyFrame(Duration.seconds(1))
 				    );
@@ -363,4 +368,6 @@ public class TeacherAddQuestionController implements Initializable{
 		Drawer.toBack();
 		liveDateTime();
 	}
+	
+	
 }

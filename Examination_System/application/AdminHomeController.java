@@ -60,7 +60,8 @@ public class AdminHomeController implements Initializable {
 	{
 		String link = "/application/AdminTeacherRegistrationGUI.fxml";
 		fxmlLoader(link);
-		((Node)event.getSource()).getScene().getWindow().hide();
+		Stage stage2 = (Stage) ((Node)event.getSource()).getScene().getWindow(); //close current window
+		stage2.close();
 		
 	}
 	
@@ -69,7 +70,8 @@ public class AdminHomeController implements Initializable {
 	{
 		String link = "/application/AdminClassListGUI.fxml";
 		fxmlLoader(link);
-		((Node)event.getSource()).getScene().getWindow().hide();
+		Stage stage2 = (Stage) ((Node)event.getSource()).getScene().getWindow(); //close current window
+		stage2.close();
 	}
 	
 	@FXML
@@ -77,7 +79,8 @@ public class AdminHomeController implements Initializable {
 	{
 		String link = "/application/AdminTeacherProfileGUI.fxml";
 		fxmlLoader(link);
-		((Node)event.getSource()).getScene().getWindow().hide();
+		Stage stage2 = (Stage) ((Node)event.getSource()).getScene().getWindow(); //close current window
+		stage2.close();
 	}
 	
 	@FXML
@@ -85,7 +88,8 @@ public class AdminHomeController implements Initializable {
 	{
 		String link = "/application/AdminStudentProfileGUI.fxml";
 		fxmlLoader(link);
-		((Node)event.getSource()).getScene().getWindow().hide();
+		Stage stage2 = (Stage) ((Node)event.getSource()).getScene().getWindow(); //close current window
+		stage2.close();
 	}
 	
 	@FXML
@@ -93,7 +97,8 @@ public class AdminHomeController implements Initializable {
 	{
 		String link = "/application/AdminSettingsGUI.fxml";
 		fxmlLoader(link);
-		
+		Stage stage2 = (Stage) ((Node)event.getSource()).getScene().getWindow(); //close current window
+		stage2.close();
 	}
 	
 	@FXML
@@ -102,6 +107,8 @@ public class AdminHomeController implements Initializable {
 		String link = "/application/AdminProfileGUI.fxml";
 		fxmlLoader(link);
 		((Node)event.getSource()).getScene().getWindow().hide();
+		Stage stage2 = (Stage) ((Node)event.getSource()).getScene().getWindow(); //close current window
+		stage2.close();
 	}
 	public void setUserID (String userID)
 	{

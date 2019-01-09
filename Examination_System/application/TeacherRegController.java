@@ -126,7 +126,7 @@ public class TeacherRegController implements Initializable {
 				
 			} catch (Exception e){
 				System.out.println(" Failed to connect to Hello Server ");
-			}
+			} 
 			
 	}
 	

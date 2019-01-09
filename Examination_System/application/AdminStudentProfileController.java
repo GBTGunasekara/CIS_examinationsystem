@@ -2,6 +2,7 @@ package application;
 
 import java.net.URL;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ResourceBundle;
 
 import javax.swing.JOptionPane;
@@ -12,6 +13,9 @@ import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextField;
 
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -24,6 +28,7 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.util.Duration;
 
 public class AdminStudentProfileController implements Initializable{
 	
@@ -68,7 +73,15 @@ public class AdminStudentProfileController implements Initializable{
 	private Button classListButton;
 	@FXML
 	private Button UpdateButton;
-
+	@FXML
+	private Label UIDlbl;
+	@FXML
+	private Label systemTimelbl;
+	
+	public void setUserID (String userID) //set user ID on GUI
+	{
+		UIDlbl.setText(userID);
+	}
 	
 	@FXML
 	private void handleClose(MouseEvent event)
@@ -89,6 +102,7 @@ public class AdminStudentProfileController implements Initializable{
 		// TODO Auto-generated method stub
 		AdminDrawerController ad1 = new AdminDrawerController();
 		ad1.AdminDrawer(Hamburger, Drawer);
+		liveDateTime (); 
 	}
 	
 	public void fxmlLoader(String link) throws Exception
@@ -179,5 +193,23 @@ public void SetUserDetails(String userID) {
 		aspf.deleteStudentFunc(uid);
 	
 }
-
+	// show live system time on the window 
+			public void liveDateTime () 
+			{
+				//reference - https://stackoverflow.com/questions/42383857/javafx-live-time-and-date 
+						Timeline clock = new Timeline(new KeyFrame(Duration.ZERO, e -> {        
+					        int second = LocalDateTime.now().getSecond();
+					        int minute = LocalDateTime.now().getMinute();
+					        int hour = LocalDateTime.now().getHour();
+					        int day = LocalDateTime.now().getDayOfMonth();
+					        int month = LocalDateTime.now().getMonthValue();
+					        int year = LocalDateTime.now().getYear();
+					        
+					        systemTimelbl.setText(hour +":"+ minute + ":" + second+ "    "+ day + "/"+ month + "/" +year);
+					    }),
+					         new KeyFrame(Duration.seconds(1))
+					    );
+					    clock.setCycleCount(Animation.INDEFINITE);
+					    clock.play();
+			}
 }

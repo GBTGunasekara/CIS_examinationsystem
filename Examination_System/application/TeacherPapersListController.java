@@ -6,7 +6,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
 import java.sql.SQLException;
-
+import java.time.LocalDateTime;
 import java.util.ResourceBundle;
 
 import javax.swing.JOptionPane;
@@ -14,7 +14,9 @@ import javax.swing.JOptionPane;
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
 
-
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,6 +25,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
@@ -31,7 +34,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import javafx.util.Callback;
-
+import javafx.util.Duration;
 import tables.PaperListTable;
 import tables.ViewClassTable;
 
@@ -66,8 +69,15 @@ public class TeacherPapersListController implements Initializable{
 	private TableColumn<TeacherPaperListTable, String> terminateDateCol;
 	@FXML 
 	private TableColumn<TeacherPaperListTable, String> stCountCol;
+	@FXML
+	private Label UIDlbl;
+	@FXML
+	private Label systemTimelbl;
 	
-	
+	public void setUserID (String userID) //set user ID on GUI
+	{
+		UIDlbl.setText(userID);
+	}
 	@FXML
 	private void handleClose(MouseEvent event)
 	{
@@ -81,16 +91,7 @@ public class TeacherPapersListController implements Initializable{
 		Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		stage.setIconified(true);
 	}
-	public void fxmlLoader(String link) throws Exception
-	{
-		Stage stage = new Stage();
-		Parent root = FXMLLoader.load(getClass().getResource(link));
-		stage.initStyle(StageStyle.UNDECORATED);
-		Scene scene = new Scene(root);
-		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-		stage.setScene(scene);
-		stage.show();
-	}
+	
 	
 	String paID = null;
 	String numQe = null;
@@ -140,12 +141,32 @@ public class TeacherPapersListController implements Initializable{
 		
 	}
 	
-
+	// show live system time on the window 
+				public void liveDateTime () 
+				{
+					//reference - https://stackoverflow.com/questions/42383857/javafx-live-time-and-date 
+							Timeline clock = new Timeline(new KeyFrame(Duration.ZERO, e -> {        
+						        int second = LocalDateTime.now().getSecond();
+						        int minute = LocalDateTime.now().getMinute();
+						        int hour = LocalDateTime.now().getHour();
+						        int day = LocalDateTime.now().getDayOfMonth();
+						        int month = LocalDateTime.now().getMonthValue();
+						        int year = LocalDateTime.now().getYear();
+						        
+						        systemTimelbl.setText(hour +":"+ minute + ":" + second+ "    "+ day + "/"+ month + "/" +year);
+						    }),
+						         new KeyFrame(Duration.seconds(1))
+						    );
+						    clock.setCycleCount(Animation.INDEFINITE);
+						    clock.play();
+				}
 
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
+	
+		liveDateTime();
+		
 		TeacherDrawerController ad1 = new TeacherDrawerController();
 		ad1.TeacherDrawer(Hamburger, Drawer);
 		

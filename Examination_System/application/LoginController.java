@@ -91,8 +91,7 @@ public class LoginController  {
 		
 		String userID = userIDtxt.getText();
 		String userPassword = userPasswordtxt.getText(); 
-		UserIdClass uc = new UserIdClass();
-		uc.setuserID(userID);
+		
 		
 		LoginFunctionsInterface  loginobj = (LoginFunctionsInterface) 
 				Naming.lookup("rmi://localhost:1099/Login");
@@ -119,6 +118,8 @@ public class LoginController  {
 								fxmlLoader(linktoStudent);
 								StudentHomeController tspc = loader.getController(); //pass userID to next GUI
 								tspc.setUserID(userIDtxt.getText());
+								Stage stage2 = (Stage) ((Node)event.getSource()).getScene().getWindow();
+								stage2.close();
 							}
 							else
 							{
@@ -141,6 +142,8 @@ public class LoginController  {
 								fxmlLoader(linktoStudent);
 								TeacherHomeController tspc = loader.getController(); //pass userID to next GUI
 								tspc.setUserID(userIDtxt.getText());
+								Stage stage2 = (Stage) ((Node)event.getSource()).getScene().getWindow();
+								stage2.close();
 							}
 							else
 							{
@@ -163,6 +166,8 @@ public class LoginController  {
 								fxmlLoader(linktoStudent);
 								AdminHomeController tspc = loader.getController(); //pass userID to next GUI
 								tspc.setUserID(userIDtxt.getText());
+								Stage stage2 = (Stage) ((Node)event.getSource()).getScene().getWindow();
+								stage2.close();
 							}
 							else
 							{

@@ -2,6 +2,7 @@ package application;
 
 import java.net.URL;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXDatePicker;
@@ -10,6 +11,9 @@ import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextField;
 
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -17,6 +21,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 public class AdminSettingsController implements Initializable{
 
@@ -28,7 +33,15 @@ public class AdminSettingsController implements Initializable{
 	private JFXHamburger Hamburger;
 	@FXML
 	private JFXDrawer Drawer;
-
+	@FXML
+	private Label UIDlbl;
+	@FXML
+	private Label systemTimelbl;
+	
+	public void setUserID (String userID) //set user ID on GUI
+	{
+		UIDlbl.setText(userID);
+	}
 	
 	
 	@FXML
@@ -45,11 +58,31 @@ public class AdminSettingsController implements Initializable{
 		stage.setIconified(true);
 	}
 
+	// show live system time on the window 
+		public void liveDateTime () 
+		{
+			//reference - https://stackoverflow.com/questions/42383857/javafx-live-time-and-date 
+					Timeline clock = new Timeline(new KeyFrame(Duration.ZERO, e -> {        
+				        int second = LocalDateTime.now().getSecond();
+				        int minute = LocalDateTime.now().getMinute();
+				        int hour = LocalDateTime.now().getHour();
+				        int day = LocalDateTime.now().getDayOfMonth();
+				        int month = LocalDateTime.now().getMonthValue();
+				        int year = LocalDateTime.now().getYear();
+				        
+				        systemTimelbl.setText(hour +":"+ minute + ":" + second+ "    "+ day + "/"+ month + "/" +year);
+				    }),
+				         new KeyFrame(Duration.seconds(1))
+				    );
+				    clock.setCycleCount(Animation.INDEFINITE);
+				    clock.play();
+		}
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 		AdminDrawerController ad1 = new AdminDrawerController();
 		ad1.AdminDrawer(Hamburger, Drawer);
+		liveDateTime (); 
 	}
 	
 	

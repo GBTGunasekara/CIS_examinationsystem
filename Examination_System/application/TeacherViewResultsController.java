@@ -11,6 +11,7 @@ import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.text.MessageFormat;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -33,6 +34,9 @@ import com.itextpdf.text.pdf.PdfWriter;
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
 
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXML;
@@ -52,6 +56,7 @@ import javafx.scene.paint.ImagePattern;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.util.Duration;
 
 public class TeacherViewResultsController implements Initializable{
 
@@ -91,7 +96,15 @@ public class TeacherViewResultsController implements Initializable{
 	private TableColumn<TeacherViewResultsTable, String> MarksCol;
 	@FXML 
 	private TableColumn<TeacherViewResultsTable, String> ansdatecol;
+	@FXML
+	private Label UIDlbl;
+	@FXML
+	private Label systemTimelbl;
 	
+	public void setUserID (String userID) //set user ID on GUI
+	{
+		UIDlbl.setText(userID);
+	}
 	@FXML
 	private void handleClose(MouseEvent event)
 	{
@@ -293,12 +306,32 @@ public class TeacherViewResultsController implements Initializable{
 		tvcc.setBarChart(paperIDtxt2.getText());
 	}
 	
+	// show live system time on the window 
+	public void liveDateTime () 
+	{
+		//reference - https://stackoverflow.com/questions/42383857/javafx-live-time-and-date 
+				Timeline clock = new Timeline(new KeyFrame(Duration.ZERO, e -> {        
+			        int second = LocalDateTime.now().getSecond();
+			        int minute = LocalDateTime.now().getMinute();
+			        int hour = LocalDateTime.now().getHour();
+			        int day = LocalDateTime.now().getDayOfMonth();
+			        int month = LocalDateTime.now().getMonthValue();
+			        int year = LocalDateTime.now().getYear();
+			        
+			        systemTimelbl.setText(hour +":"+ minute + ":" + second+ "    "+ day + "/"+ month + "/" +year);
+			    }),
+			         new KeyFrame(Duration.seconds(1))
+			    );
+			    clock.setCycleCount(Animation.INDEFINITE);
+			    clock.play();
+	}
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
 		TeacherDrawerController ad1 = new TeacherDrawerController();
 		ad1.TeacherDrawer(Hamburger, Drawer);
-		
+		liveDateTime () ;
 		
 			
 	}

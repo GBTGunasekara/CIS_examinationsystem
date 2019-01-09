@@ -28,8 +28,15 @@ public class TeacherHomeController implements Initializable{
 	
 	@FXML 
 	private Button Closebttn2, Minimizebttn2, AddPaperbtn, ViewPaperbtn, ViewResultsbtn, CreateClassbtn, ViewClassbtn, TeacherProbtn; 
-	
-	
+	@FXML
+	private Label UIDlbl;
+	@FXML
+	private Label systemTimelbl;
+
+	public void setUserID (String userID) //set user ID on GUI
+	{
+		UIDlbl.setText(userID);
+	}	
 	@FXML
 	private void handleClose(MouseEvent event)
 	{
@@ -42,15 +49,6 @@ public class TeacherHomeController implements Initializable{
 	{
 		Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		stage.setIconified(true);
-	}
-	@FXML
-	private Label UIDlbl;
-	@FXML
-	private Label systemTimelbl;
-
-	public void setUserID (String userID)
-	{
-		UIDlbl.setText(userID);
 	}
 	
 	
@@ -70,7 +68,8 @@ public class TeacherHomeController implements Initializable{
 		stage.setScene(scene);
 		stage.show();
 	
-
+		Stage stage2 = (Stage) ((Node)event.getSource()).getScene().getWindow(); //close current window
+		stage2.close();
 		
 	}
 	
@@ -92,6 +91,8 @@ public class TeacherHomeController implements Initializable{
 		String link = "/application/TeacherPapersListGUI.fxml";
 		fxmlLoader(link);
 		
+		Stage stage2 = (Stage) ((Node)event.getSource()).getScene().getWindow(); //close current window
+		stage2.close();
 	}
 	
 	@FXML
@@ -100,6 +101,8 @@ public class TeacherHomeController implements Initializable{
 		String link = "/application/TeacherViewResultsGUI.fxml";
 		fxmlLoader(link);
 		
+		Stage stage2 = (Stage) ((Node)event.getSource()).getScene().getWindow(); //close current window
+		stage2.close();
 	}
 	
 	@FXML
@@ -108,6 +111,8 @@ public class TeacherHomeController implements Initializable{
 		String link = "/application/TeacherAddClassGUI.fxml";
 		fxmlLoader(link);
 		
+		Stage stage2 = (Stage) ((Node)event.getSource()).getScene().getWindow(); //close current window
+		stage2.close();
 	}
 	
 	@FXML
@@ -116,13 +121,14 @@ public class TeacherHomeController implements Initializable{
 		String link = "/application/TeacherViewClassGUI.fxml";
 		fxmlLoader(link);
 		
+		Stage stage2 = (Stage) ((Node)event.getSource()).getScene().getWindow(); //close current window
+		stage2.close();
 	}
 	
 	@FXML
 	private void MovetoTeacherProfile(MouseEvent event) throws Exception
 	{
-		
-		
+
 		
 		Stage stage = new Stage();
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/TeacherProfileGUI.fxml"));
@@ -139,6 +145,9 @@ public class TeacherHomeController implements Initializable{
 		
 		TeacherProfileController tpc = loader.getController();
 		 tpc.SetUserDetails(userIDlabel);
+		 
+		 Stage stage2 = (Stage) ((Node)event.getSource()).getScene().getWindow(); //close current window
+		 stage2.close();
 	}
 	// show live system time on the window 
 			public void liveDateTime () 
@@ -152,7 +161,7 @@ public class TeacherHomeController implements Initializable{
 					        int month = LocalDateTime.now().getMonthValue();
 					        int year = LocalDateTime.now().getYear();
 					        
-					        systemTimelbl.setText(hour +":"+ minute + ":" + second+ "  "+ day + "/"+ month + "/" +year);
+					        systemTimelbl.setText(hour +":"+ minute + ":" + second+ "    "+ day + "/"+ month + "/" +year);
 					    }),
 					         new KeyFrame(Duration.seconds(1))
 					    );

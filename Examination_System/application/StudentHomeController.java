@@ -64,6 +64,8 @@ public class StudentHomeController implements Initializable{
 	{
 		String link = "/application/StudentSelectPaperGUI.fxml";
 		fxmlLoader(link);
+		Stage stage2 = (Stage) ((Node)event.getSource()).getScene().getWindow(); //close current window
+		stage2.close();
 		
 	}
 	
@@ -72,6 +74,8 @@ public class StudentHomeController implements Initializable{
 	{
 		String link = "/application/StudentPaperListGUI.fxml";
 		fxmlLoader(link);
+		Stage stage2 = (Stage) ((Node)event.getSource()).getScene().getWindow(); //close current window
+		stage2.close();
 		
 	}
 	
@@ -80,6 +84,8 @@ public class StudentHomeController implements Initializable{
 	{
 		String link = "/application/StudentViewResultsGUI.fxml";
 		fxmlLoader(link);
+		Stage stage2 = (Stage) ((Node)event.getSource()).getScene().getWindow(); //close current window
+		stage2.close();
 		
 	}
 	
@@ -88,6 +94,8 @@ public class StudentHomeController implements Initializable{
 	{
 		String link = "/application/StudentJoinClassGUI.fxml";
 		fxmlLoader(link);
+		Stage stage2 = (Stage) ((Node)event.getSource()).getScene().getWindow(); //close current window
+		stage2.close();
 		
 	}
 	
@@ -96,6 +104,8 @@ public class StudentHomeController implements Initializable{
 	{
 		String link = "/application/StudentViewClassGUI.fxml";
 		fxmlLoader(link);
+		Stage stage2 = (Stage) ((Node)event.getSource()).getScene().getWindow(); //close current window
+		stage2.close();
 		
 	}
 	
@@ -112,11 +122,12 @@ public class StudentHomeController implements Initializable{
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		stage.setScene(scene);
 		stage.show();
-	
 
-		
 		StudentProfileController spc = loader.getController();
 		 spc.SetUserDetails(UIDlbl.getText());
+		 
+		 Stage stage2 = (Stage) ((Node)event.getSource()).getScene().getWindow(); //close current window
+			stage2.close();
 		
 	}
 

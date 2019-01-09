@@ -55,7 +55,15 @@ public class TeacherSubmitPaperController implements Initializable{
 	private JFXDatePicker TerminateDatedp;
 	@FXML
 	private JFXDatePicker TerminateTimedp;
+	@FXML
+	private Label UIDlbl;
+	@FXML
+	private Label systemTimelbl;
 	
+	public void setUserID (String userID) //set user ID on GUI
+	{
+		UIDlbl.setText(userID);
+	}
 	
 	
 	@FXML

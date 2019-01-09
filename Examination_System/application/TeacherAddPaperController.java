@@ -56,10 +56,18 @@ public class TeacherAddPaperController implements Initializable{
 	private JFXTextField noAnswertxt;
 	@FXML
 	private JFXTextField subjcetNametxt;
-	
+	@FXML
+	private Label UIDlbl;
 	@FXML
 	private Label systemTimelbl;
 	@FXML
+	
+	public void setUserID (String userID) //set user ID on GUI
+	{
+		UIDlbl.setText(userID);
+	}
+	
+	
 	private void handleClose(MouseEvent event)
 	{
 		Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -71,6 +79,9 @@ public class TeacherAddPaperController implements Initializable{
 	{
 		Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		stage.setIconified(true);
+		
+		Stage stage2 = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		stage2.close();
 	}
 	
 	public void fxmlLoader(String link) throws Exception
@@ -88,6 +99,9 @@ public class TeacherAddPaperController implements Initializable{
 		
 		TeacherAddQuestionController taqc = loader.getController();
 		taqc.setTeacherPaperDetails(paperIDtxt.getText(), Integer.parseInt(noQusetiontxt.getText()),classIDtxt.getText(), teacherIDtxt.getText()); //pass this values to next GUI
+		
+		
+	
 	}
 	
 	@FXML
@@ -139,7 +153,7 @@ public class TeacherAddPaperController implements Initializable{
 				        int month = LocalDateTime.now().getMonthValue();
 				        int year = LocalDateTime.now().getYear();
 				        
-				        systemTimelbl.setText(hour +":"+ minute + ":" + second+ "  "+ day + "/"+ month + "/" +year);
+				        systemTimelbl.setText(hour +":"+ minute + ":" + second+ "    "+ day + "/"+ month + "/" +year);
 				    }),
 				         new KeyFrame(Duration.seconds(1))
 				    );
@@ -147,6 +161,7 @@ public class TeacherAddPaperController implements Initializable{
 				    clock.play();
 		}
 
+		
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub

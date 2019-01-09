@@ -6,6 +6,7 @@ import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ResourceBundle;
 
 import javax.swing.JOptionPane;
@@ -18,6 +19,9 @@ import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextField;
 
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -30,6 +34,7 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.util.Duration;
 
 public class StudentProfileController implements Initializable {
 	
@@ -65,6 +70,15 @@ public class StudentProfileController implements Initializable {
 	private JFXRadioButton stGenderFemale;
 	@FXML
 	private ToggleGroup stGender;
+	@FXML
+	private Label UIDlbl;
+	@FXML
+	private Label systemTimelbl;
+	
+	public void setUserID (String userID) //set user ID on GUI
+	{
+		UIDlbl.setText(userID);
+	}
 	
 	public void fxmlLoader(String link) throws Exception
 	{
@@ -121,6 +135,7 @@ public class StudentProfileController implements Initializable {
 		// TODO Auto-generated method stub
 		StudentDrawerController ad1 = new StudentDrawerController();
 		ad1.StudentDrawer(Hamburger, Drawer);
+		liveDateTime (); 
 	}
 	
 	public void SetUserDetails(String userID) throws MalformedURLException, RemoteException, NotBoundException {
@@ -201,6 +216,25 @@ public class StudentProfileController implements Initializable {
 		stage.show();
 		
 	}
+	// show live system time on the window 
+		public void liveDateTime () 
+		{
+			//reference - https://stackoverflow.com/questions/42383857/javafx-live-time-and-date 
+					Timeline clock = new Timeline(new KeyFrame(Duration.ZERO, e -> {        
+				        int second = LocalDateTime.now().getSecond();
+				        int minute = LocalDateTime.now().getMinute();
+				        int hour = LocalDateTime.now().getHour();
+				        int day = LocalDateTime.now().getDayOfMonth();
+				        int month = LocalDateTime.now().getMonthValue();
+				        int year = LocalDateTime.now().getYear();
+				        
+				        systemTimelbl.setText(hour +":"+ minute + ":" + second+ "  "+ day + "/"+ month + "/" +year);
+				    }),
+				         new KeyFrame(Duration.seconds(1))
+				    );
+				    clock.setCycleCount(Animation.INDEFINITE);
+				    clock.play();
+		}
 	
 }
 	
