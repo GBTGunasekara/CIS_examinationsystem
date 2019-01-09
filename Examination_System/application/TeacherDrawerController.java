@@ -21,11 +21,17 @@ public class TeacherDrawerController {
 
 	@FXML
 	private Button Home;
+	public String userIDlbltxt; 
+	
+	FXMLLoader loader;
 	
 	public void fxmlLoader(String link) throws Exception
 	{
 		Stage stage = new Stage();
-		Parent root = FXMLLoader.load(getClass().getResource(link));
+		 this.loader = new FXMLLoader(getClass().getResource(link));
+		
+		Parent root = loader.load();
+		
 		stage.initStyle(StageStyle.UNDECORATED);
 		Scene scene = new Scene(root);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
@@ -37,7 +43,9 @@ public class TeacherDrawerController {
 	{
 		String link = "/application/TeacherHomeGUI.fxml";
 		fxmlLoader(link);
-		((Node)event.getSource()).getScene().getWindow().hide();
+		
+		Stage stage2 = (Stage) ((Node)event.getSource()).getScene().getWindow(); //close current window
+		stage2.close();
 		
 	}
 	
@@ -46,7 +54,10 @@ public class TeacherDrawerController {
 	{
 		String link = "/application/TeacherAddPaperGUI.fxml";
 		fxmlLoader(link);
-		((Node)event.getSource()).getScene().getWindow().hide();
+		
+		
+		Stage stage2 = (Stage) ((Node)event.getSource()).getScene().getWindow(); //close current window
+		stage2.close();
 		
 	}
 	
@@ -55,7 +66,10 @@ public class TeacherDrawerController {
 	{
 		String link = "/application/TeacherPapersListGUI.fxml";
 		fxmlLoader(link);
-		((Node)event.getSource()).getScene().getWindow().hide();
+
+		Stage stage2 = (Stage) ((Node)event.getSource()).getScene().getWindow(); //close current window
+		stage2.close();
+		
 	}
 	
 	@FXML
@@ -63,7 +77,9 @@ public class TeacherDrawerController {
 	{
 		String link = "/application/TeacherViewResultsGUI.fxml";
 		fxmlLoader(link);
-		((Node)event.getSource()).getScene().getWindow().hide();
+		
+		Stage stage2 = (Stage) ((Node)event.getSource()).getScene().getWindow(); //close current window
+		stage2.close();
 	}
 	
 	@FXML
@@ -71,7 +87,9 @@ public class TeacherDrawerController {
 	{
 		String link = "/application/TeacherAddClassGUI.fxml";
 		fxmlLoader(link);
-		((Node)event.getSource()).getScene().getWindow().hide();
+		
+		Stage stage2 = (Stage) ((Node)event.getSource()).getScene().getWindow(); //close current window
+		stage2.close();
 	}
 	
 	@FXML
@@ -80,6 +98,8 @@ public class TeacherDrawerController {
 		String link = "/application/TeacherViewClassGUI.fxml";
 		fxmlLoader(link);
 		
+		Stage stage2 = (Stage) ((Node)event.getSource()).getScene().getWindow(); //close current window
+		stage2.close();
 	}
 	
 	@FXML
@@ -87,7 +107,9 @@ public class TeacherDrawerController {
 	{
 		String link = "/application/TeacherProfileGUI.fxml";
 		fxmlLoader(link);
-		((Node)event.getSource()).getScene().getWindow().hide();
+		
+		Stage stage2 = (Stage) ((Node)event.getSource()).getScene().getWindow(); //close current window
+		stage2.close();
 	}
 	
 	//Reference - https://www.youtube.com/watch?v=tgV8dDP9DtM

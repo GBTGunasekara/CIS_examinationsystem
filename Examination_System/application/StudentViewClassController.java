@@ -1,5 +1,8 @@
 package application;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
@@ -50,9 +53,15 @@ public class StudentViewClassController implements Initializable{
 	@FXML
 	private Label systemTimelbl;
 	
-	public void setUserID (String userID) //set user ID on GUI
+	//set the logged user id on the GUI
+	public void setUserID () throws IOException, ClassNotFoundException
 	{
-		UIDlbl.setText(userID);
+		FileInputStream fis = new  FileInputStream("userfile.txt");		//create the object of give file
+		ObjectInputStream ois = new ObjectInputStream(fis);
+		UserDetails uobj  = (UserDetails) ois.readObject();				//read file object
+		UIDlbl.setText(uobj.userID);									//set the current logged user's id on UIDlbl label   
+		ois.close(); 													//close ObjectInputStream
+		fis.close();													//close FileInputStream
 	}
 	
 	@FXML
@@ -93,7 +102,14 @@ public class StudentViewClassController implements Initializable{
 		// TODO Auto-generated method stub
 		StudentDrawerController ad1 = new StudentDrawerController();
 		ad1.StudentDrawer(Hamburger, Drawer);
-		liveDateTime (); 
+		liveDateTime ();
+		try {
+			setUserID ();
+		} catch (ClassNotFoundException | IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
 		col_ClassID.setCellValueFactory(cellData -> cellData.getValue().getClassID().asObject());
 		col_TeacherID.setCellValueFactory(cellData -> cellData.getValue().getTeacherID().asObject());
 		col_ClassName.setCellValueFactory(cellData -> cellData.getValue().getClassName());

@@ -16,12 +16,12 @@
       <HBox prefHeight="35.0" prefWidth="960.0" style="-fx-background-color: #494949;">
          <children>
             <JFXHamburger fx:id="Hamburger" prefHeight="40.0" prefWidth="50.0" />
-            <Label prefHeight="35.0" prefWidth="400.0" text="  Create Paper" textFill="#e5e5e5">
+            <Label prefHeight="35.0" prefWidth="350.0" text="  Create Paper" textFill="#e5e5e5">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Label prefHeight="35.0" prefWidth="200.0" text="User ID" textFill="#e5e5e5">
+            <Label fx:id="UIDlbl" prefHeight="35.0" prefWidth="200.0" text="User ID" textFill="#e5e5e5">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>

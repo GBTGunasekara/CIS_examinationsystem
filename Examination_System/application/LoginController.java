@@ -7,6 +7,11 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
@@ -59,8 +64,7 @@ public class LoginController  {
 		Stage stage = new Stage();
 		 this.loader = new FXMLLoader(getClass().getResource(link));
 		Parent root = loader.load();
-		//Stage stage = new Stage();
-		//Parent root = FXMLLoader.load(getClass().getResource(link));
+
 		stage.initStyle(StageStyle.UNDECORATED);
 		Scene scene = new Scene(root);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
@@ -114,11 +118,12 @@ public class LoginController  {
 						{
 							if (loginobj.userPasswordcheck(userPassword,userID) == true)
 							{
+								saveUserID (userIDtxt.getText()); //pass the validated student id to the file
+								
 								String linktoStudent = "/application/StudentHomeGUI.fxml";
 								fxmlLoader(linktoStudent);
-								StudentHomeController tspc = loader.getController(); //pass userID to next GUI
-								tspc.setUserID(userIDtxt.getText());
-								Stage stage2 = (Stage) ((Node)event.getSource()).getScene().getWindow();
+
+								Stage stage2 = (Stage) ((Node)event.getSource()).getScene().getWindow(); //close current window
 								stage2.close();
 							}
 							else
@@ -138,10 +143,11 @@ public class LoginController  {
 						{
 							if (loginobj.userPasswordcheck(userPassword,userID) == true)
 							{
+								saveUserID (userIDtxt.getText()); //pass the validated teacher id to the file 
+								
 								String linktoStudent = "/application/TeacherHomeGUI.fxml";
 								fxmlLoader(linktoStudent);
-								TeacherHomeController tspc = loader.getController(); //pass userID to next GUI
-								tspc.setUserID(userIDtxt.getText());
+
 								Stage stage2 = (Stage) ((Node)event.getSource()).getScene().getWindow();
 								stage2.close();
 							}
@@ -162,10 +168,11 @@ public class LoginController  {
 						{
 							if (loginobj.userPasswordcheck(userPassword,userID) == true)
 							{
+								saveUserID (userIDtxt.getText()); //pass the validated Admin id to the file 
+								
 								String linktoStudent = "/application/AdminHomeGUI.fxml";
 								fxmlLoader(linktoStudent);
-								AdminHomeController tspc = loader.getController(); //pass userID to next GUI
-								tspc.setUserID(userIDtxt.getText());
+
 								Stage stage2 = (Stage) ((Node)event.getSource()).getScene().getWindow();
 								stage2.close();
 							}
@@ -194,6 +201,21 @@ public class LoginController  {
 		}
 		
 	}
+	//save the logged user id on a file
+	public void saveUserID (String userIDtxt) throws IOException
+	{
+		UserDetails uidobj = new UserDetails(); 						//create object of userDetails class
+		uidobj.userID = userIDtxt; 										//assign the userIDtxt value to  created obj's userID attribute  
+			
+					
+		FileOutputStream fos = new  FileOutputStream("userfile.txt");	//create object of given file
+		ObjectOutputStream oos = new ObjectOutputStream(fos);
+		oos.writeObject(uidobj); 										//write the user id on the file
+		oos.close();													//close ObjectOutputStream
+		fos.close(); 													// close FileOutputStream
+		
+	}
+	
 	
 	//--------Forgot Password----------
 	@FXML

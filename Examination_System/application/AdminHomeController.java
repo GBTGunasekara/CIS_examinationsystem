@@ -1,5 +1,8 @@
 package application;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.net.URL;
 import java.time.LocalDateTime;
 import java.util.ResourceBundle;
@@ -44,6 +47,15 @@ public class AdminHomeController implements Initializable {
 		Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		stage.setIconified(true);
 	}
+	@FXML
+	private void logOut(MouseEvent event) throws Exception
+	{
+		String link = "/application/LoginGUI.fxml";
+		fxmlLoader(link);
+		Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		stage.close();
+		
+	}
 	
 	public void fxmlLoader(String link) throws Exception
 	{
@@ -54,6 +66,7 @@ public class AdminHomeController implements Initializable {
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		stage.setScene(scene);
 		stage.show();
+		
 	}
 	@FXML
 	private void MovetoAdminTeacherReg(MouseEvent event) throws Exception
@@ -106,13 +119,18 @@ public class AdminHomeController implements Initializable {
 	{
 		String link = "/application/AdminProfileGUI.fxml";
 		fxmlLoader(link);
-		((Node)event.getSource()).getScene().getWindow().hide();
 		Stage stage2 = (Stage) ((Node)event.getSource()).getScene().getWindow(); //close current window
 		stage2.close();
 	}
-	public void setUserID (String userID)
+	//set the logged user id on the GUI
+	public void setUserID () throws IOException, ClassNotFoundException
 	{
-		UIDlbl.setText(userID);
+		FileInputStream fis = new  FileInputStream("userfile.txt");		//create the object of give file
+		ObjectInputStream ois = new ObjectInputStream(fis);
+		UserDetails uobj  = (UserDetails) ois.readObject();				//read file object
+		UIDlbl.setText(uobj.userID);									//set the current logged user's id on UIDlbl label   
+		ois.close(); 													//close ObjectInputStream
+		fis.close();													//close FileInputStream
 	}
 		// show live system time on the window 
 		public void liveDateTime () 
@@ -138,6 +156,13 @@ public class AdminHomeController implements Initializable {
 		public void initialize(URL arg0, ResourceBundle arg1) {
 			// TODO Auto-generated method stub
 			liveDateTime();
+			try {
+				setUserID ();
+			} catch (ClassNotFoundException | IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 		}
 		
 }

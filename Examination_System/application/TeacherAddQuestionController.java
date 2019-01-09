@@ -1,6 +1,9 @@
 package application;
 
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 //import java.awt.event.ActionEvent;
 import java.net.URL;
 import java.rmi.Naming;
@@ -83,10 +86,16 @@ public class TeacherAddQuestionController implements Initializable{
 	private Label UIDlbl;
 
 	
-	public void setUserID (String userID) //set user ID on GUI
-	{
-		UIDlbl.setText(userID);
-	}
+	//set the logged user id on the GUI
+	public void setUserID () throws IOException, ClassNotFoundException
+		{
+			FileInputStream fis = new  FileInputStream("userfile.txt");		//create the object of give file
+			ObjectInputStream ois = new ObjectInputStream(fis);
+			UserDetails uobj  = (UserDetails) ois.readObject();				//read file object
+			UIDlbl.setText(uobj.userID);									//set the current logged user's id on UIDlbl label   
+			ois.close(); 													//close ObjectInputStream
+			fis.close();													//close FileInputStream
+		}
 	
 	@FXML
 	private void handleClose(MouseEvent event)
@@ -100,15 +109,13 @@ public class TeacherAddQuestionController implements Initializable{
 	{
 		Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		stage.setIconified(true);
-		
-		Stage stage2 = (Stage) ((Node)event.getSource()).getScene().getWindow(); //close current window
-		stage2.close();
-	}
 	
+	}
+	FXMLLoader loader;
 	public void fxmlLoader(String link) throws Exception
 	{
 		Stage stage = new Stage();
-		FXMLLoader loader = new FXMLLoader(getClass().getResource(link));
+		this.loader = new FXMLLoader(getClass().getResource(link));
 		
 		Parent root = loader.load();
 		
@@ -145,6 +152,9 @@ public class TeacherAddQuestionController implements Initializable{
 	{
 		String link = "/application/TeacherSubmitPaperGUI.fxml";
 		fxmlLoader(link);
+		
+		Stage stage2 = (Stage) ((Node)event.getSource()).getScene().getWindow(); //close current window
+		stage2.close();
 			
 	}
 
@@ -367,6 +377,13 @@ public class TeacherAddQuestionController implements Initializable{
 		ad1.TeacherDrawer(Hamburger, Drawer);
 		Drawer.toBack();
 		liveDateTime();
+		
+		try {
+			setUserID ();
+		} catch (ClassNotFoundException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	

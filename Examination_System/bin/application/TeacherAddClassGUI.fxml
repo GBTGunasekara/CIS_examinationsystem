@@ -11,22 +11,22 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="580.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.TeacherAddClassController">
+<AnchorPane prefHeight="580.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.TeacherAddClassController">
    <children>
       <HBox prefHeight="35.0" prefWidth="960.0" style="-fx-background-color: #494949;">
          <children>
             <JFXHamburger fx:id="Hamburger" prefHeight="40.0" prefWidth="50.0" />
-            <Label prefHeight="35.0" prefWidth="386.0" text="  Add Class" textFill="#e5e5e5">
+            <Label prefHeight="35.0" prefWidth="350.0" text="  Add Class" textFill="#e5e5e5">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Label prefHeight="35.0" prefWidth="258.0" text="User ID" textFill="#e5e5e5">
+            <Label fx:id="UIDlbl" prefHeight="35.0" prefWidth="200.0" text="User ID" textFill="#e5e5e5">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Label prefHeight="35.0" prefWidth="230.0" text="Date &amp; Time" textFill="#e5e5e5">
+            <Label fx:id="systemTimelbl" prefHeight="35.0" prefWidth="300.0" text="Date &amp; Time" textFill="#e5e5e5">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>

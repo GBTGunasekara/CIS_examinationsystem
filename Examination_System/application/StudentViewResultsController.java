@@ -1,5 +1,8 @@
 package application;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.net.URL;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
@@ -27,7 +30,7 @@ import javafx.util.Duration;
 public class StudentViewResultsController implements Initializable{
 
 	@FXML
-	private Button Closebttn3, Minimizebttn3, savebtn;
+	private Button Closebttn3, Minimizebttn3;
 	@FXML
 	private JFXHamburger Hamburger;
 	@FXML
@@ -51,11 +54,16 @@ public class StudentViewResultsController implements Initializable{
 	@FXML
 	private Label systemTimelbl;
 	
-	public void setUserID (String userID) //set user ID on GUI
+	//set the logged user id on the GUI
+	public void setUserID () throws IOException, ClassNotFoundException
 	{
-		UIDlbl.setText(userID);
+		FileInputStream fis = new  FileInputStream("userfile.txt");		//create the object of give file
+		ObjectInputStream ois = new ObjectInputStream(fis);
+		UserDetails uobj  = (UserDetails) ois.readObject();				//read file object
+		UIDlbl.setText(uobj.userID);									//set the current logged user's id on UIDlbl label   
+		ois.close(); 													//close ObjectInputStream
+		fis.close();													//close FileInputStream
 	}
-	
 	
 	@FXML
 	private void handleClose(MouseEvent event)
@@ -97,7 +105,12 @@ public class StudentViewResultsController implements Initializable{
 		ad1.StudentDrawer(Hamburger, Drawer);
 		
 		liveDateTime () ;
-
+		try {
+			setUserID ();
+		} catch (ClassNotFoundException | IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		//Reference (You Tube video)
 		// B2 Tech (2017).JavaFx Database Operations - Part 8 - Display the DB values in TableView. [Video] Available at: https://www.youtube.com/watch?v=L8iuBXl-F8U [Accessed Day : 17-12-2018].
 		

@@ -32,6 +32,15 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
+            <JFXButton contentDisplay="CENTER" onMouseClicked="#logOut" prefHeight="35.0" prefWidth="35.0" textFill="#0000000b">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/icons8_Sign_Out_100px.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
             <JFXButton fx:id="Minimizebttn3" contentDisplay="CENTER" onMouseClicked="#handleMinimize" prefHeight="35.0" prefWidth="35.0" textFill="#0000000b">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">

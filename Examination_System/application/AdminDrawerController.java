@@ -38,7 +38,8 @@ public class AdminDrawerController {
 	{
 		String link = "/application/AdminHomeGUI.fxml";
 		fxmlLoader(link);
-		((Node)event.getSource()).getScene().getWindow().hide();
+		Stage stage2 = (Stage) ((Node)event.getSource()).getScene().getWindow(); //close current window
+		stage2.close();
 		
 	}
 	
@@ -47,7 +48,8 @@ public class AdminDrawerController {
 	{
 		String link = "/application/AdminTeacherRegistrationGUI.fxml";
 		fxmlLoader(link);
-		((Node)event.getSource()).getScene().getWindow().hide();
+		Stage stage2 = (Stage) ((Node)event.getSource()).getScene().getWindow(); //close current window
+		stage2.close();
 		
 	}
 	
@@ -56,31 +58,35 @@ public class AdminDrawerController {
 	{
 		String link = "/application/AdminClassListGUI.fxml";
 		fxmlLoader(link);
-		((Node)event.getSource()).getScene().getWindow().hide();
+		Stage stage2 = (Stage) ((Node)event.getSource()).getScene().getWindow(); //close current window
+		stage2.close();
 	}
 	
 	@FXML
 	private void MovetoTeacherProfile(MouseEvent event) throws Exception
 	{
-		String link = "/application/TeacherProfileGUI.fxml";
+		String link = "/application/AdminTeacherProfileGUI.fxml";
 		fxmlLoader(link);
-		((Node)event.getSource()).getScene().getWindow().hide();
+		Stage stage2 = (Stage) ((Node)event.getSource()).getScene().getWindow(); //close current window
+		stage2.close();
 	}
 	
 	@FXML
 	private void MovetoStudentProfile(MouseEvent event) throws Exception
 	{
-		String link = "/application/StudentProfileGUI.fxml";
+		String link = "/application/AdminStudentProfileGUI.fxml";
 		fxmlLoader(link);
-		((Node)event.getSource()).getScene().getWindow().hide();
+		Stage stage2 = (Stage) ((Node)event.getSource()).getScene().getWindow(); //close current window
+		stage2.close();
 	}
 	
 	@FXML
 	private void MovetoSystemSettings(MouseEvent event) throws Exception
 	{
-		//String link = "/application/AdminSystemSettingsGUI.fxml";
-		//fxmlLoader(link);
-		
+		String link = "/application/AdminSystemSettingsGUI.fxml";
+		fxmlLoader(link);
+		Stage stage2 = (Stage) ((Node)event.getSource()).getScene().getWindow(); //close current window
+		stage2.close();
 	}
 	
 	@FXML
@@ -88,7 +94,8 @@ public class AdminDrawerController {
 	{
 		String link = "/application/AdminProfileGUI.fxml";
 		fxmlLoader(link);
-		((Node)event.getSource()).getScene().getWindow().hide();
+		Stage stage2 = (Stage) ((Node)event.getSource()).getScene().getWindow(); //close current window
+		stage2.close();
 	}
 	
 	//Reference - https://www.youtube.com/watch?v=tgV8dDP9DtM

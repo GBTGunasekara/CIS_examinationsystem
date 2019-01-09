@@ -1,5 +1,9 @@
 package application;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.net.URL;
 import java.time.LocalDateTime;
 import java.util.Calendar;
@@ -35,6 +39,17 @@ public class StudentHomeController implements Initializable{
 	@FXML
 	private Label systemTimelbl;
 	
+	//set the logged user id on the GUI
+	public void setUserID () throws IOException, ClassNotFoundException
+		{
+			FileInputStream fis = new  FileInputStream("userfile.txt");		//create the object of give file
+			ObjectInputStream ois = new ObjectInputStream(fis);
+			UserDetails uobj  = (UserDetails) ois.readObject();				//read file object
+			UIDlbl.setText(uobj.userID);									//set the current logged user's id on UIDlbl label   
+			ois.close(); 													//close ObjectInputStream
+			fis.close();													//close FileInputStream
+		}
+	
 	@FXML
 	private void handleClose(MouseEvent event)
 	{
@@ -47,6 +62,15 @@ public class StudentHomeController implements Initializable{
 	{
 		Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		stage.setIconified(true);
+	}
+	@FXML
+	private void logOut(MouseEvent event) throws Exception
+	{
+		String link = "/application/LoginGUI.fxml";
+		fxmlLoader(link);
+		Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		stage.close();
+		
 	}
 	
 	public void fxmlLoader(String link) throws Exception
@@ -131,10 +155,7 @@ public class StudentHomeController implements Initializable{
 		
 	}
 
-	public void setUserID (String userID)
-	{
-		UIDlbl.setText(userID);
-	}
+
 	
 	// show live system time on the window 
 	public void liveDateTime () 
@@ -159,5 +180,11 @@ public class StudentHomeController implements Initializable{
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		liveDateTime();
+		try {
+			setUserID ();
+		} catch (ClassNotFoundException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

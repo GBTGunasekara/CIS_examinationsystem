@@ -1,5 +1,12 @@
 package application;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.URL;
 import java.time.LocalDateTime;
 import java.util.ResourceBundle;
@@ -32,10 +39,16 @@ public class TeacherHomeController implements Initializable{
 	private Label UIDlbl;
 	@FXML
 	private Label systemTimelbl;
-
-	public void setUserID (String userID) //set user ID on GUI
+	
+	//set the logged user id on the GUI
+	public void setUserID () throws IOException, ClassNotFoundException
 	{
-		UIDlbl.setText(userID);
+		FileInputStream fis = new  FileInputStream("userfile.txt");		//create the object of give file
+		ObjectInputStream ois = new ObjectInputStream(fis);
+		UserDetails uobj  = (UserDetails) ois.readObject();				//read file object
+		UIDlbl.setText(uobj.userID);									//set the current logged user's id on UIDlbl label   
+		ois.close(); 													//close ObjectInputStream
+		fis.close();													//close FileInputStream
 	}	
 	@FXML
 	private void handleClose(MouseEvent event)
@@ -50,15 +63,24 @@ public class TeacherHomeController implements Initializable{
 		Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		stage.setIconified(true);
 	}
+	@FXML
+	private void logOut(MouseEvent event) throws Exception
+	{
+		String link = "/application/LoginGUI.fxml";
+		fxmlLoader(link);
+		Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		stage.close();
+		
+	}
 	
-	
+	FXMLLoader loader; 
 	@FXML
 	private void MovetoAddPaper(MouseEvent event) throws Exception
 	{
 		
 		
 		Stage stage = new Stage();
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/TeacherAddPaperGUI.fxml"));
+		 this.loader = new FXMLLoader(getClass().getResource("/application/TeacherAddPaperGUI.fxml"));
 	
 		Parent root = loader.load();
 	
@@ -66,8 +88,8 @@ public class TeacherHomeController implements Initializable{
 		Scene scene = new Scene(root);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		stage.setScene(scene);
-		stage.show();
-	
+		stage.show();		
+		
 		Stage stage2 = (Stage) ((Node)event.getSource()).getScene().getWindow(); //close current window
 		stage2.close();
 		
@@ -140,12 +162,7 @@ public class TeacherHomeController implements Initializable{
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		stage.setScene(scene);
 		stage.show();
-	
-		String userIDlabel =UIDlbl.getText();
-		
-		TeacherProfileController tpc = loader.getController();
-		 tpc.SetUserDetails(userIDlabel);
-		 
+		  
 		 Stage stage2 = (Stage) ((Node)event.getSource()).getScene().getWindow(); //close current window
 		 stage2.close();
 	}
@@ -172,7 +189,13 @@ public class TeacherHomeController implements Initializable{
 			@Override
 			public void initialize(URL location, ResourceBundle resources) {
 				// TODO Auto-generated method stub
-				liveDateTime();
+				liveDateTime(); 
+				try {
+					setUserID (); // set user id on GUI
+				} catch (ClassNotFoundException | IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 
 }

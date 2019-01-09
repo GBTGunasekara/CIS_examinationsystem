@@ -36,7 +36,8 @@ public class StudentDrawerController {
 	{
 		String link = "/application/StudentHomeGUI.fxml";
 		fxmlLoader(link);
-		((Node)event.getSource()).getScene().getWindow().hide();
+		Stage stage2 = (Stage) ((Node)event.getSource()).getScene().getWindow(); //close current window
+		stage2.close();
 		
 	}
 	
@@ -45,7 +46,8 @@ public class StudentDrawerController {
 	{
 		String link = "/application/StudentSelectPaperGUI.fxml";
 		fxmlLoader(link);
-		((Node)event.getSource()).getScene().getWindow().hide();
+		Stage stage2 = (Stage) ((Node)event.getSource()).getScene().getWindow(); //close current window
+		stage2.close();
 		
 	}
 	
@@ -54,7 +56,8 @@ public class StudentDrawerController {
 	{
 		String link = "/application/StudentPaperListGUI.fxml";
 		fxmlLoader(link);
-		((Node)event.getSource()).getScene().getWindow().hide();
+		Stage stage2 = (Stage) ((Node)event.getSource()).getScene().getWindow(); //close current window
+		stage2.close();
 	}
 	
 	@FXML
@@ -62,7 +65,8 @@ public class StudentDrawerController {
 	{
 		String link = "/application/StudentViewResultsGUI.fxml";
 		fxmlLoader(link);
-		((Node)event.getSource()).getScene().getWindow().hide();
+		Stage stage2 = (Stage) ((Node)event.getSource()).getScene().getWindow(); //close current window
+		stage2.close();
 	}
 	
 	@FXML
@@ -70,7 +74,8 @@ public class StudentDrawerController {
 	{
 		String link = "/application/StudentJoinClassGUI.fxml";
 		fxmlLoader(link);
-		((Node)event.getSource()).getScene().getWindow().hide();
+		Stage stage2 = (Stage) ((Node)event.getSource()).getScene().getWindow(); //close current window
+		stage2.close();
 	}
 	
 	@FXML
@@ -78,7 +83,8 @@ public class StudentDrawerController {
 	{
 		String link = "/application/StudentViewClassGUI.fxml";
 		fxmlLoader(link);
-		
+		Stage stage2 = (Stage) ((Node)event.getSource()).getScene().getWindow(); //close current window
+		stage2.close();
 	}
 	
 	@FXML
@@ -86,7 +92,8 @@ public class StudentDrawerController {
 	{
 		String link = "/application/StudentProfileGUI.fxml";
 		fxmlLoader(link);
-		((Node)event.getSource()).getScene().getWindow().hide();
+		Stage stage2 = (Stage) ((Node)event.getSource()).getScene().getWindow(); //close current window
+		stage2.close();
 	}
 	
 	//Reference - https://www.youtube.com/watch?v=tgV8dDP9DtM

@@ -1,5 +1,8 @@
 package application;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.net.URL;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
@@ -31,7 +34,7 @@ import javafx.util.Duration;
 public class StudentPaperListController implements Initializable{
 	
 	@FXML
-	private Button Closebttn3, Minimizebttn3, viewpaperbtn;
+	private Button Closebttn3, Minimizebttn3;
 	@FXML
 	private Button StudentRegbtn, TeacherProfilebtn;
 	@FXML
@@ -63,9 +66,15 @@ public class StudentPaperListController implements Initializable{
 	@FXML
 	private Label systemTimelbl;
 	
-	public void setUserID (String userID) //set user ID on GUI
+	//set the logged user id on the GUI
+	public void setUserID () throws IOException, ClassNotFoundException
 	{
-		UIDlbl.setText(userID);
+		FileInputStream fis = new  FileInputStream("userfile.txt");		//create the object of give file
+		ObjectInputStream ois = new ObjectInputStream(fis);
+		UserDetails uobj  = (UserDetails) ois.readObject();				//read file object
+		UIDlbl.setText(uobj.userID);									//set the current logged user's id on UIDlbl label   
+		ois.close(); 													//close ObjectInputStream
+		fis.close();													//close FileInputStream
 	}
 	
 	@FXML
@@ -82,24 +91,6 @@ public class StudentPaperListController implements Initializable{
 		stage.setIconified(true);
 	}
 	
-	
-	public void fxmlLoader(String link) throws Exception
-	{
-		Stage stage = new Stage();
-		Parent root = FXMLLoader.load(getClass().getResource(link));
-		stage.initStyle(StageStyle.UNDECORATED);
-		Scene scene = new Scene(root);
-		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-		stage.setScene(scene);
-		stage.show();
-	}
-	@FXML
-	private void MovetoViewPaper(MouseEvent event) throws Exception
-	{
-		String link = "/application/StudentViewPaperGUI.fxml";
-		fxmlLoader(link);
-		
-	}
 	// show live system time on the window 
 	public void liveDateTime () 
 	{
@@ -126,6 +117,12 @@ public class StudentPaperListController implements Initializable{
 		ad1.StudentDrawer(Hamburger, Drawer);
 		
 		liveDateTime (); 
+		try {
+			setUserID ();
+		} catch (ClassNotFoundException | IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		//Reference (You Tube video)
 		// B2 Tech (2017).JavaFx Database Operations - Part 8 - Display the DB values in TableView. [Video] Available at: https://www.youtube.com/watch?v=L8iuBXl-F8U [Accessed Day : 17-12-2018].
 		
