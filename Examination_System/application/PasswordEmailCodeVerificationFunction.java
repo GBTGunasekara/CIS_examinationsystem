@@ -1,10 +1,12 @@
 package application;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
 
 import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.PreparedStatement;
 
 public class PasswordEmailCodeVerificationFunction {
 
@@ -19,10 +21,10 @@ public class PasswordEmailCodeVerificationFunction {
 		
 		if(rs.next()) {
 			res[0]=rs.getString(1);
-			res[2]=rs.getString(2);
+			res[1]=rs.getString(2);
 		}
 		
-		if(res[1]==email && res[2]==VCode)
+		if(res[0].equals(email) && res[1].equals(VCode))
 			check = true;
 		else
 			check = false;
@@ -31,6 +33,23 @@ public class PasswordEmailCodeVerificationFunction {
 			JOptionPane.showMessageDialog(null, e);
 		}
 		return check;
+	}
+
+	public void deleteVcode(String email, String vCode) {
+		PreparedStatement ps;
+		String DelQuery = "Delete From systememail Where email = '"+email+"' and password = '"+vCode+"'";
+		try {
+			ps = (PreparedStatement) DBconnection.Connect().prepareStatement(DelQuery);
+			if(ps.executeUpdate() > 0) 
+			{
+	            System.out.println("verification code deleted.");
+
+			}
+		} catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+			e.printStackTrace();
+		}
+		
 	}
 	
 }

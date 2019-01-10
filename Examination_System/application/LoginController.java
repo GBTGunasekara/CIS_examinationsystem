@@ -222,6 +222,7 @@ public class LoginController  {
 	private void forgotUserIDPassword(MouseEvent event) throws Exception  {
 		String linktoStudentReg = "/application/PasswordEmailVerificationGUI.fxml";
 		fxmlLoader(linktoStudentReg);
+		saveUserID(userIDtxt.getText());
 	}
 	
 }

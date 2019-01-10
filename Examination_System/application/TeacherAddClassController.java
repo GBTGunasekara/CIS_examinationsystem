@@ -86,8 +86,8 @@ public class TeacherAddClassController implements Initializable{
 	private void CreateClass() throws RemoteException, MalformedURLException, NotBoundException 
 	{
 		
-		int teID = Integer.parseInt(teacherIDbox.getText());
-		int classID = Integer.parseInt(classIDbox.getText());
+		String teID = teacherIDbox.getText();
+		String classID = classIDbox.getText();
 		int grade = Integer.parseInt(gradebox.getText());
 		String subName = subNamebox.getText();
 		String className = classNamebox.getText();
@@ -97,15 +97,13 @@ public class TeacherAddClassController implements Initializable{
 				Naming.lookup("rmi://localhost:1099/TeacherAddClass");
 	    	    
 		//TeacherAddClassFunction tac1 = new TeacherAddClassFunction();
-		tacf.createClass(teID,classID,subName, grade,className,location);
+		tacf.createClass(teID, classID, subName, grade, className, location);
 		
 	}
 	
 	@FXML
 	private void clear(MouseEvent event) {
 		
-		teacherIDbox.setText("");
-		classIDbox.setText("");
 		gradebox.setText("");
 		subNamebox.setText("");
 		classNamebox.setText("");
@@ -143,6 +141,16 @@ public class TeacherAddClassController implements Initializable{
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+					TeacherAddClassFunction CLIDgen;
+					try {
+						CLIDgen = new TeacherAddClassFunction();
+						classIDbox.setText(CLIDgen.classIDgenerate());
+					} catch (RemoteException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					teacherIDbox.setText(UIDlbl.getText());
+				
 				
 			}
 }

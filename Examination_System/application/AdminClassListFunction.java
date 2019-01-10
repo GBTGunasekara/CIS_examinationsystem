@@ -17,7 +17,7 @@ public static ObservableList <AdminClassListTable> SelectClassList(String teache
 		
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		String sql = "Select * from class"; // where teacherID = '"+teacherID+"'"; //Get Class Details for the logged in teacher
+		String sql = "Select classID, teacherID, className, subjectName, grade, location from class"; // where teacherID = '"+teacherID+"'"; //Get Class Details for the logged in teacher
         
 		ObservableList Classobj = FXCollections.observableArrayList();
         
@@ -26,8 +26,8 @@ public static ObservableList <AdminClassListTable> SelectClassList(String teache
         while (rs.next())
         {
         	AdminClassListTable tvct = new AdminClassListTable(); 
-        	tvct.setClID(Integer.parseInt(rs.getString("classID")));
-        	tvct.setTeID(Integer.parseInt(rs.getString("teacherID")));
+        	tvct.setClID(rs.getString("classID"));
+        	tvct.setTeID(rs.getString("teacherID"));
         	tvct.setClName(rs.getString("className"));
         	tvct.setSubName(rs.getString("subjectName"));
         	tvct.setGr(Integer.parseInt(rs.getString("grade")));
@@ -40,7 +40,7 @@ public static ObservableList <AdminClassListTable> SelectClassList(String teache
 	    
 	}
 
-		public void DeleteRow(int cid) {
+		public void DeleteRow(String cid) {
 				PreparedStatement ps;
 				String DelQuery = "Delete From class Where classID = '"+cid+"'";
 				try {

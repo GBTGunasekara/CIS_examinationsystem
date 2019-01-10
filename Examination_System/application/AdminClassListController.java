@@ -49,9 +49,9 @@ public class AdminClassListController implements Initializable {
 	@FXML 
 	private TableView<AdminClassListTable> viewClassTbl;
 	@FXML 
-	private TableColumn<AdminClassListTable, Integer> col_ClassID;
+	private TableColumn<AdminClassListTable, String> col_ClassID;
 	@FXML 
-	private TableColumn<AdminClassListTable, Integer> col_TeacherID;
+	private TableColumn<AdminClassListTable, String> col_TeacherID;
 	@FXML 
 	private TableColumn<AdminClassListTable, String> col_ClassName;
 	@FXML 
@@ -114,8 +114,8 @@ public class AdminClassListController implements Initializable {
 		AdminDrawerController ad1 = new AdminDrawerController();
 		ad1.AdminDrawer(Hamburger, Drawer);
 		
-		col_ClassID.setCellValueFactory(cellData -> cellData.getValue().getClassID().asObject());
-		col_TeacherID.setCellValueFactory(cellData -> cellData.getValue().getTeacherID().asObject());
+		col_ClassID.setCellValueFactory(cellData -> cellData.getValue().getClassID());
+		col_TeacherID.setCellValueFactory(cellData -> cellData.getValue().getTeacherID());				// seet the values to the table
 		col_ClassName.setCellValueFactory(cellData -> cellData.getValue().getClassName());
 		col_SubjectName.setCellValueFactory(cellData -> cellData.getValue().getSubjectName());
 		col_Grade.setCellValueFactory(cellData -> cellData.getValue().getGrade().asObject());
@@ -143,30 +143,31 @@ public class AdminClassListController implements Initializable {
 		
 	}
 	
-	int cid = 0;
+	String cid;
 	@FXML
 	private void SelectRow() {						//Code referred from https://www.youtube.com/watch?v=3SJmlQQvxIs
 		ObservableList<AdminClassListTable> ClList;
-		ClList=viewClassTbl.getSelectionModel().getSelectedItems();
+		ClList=viewClassTbl.getSelectionModel().getSelectedItems();			//adds the data values of the selected row to an observerble array list
 		cid = ClList.get(0).getClID();
 	}
 	@FXML
 	private void DeleteClass() {
 		
-		if(cid == 0)
+		if(cid == null) {
 			JOptionPane.showMessageDialog(null, "Select Class Row");
+		return;
+		}
 		else
 		{
 			AdminClassListFunction aclf = new AdminClassListFunction();
 			aclf.DeleteRow(cid);
 			
-			col_ClassID.setCellValueFactory(cellData -> cellData.getValue().getClassID().asObject());
-			col_TeacherID.setCellValueFactory(cellData -> cellData.getValue().getTeacherID().asObject());
+			col_ClassID.setCellValueFactory(cellData -> cellData.getValue().getClassID());
+			col_TeacherID.setCellValueFactory(cellData -> cellData.getValue().getTeacherID());				//load the table again after deleting the class (realtime load)
 			col_ClassName.setCellValueFactory(cellData -> cellData.getValue().getClassName());
 			col_SubjectName.setCellValueFactory(cellData -> cellData.getValue().getSubjectName());
 			col_Grade.setCellValueFactory(cellData -> cellData.getValue().getGrade().asObject());
 			col_Location.setCellValueFactory(cellData -> cellData.getValue().getLocation());
-
 			try {
 				try {
 					String teacherID = "TID123";

@@ -37,7 +37,7 @@ public class PasswordResetFunction {
 			
 			else if(pw.equals(rpw) && CheckUSercategory(uid).equals("teacher")) {
 				
-				String sql = "Update teacher SET stPassword = '"+Pword+"' where teacherID = '"+uid+"'";
+				String sql = "Update teacher SET tePassword = '"+Pword+"' where teacherID = '"+uid+"'";
 				try {
 					ps = (PreparedStatement) DBconnection.Connect().prepareStatement(sql);
 					if(ps.executeUpdate() > 0)
@@ -55,7 +55,7 @@ public class PasswordResetFunction {
 			
 			else if(pw.equals(rpw) && CheckUSercategory(uid).equals("admin")) {
 				
-				String sql = "Update admin SET stPassword = '"+Pword+"' where adminID = '"+uid+"'";
+				String sql = "Update admin SET adPassword = '"+Pword+"' where adminID = '"+uid+"'";
 				try {
 					ps = (PreparedStatement) DBconnection.Connect().prepareStatement(sql);
 					if(ps.executeUpdate() > 0)
@@ -75,7 +75,7 @@ public class PasswordResetFunction {
 				if (!pw.equals(rpw)) {
 					JOptionPane.showMessageDialog(null, "Passwords does not match.");
 				}
-				else if (CheckUSercategory(uid).equals("student") || CheckUSercategory(uid).equals("teacher") || CheckUSercategory(uid).equals("admin")) {
+				else if (!CheckUSercategory(uid).equals("student") && !CheckUSercategory(uid).equals("teacher") && !CheckUSercategory(uid).equals("admin")) {
 					JOptionPane.showMessageDialog(null, "Invalid UserID");
 				
 				

@@ -7,8 +7,8 @@ import javafx.beans.property.StringProperty;
 
 public class AdminClassListTable {
 	
-	private IntegerProperty classID;
-	private IntegerProperty teacherID;
+	private StringProperty classID;
+	private StringProperty teacherID;
 	private StringProperty className;
 	private StringProperty subjectName;
 	private IntegerProperty grade;
@@ -16,8 +16,8 @@ public class AdminClassListTable {
 	
 	public AdminClassListTable() {
 		
-		this.classID = new SimpleIntegerProperty();
-		this.teacherID = new SimpleIntegerProperty();
+		this.classID = new SimpleStringProperty();
+		this.teacherID = new SimpleStringProperty();
 		this.className = new SimpleStringProperty();
 		this.subjectName = new SimpleStringProperty();
 		this.grade = new SimpleIntegerProperty();
@@ -25,28 +25,28 @@ public class AdminClassListTable {
 	}
 	//Getter and Setters
 	//--ClassID--
-	public int getClID() {
+	public String getClID() {
 		return classID.get();
 	}
 	
-	public void setClID(int id) {
-		this.classID.set(id);
+	public void setClID(String string) {
+		this.classID.set(string);
 	}
 	
-	public IntegerProperty getClassID() {
+	public StringProperty getClassID() {
 		return classID;
 	}
 	
 	//--TeacherID--
-	public int getTeID() {
+	public String getTeID() {
 		return teacherID.get();
 	}
 	
-	public void setTeID(int id) {
-		this.teacherID.set(id);
+	public void setTeID(String string) {
+		this.teacherID.set(string);
 	}
 	
-	public IntegerProperty getTeacherID() {
+	public StringProperty getTeacherID() {
 		return teacherID;
 	}
 	

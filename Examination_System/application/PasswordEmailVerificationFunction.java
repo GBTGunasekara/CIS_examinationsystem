@@ -1,6 +1,8 @@
 package application;
 
 import java.rmi.RemoteException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -28,11 +30,39 @@ public class PasswordEmailVerificationFunction {
 		}
 		return Npass.toString();
 	}
+	
+	public boolean checkEmail(String tbl) {
+		
+		PreparedStatement ps;
+		ResultSet rs;
+		
+		try {
+			ps = (PreparedStatement) DBconnection.Connect().prepareStatement(tbl);
+			rs = ps.executeQuery();
+			if(rs.next())
+				return true;
+			else
+			return false;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	} 
 
 	public void sendEmail(String email) {
 		Date d = Calendar.getInstance().getTime();
 		SimpleDateFormat dateF = new SimpleDateFormat("Y-MM-dd hh:mm:ss");
 		String StrDate = dateF.format(d);
+		
+		String findAdminEmail   = "Select ademail from admin where ademail = '"+email+"'";
+		String findStudentEmail = "Select stemail from student where stemail = '"+email+"'";
+		String findTeacherEmail = "Select teemail from teacher where teEmail = '"+email+"'";
+		
+		if(!checkEmail(findAdminEmail) && !checkEmail(findStudentEmail) && !checkEmail(findTeacherEmail)) {
+			JOptionPane.showMessageDialog(null, "This Email is not registered");
+			return;
+		}
+		else {
 			try{
 				boolean sessionDebug = false;
 				String NewP = genPword();
@@ -41,7 +71,7 @@ public class PasswordEmailVerificationFunction {
 	            String pass = "mcqappUOB19";
 	           // String to = "buddhimith@gmail.com";
 	            String from = "mcqappuob@gmail.com";
-	            String subject = "New paper is uploaded";
+	            String subject = "Password Reset Verification Code";
 	            String messageText = "Dear Student;\n"
 	            		+ "The verification code to reset your password is '"+NewP+"'";
 	           
@@ -91,5 +121,6 @@ public class PasswordEmailVerificationFunction {
 	        {
 	            System.out.println(ex);
 	        }
+		}
 		}
 }

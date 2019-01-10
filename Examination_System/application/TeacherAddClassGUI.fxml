@@ -58,7 +58,7 @@
       </ImageView>
       <AnchorPane layoutX="210.0" layoutY="92.0" opacity="0.9" prefHeight="395.0" prefWidth="554.0" style="-fx-background-color: #e5e5e5; -fx-border-color: #494949; -fx-border-width: 4;">
          <children>
-            <JFXTextField fx:id="classIDbox" layoutX="247.0" layoutY="125.0" prefHeight="30.0" prefWidth="250.0">
+            <JFXTextField fx:id="classIDbox" editable="false" layoutX="247.0" layoutY="125.0" prefHeight="30.0" prefWidth="250.0">
                <font>
                   <Font size="16.0" />
                </font>
@@ -98,7 +98,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <JFXTextField fx:id="teacherIDbox" layoutX="247.0" layoutY="75.0" prefHeight="30.0" prefWidth="250.0">
+            <JFXTextField fx:id="teacherIDbox" editable="false" layoutX="247.0" layoutY="75.0" prefHeight="30.0" prefWidth="250.0">
                <font>
                   <Font size="16.0" />
                </font>
